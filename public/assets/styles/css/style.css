@@ -1,0 +1,16 @@
+html {
+
+}
+
+@font-face {
+	font-family: 'volkswagen';
+	src: url("../../fonts/Volkswagen Serial.otf");
+	font-style: normal;
+	font-weight: 400;
+}
+
+h1 {
+	font-family: volkswagen;
+	font-size: 45px;
+	color: red;
+}
