@@ -1,3 +1,13 @@
+:root {
+  --grid-width: 114rem;
+  --grid-gutter-vertical: 8rem;
+  --grid-gutter-horizontal: 6rem; }
+
+:root {
+  --grid-width: 114rem;
+  --grid-gutter-vertical: 8rem;
+  --grid-gutter-horizontal: 6rem; }
+
 *,
 *::after,
 *::before {
@@ -9,10 +19,6 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-family: volkswagen;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #777;
   box-sizing: border-box; }
 
 @font-face {
@@ -44,6 +50,60 @@ body {
   src: url("../../fonts/Volkswagen Serial ExtraBold.otf");
   font-style: normal;
   font-weight: 900; }
+
+body {
+  font-family: volkswagen;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #777; }
+
+.row {
+  max-width: var(--grid-width);
+  background: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: var(--grid-gutter-vertical); }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background: red;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: var(--grid-gutter-horizontal); }
+  .row .col-1-of-2 {
+    width: calc((100% - var(--grid-gutter-horizontal)) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * var(--grid-gutter-horizontal)) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal)) / 3) + var(--grid-gutter-horizontal)); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * var(--grid-gutter-horizontal)) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * (100% - 3 * var(--grid-gutter-horizontal)) / 4 + var(--grid-gutter-horizontal)); }
+  .row .col-3-of-4 {
+    width: calc(3 * (100% - 3 * var(--grid-gutter-horizontal)) / 4 + 2 * var(--grid-gutter-horizontal)); }
+  .row .col-1-of-5 {
+    width: calc((100% - 4 * var(--grid-gutter-horizontal)) / 5); }
+  .row .col-2-of-5 {
+    width: calc(2 * (100% - 4 * var(--grid-gutter-horizontal)) / 5 + var(--grid-gutter-horizontal)); }
+  .row .col-3-of-5 {
+    width: calc(3 * (100% - 4 * var(--grid-gutter-horizontal)) / 5 + 2 * var(--grid-gutter-horizontal)); }
+  .row .col-4-of-5 {
+    width: calc(4 * (100% - 4 * var(--grid-gutter-horizontal)) / 5 + 3 * var(--grid-gutter-horizontal)); }
+  .row .col-1-of-6 {
+    width: calc((100% - 5 * var(--grid-gutter-horizontal)) / 6); }
+  .row .col-2-of-6 {
+    width: calc(2 * (100% - 5 * var(--grid-gutter-horizontal)) / 6 + var(--grid-gutter-horizontal)); }
+  .row .col-3-of-6 {
+    width: calc(3 * (100% - 5 * var(--grid-gutter-horizontal)) / 6 + 2 * var(--grid-gutter-horizontal)); }
+  .row .col-4-of-6 {
+    width: calc(4 * (100% - 5 * var(--grid-gutter-horizontal)) / 6 + 3 * var(--grid-gutter-horizontal)); }
+  .row .col-5-of-6 {
+    width: calc(5 * (100% - 5 * var(--grid-gutter-horizontal)) / 6 + 4 * var(--grid-gutter-horizontal)); }
+  .row .col-1-of-12 {
+    width: calc((100% - 11 * var(--grid-gutter-horizontal)) / 12); }
 
 .header-main {
   height: 90vh;
