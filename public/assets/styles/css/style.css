@@ -1,16 +1,50 @@
-html {
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
 
-}
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: volkswagen;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #777;
+  box-sizing: border-box; }
 
 @font-face {
-	font-family: 'volkswagen';
-	src: url("../../fonts/Volkswagen Serial.otf");
-	font-style: normal;
-	font-weight: 400;
-}
+  font-family: 'volkswagen';
+  src: url("../../fonts/Volkswagen Serial Light.otf");
+  font-style: normal;
+  font-weight: 100; }
 
-h1 {
-	font-family: volkswagen;
-	font-size: 45px;
-	color: red;
-}
+@font-face {
+  font-family: 'volkswagen';
+  src: url("../../fonts/Volkswagen Serial.otf");
+  font-style: normal;
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'volkswagen';
+  src: url("../../fonts/Volkswagen Serial Medium.otf");
+  font-style: normal;
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'volkswagen';
+  src: url("../../fonts/Volkswagen Serial Bold.otf");
+  font-style: normal;
+  font-weight: 700; }
+
+@font-face {
+  font-family: 'volkswagen';
+  src: url("../../fonts/Volkswagen Serial ExtraBold.otf");
+  font-style: normal;
+  font-weight: 900; }
+
+.header-main {
+  height: 90vh;
+  background-color: #ccc; }

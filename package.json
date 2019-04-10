@@ -5,14 +5,13 @@
   "main": "app.js",
   "dependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
-    "normalize.css": "^8.0.1"
+    "express": "^4.16.4"
   },
   "devDependencies": {
     "node-sass": "^4.11.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:sass": "node-sass public/assets/styles/scss/main.scss public/assets/styles/css/style.css -w"
   },
   "repository": {
     "type": "git",
