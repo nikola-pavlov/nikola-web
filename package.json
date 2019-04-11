@@ -1,0 +1,36 @@
+{
+  "name": "nikola-web",
+  "version": "1.0.0",
+  "description": "Nikola Pavlov personal web page and portfolio.",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  },
+  "scripts": {
+    "compile:sass": "node-sass public/assets/styles/scss/main.scss public/assets/styles/css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikola-pavlov/nikola-web.git"
+  },
+  "keywords": [
+    "nikola",
+    "pavlov",
+    "web",
+    "page",
+    "portfolio",
+    "design",
+    "developer",
+    "webdesign"
+  ],
+  "author": "Nikola Pavlov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikola-pavlov/nikola-web/issues"
+  },
+  "homepage": "https://github.com/nikola-pavlov/nikola-web#readme"
+}

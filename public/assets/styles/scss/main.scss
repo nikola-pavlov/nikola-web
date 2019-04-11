@@ -1,0 +1,21 @@
+// @import	"vendors/normalize.css";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import	"base/base";
+@import	"base/animations";
+@import	"base/typography";
+@import	"base/utilities";
+
+@import "pages/home";
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/grid";
+
+
+.header-main {
+	height: 90vh;
+	background-color: #ccc;
+}
