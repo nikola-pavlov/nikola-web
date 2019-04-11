@@ -1,15 +1,23 @@
 // GRID
 
 :root {
-	--grid-width: 114rem;
-	--grid-gutter-vertical: 8rem;
-	--grid-gutter-horizontal: 6rem;
+	--grid-width: 120rem;
+
+	--grid-gutter-vertical-xs: 4rem;
+	--grid-gutter-vertical-s: 6rem;
+	--grid-gutter-vertical-m: 8rem;
+	--grid-gutter-vertical-l: 10rem;
+	--grid-gutter-vertical-xl: 12rem;
+
+	--grid-gutter-horizontal-xs: 1rem;
+	--grid-gutter-horizontal-s: 2rem;
+	--grid-gutter-horizontal-m: 4rem;
+	--grid-gutter-horizontal-l: 6rem;
+	--grid-gutter-horizontal-xl: 8rem;
 }
 
 // COLORS
 
 :root {
-	--grid-width: 114rem;
-	--grid-gutter-vertical: 8rem;
-	--grid-gutter-horizontal: 6rem;
+
 }
