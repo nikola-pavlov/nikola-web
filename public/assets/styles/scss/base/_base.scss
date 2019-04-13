@@ -7,7 +7,20 @@
 }
 
 html {
-	font-size: 62.5%;
+	// This defines how much is 1 rem
+	font-size: 62.5%; // 1 rem = 10px, 10/16 = 62.5%
+
+	@include respond(Small) { // 1 rem = 8px , 8/16 = 50%
+		font-size: 50%;
+	}
+
+	@include respond(Medium) {
+		font-size: 56.25%; // 1 rem = 9px , 8/16 = 56.25%
+	}
+
+	@include respond(Huge) {
+		font-size: 75%; // 1rem = 12px , 12/16 = 75%
+	}
 }
 
 body {

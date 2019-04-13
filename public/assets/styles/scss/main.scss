@@ -10,8 +10,11 @@
 
 @import "pages/home";
 
-@import "components/header_main";
+@import "components/hero";
+@import "components/btn";
+@import "components/logo-design";
 
-@import "layout/header";
+@import "layout/header-main";
+@import "layout/nav-primary";
 @import "layout/footer";
 @import "layout/grid";

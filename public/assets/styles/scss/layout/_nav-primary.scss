@@ -1,0 +1,27 @@
+.nav-primary {
+
+	&--float-right {
+		float: right;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		@include clearfix;
+	}
+
+	li {
+		list-style: none;
+		float: left;
+		padding-right: 2rem;
+	}
+
+	a {
+		color: var(--color-whitish);
+		text-decoration: none;
+		font-size: 1.6rem;
+		font-weight: 400;
+		display: block;
+		padding: 1.1rem 0 0 0;
+	}
+}

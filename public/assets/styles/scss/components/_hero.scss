@@ -1,10 +1,11 @@
-.header-main {
+.hero {
 	position: relative;
 	height: 110vh;
-	background-image: linear-gradient(to right bottom, rgba(58, 175, 169, .8), rgba(43, 122, 120, .6)), url(../../images/hero2.jpg);
+	background-image: linear-gradient(to right bottom, rgba(58, 175, 169, .95), rgba(43, 122, 120, .4)), url(../../images/hero1.jpg);
 	background-size: cover;
 	background-position: top;
 	background-attachment: fixed;
+
 
 	&__overlay {
 		position: absolute;
@@ -45,6 +46,7 @@
 					 0 3px 0 #efefef,
 					 0 4px 0 #efefef,
 					 0 30px 5px rgba(0,0,0,.1);
+		text-transform: uppercase;
 	}
 
 	&__desc {
