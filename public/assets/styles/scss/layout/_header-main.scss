@@ -1,12 +1,27 @@
 .header-main {
 	position: absolute;
 	z-index: 2;
-	background-color: rgba(58, 175, 169, .3);
 	width: 100%;
 	padding: 1rem 0; 
+	background-color: rgba(58, 175, 169, .3);
+	
+	@include respond(Medium) {
+		background-color: transparent;
+		transition: background-color .3s ease-out;
+		overflow: hidden;
+
+
+		&--is-expanded {
+		background-color: rgba(58, 175, 169, .6);
+	}
+	}
 
 	&__btn-container {
 		float: right;
+
+		@include respond(Medium) {
+			float: none;
+		}
 	}
 
 	&__logo {
@@ -16,11 +31,25 @@
 		padding: 2rem 3.5rem;
 		border-radius: 0 0 5rem 5rem;
 
+		@include respond(Medium) {
+			left: 50%;
+			transform: translateX(-50%) scale(.8);
+			transform-origin: 50% 0;
+			min-width: 20rem;
+		}
+
 		& figure img {
 			width: 8rem;
 			float: left;
 			padding: .5rem;
 			display: inline-block;
+
+			@include respond(Medium) {
+				float: none;
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+			}
 		}
 
 		& figure {
@@ -34,6 +63,45 @@
 		padding: 2.2rem 0 0 1rem;
 		font-size: 1.8rem;
 		position: relative;
+
+		@include respond(Medium) {
+			width: 100%;
+			text-align: center;
+			padding: 0;
+		}
+	}
+
+	&__menu-icon {
+		width: 2rem;
+		height: 2rem;
+		background-color: var(--color-whitish);
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		display: none;
+
+		@include respond(Medium) {
+			display: block;
+			z-index: 10;
+		}
+	}
+
+	&__menu-content {
+	
+		@include respond(Medium) {
+			opacity: 0;
+			visibility: hidden;
+			padding-top: 12rem;
+			text-align: center;
+			transition: all .3s ease-out;
+			transform: scale(.5) translateY(5rem);
+
+			&--is-visible {
+				opacity: 1;
+				visibility: visible;
+				transform: scale(1) translateY(0);
+			}
+		}
 	}
 
 }

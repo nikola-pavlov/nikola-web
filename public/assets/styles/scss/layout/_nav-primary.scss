@@ -1,7 +1,15 @@
 .nav-primary {
 
+	@include respond(Medium) {
+		padding-top: 2rem;
+	}
+
 	&--float-right {
 		float: right;
+
+		@include respond(Medium) {
+			float: none;
+		}
 	}
 
 	ul {
@@ -14,6 +22,17 @@
 		list-style: none;
 		float: left;
 		padding-right: 2rem;
+		@include respond(Medium) {
+			float: none;
+			display: inline-block;
+			padding-right: .7rem;
+		}
+	}
+
+	li:last-child {
+		@include respond(Medium) {
+			padding-right: 0;
+		}
 	}
 
 	a {
@@ -23,5 +42,11 @@
 		font-weight: 400;
 		display: block;
 		padding: 1.1rem 0 0 0;
+
+		@include respond(Medium) {
+			padding: .5rem .8rem;
+			font-size: 1.4rem;
+			background-color: rgba(58, 175, 169, .6);
+		}
 	}
 }
