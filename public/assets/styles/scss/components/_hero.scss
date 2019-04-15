@@ -1,7 +1,8 @@
 .hero {
 	position: relative;
 	height: 110vh;
-	background-image: linear-gradient(to right bottom, rgba(58, 175, 169, .95), rgba(43, 122, 120, .4)), url(../../images/hero1.jpg);
+	// background-image: linear-gradient(to right bottom, rgba(58, 175, 169, .95), rgba(43, 122, 120, .4)), url(../../images/hero4.jpg);
+	background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(../../images/hero4.jpg);
 	background-size: cover;
 	background-position: top;
 	background-attachment: fixed;
@@ -36,7 +37,7 @@
 
 	&__title {
 		color: var(--color-whitish);
-		font-size: 8rem;
+		font-size: 7rem;
 		letter-spacing: 1rem;
 		line-height: 1.25;
 		margin-bottom: 2rem;
@@ -50,7 +51,7 @@
 
 	&__desc {
 		color: var(--color-three);
-		font-size: 2rem;
+		font-size: 1.6rem;
 		font-weight: 100;
 	}
 }

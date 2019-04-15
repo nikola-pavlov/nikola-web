@@ -6,7 +6,8 @@
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "jquery": "^3.4.0"
+    "jquery": "^3.4.0",
+    "waypoints": "^4.0.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
