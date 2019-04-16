@@ -1,0 +1,110 @@
+.logo-design {
+	margin: 30rem 0;
+	position: relative;
+	transform: scale(.25);
+
+	&__rect--blue {
+		position: absolute;
+		background-color: 1B75BC;
+		width: 40rem;
+		height: 30rem;
+		left: 0rem;
+		top: 17.5rem;
+		animation: logoMoveInFromLeft 1s 2.5s ease-in-out 1 both, colorChangeShow 1s 6s ease-in-out 1 both;
+	}
+
+	&__circle--red {
+
+		position: absolute;
+		background-color: BE1E2D;
+		border-radius: 50%;
+
+		&--first {
+			width: 10rem;
+			height: 10rem;
+			left: 0rem;
+			top: 42.5rem;
+			animation: logoScaleUp 1s .5s ease-in-out 1 both, colorChangeShow 1s 6s ease-in-out 1 both;
+
+
+		}
+
+		&--second {
+			width: 25rem;
+			height: 25rem;
+			left: 0rem;
+			top: 5rem;
+			animation: logoScaleUp 1s 1s ease-in-out 1 both, colorChangeShow 1s 6s ease-in-out 1 both;
+
+		}
+
+		&--third {
+			width: 25rem;
+			height: 25rem;
+			left: 15rem;
+			top: 35rem;
+			animation: logoScaleUp 1s 1.5s ease-in-out 1 both, colorChangeShow 1s 6s ease-in-out 1 both;
+		}
+
+		&--forth {
+			width: 35rem;
+			height: 35rem;
+			left: 30rem;
+			top: 0rem;
+			animation: logoScaleUp 1s 0s ease-in-out 1 both, colorChangeShow 1s 6s ease-in-out 1 both;
+		}
+	}
+
+	&__circle--yellow {
+
+		position: absolute;
+		background-color: FFF200;
+		border-radius: 100px;
+
+		&--first {
+			width: 5rem;
+			height: 35rem;
+			left: 10rem;
+			top: 15rem;
+			animation: logoMoveInFromTop 1s 3s ease-in-out 1 both, colorChangeHide 1s 6s ease-in-out 1 both;
+		}
+
+		&--second {
+			width: 5rem;
+			height: 35rem;
+			left: 25rem;
+			top: 15rem;
+			animation: logoMoveInFromBottom 1s 3s ease-in-out 1 both, colorChangeHide 1s 6s ease-in-out 1 both;
+		}
+
+		&--third {
+			width: 15rem;
+			height: 15rem;
+			left: 40rem;
+			top: 10rem;
+			border-radius: 50%;
+			animation: logoScaleUp 1s 2s ease-in-out 1 both, colorChangeHide 1s 6s ease-in-out 1 both;
+		}
+	}
+
+	&__circle--green {
+		position: absolute;
+		background-color: 00A651;
+		border-radius: 50%;
+		width: 10rem;
+		height: 10rem;
+		left: 42.5rem;
+		top: 25rem;
+		animation: logoScaleUpAndMoveDown 2s 4s ease-in-out 1 both, colorChangeShow 1s 6s ease-in-out 1 both;
+	}
+
+	&__rect--invisible {
+		position: absolute;
+		background-color: orange;
+		width: 17.5rem;
+		height: 17.5rem;
+		left: 30rem;
+		top: 17.5rem;
+		animation: logoFadeIn 1s 4.5s ease-in-out 1 both, colorChangeHide 1s 6s ease-in-out 1 both;
+	}
+}

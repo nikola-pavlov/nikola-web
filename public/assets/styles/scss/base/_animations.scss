@@ -1,0 +1,116 @@
+// LOGO DESIGN
+
+@keyframes logoScaleUp {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes logoScaleUpAndMoveDown {
+	0% {
+		opacity: 0;
+		transform: scale(1.5) translateY(-83.5%);
+		background-color: FFF200;
+	}
+
+	20% {
+		opacity: 1;
+		transform: scale(1.5);
+		background-color: FFF200;
+	}
+
+	50% {
+		transform: scale(1);
+		background-color: FFF200;
+	}
+
+	75% {
+		transform: scale(1);
+		background-color: FFF200;
+	}
+
+	100% {
+		opacity: 1;
+		background-color: 00A651;
+	}
+}
+
+@keyframes logoMoveInFromLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-50rem);
+	}
+
+	20% {
+		opacity: 1;
+		transform: translateX(-50rem);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoMoveInFromTop {
+	0% {
+		opacity: 0;
+		transform: translateY(50rem);
+	}
+
+	20% {
+		opacity: 1;
+		transform: translateY(50rem);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoMoveInFromBottom {
+	0% {
+		opacity: 0;
+		transform: translateY(-50rem);
+	}
+
+	20% {
+		opacity: 1;
+		transform: translateY(-50rem);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoFadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes colorChangeShow {
+	0% {
+	}
+
+	100% {
+		background: #000;
+	}
+}
+
+@keyframes colorChangeHide {
+	0% {
+	}
+
+	100% {
+		background: #fff;
+	}
+}

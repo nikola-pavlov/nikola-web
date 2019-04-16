@@ -1,0 +1,9 @@
+.wrapper {
+	max-width: var(--grid-width);
+	margin: 0 auto;
+
+	@include respond(Medium) {
+	padding-left: 2rem;
+	padding-right: 2rem;
+	}
+}

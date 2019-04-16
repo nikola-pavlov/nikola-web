@@ -10,12 +10,13 @@
 
 @import "pages/home";
 
-@import "layout/header";
+@import "components/hero";
+@import "components/btn";
+@import "components/logo-design";
+
+@import "layout/header-main";
+@import "layout/nav-primary";
 @import "layout/footer";
 @import "layout/grid";
-
-
-.header-main {
-	height: 90vh;
-	background-color: #ccc;
-}
+@import "layout/wrapper";
+@import "layout/section";
