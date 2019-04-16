@@ -150,28 +150,70 @@ body {
   font-weight: 900; }
 
 body {
-  font-family: volkswagen;
+  font-family: volkswagen, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   color: #777; }
 
-.u-center-text {
-  text-align: center !important; }
+.u-margin-top-tiny {
+  margin-top: 1rem !important; }
 
-.u-margin-bottom-small {
-  margin-bottom: 1.5rem !important; }
+.u-margin-top-xsmall {
+  margin-top: 2rem !important; }
 
-.u-margin-bottom-medium {
-  margin-bottom: 4rem !important; }
+.u-margin-top-small {
+  margin-top: 4rem !important; }
 
-.u-margin-bottom-big {
-  margin-bottom: 8rem !important; }
+.u-margin-top-medium {
+  margin-top: 6rem !important; }
 
-.u-margin-top-big {
+.u-margin-top-large {
   margin-top: 8rem !important; }
 
-.u-margin-top-huge {
+.u-margin-top-xlarge {
   margin-top: 10rem !important; }
+
+.u-margin-top-huge {
+  margin-top: 12rem !important; }
+
+.u-margin-bottom-tiny {
+  margin-bottom: 1rem !important; }
+
+.u-margin-bottom-xsmall {
+  margin-bottom: 2rem !important; }
+
+.u-margin-bottom-small {
+  margin-bottom: 4rem !important; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 6rem !important; }
+
+.u-margin-bottom-large {
+  margin-bottom: 8rem !important; }
+
+.u-margin-bottom-xlarge {
+  margin-bottom: 10rem !important; }
+
+.u-margin-bottom-huge {
+  margin-bottom: 12rem !important; }
+
+.headline-1 {
+  font-size: 8rem !important; }
+
+.headline-2 {
+  font-size: 6rem !important; }
+
+.headline-3 {
+  font-size: 5rem !important; }
+
+.headline-4 {
+  font-size: 4rem !important; }
+
+.headline-5 {
+  font-size: 3rem !important; }
+
+.headline-6 {
+  font-size: 2rem !important; }
 
 .hero {
   position: relative;
@@ -206,7 +248,6 @@ body {
     font-size: 7rem;
     letter-spacing: 1rem;
     line-height: 1.25;
-    margin-bottom: 2rem;
     text-shadow: 0 1px 0 #efefef, 0 2px 0 #efefef, 0 3px 0 #efefef, 0 4px 0 #efefef, 0 30px 5px rgba(0, 0, 0, 0.1);
     text-transform: uppercase; }
   .hero__desc {
@@ -315,7 +356,8 @@ body {
   z-index: 10;
   width: 100%;
   padding: 1.2rem 0;
-  background-color: rgba(58, 175, 169, 0.3); }
+  background-color: rgba(58, 175, 169, 0.3);
+  transition: background-color .3s ease-out; }
   .header-main--opacity {
     background-color: rgba(1, 120, 120, 0.95); }
   @media (max-width: 48em) {
