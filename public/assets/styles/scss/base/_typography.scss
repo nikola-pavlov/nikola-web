@@ -35,7 +35,41 @@
 
 body {
 	font-family: volkswagen, sans-serif;
-	font-weight: 400;
-	line-height: 1.6;
-	color: #777;
 }
+
+// ----------------- GENERIC TEXT --------------
+
+.text-generic {
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+.text-centered {
+	text-align: center;
+}
+
+// ----------------- HEADLINES --------------
+
+.headline-1 {font-size: 8rem !important;}
+.headline-2 {font-size: 6rem !important;}
+.headline-3 {font-size: 5rem !important;}
+.headline-4 {
+	font-size: 4rem !important;
+	&--black {
+		color: var(--color-four);
+	}
+}
+.headline-5 {font-size: 3rem !important;}
+.headline-6 {font-size: 2rem !important;}
+
+.headline--stylish-1 {
+	font-weight: 700;
+	display: inline-block;
+	background-image: linear-gradient(to right, var(--color-one), var(--color-four));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	position: relative;
+}
+

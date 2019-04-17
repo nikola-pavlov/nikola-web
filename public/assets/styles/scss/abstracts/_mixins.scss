@@ -6,6 +6,11 @@
 	}
 }
 
+@mixin center-horizontaly {
+	left:50%;
+	transform: translateX(-50%);
+}
+
 
 /*
 1em = 16px
@@ -43,7 +48,7 @@
 	}
 
 	@if $breakpoint == Huge {
-		@media (min-width: 112.5em) {	// 1800px
+		@media (min-width: 125em) {	// 2000px
 			@content
 		};
 	}

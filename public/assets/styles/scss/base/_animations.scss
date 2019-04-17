@@ -90,10 +90,12 @@
 @keyframes logoFadeIn {
 	0% {
 		opacity: 0;
+		visibility: hidden;
 	}
 
 	100% {
 		opacity: 1;
+		visibility: 1;
 	}
 }
 
@@ -111,6 +113,66 @@
 	}
 
 	100% {
-		background: #fff;
+		background-color: var(--color-whitish);
+	}
+}
+
+@keyframes hideFirst {
+	0% {
+		opacity: 0;
+	}
+
+	80% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes logoMoveInFromRight {
+	0% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+
+	20% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoMoveInFromLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+
+	20% {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes loopInfinite {
+	0% {
+		transform: rotate(0);
+		opacity: .25;
+	}
+
+	100% {
+		transform: rotate(1turn);
+		opacity: .25;
 	}
 }
