@@ -2,7 +2,7 @@
 	max-width: var(--grid-width);
 	margin: 0 auto;
 
-	@include respond(Medium) {
+	@include respond(XLarge) {
 	padding-left: 2rem;
 	padding-right: 2rem;
 	}

@@ -7,7 +7,7 @@
 	transition: background-color .3s ease-out;
 
 	&--opacity {
-		background-color: rgba(1, 120, 120, .95);
+		background-color: rgba(0, 120, 120, .95);
 	}
 	
 	@include respond(Medium) {
