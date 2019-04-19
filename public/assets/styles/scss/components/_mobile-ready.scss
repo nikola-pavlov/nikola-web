@@ -1,0 +1,94 @@
+.mobile-ready {
+	position: relative;
+	height: auto;
+	overflow: hidden;
+
+	display: block;
+	height: 670px;
+
+	&__phone {
+
+		position: relative;
+		top: 6rem;
+
+		&__content {
+			position: absolute;
+			top: 5.3rem;
+			left: 5.6rem;
+			padding: 1rem;
+			width: 22.7rem;
+			height: 40.3rem;
+			overflow-y: scroll;
+			display: block;
+			// background: red;
+			z-index: 10;
+		}
+
+		&__item:not(:last-child) {
+			padding-bottom: 2.5rem;
+		}
+
+		&__image {
+			position: relative;
+			& img {
+				position: relative;
+				width: 75%;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 5;
+			}
+		}
+
+		&__title {
+			font-size: 1.6rem;
+			text-align: center;
+			padding-bottom: 1rem;
+		}
+
+		&__desc {
+			font-size: 1.2rem;
+			line-height: 1.5;
+			text-align: justify;
+			text-justify: inter-word;
+			word-break: break-all;
+			-webkit-hyphens: auto;-ms-hyphens: auto;
+			hyphens: auto;
+			color: var(--color-grey);
+		}
+
+		&__image-item {
+			width: 100%;
+
+			& img {
+				width: 100%;
+			}
+		}
+	}
+
+	&__item {
+
+		padding-bottom: 3.5rem;
+		@include clearfix;
+
+		&__title {
+			font-size: 3rem;
+			padding-bottom: 1.5rem;
+		}
+
+		&__desc {
+			color: var(--color-grey);
+		}
+
+		&__image-item {
+			float: right;
+			width: 25%;
+			margin-left: 1.5rem;
+			
+			& img {
+				width: 100%;
+				border-radius: 50rem;
+			}
+		}
+
+	}
+}

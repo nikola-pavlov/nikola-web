@@ -1,3 +1,12 @@
 .section {
 	padding: 5rem 0;
+	border-bottom: 1px solid #ccc;
+
+	&--logo-designer {
+		height: 60rem;
+	}
+
+	&-test {
+		padding: 5rem 0;
+	}
 }

@@ -485,6 +485,72 @@ body {
   position: absolute;
   z-index: 30; }
 
+.mobile-ready {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  display: block;
+  height: 670px; }
+  .mobile-ready__phone {
+    position: relative;
+    top: 6rem; }
+    .mobile-ready__phone__content {
+      position: absolute;
+      top: 5.3rem;
+      left: 5.6rem;
+      padding: 1rem;
+      width: 22.7rem;
+      height: 40.3rem;
+      overflow-y: scroll;
+      display: block;
+      z-index: 10; }
+    .mobile-ready__phone__item:not(:last-child) {
+      padding-bottom: 2.5rem; }
+    .mobile-ready__phone__image {
+      position: relative; }
+      .mobile-ready__phone__image img {
+        position: relative;
+        width: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5; }
+    .mobile-ready__phone__title {
+      font-size: 1.6rem;
+      text-align: center;
+      padding-bottom: 1rem; }
+    .mobile-ready__phone__desc {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      text-align: justify;
+      text-justify: inter-word;
+      word-break: break-all;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+      color: var(--color-grey); }
+    .mobile-ready__phone__image-item {
+      width: 100%; }
+      .mobile-ready__phone__image-item img {
+        width: 100%; }
+  .mobile-ready__item {
+    padding-bottom: 3.5rem; }
+    .mobile-ready__item::after {
+      content: "";
+      display: table;
+      clear: both; }
+    .mobile-ready__item__title {
+      font-size: 3rem;
+      padding-bottom: 1.5rem; }
+    .mobile-ready__item__desc {
+      color: var(--color-grey); }
+    .mobile-ready__item__image-item {
+      float: right;
+      width: 25%;
+      margin-left: 1.5rem; }
+      .mobile-ready__item__image-item img {
+        width: 100%;
+        border-radius: 50rem; }
+
 .header-main {
   position: fixed;
   z-index: 10;
@@ -668,7 +734,6 @@ body {
     display: table;
     clear: both; }
   .row [class^="col-"] {
-    background: red;
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: var(--grid-gutter-horizontal-l); }
@@ -709,11 +774,17 @@ body {
 
 .wrapper {
   max-width: var(--grid-width);
-  margin: 0 auto; }
+  margin-left: auto;
+  margin-right: auto; }
   @media (max-width: 75em) {
     .wrapper {
       padding-left: 2rem;
       padding-right: 2rem; } }
 
 .section {
-  padding: 5rem 0; }
+  padding: 5rem 0;
+  border-bottom: 1px solid #ccc; }
+  .section--logo-designer {
+    height: 60rem; }
+  .section-test {
+    padding: 5rem 0; }

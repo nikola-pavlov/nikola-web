@@ -9,9 +9,8 @@
 	@include clearfix;
 
 	[class^="col-"] {
-		background: red;
 		float: left;
-
+		// background: red;
 		&:not(:last-child) {
 			margin-right: var(--grid-gutter-horizontal-l);
 		}

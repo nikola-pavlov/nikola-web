@@ -1,6 +1,7 @@
 .wrapper {
 	max-width: var(--grid-width);
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 
 	@include respond(XLarge) {
 	padding-left: 2rem;
