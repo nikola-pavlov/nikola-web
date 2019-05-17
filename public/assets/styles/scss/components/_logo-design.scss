@@ -6,6 +6,19 @@
 	width: 100%;
 	height: 100%;
 
+	@include respond(Large) {
+		left: 45%;
+	}
+
+	@include respond(Medium) {
+		left: 42%;
+	}
+
+	@include respond(Small) {
+		left: 50%;
+		top: 16rem;
+	}
+
 	&__rect--blue {
 		position: absolute;
 		background-color: 1B75BC;
@@ -138,5 +151,9 @@
 	&--scale-up {
 		animation: hideFirst .5s 0s linear 1 both;
 		transform: scale(1) translate(-50%, -50%);
+
+		@include respond(Large) {
+			top: 20rem;
+		}		
 	}
 }

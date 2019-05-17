@@ -4,12 +4,20 @@
 	overflow: hidden;
 
 	display: block;
-	height: 670px;
+	height: 67rem;
+
+	@include respond(XLarge) {
+		height: auto;
+	}
 
 	&__phone {
 
 		position: relative;
 		top: 6rem;
+
+		@include respond(Small) {
+			top: 0;
+		}
 
 		&__content {
 			position: absolute;
@@ -22,6 +30,9 @@
 			display: block;
 			// background: red;
 			z-index: 10;
+			@include respond(XLarge) {
+				display: none;
+			}
 		}
 
 		&__item:not(:last-child) {
@@ -30,12 +41,25 @@
 
 		&__image {
 			position: relative;
+
+			@include respond(Small) {
+				// height: 30rem;
+				overflow: hidden;
+			}
+
 			& img {
 				position: relative;
 				width: 75%;
 				left: 50%;
 				transform: translateX(-50%);
 				z-index: 5;
+
+				@include respond(Medium) {
+				}
+
+				@include respond(Small) {
+					width: 50%;
+				}
 			}
 		}
 
@@ -65,14 +89,26 @@
 		}
 	}
 
-	&__item {
+	&__item-container {
+		@include respond(Small) {
+			padding-top: 4rem;
+		}
+	}
 
+	&__item {
 		padding-bottom: 3.5rem;
 		@include clearfix;
+
+		@include respond(Small) {
+				margin-top: .5rem;
+		}
 
 		&__title {
 			font-size: 3rem;
 			padding-bottom: 1.5rem;
+			@include respond(Small) {
+				text-align: center;
+			}
 		}
 
 		&__desc {
@@ -83,10 +119,20 @@
 			float: right;
 			width: 25%;
 			margin-left: 1.5rem;
+
+			@include respond(Small) {
+				float: none;
+				width: 100%;
+				margin: 0;
+				padding-bottom: 1.5rem;
+			}
 			
 			& img {
 				width: 100%;
 				border-radius: 50rem;
+				@include respond(Small) {
+					border-radius: 0;
+				}
 			}
 		}
 

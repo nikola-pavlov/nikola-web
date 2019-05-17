@@ -28,10 +28,18 @@
 
 	.col-1-of-3 {
 		width: calc((100% - 2 * var(--grid-gutter-horizontal-l)) / 3);
+
+		@include respond(Small) {
+			width: 100%
+		}
 	}
 
 	.col-2-of-3 {
 		width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal-l)) / 3) + var(--grid-gutter-horizontal-l);
+
+			@include respond(Small) {
+			width: 100%
+		}
 	}
 
 	.col-1-of-4 {

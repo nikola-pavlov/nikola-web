@@ -1,12 +1,38 @@
 .section {
-	padding: 5rem 0;
+	padding: 6rem 0;
 	border-bottom: 1px solid #ccc;
 
+	@include respond(XLarge) {
+	padding-left: 0;
+	padding-right: 0;
+	}
+
 	&--logo-designer {
-		height: 60rem;
+		height: 50.1rem;
+		padding: 0;
+
+		@include respond(Small) {
+			height: 85rem;
+		}
+	}
+
+	&--mobile-ready {
+
 	}
 
 	&-test {
 		padding: 5rem 0;
+	}
+
+	&--content-branding {
+		background-color: var(--color-grey-light);
+	}
+
+	&--footer {
+		position: relative;
+		top: 10px;
+		border-top: 1px solid #eee;
+		border-bottom: 0;
+		padding: 6rem 0 0 0;
 	}
 }

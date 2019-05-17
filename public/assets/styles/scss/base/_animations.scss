@@ -176,3 +176,15 @@
 		opacity: .25;
 	}
 }
+
+// Content branding [Panorama animation]
+
+@keyframes productBrandingPanorama {
+	from {
+		background-position: bottom left;
+	}
+
+	to {
+		background-position: bottom right;
+	}
+}

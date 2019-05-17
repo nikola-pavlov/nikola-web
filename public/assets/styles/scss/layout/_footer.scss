@@ -1,3 +1,90 @@
 .site-footer {
-	height: 100rem;
+	// height: 100rem;
+	// border-top: 1px solid #ccc;
+
+	&__item-content {
+		border-right: 1px solid #ccc;
+	}
+
+	&__item-lists {
+		width: 100%;
+	}
+
+	&__item-row {
+		width: 100%;
+		height: 2.6rem;
+		color: var(--color-grey-main);
+		font-size: 1.4rem;
+
+		&--heading {
+			color: var(--color-grey);
+			height: 5rem;
+			font-size: 2rem;
+		}
+	}
+
+	&__item {
+		width: 25%;
+	}
+
+	&__bottom {
+		border-top: 1px solid #ccc;
+		font-size: 1.4rem;
+		color: var(--color-grey-main);
+
+		&__content {
+			position: relative;
+			width: 100%;
+			padding: 2.5rem 0;
+			@include clearfix;
+		}
+
+		&__logo {
+			width: 4rem;
+			height: 4rem;
+			// background: yellow;
+			display: inline-block;
+			margin-right: 2.5rem;
+			position: relative;
+			float: left;
+
+			img {
+				position: relative;
+				width: 4rem;
+				height: 4rem;
+				display: inline-block;
+				@include center-verticaly;
+			}
+		}
+
+		&__items {
+			position: relative;
+			display: inline-block;
+			height: 4rem;
+			float: left;
+
+			& ul {
+				@include center-verticaly;
+				position: relative;
+				display: inline-block;
+			}
+
+			& ul li {
+				display: inline-block;
+				padding-right: 2rem;
+			}
+		}
+
+		&__copyright-container {
+			height: 4rem;
+			display: block;
+			position: relative;
+			float: right;
+		}
+
+		&__copyright {
+			position: relative;
+			@include center-verticaly;
+		}
+	}
 }

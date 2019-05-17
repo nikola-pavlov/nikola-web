@@ -11,20 +11,32 @@
 	transform: translateX(-50%);
 }
 
+@mixin center-verticaly {
+	top:50%;
+	transform: translateY(-50%);
+}
+
 
 /*
 1em = 16px
 */
 
 @mixin respond($breakpoint) {
+
+	@if $breakpoint == Tiny {
+		@media (max-width: 22.5em) {		// 360px
+			@content
+		};
+	}
+
 	@if $breakpoint == XSmall {
-		@media (max-width: 20em) {		// 320px
+		@media (max-width: 30em) {		// 480px
 			@content
 		};
 	}
 
 	@if $breakpoint == Small {
-		@media (max-width: 30em) {		// 480px
+		@media (max-width: 40em) {		// 640px
 			@content
 		};
 	}
@@ -42,7 +54,7 @@
 	}
 
 	@if $breakpoint == XLarge {
-		@media (max-width: 75em) {	// 1200px
+		@media (max-width: 71.25em) {	// 1140px
 			@content
 		};
 	}
