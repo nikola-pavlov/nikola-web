@@ -1,0 +1,94 @@
+.contact {
+	
+	&__checkbox {
+		display: none;
+	}
+
+	&__button {
+		background-color: var(--color-whitish);
+		height: 7rem;
+		width: 7rem;
+		position: fixed;
+		top: 9.5rem;
+		right: 4.9rem;
+		border-radius: 50%;
+		z-index: 102;
+		box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
+		cursor: pointer;
+		backface-visibility: hidden;
+
+		&--front {
+			background: white url(../../images/envelope.svg);
+			background-repeat: no-repeat;
+			background-size: 3rem;
+			background-position: center;
+		}
+
+		&--back {
+			background: white url(../../images/close.svg);
+			background-repeat: no-repeat;
+			background-size: 3rem;
+			background-position: center;
+		}
+	}
+
+	&__background {
+		position: fixed;
+		width: 6rem;
+		height: 6rem;
+		opacity: 0;
+		border-radius: 50%;
+		top: 10rem;
+		right: 5rem;
+		z-index: 100;
+		background-image: radial-gradient(var(--color-one), var(--color-two));
+		transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1), opacity 1s cubic-bezier(0.86, 0, 0.07, 1);
+	}
+
+	&__content {
+		position: fixed;
+		height: 100vh;
+		width: 0;
+		top: 0;
+		right: 0;
+		z-index: 101;
+		opacity: 0;
+		transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+		&__container {
+			position: absolute;
+			background-color: red;
+			@include center-content;
+		}
+	}
+
+	&__checkbox:checked ~ &__background {
+		transform: scale(80);
+		opacity: 1;
+	}
+
+	&__checkbox:checked ~ &__content {
+		opacity: 1;
+		width: 100%;
+	}
+
+	&__checkbox:checked ~ &__button--front {
+		animation: messageButtonFront 1s linear 1 both;
+		z-index: 105;
+	}
+
+	&__checkbox:not(:checked) ~ &__button--front {
+		animation: messageButtonFrontReturn 1s linear 1 both;
+		z-index: 105;
+	}
+
+	&__checkbox:checked ~ &__button--back {
+		animation: messageButtonBack 1s linear 1 both;
+		z-index: 104;
+	}
+
+	&__checkbox:not(:checked) ~ &__button--back {
+		animation: messageButtonBackReturn 1s linear 1 both;
+		z-index: 105;
+	}
+}

@@ -188,3 +188,75 @@
 		background-position: bottom right;
 	}
 }
+
+// Loading Logo Animations
+
+@keyframes loadingLogoFront {
+	0% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	50% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-360deg);
+	}
+}
+
+@keyframes loadingLogoBack {
+	0% {
+		transform: rotateX(0deg) rotateY(180deg);
+	}
+
+	50% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+}
+
+// Message button animations
+
+@keyframes messageButtonFront {
+	0% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+}
+
+@keyframes messageButtonBack {
+	0% {
+		transform: rotateX(0deg) rotateY(180deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+}
+
+@keyframes messageButtonFrontReturn {
+	0% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-360deg);
+	}
+}
+
+@keyframes messageButtonBackReturn {
+	0% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+}

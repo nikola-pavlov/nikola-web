@@ -1,0 +1,102 @@
+.infobox {
+	color: var(--color-grey);
+	font-weight: 600;
+	cursor: pointer; 
+	position: relative;
+	
+	// &:hover:after {
+		// 	position: absolute;
+		// 	content: "test";
+		// 	width: 15rem;
+		// 	height: 3rem;
+		// 	background: red;
+		// }
+
+		&:after {
+			position: relative;
+			display: inline-block;
+			width: .6rem;
+			height: 1rem;
+			top: -1rem;
+			right: 0;
+			font-size: 1.4rem;
+			content: "?";
+		}
+	}
+
+	.infobox__text {
+		display: none;
+	}
+
+	.infobox:hover > .infobox__text,
+	.infobox:active > .infobox__text {
+		display: block !important;
+		position: absolute;
+		top: -100%;
+		left: 125%;
+		color: var(--color-whitish);
+		background: linear-gradient(var(--color-one),var(--color-two));
+		padding: 1.5rem 2.5rem;
+		border-radius: .5rem;
+		box-shadow: 0rem 0rem .75rem .5rem rgba(0,0,0,.15);
+		font-size: 1.4rem;
+		font-weight: 100;
+		z-index: 2;
+		min-width: 30rem;
+		max-width: 50rem;
+		transform-origin: 50% 0;
+		cursor: auto;
+		visibility: visible;
+		opacity: 1;
+
+		@include respond(Large) {
+			position: fixed;
+			top: 50%;
+			left:50%;
+			transform: translateX(-50%);
+			max-width: 70vw;
+			min-width: 70vw;
+		}
+	}
+
+	.infobox:hover > .infobox__text:after,
+	.infobox:active > .infobox__text:after {
+		content: "?";
+		text-align: center;
+		font-size: 3rem;
+		font-weight: 900;
+		position: absolute;
+		top: -3rem;
+		right: -3rem;
+		background: var(--color-whitish);
+		color: var(--color-one);
+		border: 5px solid #3aafa9;
+		width: 6rem;
+		height: 6rem;
+		border-radius: 50%;
+		z-index: 3;
+
+		@include respond(Large) {
+			width: 8rem;
+			height: 8rem;
+			font-size: 4rem;
+		}
+	}
+
+	.infobox:hover > .infobox__text:before,
+	.infobox:active > .infobox__text:before
+	{
+		position: absolute;
+		top: 2rem;
+		left: -2.5rem;
+		background: var(--color-one);
+		width: 2.5rem;
+		height: 2.5rem;
+		z-index: 4;
+		clip-path: polygon(100% 0, 35% 50%, 100% 100%);
+
+		@include respond(Large) {
+			display: none;
+		}
+	}
+

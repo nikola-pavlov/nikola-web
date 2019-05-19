@@ -1,0 +1,42 @@
+.loading-logo {
+
+	position: relative;
+	perspective: 28rem;
+
+	&__container {
+		position: relative;
+		width: 10rem;
+		height: 10rem;
+		background-color: var(--color-whitish);
+		left: calc(50% - 5rem);
+	}
+
+	&__logo {
+
+		position: absolute;
+		top: calc(50% - 3.5rem);
+		left: calc(50% - 7rem);
+		backface-visibility: hidden;
+		height: 10rem;
+		width: 10rem;
+		border-radius: 1rem;
+		border:1px solid #ccc;
+
+		&--front {
+			background: url(../../images/logo1-grey.svg);
+			background-repeat: no-repeat;
+			animation: loadingLogoFront 5s linear infinite;
+			background-size: 7rem;
+			background-position: center;
+		}
+
+		&--back {
+			background: url(../../images/logo1-grey.svg);
+			background-repeat: no-repeat;
+			animation: loadingLogoBack 5s linear infinite;
+			background-size: 7rem;
+			background-position: center;
+		}
+
+	}
+}

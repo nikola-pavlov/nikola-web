@@ -3,7 +3,7 @@
 	position: relative;
 
 	&:not(:last-child) {
-		margin-bottom: var(--grid-gutter-vertical-m);
+		// margin-bottom: var(--grid-gutter-vertical-m);
 	}
 
 	@include clearfix;

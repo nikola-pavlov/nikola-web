@@ -3,7 +3,7 @@
 	// border-top: 1px solid #ccc;
 
 	&__item-content {
-		border-right: 1px solid #ccc;
+		border-right: 1px solid #eee;
 	}
 
 	&__item-lists {
@@ -28,14 +28,14 @@
 	}
 
 	&__bottom {
-		border-top: 1px solid #ccc;
+		border-top: 1px solid #eee;
 		font-size: 1.4rem;
 		color: var(--color-grey-main);
 
 		&__content {
 			position: relative;
 			width: 100%;
-			padding: 2.5rem 0;
+			padding: 2rem 0;
 			@include clearfix;
 		}
 
@@ -85,6 +85,76 @@
 		&__copyright {
 			position: relative;
 			@include center-verticaly;
+		}
+	}
+
+	&__social-media {
+		position: relative;
+		font-size: 1.4rem;
+		margin-top: 3rem;
+		&__container {
+			position: relative;
+			// background-color: red;
+			padding: 2rem 0;
+			@include clearfix;
+		}
+
+		&__items {
+			position: relative;
+			// background-color: yellow;
+			width: 33.33%;
+			float: left;
+			opacity: .7;
+			transition: opacity .2s ease-out;
+
+			&:not(:last-child) {
+				border-right: 1px solid var(--color-grey-main);
+;
+			}
+
+			&:hover {
+				opacity: 1;
+			}
+
+			&--item {
+				position: relative;
+				@include clearfix;
+				height: 4rem;
+
+				&__icon {
+					position: relative;
+					width: 4rem;
+					height: 4rem;
+					background-repeat: no-repeat !important;
+					background-size: 2.5rem !important;
+					background-position: center !important;
+					float: left;
+					margin-right: 2px;
+
+					&--facebook {
+						background: url(../../images/facebook-logo.svg);
+					}
+
+					&--instagram {
+						background: url(../../images/instagram-logo.svg);
+					}
+
+					&--linkedin {
+						background: url(../../images/linkedin-logo.svg);
+					}
+				}
+
+				&__text {
+					position: relative;
+					width: 100%;
+					height: 2rem;
+					@include center-verticaly;
+					// & a {
+					// 	color: var(--color-black);
+					// 	text-decoration: none;
+					// }
+				}
+			}
 		}
 	}
 }

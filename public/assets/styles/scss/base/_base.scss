@@ -32,3 +32,13 @@ body {
 	box-sizing: border-box;
 	background: var(--color-whitish);
 }
+
+a:link, a:visited {
+	text-decoration: none;
+	color: var(--color-grey-main);
+	transition: color .2s ease-out;
+}
+
+a:hover, a:active {
+		color: var(--color-two);
+}
