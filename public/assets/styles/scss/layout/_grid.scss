@@ -13,6 +13,14 @@
 		// background: red;
 		&:not(:last-child) {
 			margin-right: var(--grid-gutter-horizontal-l);
+
+			@include respond(Large) {
+				margin-right: var(--grid-gutter-horizontal-l);
+			}
+
+			@include respond(Medium) {
+				margin-right: var(--grid-gutter-horizontal-m);
+			}
 		}
 	}
 
@@ -26,72 +34,99 @@
 		width: calc((100% - var(--grid-gutter-horizontal-l)) / 2);
 	}
 
+
+
+
+
+
 	.col-1-of-3 {
 		width: calc((100% - 2 * var(--grid-gutter-horizontal-l)) / 3);
 
-		@include respond(Small) {
+		@include respond(Large) {
+			width: calc((100% - 2 * var(--grid-gutter-horizontal-l)) / 3);
+		}
+
+		@include respond(Medium) {
+			width: calc((100% - 2 * var(--grid-gutter-horizontal-m)) / 3);
+		}
+
+		@include respond(Medium) {
 			width: 100%
 		}
 	}
+
+
+
+
+
+
 
 	.col-2-of-3 {
 		width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal-l)) / 3) + var(--grid-gutter-horizontal-l);
 
-			@include respond(Small) {
-			width: 100%
+			@include respond(Large) {
+				width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal-l)) / 3) + var(--grid-gutter-horizontal-l);
+			}
+
+			@include respond(Medium) {
+				width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal-m)) / 3) + var(--grid-gutter-horizontal-m);
+			}
+
+			@include respond(Medium) {
+				width: 100%
+			}
 		}
-	}
 
-	.col-1-of-4 {
-		width: calc((100% - 3 * var(--grid-gutter-horizontal-l)) / 4);
-	}
+		.col-1-of-4 {
+			width: calc((100% - 3 * var(--grid-gutter-horizontal-l)) / 4);
+		}
 
-	.col-2-of-4 {
-		width: calc(2 * (100% - 3 * var(--grid-gutter-horizontal-l)) / 4 + var(--grid-gutter-horizontal-l));
-	}
+		.col-2-of-4 {
+			width: calc(2 * (100% - 3 * var(--grid-gutter-horizontal-l)) / 4 + var(--grid-gutter-horizontal-l));
+		}
 
-	.col-3-of-4 {
-		width: calc(3 * (100% - 3 * var(--grid-gutter-horizontal-l)) / 4 + 2 * var(--grid-gutter-horizontal-l));
-	}
+		.col-3-of-4 {
+			width: calc(3 * (100% - 3 * var(--grid-gutter-horizontal-l)) / 4 + 2 * var(--grid-gutter-horizontal-l));
+		}
 
-	.col-1-of-5 {
-		width: calc((100% - 4 * var(--grid-gutter-horizontal-l)) / 5);
-	}
+		.col-1-of-5 {
+			width: calc((100% - 4 * var(--grid-gutter-horizontal-l)) / 5);
+		}
 
-	.col-2-of-5 {
-		width: calc(2 * (100% - 4 * var(--grid-gutter-horizontal-l)) / 5 + var(--grid-gutter-horizontal-l));
-	}
+		.col-2-of-5 {
+			width: calc(2 * (100% - 4 * var(--grid-gutter-horizontal-l)) / 5 + var(--grid-gutter-horizontal-l));
+		}
 
-	.col-3-of-5 {
-		width: calc(3 * (100% - 4 * var(--grid-gutter-horizontal-l)) / 5 + 2 * var(--grid-gutter-horizontal-l));
-	}
+		.col-3-of-5 {
+			width: calc(3 * (100% - 4 * var(--grid-gutter-horizontal-l)) / 5 + 2 * var(--grid-gutter-horizontal-l));
+		}
 
-	.col-4-of-5 {
-		width: calc(4 * (100% - 4 * var(--grid-gutter-horizontal-l)) / 5 + 3 * var(--grid-gutter-horizontal-l)); 
-	}
+		.col-4-of-5 {
+			width: calc(4 * (100% - 4 * var(--grid-gutter-horizontal-l)) / 5 + 3 * var(--grid-gutter-horizontal-l)); 
+		}
 
-	.col-1-of-6 {
-		width: calc((100% - 5 * var(--grid-gutter-horizontal-l)) / 6);
-	}
+		.col-1-of-6 {
+			width: calc((100% - 5 * var(--grid-gutter-horizontal-l)) / 6);
+		}
 
-	.col-2-of-6 {
-		width: calc(2 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + var(--grid-gutter-horizontal-l));
-	}
+		.col-2-of-6 {
+			width: calc(2 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + var(--grid-gutter-horizontal-l));
+		}
 
-	.col-3-of-6 {
-		width: calc(3 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + 2 * var(--grid-gutter-horizontal-l));
-	}
+		.col-3-of-6 {
+			width: calc(3 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + 2 * var(--grid-gutter-horizontal-l));
+		}
 
-	.col-4-of-6 {
-		width: calc(4 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + 3 * var(--grid-gutter-horizontal-l));
-	}
+		.col-4-of-6 {
+			width: calc(4 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + 3 * var(--grid-gutter-horizontal-l));
+		}
 
-	.col-5-of-6 {
-		width: calc(5 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + 4 * var(--grid-gutter-horizontal-l));
-	}
+		.col-5-of-6 {
+			width: calc(5 * (100% - 5 * var(--grid-gutter-horizontal-l)) / 6 + 4 * var(--grid-gutter-horizontal-l));
+		}
 
-	.col-1-of-12 {
-		width: calc((100% - 11 * var(--grid-gutter-horizontal-xs)) / 12);
-	}
+		.col-1-of-12 {
+			width: calc((100% - 11 * var(--grid-gutter-horizontal-xs)) / 12);
+		}
 
-}
+	}

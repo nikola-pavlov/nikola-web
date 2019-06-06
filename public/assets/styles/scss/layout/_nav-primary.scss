@@ -1,5 +1,8 @@
 .nav-primary {
 
+	position: relative;
+	@include center-verticaly;
+
 	@include respond(Medium) {
 		padding-top: 2rem;
 	}
@@ -41,7 +44,6 @@
 		font-size: 1.6rem;
 		font-weight: 400;
 		display: block;
-		padding: .6rem 0 0 0;
 		text-transform: uppercase;
 
 		@include respond(Medium) {

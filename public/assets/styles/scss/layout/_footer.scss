@@ -1,30 +1,54 @@
 .site-footer {
-	// height: 100rem;
-	// border-top: 1px solid #ccc;
 
 	&__item-content {
 		border-right: 1px solid #eee;
-	}
+		@include clearfix;
 
-	&__item-lists {
-		width: 100%;
-	}
-
-	&__item-row {
-		width: 100%;
-		height: 2.6rem;
-		color: var(--color-grey-main);
-		font-size: 1.4rem;
-
-		&--heading {
-			color: var(--color-grey);
-			height: 5rem;
-			font-size: 2rem;
+		@include respond(Large) {
+			border: none;
 		}
 	}
 
 	&__item {
 		width: 25%;
+		// background: red;
+		float: left;
+
+		@include respond(Large) {
+			
+		}
+
+		@include respond(Medium) {
+		}
+
+		@include respond(Small) {
+			width: 50%;
+			padding-bottom: 5rem;
+			text-align: center;
+		}
+
+		@include respond(Tiny) {
+			width: 50%;
+		}
+
+		&__title {
+			color: var(--color-grey);
+			height: 5rem;
+			font-size: 2rem;
+		}
+
+		&__list {
+			color: var(--color-grey-main);
+			font-size: 1.4rem;
+
+			ul {
+				list-style: none;
+			}
+
+			ul li:not(:last-child) {
+				padding-bottom: 1rem;
+			}
+		}
 	}
 
 	&__bottom {
@@ -37,6 +61,13 @@
 			width: 100%;
 			padding: 2rem 0;
 			@include clearfix;
+
+			&--left {
+				@include respond(Large) {
+					width: 100%;
+					height: 4rem;
+				}			
+			}
 		}
 
 		&__logo {
@@ -55,6 +86,10 @@
 				display: inline-block;
 				@include center-verticaly;
 			}
+
+			@include respond(Large) {
+				display: none;			
+			}		
 		}
 
 		&__items {
@@ -62,6 +97,12 @@
 			display: inline-block;
 			height: 4rem;
 			float: left;
+
+			@include respond(Large) {
+				float: none;
+				text-align: center;
+				display: block;		
+			}
 
 			& ul {
 				@include center-verticaly;
@@ -80,81 +121,118 @@
 			display: block;
 			position: relative;
 			float: right;
-		}
 
-		&__copyright {
-			position: relative;
-			@include center-verticaly;
-		}
-	}
-
-	&__social-media {
-		position: relative;
-		font-size: 1.4rem;
-		margin-top: 3rem;
-		&__container {
-			position: relative;
-			// background-color: red;
-			padding: 2rem 0;
-			@include clearfix;
-		}
-
-		&__items {
-			position: relative;
-			// background-color: yellow;
-			width: 33.33%;
-			float: left;
-			opacity: .7;
-			transition: opacity .2s ease-out;
-
-			&:not(:last-child) {
-				border-right: 1px solid var(--color-grey-main);
-;
+			@include respond(Large) {
+				width: 100%;
+				text-align: center;			}
 			}
 
-			&:hover {
-				opacity: 1;
-			}
-
-			&--item {
+			&__copyright {
 				position: relative;
+				@include center-verticaly;
+			}
+		}
+
+		&__social-media {
+			position: relative;
+			font-size: 1.4rem;
+			margin-top: 3rem;
+
+			@include respond(Medium) {
+				background-color: var(--color-grey-light);
+			}
+
+			&__container {
+				position: relative;
+				// background-color: red;
+				padding: 2rem 0;
 				@include clearfix;
-				height: 4rem;
+			}
 
-				&__icon {
-					position: relative;
-					width: 4rem;
-					height: 4rem;
-					background-repeat: no-repeat !important;
-					background-size: 2.5rem !important;
-					background-position: center !important;
-					float: left;
-					margin-right: 2px;
+			&__items {
+				position: relative;
+				// background-color: yellow;
+				width: 33.33%;
+				float: left;
+				opacity: .7;
+				transition: opacity .2s ease-out;
 
-					&--facebook {
-						background: url(../../images/facebook-logo.svg);
-					}
-
-					&--instagram {
-						background: url(../../images/instagram-logo.svg);
-					}
-
-					&--linkedin {
-						background: url(../../images/linkedin-logo.svg);
-					}
+				&:not(:last-child) {
+					border-right: 1px solid var(--color-grey-main);
+					;
 				}
 
-				&__text {
+				&:hover {
+					opacity: 1;
+				}
+
+				&--item {
 					position: relative;
-					width: 100%;
-					height: 2rem;
-					@include center-verticaly;
-					// & a {
-					// 	color: var(--color-black);
-					// 	text-decoration: none;
-					// }
+					@include clearfix;
+					height: 4rem;
+
+					@include respond(XLarge) {
+
+					}
+
+					&__icon {
+						position: relative;
+						width: 4rem;
+						height: 4rem;
+						background-repeat: no-repeat !important;
+						background-size: 2.5rem !important;
+						background-position: center !important;
+						float: left;
+						margin-right: 2px;
+
+						@include respond(XLarge) {
+							float: none;
+							@include center-horizontaly;
+						}
+
+						@include respond(Small) {
+							float:left;
+							left: 25%;
+						}
+
+						@include respond(Tiny) {
+							float: none;
+							@include center-horizontaly;
+						}
+
+						&--facebook {
+							background: url(../../images/facebook-logo.svg);
+						}
+
+						&--instagram {
+							background: url(../../images/instagram-logo.svg);
+						}
+
+						&--linkedin {
+							background: url(../../images/linkedin-logo.svg);
+						}
+					}
+
+					&__text {
+						position: relative;
+						width: 100%;
+						height: 2rem;
+						@include center-verticaly;
+
+						@include respond(XLarge) {
+							display: none;
+						}
+
+						@include respond(Small) {
+							display: block;
+							text-align: center;
+						}
+
+						@include respond(Tiny) {
+							display: none;
+						}
+					}
 				}
 			}
 		}
 	}
-}

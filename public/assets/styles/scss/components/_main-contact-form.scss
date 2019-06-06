@@ -1,0 +1,97 @@
+.main-contact-form {
+	background: var(--color-whitish);
+	width: 30vw;
+	height: 60rem;
+	border-radius: 1rem;
+	overflow: hidden;
+
+	&__image {
+		position: relative;
+		background: #eee;
+		width: 100%;
+		height: 20rem;
+		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, .3)), url(../../images/contact.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		&__text-container {
+			position: relative;
+			@include center-content;
+			color: var(--color-whitish);
+			padding: 0 4rem;
+			text-align: center;
+		}
+
+		&__title {
+			font-size: 2rem;
+			font-weight: 700;
+		}
+
+		&__description {
+			font-size: 1.6rem;
+			font-weight: 100;
+		}
+	}
+
+	&__container {
+		padding: 4rem;
+	}
+
+	&__form {
+
+		&__group {
+			margin-bottom: 2rem;
+			width: 50%;
+			float: left;
+
+			&:not(:last-child) {
+				padding-right: 2rem;
+			}
+		}
+
+		&__input {
+			font-family: inherit;
+			font-size: 1.5rem;
+			color: var(--color-grey);
+			padding: 1.5rem 2rem;
+			border-radius: 5px;
+			background-color: rgba(var(--color-whitish), .5);
+			border: 1px solid #eee;
+			border-bottom: 3px solid transparent;
+			width: 100%;
+			display: block;
+			box-shadow: inset 0 0 8px var(--color-grey-light);
+
+			&::placeholder {
+				color: var(--color-grey-main);
+			}
+		}
+
+		&__input:focus {
+			outline: none;
+			box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+			border-bottom: 3px solid #3aafa9;
+			box-shadow: inset 0 0 8px var(--color-grey-light);
+
+			&:invalid {
+				border-bottom: 3px solid red;
+			}
+		}
+
+		&__label {
+			font-size: 1.2rem;
+			font-weight: 700;
+			margin-left: 2rem;
+			margin-top: .7rem;
+			display: block;
+			transition: all .3s ease-out;
+		}
+
+		&__input:placeholder-shown + &__label {
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-4rem);
+		}
+	}
+}

@@ -15,7 +15,7 @@
 		position: relative;
 		top: 6rem;
 
-		@include respond(Small) {
+		@include respond(Medium) {
 			top: 0;
 		}
 
@@ -42,7 +42,7 @@
 		&__image {
 			position: relative;
 
-			@include respond(Small) {
+			@include respond(Medium) {
 				// height: 30rem;
 				overflow: hidden;
 			}
@@ -57,7 +57,7 @@
 				@include respond(Medium) {
 				}
 
-				@include respond(Small) {
+				@include respond(Medium) {
 					width: 50%;
 				}
 			}
@@ -90,7 +90,7 @@
 	}
 
 	&__item-container {
-		@include respond(Small) {
+		@include respond(Medium) {
 			padding-top: 4rem;
 		}
 	}
@@ -99,14 +99,14 @@
 		padding-bottom: 3.5rem;
 		@include clearfix;
 
-		@include respond(Small) {
+		@include respond(Medium) {
 				margin-top: .5rem;
 		}
 
 		&__title {
 			font-size: 3rem;
 			padding-bottom: 1.5rem;
-			@include respond(Small) {
+			@include respond(Medium) {
 				text-align: center;
 			}
 		}
@@ -120,7 +120,7 @@
 			width: 25%;
 			margin-left: 1.5rem;
 
-			@include respond(Small) {
+			@include respond(Medium) {
 				float: none;
 				width: 100%;
 				margin: 0;
@@ -130,7 +130,7 @@
 			& img {
 				width: 100%;
 				border-radius: 50rem;
-				@include respond(Small) {
+				@include respond(Medium) {
 					border-radius: 0;
 				}
 			}

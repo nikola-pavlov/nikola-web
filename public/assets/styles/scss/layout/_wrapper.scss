@@ -2,6 +2,7 @@
 	max-width: var(--grid-width);
 	margin-left: auto;
 	margin-right: auto;
+	position: relative;
 
 	@include respond(XLarge) {
 	padding-left: 2rem;

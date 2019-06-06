@@ -3,6 +3,9 @@
 	position: relative;
 	perspective: 28rem;
 
+	@include respond(Medium) {
+			display: none;	}
+
 	&__container {
 		position: relative;
 		width: 10rem;
@@ -15,7 +18,7 @@
 
 		position: absolute;
 		top: calc(50% - 3.5rem);
-		left: calc(50% - 7rem);
+		left: calc(50% - 5rem);
 		backface-visibility: hidden;
 		height: 10rem;
 		width: 10rem;

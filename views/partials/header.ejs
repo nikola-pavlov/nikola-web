@@ -9,42 +9,99 @@
 <body>
 
 	<header class="header-main">
-		<div class="row wrapper">
-			<div class="header-main__logo">
-				<figure>
-					<img src="/assets/images/logo1.svg" alt="logo"> 
-					<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
-				</figure>
-			</div>
-
-			<div class="header-main__menu-icon">
-				<div class="header-main__menu-icon__middle"></div>
-			</div>
-
-			<div class="header-main__menu-content">
-				<div class="header-main__btn-container">
-					<a href="#" class="btn btn--small">Hello World</a>
-				</div>
-				<nav class="nav-primary nav-primary--float-right">
-					<ul>
-						<li><a href="#section1">Lorem ipsum</a></li>
-						<li><a href="#section2">dolor sit</a></li>
-						<li><a href="#section3">nam laborum</a></li>
-						<li><a href="#section4">excepturi modi</a></li>
+		
+		<nav class="nav-top">
+			<div class="row wrapper">
+				<ul>
+					<li>Login</li>
+					<li class="nav-top__item__language">
+						<span class="nav-top__item__language__icon"></span> Language
+						<div class="nav-sub">
+							<div class="nav-sub__item">
+								<div class="nav-sub__item__container">
+									<div class="nav-sub__item__icon nav-sub__item__icon--eng"></div>
+									<div class="nav-sub__item__lang">English</div> 
+								</div>
+							</div>
+							<div class="nav-sub__item">
+								<div class="nav-sub__item__container">
+									<div class="nav-sub__item__icon nav-sub__item__icon--mkd"></div>
+									<div class="nav-sub__item__lang">Macedonian</div> 
+								</div>
+							</div>
+							<div class="nav-sub__item">
+								<div class="nav-sub__item__container">
+									<div class="nav-sub__item__icon nav-sub__item__icon--alb"></div>
+									<div class="nav-sub__item__lang">Albania<n/div> 
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>Dark Mode</li>
 					</ul>
-				</nav>
-			</div>
-		</div>
-	</header>
+				</div>
+			</nav>
 
-	<div class="contact">
-		<input id="contact-toggle" type="checkbox" class="contact__checkbox">
-		<label for="contact-toggle" class="contact__button contact__button--front"></label>
-		<label for="contact-toggle" class="contact__button contact__button--back"></label>
-		<div class="contact__background">test</div>
-		<div class="contact__content">
-			<div class="contact__content__container">
-				CONTAINER
+			<div class="row wrapper">
+
+				<div class="header-main__logo">
+					<figure>
+						<img src="/assets/images/logo1.svg" alt="logo"> 
+						<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
+					</figure>
+				</div>
+
+				<div class="header-main__menu-icon">
+					<div class="header-main__menu-icon__middle"></div>
+				</div>
+
+				<div class="header-main__menu-content">
+					<div class="header-main__btn-container">
+						<a href="#" class="btn btn--small">Hello World</a>
+					</div>
+
+
+					<nav class="nav-primary nav-primary--float-right">
+						<ul>
+							<li><a href="#section1">Lorem ipsum</a></li>
+							<li><a href="#section2">dolor sit</a></li>
+							<li><a href="#section3">nam laborum</a></li>
+							<li><a href="#section4">excepturi modi</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<div class="contact">
+			<input id="contact-toggle" type="checkbox" class="contact__checkbox">
+			<label for="contact-toggle" class="contact__button contact__button--front"></label>
+			<label for="contact-toggle" class="contact__button contact__button--back"></label>
+			<div class="contact__background">test</div>
+			<div class="contact__content">
+				<div class="contact__content__container">
+					<div class="main-contact-form">
+						<div class="main-contact-form__image">
+							<div class="main-contact-form__image__text-container">
+								<h3 class="main-contact-form__image__title u-margin-bottom-tiny">Contact Me</h3>
+								<p class="main-contact-form__image__description">Feel free to drop me a line below!</p>
+							</div>
+						</div>
+						<div class="main-contact-form__container">
+							<form action="#" class="main-contact-form__form">
+								<div class="main-contact-form__form__group">
+									<input type="text" class="main-contact-form__form__input" placeholder="Your Name" id="contact-name" required>
+									<label for="contact-name" class="main-contact-form__form__label">Your Name</label>
+								</div>
+
+								<div class="main-contact-form__form__group">
+									<input type="email" class="main-contact-form__form__input" placeholder="Your Email" id="contact-email" required>
+									<label for="contact-email" class="main-contact-form__form__label">Your Email</label>
+								</div>
+							</form>
+							CONTAINER test
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>

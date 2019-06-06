@@ -3,33 +3,24 @@
 	font-weight: 600;
 	cursor: pointer; 
 	position: relative;
-	
-	// &:hover:after {
-		// 	position: absolute;
-		// 	content: "test";
-		// 	width: 15rem;
-		// 	height: 3rem;
-		// 	background: red;
-		// }
 
-		&:after {
-			position: relative;
-			display: inline-block;
-			width: .6rem;
-			height: 1rem;
-			top: -1rem;
-			right: 0;
-			font-size: 1.4rem;
-			content: "?";
-		}
+	&:after {
+		position: relative;
+		display: inline-block;
+		width: .6rem;
+		height: 1rem;
+		top: -1rem;
+		right: 0;
+		font-size: 1.4rem;
+		content: "?";
 	}
 
-	.infobox__text {
+	&__text {
 		display: none;
 	}
 
-	.infobox:hover > .infobox__text,
-	.infobox:active > .infobox__text {
+	&:hover > &__text,
+	&:active > &__text {
 		display: block !important;
 		position: absolute;
 		top: -100%;
@@ -51,7 +42,7 @@
 
 		@include respond(Large) {
 			position: fixed;
-			top: 50%;
+			top: 25%;
 			left:50%;
 			transform: translateX(-50%);
 			max-width: 70vw;
@@ -59,8 +50,8 @@
 		}
 	}
 
-	.infobox:hover > .infobox__text:after,
-	.infobox:active > .infobox__text:after {
+	&:hover > &__text:after,
+	&:active > &__text:after {
 		content: "?";
 		text-align: center;
 		font-size: 3rem;
@@ -83,9 +74,9 @@
 		}
 	}
 
-	.infobox:hover > .infobox__text:before,
-	.infobox:active > .infobox__text:before
-	{
+	&:hover > &__text:before,
+	&:active > &__text:before {
+		content: "";
 		position: absolute;
 		top: 2rem;
 		left: -2.5rem;
@@ -94,9 +85,10 @@
 		height: 2.5rem;
 		z-index: 4;
 		clip-path: polygon(100% 0, 35% 50%, 100% 100%);
-
+		
 		@include respond(Large) {
 			display: none;
 		}
 	}
+}
 

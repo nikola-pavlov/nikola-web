@@ -2,7 +2,6 @@
 	position: fixed;
 	z-index: 100;
 	width: 100%;
-	padding: 1.6rem 0; 
 	background-color: rgba(58, 175, 169, .3);
 	transition: background-color .3s ease-out;
 
@@ -23,7 +22,9 @@
 	}
 
 	&__btn-container {
+		position: relative;
 		float: right;
+		@include center-verticaly;
 
 		@include respond(Medium) {
 			float: none;
@@ -32,7 +33,6 @@
 
 	&__logo {
 		position: absolute;
-		top: -1.6rem;
 		background-color: var(--color-one);
 		padding: 1.5rem 2.5rem;
 		border-radius: 0 0 1rem 1rem;
@@ -40,7 +40,7 @@
 		transition: all .3s ease-out;
 
 		.header-main--opacity & {
-			transform: scale(.67);
+			transform: scale(.66);
 			transform-origin: 0 0;
 			border-radius: 0;
 		}
@@ -153,6 +153,8 @@
 
 
 	&__menu-content {
+
+		height: 6rem;
 	
 		@include respond(Medium) {
 			opacity: 0;
@@ -161,6 +163,7 @@
 			text-align: center;
 			transition: all .3s ease-out;
 			transform: scale(.5) translateY(5rem);
+			height: auto;
 
 			&--is-visible {
 				opacity: 1;

@@ -3,8 +3,8 @@
 	border-bottom: 1px solid #ccc;
 
 	@include respond(XLarge) {
-	padding-left: 0;
-	padding-right: 0;
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	&--logo-designer {
@@ -30,8 +30,18 @@
 
 	&--footer {
 		position: relative;
-		border-top: 1px solid #eee;
-		border-bottom: 0;
 		padding: 2rem 0 0 0;
+
+		@include respond(Small) {
+			padding: 4rem 0 0 0;
+		}
+
+		@include respond(XSmall) {
+			padding: 6rem 0 0 0;
+		}
+	}
+
+	&--skills {
+		height: 80rem;
 	}
 }
