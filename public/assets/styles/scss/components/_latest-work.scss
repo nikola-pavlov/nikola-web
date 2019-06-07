@@ -1,0 +1,84 @@
+.latest-work {
+	&__showcase {
+		list-style: none;
+		width: 100%;
+		@include clearfix;
+
+		li {
+			display: block;
+			float: left;
+			width: 25%;
+			padding: 1rem 0 1rem 1rem;
+
+			&:not(:last-child) {
+				padding: 1rem;
+			}
+
+			&:first-child {
+				padding: 1rem 1rem 1rem 0;
+			}
+		}
+	}
+
+	&__figure {
+		overflow: hidden;
+		position: relative;
+		border-radius: 3rem;
+		border: 1px solid #ccc;
+
+		&:after {
+			content:"";
+			position: absolute;
+			background-color: var(--color-black);
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			opacity: .3;
+			transition: all .3s ease-out;
+		}
+
+		&:hover:after {
+			opacity: 0;
+		}
+
+		&:hover img {
+			transform: scale(1.1);
+		}
+
+		&:hover figcaption {
+			height: 0;
+			padding: 0 2.5rem;
+		}
+
+		& img {
+			width: 100%;
+			height: auto;
+			transition: all .3s ease-out;
+			height: 25rem;
+			object-fit: cover;
+		}
+
+		& img:hover {
+			background-color: red;
+			transform: scale(1.1);
+		}
+
+		&__caption {
+			background: var(--color-whitish);
+			font-size: 1.5rem;
+			width: 100%;
+			bottom: -2rem;
+			left: 0;
+			
+			position: absolute;
+			z-index: 10;
+			
+			transition: all .3s ease-out;
+
+			height: 8rem;
+			padding: 2rem 2.5rem;
+			text-align: center;
+		}
+	}
+}
