@@ -43,7 +43,7 @@ a.btn.btn--main {
 
 a.btn.btn--white {
 	background-color: var(--color-whitish);
-	color: var(--color-color-one);
+	color: var(--color-one);
 }
 
 a.btn.btn--small {
@@ -51,6 +51,46 @@ a.btn.btn--small {
 }
 
 a.btn.btn--full-width {
+	width: 100%;
+	text-align: center;
+}
+
+
+button.btn {
+	border: none;
+	border-radius: 1rem;
+	padding: 1.5rem 2rem;
+	text-transform: uppercase;
+	cursor: pointer;
+	outline: none;
+	transition: all .15s ease-out;
+
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
+	}
+
+	&:active {
+		transform: translateY(-1px);
+		box-shadow: 0 .3rem .7rem rgba(0,0,0,.3);
+	}
+}
+
+button.btn.btn--main {
+	background-color: var(--color-one);
+	color: var(--color-whitish);
+}
+
+button.btn.btn--white {
+	background-color: var(--color-whitish);
+	color: var(--color-one);
+}
+
+button.btn.btn--small {
+	padding: .6rem 1rem;
+}
+
+button.btn.btn--full-width {
 	width: 100%;
 	text-align: center;
 }

@@ -334,6 +334,70 @@ body {
   left: 50%;
   transform: translateX(-50%); }
 
+.inbox {
+  width: 100%;
+  position: relative;
+  height: 120rem;
+  background: red;
+  font-size: 1.4rem; }
+  .inbox__container::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .inbox__control-panel {
+    background: yellow;
+    float: left;
+    width: 30%;
+    height: 120rem; }
+  .inbox__message-panel {
+    background: green;
+    width: 70%;
+    float: left;
+    height: 120rem; }
+  .inbox__message {
+    background: pink;
+    position: relative;
+    margin-bottom: 1rem;
+    height: 8rem; }
+    .inbox__message::after {
+      content: "";
+      display: table;
+      clear: both; }
+    .inbox__message__icon {
+      position: relative;
+      background: #ccc;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      float: left;
+      margin: 0 2rem;
+      top: 50%;
+      transform: translateY(-50%); }
+    .inbox__message__name {
+      position: relative;
+      width: 20%;
+      float: left;
+      top: 50%;
+      transform: translateY(-50%); }
+    .inbox__message__email {
+      position: relative;
+      width: 20%;
+      float: left;
+      top: 50%;
+      transform: translateY(-50%); }
+    .inbox__message__recieve-date {
+      position: relative;
+      width: 20%;
+      float: left;
+      top: 50%;
+      transform: translateY(-50%); }
+    .inbox__message__message-preview {
+      position: relative;
+      width: 20%;
+      float: left;
+      top: 50%;
+      transform: translateY(-50%); }
+
 .hero {
   position: relative;
   background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(../../images/hero4.jpg);
@@ -403,12 +467,42 @@ a.btn.btn--main {
 
 a.btn.btn--white {
   background-color: var(--color-whitish);
-  color: var(--color-color-one); }
+  color: var(--color-one); }
 
 a.btn.btn--small {
   padding: .6rem 1rem; }
 
 a.btn.btn--full-width {
+  width: 100%;
+  text-align: center; }
+
+button.btn {
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition: all .15s ease-out; }
+  button.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3); }
+  button.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.3); }
+
+button.btn.btn--main {
+  background-color: var(--color-one);
+  color: var(--color-whitish); }
+
+button.btn.btn--white {
+  background-color: var(--color-whitish);
+  color: var(--color-one); }
+
+button.btn.btn--small {
+  padding: .6rem 1rem; }
+
+button.btn.btn--full-width {
   width: 100%;
   text-align: center; }
 
@@ -1239,20 +1333,65 @@ a.btn.btn--full-width {
     display: table;
     clear: both; }
   .latest-work__showcase li {
+    position: relative;
     display: block;
     float: left;
     width: 25%;
-    padding: 1rem 0 1rem 1rem; }
+    padding: 1rem 0 1rem 1rem;
+    perspective: 40rem; }
     .latest-work__showcase li:not(:last-child) {
       padding: 1rem; }
     .latest-work__showcase li:first-child {
       padding: 1rem 1rem 1rem 0; }
 
+.latest-work__switch-btn {
+  position: absolute;
+  z-index: 15;
+  height: 3.5rem;
+  width: 3.5rem;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--color-whitish);
+  transition: all .3s ease-out;
+  border-radius: 50%; }
+  .latest-work__switch-btn__icon {
+    background: url(../../images/flip-arrows.svg);
+    background-position: center;
+    background-size: 2.5rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-repeat: no-repeat; }
+  .latest-work__switch-btn__icon2 {
+    background: url(../../images/flip-arrows.svg);
+    background-position: center;
+    background-size: 2.5rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-repeat: no-repeat; }
+
+.latest-work__switch-btn2 {
+  position: absolute;
+  z-index: 15;
+  height: 3.5rem;
+  width: 3.5rem;
+  top: 2rem;
+  right: 2rem;
+  border: 1px solid #ccc;
+  background-color: var(--color-whitish);
+  transition: all .3s ease-out;
+  border-radius: 50%; }
+
 .latest-work__figure {
   overflow: hidden;
   position: relative;
   border-radius: 3rem;
-  border: 1px solid #ccc; }
+  border: 1px solid #ccc;
+  transition: all .8s ease-out;
+  backface-visibility: hidden;
+  transform: rotateY(0);
+  cursor: pointer; }
+  .latest-work__figure--is-visible {
+    transform: rotateY(-180deg); }
   .latest-work__figure:after {
     content: "";
     position: absolute;
@@ -1291,6 +1430,70 @@ a.btn.btn--full-width {
     height: 8rem;
     padding: 2rem 2.5rem;
     text-align: center; }
+
+.latest-work__back-side {
+  position: absolute;
+  background-color: var(--color-whitish);
+  top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3rem;
+  left: 0;
+  width: calc(100% - 1rem);
+  height: calc(100% - 2rem);
+  transition: all .8s ease-out;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  cursor: pointer;
+  font-size: 1.2rem; }
+  .latest-work__back-side--is-visible {
+    transform: rotateY(0); }
+  .latest-work__back-side__container {
+    padding: 2rem; }
+  .latest-work__back-side__title {
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 1rem; }
+  .latest-work__back-side__description {
+    color: var(--color-grey);
+    padding-bottom: 1rem; }
+  .latest-work__back-side__technologies {
+    color: red;
+    padding-bottom: 1rem; }
+  .latest-work__back-side__date-created {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem; }
+  .latest-work__back-side__btn {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem; }
+
+.business-card {
+  pointer-events: none;
+  transform: translateZ(0);
+  background: white;
+  border-radius: 2rem;
+  width: 43.75rem;
+  height: 25rem;
+  margin: auto;
+  display: flex;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  position: relative; }
+  .business-card--container {
+    perspective: 100rem;
+    display: flex;
+    height: 40rem; }
+  .business-card:after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+    border-radius: 50%;
+    left: 0;
+    bottom: -50px;
+    box-shadow: 0 30px 20px rgba(0, 0, 0, 0.3); }
+  .business-card--image {
+    width: 100%; }
 
 .header-main {
   position: fixed;
@@ -1778,3 +1981,8 @@ a.btn.btn--full-width {
   .section--latest-work {
     height: 80rem;
     background-color: var(--color-three); }
+  .section--business-card {
+    background: #edf2f4;
+    background-image: radial-gradient(var(--color-whitish), var(--color-grey-light)); }
+  .section--inbox {
+    height: 200rem; }

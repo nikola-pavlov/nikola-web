@@ -1,0 +1,72 @@
+.inbox {
+	width: 100%;
+	position: relative;
+	height: 120rem;
+	background: red;
+	font-size: 1.4rem;
+
+	&__container {
+		@include clearfix;
+	}
+
+	&__control-panel {
+		background: yellow;
+		float: left;
+		width: 30%;
+		height: 120rem;
+	}
+
+	&__message-panel {
+		background: green;
+		width: 70%;
+		float: left;
+		height: 120rem;
+	}
+
+	&__message {
+		background: pink;
+		position: relative;
+		margin-bottom: 1rem;
+		@include clearfix;
+		height: 8rem;
+
+		&__icon {
+			position: relative;
+			background: #ccc;
+			width: 3rem;
+			height: 3rem;
+			border-radius: 50%;
+			float: left;
+			margin: 0 2rem;
+			@include center-verticaly;
+		}
+
+		&__name {
+			position: relative;
+			width: 20%;
+			float: left;
+			@include center-verticaly;
+		}
+
+		&__email {
+			position: relative;
+			width: 20%;
+			float: left;
+			@include center-verticaly;
+		}
+
+		&__recieve-date {
+			position: relative;
+			width: 20%;
+			float: left;
+			@include center-verticaly;
+		}
+
+		&__message-preview {
+			position: relative;
+			width: 20%;
+			float: left;
+			@include center-verticaly;
+		}
+	}
+}

@@ -49,4 +49,13 @@
 		height: 80rem;
 		background-color: var(--color-three);
 	}
+
+	&--business-card {
+		background: #edf2f4;
+		background-image: radial-gradient(var(--color-whitish), var(--color-grey-light));
+	}
+
+	&--inbox {
+		height: 200rem;
+	}
 }

@@ -43,13 +43,14 @@
 			</nav>
 
 			<div class="row wrapper">
-
+				<a href="/">
 				<div class="header-main__logo">
-					<figure>
+					<figure> 
 						<img src="/assets/images/logo1.svg" alt="logo"> 
 						<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
 					</figure>
 				</div>
+				</a>
 
 				<div class="header-main__menu-icon">
 					<div class="header-main__menu-icon__middle"></div>
@@ -88,23 +89,23 @@
 							</div>
 						</div>
 						<div class="main-contact-form__container">
-							<form action="#" class="main-contact-form__form">
+							<form action="/contact" method="POST" class="main-contact-form__form">
 								<div class="main-contact-form__form__group">
-									<input type="text" class="main-contact-form__form__input" placeholder="Your Name" id="contact-name" required>
+									<input type="text" class="main-contact-form__form__input" name="name" placeholder="Your Name" id="contact-name" required>
 									<label for="contact-name" class="main-contact-form__form__label">Your Name</label>
 								</div>
 
 								<div class="main-contact-form__form__group">
-									<input type="email" class="main-contact-form__form__input" placeholder="Your Email" id="contact-email" required>
+									<input type="email" class="main-contact-form__form__input" name="email" placeholder="Your Email" id="contact-email" required>
 									<label for="contact-email" class="main-contact-form__form__label">Your Email</label>
 								</div>
 
 								<div class="main-contact-form__form__group-2">
-									<textarea rows="4" class="main-contact-form__form__textarea" placeholder="Your Message" id="contact-message"required></textarea>
+									<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message"required></textarea>
 									<label for="contact-message" class="main-contact-form__form__label">Your Message</label>
 								</div>
 
-								<a href="#" class="btn btn--main btn--full-width">Send Message</a>
+								<button class="btn btn--main btn--full-width">Send Message</button>
 							</form>
 							
 						</div>

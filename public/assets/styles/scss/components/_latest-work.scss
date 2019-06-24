@@ -4,11 +4,13 @@
 		width: 100%;
 		@include clearfix;
 
-		li {
+		& li {
+			position: relative;
 			display: block;
 			float: left;
 			width: 25%;
 			padding: 1rem 0 1rem 1rem;
+			perspective: 40rem;
 
 			&:not(:last-child) {
 				padding: 1rem;
@@ -20,11 +22,62 @@
 		}
 	}
 
+	&__switch-btn {
+		position: absolute;
+		z-index: 15;
+		height: 3.5rem;
+		width: 3.5rem;
+		top: 2rem;
+		right: 2rem;
+		background-color: var(--color-whitish);
+		transition: all .3s ease-out;
+		border-radius: 50%;
+		
+		&__icon {
+			background: url(../../images/flip-arrows.svg);
+			background-position: center;
+			background-size: 2.5rem;
+			height: 3.5rem;
+			width: 3.5rem;
+			background-repeat: no-repeat;
+		}
+
+		&__icon2 {
+			background: url(../../images/flip-arrows.svg);
+			background-position: center;
+			background-size: 2.5rem;
+			height: 3.5rem;
+			width: 3.5rem;
+			background-repeat: no-repeat;
+		}
+	}
+
+	&__switch-btn2 {
+		position: absolute;
+		z-index: 15;
+		height: 3.5rem;
+		width: 3.5rem;
+		top: 2rem;
+		right: 2rem;
+		border: 1px solid #ccc;
+		background-color: var(--color-whitish);
+		transition: all .3s ease-out;
+		border-radius: 50%;
+	}
+
 	&__figure {
 		overflow: hidden;
 		position: relative;
 		border-radius: 3rem;
 		border: 1px solid #ccc;
+		transition: all .8s ease-out;
+		backface-visibility: hidden;
+		transform: rotateY(0);
+		cursor: pointer;
+
+		&--is-visible {
+			transform: rotateY(-180deg);
+		}
 
 		&:after {
 			content:"";
@@ -79,6 +132,58 @@
 			height: 8rem;
 			padding: 2rem 2.5rem;
 			text-align: center;
+		}
+	}
+
+	&__back-side {
+		position: absolute;
+		background-color: var(--color-whitish);
+		top: 1rem;
+		border: 1px solid #ccc;
+		border-radius: 3rem;
+		left: 0;
+		width: calc(100% - 1rem);
+		height: calc(100% - 2rem);
+		transition: all .8s ease-out;
+		transform: rotateY(180deg);
+		backface-visibility: hidden;
+		cursor: pointer;
+		font-size: 1.2rem;
+
+		&--is-visible {
+			transform: rotateY(0);
+		}
+
+		&__container {
+			padding: 2rem;
+		}
+
+		&__title {
+			font-size: 2rem;
+			text-align: center;
+			padding-bottom: 1rem;
+		}
+
+		&__description {
+			color: var(--color-grey);
+			padding-bottom: 1rem;
+		}
+
+		&__technologies {
+			color: red;
+			padding-bottom: 1rem;
+		}
+
+		&__date-created {
+			position: absolute;
+			bottom: 2rem;
+			left: 2rem;
+		}
+
+		&__btn {
+			position: absolute;
+			bottom: 2rem;
+			right: 2rem;
 		}
 	}
 }
