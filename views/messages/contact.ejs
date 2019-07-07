@@ -1,49 +1,82 @@
  <% include ../partials/header %>
 
-<div id="contact" class="page-section page-section--contact page-section--bigger-t-padding">
-	<div class="wrapper">
-		<h2 class="section-title"><span class="icon icon--write icons--large"></span>Contact me</h2>
-		<p class="section-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-		<div class="row row--gutters">
-			<div class="row__medium-4">
-				<div class="content-box content-box--rounded">
-					<div class="contact">
-						<h1 class="contact__title">Info</h1>
-					<p class="contact__item"><span class="icon icon--contact-icons--envelope icons--medium"></span><a href="#">nikola8989@hotmail.com</a></p>
-					<p class="contact__item"><span class="icon icon--contact-icons--social-buttons-skype icons--medium"></span><a href="#">nikola2189</a></p>
-					<p class="contact__item"><span class="icon icon--contact-icons--smartphone-call icons--medium"></span> +389 70 123456</p>
-					<div class="contact__social-icons">
-						<span class="icon icon--contact-icons--facebook-logo-button icons--small"></span>
-						<span class="icon icon--contact-icons--github-logo icons--small"></span>
-						<span class="icon icon--contact-icons--linkedin-button icons--small"></span>
-					</div>
-					</div>
-				</div>
-			</div>
-			<div class="row__medium-8">
-				<form action="/contact" method="POST">
-				<div class="content-box--contact content-box--rounded">
-					<div class="contact">
-						<h1 class="contact__title">Write me a message</h1>
-					<div class="contact-name">
-						<h2>Your Name</h2>
-						<input type="text" placeholder="John Smith" name="name" id="contact-name">
-					</div>
-					<div class="contact-email">
-						<h2>Your Email</h2>
-						<input type="email" placeholder="yourmail@example.com" name="email" id="contact-email">
-					</div>
-					<div class="contact-message">
-						<h2>Message</h2>
-						<textarea rows="5" placeholder="your message" name="message" id="contact-message"></textarea>
-					</div>
-					<button class="btn--float-right">Send Message</button>
-					</div>
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+ <section class="section section--contact-page">
+ 	<div class="contact-page">
+ 		<div class="contact-page__contact-info">
+ 			<div class="contact-page__contact-info__container">
+ 				<h2 class="headline-4 u-center-horizontaly u-margin-bottom-medium headline--stylish-white">Contact me.</h2>
+ 				<div class="contact-page__contact-info__phone">
+ 					<div class="contact-page__contact-info__phone__icon"></div>
+ 					<div class="contact-page__contact-info__phone__title">Phone Number</div>
+ 					<div class="contact-page__contact-info__phone__info">+389 70 240617</div>
+ 				</div>
+ 				<div class="contact-page__contact-info__email">
+ 					<div class="contact-page__contact-info__email__icon"></div>
+ 					<div class="contact-page__contact-info__email__title">Email Address</div>
+ 					<div class="contact-page__contact-info__email__info">nikola@pavlov.mk</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ 		<div class="contact-page__contact-form">
+ 			<div class="contact-page__contact-form__container">
+ 				<!-- <form action="/contact" method="POST">
+ 					<div class="contact-name">
+ 						<h2>Your Name</h2>
+ 						<input type="text" placeholder="John Smith" name="name" id="contact-name">
+ 					</div>
+ 					<div class="contact-email">
+ 						<h2>Your Email</h2>
+ 						<input type="email" placeholder="yourmail@example.com" name="email" id="contact-email">
+ 					</div>
+ 					<div class="contact-message">
+ 						<h2>Message</h2>
+ 						<textarea rows="5" placeholder="your message" name="message" id="contact-message"></textarea>
+ 					</div>
+ 					<button class="btn--float-right">Send Message</button>
+ 				</form> -->
 
-<% include ../partials/footer %>
+ 				<h2 class="headline-4 u-center-horizontaly u-margin-bottom-medium headline--stylish-1">Send me a message.</h2>
+
+ 				<form action="/contact" method="POST" class="main-contact-form__form">
+ 					<div class="main-contact-form__form__group">
+ 						<input type="text" class="main-contact-form__form__input" name="name" placeholder="Your Name" id="contact-name" required>
+ 						<label for="contact-name" class="main-contact-form__form__label">Your First Name</label>
+ 					</div>
+
+ 					<div class="main-contact-form__form__group">
+ 						<input type="text" class="main-contact-form__form__input" name="lastname" placeholder="Your Last Name" id="contact-last-name" required>
+ 						<label for="contact-last-name" class="main-contact-form__form__label">Your Last Name</label>
+ 					</div>
+
+ 					<div class="main-contact-form__form__group-2">
+ 						<input type="email" class="main-contact-form__form__input" name="email" placeholder="Your Email" id="contact-email" required>
+ 						<label for="contact-email" class="main-contact-form__form__label">Your Email</label>
+ 					</div>
+
+ 					<div class="main-contact-form__form__group-2">
+ 						<input type="text" class="main-contact-form__form__input" name="subject" placeholder="Your Subject" id="contact-subject" required>
+ 						<label for="contact-subject" class="main-contact-form__form__label">Subject</label>
+ 					</div>
+
+ 					<div class="main-contact-form__form__group-2">
+ 						<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message"required></textarea>
+ 						<label for="contact-message" class="main-contact-form__form__label">Your Message</label>
+ 					</div>
+
+
+
+ 					<button class="btn btn--main btn--full-width">Send Message</button>
+ 				</form>
+ 			</div>
+ 		</div>
+ 	</div>
+ </section>
+
+
+
+
+
+
+
+
+ <% include ../partials/footer %>

@@ -1,0 +1,96 @@
+.contact-page {
+	// background: yellow;
+	@include clearfix;
+	height: 80rem;
+
+	&__contact-info {
+		// background: green;
+		position: relative;
+		height: 80rem;
+		width: 50%;
+		float: left;
+		background: url("../../images/contact-page-image.jpg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		// padding: 20rem 25rem;
+		font-size: 1.4rem;
+
+		&__container {
+			position: relative;
+			color: var(--color-whitish);
+			// background: pink;
+			height: 50rem;
+			width: 50%;
+			@include center-content;
+		}
+
+		&__phone {
+			padding-bottom: 5rem;
+			position: relative;
+
+			&__icon {
+				left: -3rem;
+				top: 0;
+				position: absolute;
+				width: 2rem;
+				height: 2rem;
+				background: url("../../images/phone--white.svg");
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+
+			&__title {
+				font-size: 1.6rem;
+				padding-bottom: 2rem;
+			}
+
+			&__info {
+				color: var(--color-one);
+			}
+
+		}
+
+		&__email {
+			padding-bottom: 5rem;
+			position: relative;
+
+			&__icon {
+				left: -3rem;
+				top: 0;
+				position: absolute;
+				width: 2rem;
+				height: 2rem;
+				background: url("../../images/envelope--white.svg");
+				background-size: left;
+				background-repeat: no-repeat;
+			}
+
+			&__title {
+				font-size: 1.6rem;
+				padding-bottom: 2rem;
+			}
+
+			&__info {
+				color: var(--color-one);
+			}
+		}
+	}
+
+	&__contact-form {
+		position: relative;
+		background: var(--color-whitish);
+		width: 50%;
+		float: left;
+		height: 80rem;
+		// padding: 20rem 25rem;
+
+		&__container {
+			position: relative;
+			// background: green;
+			height: 50rem;
+			width: 50%;
+			@include center-content;
+		}
+	}
+}

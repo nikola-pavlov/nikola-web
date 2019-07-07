@@ -6,6 +6,7 @@ import ToggleSwitch from "./modules/ToggleSwitch";
 import SubMenu from "./modules/SubMenu";
 import LatestWork from "./modules/LatestWork";
 import BusinessCard from "./modules/BusinessCard";
+import Inbox from "./modules/Inbox";
 
 var mobileMenu = new MobileMenu();
 var stickyHeader = new StickyHeader();

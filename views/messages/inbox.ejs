@@ -11,21 +11,8 @@
  <p>test</p>
  <p>test</p>
  <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
+
+
  <section class="section section--inbox">
  	<div class="wrapper">
  		<div class="inbox">
@@ -35,30 +22,23 @@
  					Message Panel
  					<% messages.forEach(function(message){ %>
  					<div class="inbox__message">
- 						<div class="inbox__message__icon"></div>
+ 						<div class="inbox__message__icon"> </div>
  						<div class="inbox__message__name">
- 							<p class=""><strong>From:</strong> <%= message.name %></p>
+ 							<p class=""><%= message.name %></p>
  						</div>
- 						<div class="inbox__message__email"><p class=""><strong>Email:</strong> <%= message.email %></p></div>
- 						<div class="inbox__message__recieve-date"><p class=""><strong>Recieve Date</strong> <%= message.sendAt.getDate() + "." +  message.sendAt.getMonth() + "." +message.sendAt.getFullYear() %></p></div>
- 						<div class="inbox__message__message-preview"><p class=""><%= message.message %></p></div>
- 						
- 						
+ 						<div class="inbox__message__email"><p class=""> <a href="mailto:<%= message.email %>"> <%= message.email %> </a> </p></div>
+ 						<div class="inbox__message__recieve-date"><p class=""><%= message.sendAt.getDate() + "." +  message.sendAt.getMonth() + "." +message.sendAt.getFullYear() %></p></div>
+ 						<div class="inbox__message__message-preview"><p class=""><%= message.message.substring(0, 30)+"..." %></p></div>
+ 						<div class="inbox__message__view-more">View</div>
+ 					</div>
+ 					<div class="inbox__open-message">
+ 						<div class="inbox__open-message__container">
+ 							<div class="inbox__open-message__message">
+ 								<%= message.message %>
+ 							</div>	
+ 						</div>
  					</div>
  					<% }); %>
- 					<div class="inbox__message">
- 						Message
- 					</div>
- 					<div class="inbox__message">
- 						Message
- 					</div>
- 					<!-- <div class="inbox__message">
- 						<% messages.forEach(function(message){ %>
- 						<p class=""><strong>From:</strong> <%= message.name %></p>
- 						<p class=""><strong>Email:</strong> <%= message.email %></p>
- 						<p class=""><%= message.message %></p>
- 						<% }); %>
- 					</div> -->
  				</div>
  			</div>
  		</div>

@@ -37,6 +37,7 @@
 		width: 6rem;
 		height: 6rem;
 		opacity: 0;
+		visibility: hidden;
 		border-radius: 50%;
 		top: 10rem;
 		right: 5rem;
@@ -53,6 +54,7 @@
 		right: 0;
 		z-index: 101;
 		opacity: 0;
+		visibility: hidden;
 		transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 		&__container {
@@ -65,10 +67,12 @@
 	&__checkbox:checked ~ &__background {
 		transform: scale(80);
 		opacity: 1;
+		visibility: visible;
 	}
 
 	&__checkbox:checked ~ &__content {
 		opacity: 1;
+		visibility: visible;
 		width: 100%;
 	}
 

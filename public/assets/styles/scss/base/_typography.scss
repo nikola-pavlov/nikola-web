@@ -74,3 +74,13 @@ body {
 	position: relative;
 }
 
+.headline--stylish-white {
+	font-weight: 700;
+	display: inline-block;
+	background-color: var(--color-whitish);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	position: relative;
+}
+

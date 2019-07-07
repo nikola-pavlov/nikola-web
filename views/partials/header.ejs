@@ -13,7 +13,7 @@
 		<nav class="nav-top">
 			<div class="row wrapper">
 				<ul>
-					<li>Login</li>
+					<li>Dark Mode</li>
 					<li class="nav-top__item__language">
 						<span class="nav-top__item__language__icon"></span> Language
 						<div class="nav-sub">
@@ -37,19 +37,28 @@
 								</div>
 							</div>
 						</li>
-						<li>Dark Mode</li>
+						<% if(!currentUser) { %>
+						<li><a href="/login">Login</a></li>
+						<li><a href="/register">Sign Up</a></li>
+						<% } else { %>
+						<li><a>Hello <%= currentUser.username %></a></li>
+						<li><a href="/logout">Logout</a></li>
+						<% } %>
+
+						
+						
 					</ul>
 				</div>
 			</nav>
 
 			<div class="row wrapper">
 				<a href="/">
-				<div class="header-main__logo">
-					<figure> 
-						<img src="/assets/images/logo1.svg" alt="logo"> 
-						<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
-					</figure>
-				</div>
+					<div class="header-main__logo">
+						<figure> 
+							<img src="/assets/images/logo1.svg" alt="logo"> 
+							<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
+						</figure>
+					</div>
 				</a>
 
 				<div class="header-main__menu-icon">

@@ -288,6 +288,15 @@ body {
   color: transparent;
   position: relative; }
 
+.headline--stylish-white {
+  font-weight: 700;
+  display: inline-block;
+  background-color: var(--color-whitish);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative; }
+
 .u-margin-top-tiny {
   margin-top: 1rem !important; }
 
@@ -338,26 +347,24 @@ body {
   width: 100%;
   position: relative;
   height: 120rem;
-  background: red;
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  color: var(--color-grey-main); }
   .inbox__container::after {
     content: "";
     display: table;
     clear: both; }
   .inbox__control-panel {
-    background: yellow;
     float: left;
-    width: 30%;
+    width: 25%;
     height: 120rem; }
   .inbox__message-panel {
-    background: green;
-    width: 70%;
+    width: 75%;
     float: left;
     height: 120rem; }
   .inbox__message {
-    background: pink;
+    background-color: var(--color-whitish);
+    border-bottom: 1px solid #eee;
     position: relative;
-    margin-bottom: 1rem;
     height: 8rem; }
     .inbox__message::after {
       content: "";
@@ -366,11 +373,14 @@ body {
     .inbox__message__icon {
       position: relative;
       background: #ccc;
-      width: 3rem;
+      background: url(../../images/envelope.svg);
+      background-size: 2.5rem;
+      background-repeat: no-repeat;
+      background-position: left;
+      position: relative;
+      width: 10%;
       height: 3rem;
-      border-radius: 50%;
       float: left;
-      margin: 0 2rem;
       top: 50%;
       transform: translateY(-50%); }
     .inbox__message__name {
@@ -379,24 +389,165 @@ body {
       float: left;
       top: 50%;
       transform: translateY(-50%); }
+      .inbox__message__name:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -3rem;
+        background: url(../../images/man-user--color-one.svg);
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+        float: left;
+        margin: 0 1rem; }
     .inbox__message__email {
       position: relative;
-      width: 20%;
+      width: 25%;
       float: left;
       top: 50%;
       transform: translateY(-50%); }
+      .inbox__message__email:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -3rem;
+        background: url(../../images/envelope--color-one.svg);
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+        float: left;
+        margin: 0 1rem; }
     .inbox__message__recieve-date {
       position: relative;
-      width: 20%;
+      width: 15%;
       float: left;
       top: 50%;
       transform: translateY(-50%); }
+      .inbox__message__recieve-date:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -3rem;
+        background: url(../../images/calendar--color-one.svg);
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+        float: left;
+        margin: 0 1rem; }
     .inbox__message__message-preview {
       position: relative;
       width: 20%;
       float: left;
       top: 50%;
       transform: translateY(-50%); }
+      .inbox__message__message-preview:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -3rem;
+        background: url(../../images/eye--color-one.svg);
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+        float: left;
+        margin: 0 1rem; }
+    .inbox__message__view-more {
+      position: relative;
+      width: 5%;
+      float: right;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer; }
+  .inbox__open-message {
+    background: var(--color-grey-light);
+    max-height: 0;
+    transition: max-height .3s ease-out;
+    visibility: hidden;
+    opacity: 0; }
+    .inbox__open-message--is-visible {
+      max-height: 50rem;
+      visibility: visible;
+      opacity: 1; }
+    .inbox__open-message--is-read {
+      background: red; }
+    .inbox__open-message__container {
+      padding: 2rem 4rem; }
+
+.contact-page {
+  height: 80rem; }
+  .contact-page::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .contact-page__contact-info {
+    position: relative;
+    height: 80rem;
+    width: 50%;
+    float: left;
+    background: url("../../images/contact-page-image.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 1.4rem; }
+    .contact-page__contact-info__container {
+      position: relative;
+      color: var(--color-whitish);
+      height: 50rem;
+      width: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%); }
+    .contact-page__contact-info__phone {
+      padding-bottom: 5rem;
+      position: relative; }
+      .contact-page__contact-info__phone__icon {
+        left: -3rem;
+        top: 0;
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        background: url("../../images/phone--white.svg");
+        background-size: cover;
+        background-repeat: no-repeat; }
+      .contact-page__contact-info__phone__title {
+        font-size: 1.6rem;
+        padding-bottom: 2rem; }
+      .contact-page__contact-info__phone__info {
+        color: var(--color-one); }
+    .contact-page__contact-info__email {
+      padding-bottom: 5rem;
+      position: relative; }
+      .contact-page__contact-info__email__icon {
+        left: -3rem;
+        top: 0;
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        background: url("../../images/envelope--white.svg");
+        background-size: left;
+        background-repeat: no-repeat; }
+      .contact-page__contact-info__email__title {
+        font-size: 1.6rem;
+        padding-bottom: 2rem; }
+      .contact-page__contact-info__email__info {
+        color: var(--color-one); }
+  .contact-page__contact-form {
+    position: relative;
+    background: var(--color-whitish);
+    width: 50%;
+    float: left;
+    height: 80rem; }
+    .contact-page__contact-form__container {
+      position: relative;
+      height: 50rem;
+      width: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%); }
 
 .hero {
   position: relative;
@@ -977,6 +1128,7 @@ button.btn.btn--full-width {
   width: 6rem;
   height: 6rem;
   opacity: 0;
+  visibility: hidden;
   border-radius: 50%;
   top: 10rem;
   right: 5rem;
@@ -992,6 +1144,7 @@ button.btn.btn--full-width {
   right: 0;
   z-index: 101;
   opacity: 0;
+  visibility: hidden;
   transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
   .contact__content__container {
     position: absolute;
@@ -1001,10 +1154,12 @@ button.btn.btn--full-width {
 
 .contact__checkbox:checked ~ .contact__background {
   transform: scale(80);
-  opacity: 1; }
+  opacity: 1;
+  visibility: visible; }
 
 .contact__checkbox:checked ~ .contact__content {
   opacity: 1;
+  visibility: visible;
   width: 100%; }
 
 .contact__checkbox:checked ~ .contact__button--front {
@@ -1986,3 +2141,8 @@ button.btn.btn--full-width {
     background-image: radial-gradient(var(--color-whitish), var(--color-grey-light)); }
   .section--inbox {
     height: 200rem; }
+  .section--contact-page {
+    height: 80rem;
+    background: var(--color-whitish);
+    background-size: cover;
+    padding-top: 10rem; }

@@ -58,4 +58,12 @@
 	&--inbox {
 		height: 200rem;
 	}
+
+	&--contact-page {
+		height: 80rem;
+		// background: url("../../images/contact-page-image.jpg");
+		background: var(--color-whitish);
+		background-size: cover;
+		padding-top: 10rem;
+	}
 }
