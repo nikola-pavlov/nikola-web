@@ -1,7 +1,46 @@
-<h2>login</h2>
+ <% include ../partials/header %>
 
-<form action="/login" method="POST">
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
-	<button>Login</button>
-</form>
+ <section class="section section--login-page">
+
+ 	<div class="wrapper">
+
+ 		<div class="login text-generic">
+ 			<div class="login__login-side">
+ 				<div class="login__login-side__container">
+ 					<h2 class="headline-4 u-center-horizontaly u-margin-bottom-small headline--stylish-1">Sign In.</h2>
+ 					<p class="login__login-side__desc u-margin-bottom-xsmall">Sign in for more personalised experience on this page</p>
+
+ 					<form action="/login" method="POST">
+ 						<div class="main-contact-form__form__group--2">
+ 							<input class="main-contact-form__form__input" type="text" name="username" placeholder="Username" required>
+ 							<label for="contact-name" class="main-contact-form__form__label">Your Username</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group--2">
+ 							<input class="main-contact-form__form__input" type="password" name="password" placeholder="Password" required>
+ 							<label for="contact-name" class="main-contact-form__form__label">Your Password</label>
+ 						</div>
+ 						<button class="btn btn--main btn--full-width">Sign In</button>
+ 					</form>
+
+ 					<p class="login__login-side__sign-up u-margin-top-xsmall">Dont have an account? <span class="strong--color-one"><a href="/register">Sign Up Now</a></span></p>
+
+ 				</div>
+ 			</div>
+
+ 			<div class="login__info-side">
+ 				<div class="login__info-side__container">
+ 					<div class="login__info-side__content">
+ 						<div class="login__info-side__logo u-margin-bottom-xsmall"></div>
+ 						<p class="login__info-side__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit fugiat perspiciatis incidunt assumenda veritatis numquam, dolorem hic nostrum sequi reprehenderit, aliquam harum nam soluta velit repudiandae illo totam nihil sed?</p>
+ 					</div>
+ 				</div>
+ 			</div>
+
+ 		</div>
+
+ 	</div>
+
+ </section>
+
+ <% include ../partials/footer %>

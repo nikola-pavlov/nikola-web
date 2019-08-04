@@ -1,9 +1,10 @@
 .main-contact-form {
 	background: var(--color-whitish);
-	width: 40vw;
-	height: 85vh;
+	width: 30vw;
+	min-height: 70vh;
 	border-radius: 1rem;
 	overflow: hidden;
+	@include clearfix;
 
 	@include respond(XLarge) {
 		width: 60vw;
@@ -22,41 +23,9 @@
 		height: 100vh;
 	}
 
-	&__image {
-		position: relative;
-		background: #eee;
-		width: 100%;
-		height: 20rem;
-		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, .3)), url(../../images/contact.jpg);
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-
-		@include respond(Small) {
-			height: 30vh;
-		}
-
-		&__text-container {
-			position: relative;
-			@include center-content;
-			color: var(--color-whitish);
-			padding: 0 4rem;
-			text-align: center;
-		}
-
-		&__title {
-			font-size: 2rem;
-			font-weight: 700;
-		}
-
-		&__description {
-			font-size: 1.6rem;
-			font-weight: 100;
-		}
-	}
-
 	&__container {
 		padding: 4rem;
+		width: 100%;
 	}
 
 	&__form {
@@ -70,7 +39,7 @@
 				width: 100%;
 			}
 
-			&:not(:nth-child(2)) {
+			&:not(:nth-child(even)) {
 				padding-right: 2rem;
 
 				@include respond(Small) {
@@ -79,7 +48,7 @@
 			}
 		}
 
-		&__group2 {
+		&__group--2 {
 			margin-bottom: 1rem;
 			width: 100%;
 		}
@@ -91,7 +60,7 @@
 			color: var(--color-grey);
 			padding: 1.5rem 2rem;
 			border-radius: 5px;
-			background-color: rgba(var(--color-whitish), .5);
+			// background-color: rgba(var(--color-whitish), .5);
 			border: 1px solid #eee;
 			border-bottom: 3px solid transparent;
 			width: 100%;
@@ -118,7 +87,7 @@
 			font-size: 1.2rem;
 			font-weight: 700;
 			margin-left: 2rem;
-			margin-top: .7rem;
+			// margin-top: .7rem;
 			display: block;
 			transition: all .3s ease-out;
 		}
@@ -166,5 +135,10 @@
 				border-bottom: 3px solid red;
 			}
 		}
+	}
+
+	&__desc {
+		text-align: center;
+		color: var(--color-grey);
 	}
 }

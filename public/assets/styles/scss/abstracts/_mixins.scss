@@ -65,6 +65,18 @@
 		};
 	}
 
+	@if $breakpoint == XXLarge {
+		@media (max-width: 90em) {	// 1440px
+			@content
+		};
+	}
+
+	@if $breakpoint == XXXLarge {
+		@media (max-width: 100em) {	// 1600px
+			@content
+		};
+	}
+
 	@if $breakpoint == Huge {
 		@media (min-width: 125em) {	// 2000px
 			@content

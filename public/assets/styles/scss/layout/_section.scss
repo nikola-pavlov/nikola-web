@@ -8,7 +8,7 @@
 	}
 
 	&--logo-designer {
-		height: 50.1rem;
+		height: 50rem;
 		padding: 0;
 
 		@include respond(Small) {
@@ -42,7 +42,7 @@
 	}
 
 	&--skills {
-		height: 80rem;
+		padding-top: 0;
 	}
 
 	&--latest-work {
@@ -65,5 +65,44 @@
 		background: var(--color-whitish);
 		background-size: cover;
 		padding-top: 10rem;
+	}
+
+	&--login-page {
+		height: 100rem;
+		padding-top: 20rem;
+		// background: var(--color-three);
+		background-image: linear-gradient(to right bottom, var(--color-two), var(--color-four));
+
+		@include respond(Medium) {
+			height: 120rem;
+		}
+	}
+
+	&--register-page {
+		height: 100rem;
+		padding-top: 20rem;
+		background-image: linear-gradient(to right bottom, var(--color-two), var(--color-four));
+	}
+
+	&--testimonials {
+		height: 60rem;
+		padding-top: 10rem;
+	}
+
+	&--digital-services {
+		// height: 70rem;
+		padding: 0;
+
+		@include respond(Medium) {
+			height: 80rem;
+		}
+
+		@include respond(Small) {
+			height: 85rem;
+		}
+
+		@include respond(Tiny) {
+			height: 100rem;
+		}
 	}
 }

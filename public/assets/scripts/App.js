@@ -7,6 +7,7 @@ import SubMenu from "./modules/SubMenu";
 import LatestWork from "./modules/LatestWork";
 import BusinessCard from "./modules/BusinessCard";
 import Inbox from "./modules/Inbox";
+import Testimonials from "./modules/Testimonials";
 
 var mobileMenu = new MobileMenu();
 var stickyHeader = new StickyHeader();

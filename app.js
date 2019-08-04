@@ -42,7 +42,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
-	res.locals.currentUser = req.user;
 	next();
 });
 
@@ -69,10 +68,12 @@ app.get("/inbox", isLoggedIn, function(req, res){
 });
 
 app.post("/contact", function(req, res){
-	var name = req.body.name;
+	var firstName = req.body.firstName;
+	var lastName = req.body.lastName;
 	var email = req.body.email;
+	var subject = req.body.subject;
 	var message = req.body.message;
-	var newMessage = {name: name, email: email, message: message};
+	var newMessage = {firstName: firstName, lastName: lastName, email: email, subject: subject, message: message};
 	console.log(newMessage);
 	Message.create(newMessage, function(err, newCreatedMessage){
 		if(err) {
@@ -97,7 +98,7 @@ app.get("/register", function(req, res){
 // handle signup logic
 
 app.post("/register", function(req, res){
-	var newUser = new User({username: req.body.username});
+	var newUser = new User({username: req.body.username, email: req.body.email, firstName: req.body.firstName, lastName: req.body.lastName});
 	User.register(newUser, req.body.password, function(err, user){
 		if(err) {
 			console.log(err);
@@ -105,6 +106,7 @@ app.post("/register", function(req, res){
 		}
 		passport.authenticate("local")(req, res, function(){
 			res.redirect("/");
+			console.log(user);
 		});
 	});
 });
@@ -133,6 +135,13 @@ app.get("/logout", function(req, res) {
 });
 
 function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+}
+
+function checkPassword(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
 	}

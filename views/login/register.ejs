@@ -1,7 +1,69 @@
-<h2>Sign Up!</h2>
+ <% include ../partials/header %>
 
-<form action="/register" method="POST">
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
-	<button>Sign Up</button>
-</form>
+ <section class="section section--register-page">
+
+ 	<div class="wrapper">
+
+ 		<div class="register text-generic">
+ 			<div class="register__register-side">
+ 				<div class="register__register-side__container">
+ 					
+ 					<h2 class="headline-4 u-center-horizontaly u-margin-bottom-small headline--stylish-1">Sign Up!</h2>
+
+ 					<p class="register__register-side__desc u-margin-bottom-xsmall">Please fill out the fields below to sign up!</p>
+
+ 					<form action="/register" method="POST">
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="text" name="username" placeholder="Username" required>
+ 							<label for="register-username" class="main-contact-form__form__label">Your Username</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="email" name="email" placeholder="Email" required>
+ 							<label for="register-email" class="main-contact-form__form__label">Your Email</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="text" name="firstName" placeholder="First Name" required>
+ 							<label for="register-firstName" class="main-contact-form__form__label">Your First Name</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="text" name="lastName" placeholder="Last Name" required>
+ 							<label for="register-lastName" class="main-contact-form__form__label">Your Last Name</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="password" name="password" placeholder="Password" required>
+ 							<label for="register-password" class="main-contact-form__form__label">Your Password</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="password" name="confirmPassword" placeholder="Confirm Password" required>
+ 							<label for="register-confirmPassword" class="main-contact-form__form__label">Confirm your password</label>
+ 						</div>
+
+ 						<button class="btn btn--main btn--full-width">Sign Up</button>
+ 					</form>
+
+ 					<p class="login__login-side__sign-up u-margin-top-xsmall">Already have an account? <span class="strong--color-one"><a href="/login">Log in here</a></span></p>
+
+ 				</div>
+ 			</div>
+
+ 			<div class="register__info-side">
+ 				<div class="register__info-side__container">
+ 					<div class="register__info-side__content">
+ 						<div class="register__info-side__logo u-margin-bottom-xsmall"></div>
+ 						<p class="register__info-side__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit fugiat perspiciatis incidunt assumenda veritatis numquam, dolorem hic nostrum sequi reprehenderit, aliquam harum nam soluta velit repudiandae illo totam nihil sed?</p>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+
+ 	</div>
+
+ </section>
+
+ <% include ../partials/footer %>

@@ -4,6 +4,8 @@
 	<title>Nikola Pavlov Portfolio</title>
 	<meta name="keywords" content="CV, Portfolio, Nikola, Pavlov, Webdesign, Logo, Design, Developer">
 	<meta name="description" content="Portfolio website for Nikola Pavlov">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/styles/css/style.css">
 </head>
 <body>
@@ -67,15 +69,15 @@
 
 				<div class="header-main__menu-content">
 					<div class="header-main__btn-container">
-						<a href="#" class="btn btn--small btn--white">Hello World</a>
+						<a href="/contact" class="btn btn--small btn--white">Contact me</a>
 					</div>
 
 
 					<nav class="nav-primary nav-primary--float-right">
 						<ul>
-							<li><a href="#section1">Lorem ipsum</a></li>
-							<li><a href="#section2">dolor sit</a></li>
-							<li><a href="#section3">nam laborum</a></li>
+							<li><a href="#section1">About me</a></li>
+							<li><a href="#section2">Portfolio</a></li>
+							<li><a href="#section3">Services</a></li>
 							<li><a href="#section4">excepturi modi</a></li>
 						</ul>
 					</nav>
@@ -91,25 +93,34 @@
 			<div class="contact__content">
 				<div class="contact__content__container">
 					<div class="main-contact-form">
-						<div class="main-contact-form__image">
-							<div class="main-contact-form__image__text-container">
-								<h3 class="main-contact-form__image__title u-margin-bottom-tiny">Contact Me</h3>
-								<p class="main-contact-form__image__description">Feel free to drop me a line below!</p>
-							</div>
-						</div>
-						<div class="main-contact-form__container">
+						<div class="main-contact-form__container text-generic">
+							<h2 class="headline-4 u-center-horizontaly u-margin-bottom-small headline--stylish-1">Contact me</h2>
+
+ 					<p class="main-contact-form__desc u-margin-bottom-xsmall">Please feel free to drop me a line.</p>
+
+
 							<form action="/contact" method="POST" class="main-contact-form__form">
 								<div class="main-contact-form__form__group">
-									<input type="text" class="main-contact-form__form__input" name="name" placeholder="Your Name" id="contact-name" required>
-									<label for="contact-name" class="main-contact-form__form__label">Your Name</label>
+									<input type="text" class="main-contact-form__form__input" name="firstName" placeholder="Your First Name" id="contact-name" required>
+									<label for="contact-name" class="main-contact-form__form__label">Your First Name</label>
 								</div>
 
 								<div class="main-contact-form__form__group">
+									<input type="text" class="main-contact-form__form__input" name="lastName" placeholder="Your Last Name" id="contact-email" required>
+									<label for="contact-email" class="main-contact-form__form__label">Your Last Name</label>
+								</div>
+
+								<div class="main-contact-form__form__group--2">
 									<input type="email" class="main-contact-form__form__input" name="email" placeholder="Your Email" id="contact-email" required>
 									<label for="contact-email" class="main-contact-form__form__label">Your Email</label>
 								</div>
 
-								<div class="main-contact-form__form__group-2">
+								<div class="main-contact-form__form__group--2">
+									<input type="text" class="main-contact-form__form__input" name="subject" placeholder="Your Subject" id="contact-subject" required>
+									<label for="contact-subject" class="main-contact-form__form__label">Your Subject</label>
+								</div>
+
+								<div class="main-contact-form__form__group--2">
 									<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message"required></textarea>
 									<label for="contact-message" class="main-contact-form__form__label">Your Message</label>
 								</div>

@@ -2,15 +2,30 @@
 
 	position: relative;
 
+	&__intro {
+		text-align: center;
+		font-size: 1.6rem;
+		margin-bottom: 2rem;
+
+		@include respond(Small) {
+			margin-bottom: 4rem;
+		}
+	}
+
 	&__container {
 		position: relative;
 		top: 5rem;
+
+		@include respond(Small) {
+			top: 0;
+			height: 80rem;
+		}
 	}
 
 	&__designer {
 		transition: all 1s cubic-bezier(0.86, 0, 0.07, 1);
 		transform: scaleX(0);
-		height: 50rem;
+		height: 35rem;
 		transform-origin: 0 0;
 
 		&--selected {
@@ -18,12 +33,217 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 50rem;
+			height: 35rem;
 			// border: 1px solid #ccc;
 			transform: scaleX(1);
+
+			@include respond(Small) {
+				// position: relative;
+			}
 		}
 
 		&__container {
+			@include clearfix;
+			perspective: 100rem;
+		}
+
+		&__info {
+
+			width: 25%;
+			height: 24rem;
+			border-radius: 1rem;
+			float: left;
+
+			@include respond(Large) {
+				display: none;
+			}
+
+			@include respond(Small) {
+				display: block;
+				width: 100%;
+				margin-bottom: 3rem;
+				height: 30rem;
+			}
+
+			&__front {
+				border-radius: 1rem;
+				height: 24rem;
+				transition: all .8s ease-out;
+				backface-visibility: hidden;
+				border-radius: 1rem;
+				overflow: hidden;
+
+				@include respond(Small) {
+					height: 30rem;
+				}
+
+				&__img {
+					background-image: (url("../../images/designer1.jpg"));
+					background-size: cover;
+					height: 100%;
+					width: 100%;
+				}
+			}
+
+			&__back {
+				width: 25%;
+				height: 24rem;
+				background: var(--color-grey-light);
+				border-radius: 1rem;
+				position: absolute;
+				top:0;
+				left:0;
+				padding: 3rem 3rem;
+				transition: all .8s ease-out;
+				transform: rotateY(180deg);
+				backface-visibility: hidden;
+				text-align: center;
+
+				@include respond(Small) {
+					width: 100%;
+					tranform: none;
+				}
+
+				&__title {
+					font-size: 2rem;
+				}
+			}
+		}
+
+		&__info:hover &__info__front {
+			transform: rotateY(-180deg);
+
+			@include respond(Small) {
+				transform: rotateY(0);
+			}
+		}
+
+		&__info:hover &__info__back {
+			transform: rotateY(0);
+
+			@include respond(Small) {
+				transform: rotateY(180deg);
+			}
+		}
+
+		&__categories {
+			@include clearfix;
+			// height: 30rem;
+			width: 75%;
+			float: left;
+
+			@include respond(Large) {
+				width: 100%;
+			}
+
+			&__group {
+				width: 50%;
+				float: left;
+				height: 12rem;
+				padding-left: 3rem;
+
+				@include respond(Small) {
+					margin-bottom: 0;
+				}
+
+
+				&:nth-child(1), &:nth-child(2) {
+					margin-bottom: 2rem;
+
+					@include respond(Small) {
+						margin-bottom: 0;
+					}
+				}
+
+				@include respond(Large) {
+					padding-left: 0;
+				}
+
+				@include respond(Small) {
+					width: 100%;
+					float: none;
+				}
+
+				&:nth-child(even) {
+					@include respond(Large) {
+						padding-left: 4rem;
+					}
+
+					@include respond(Medium) {
+						padding-left: 3rem;
+					}
+
+					@include respond(Small) {
+						padding-left: 0;
+					}
+				}
+			}
+
+			&__icon {
+				height: 10rem;
+				width: 10rem;
+				border: 1px solid var(--color-grey-light);
+				border-radius: 1rem;
+				float: left;
+				position: relative;
+				z-index: 1;
+				background-repeat: no-repeat;
+				background-size: 5rem;
+				background-position: center;
+
+				&__icon {
+					
+					height: 100%;
+					width: 100%;
+					transform: scale(0);
+					opacity: 0;
+					transform-origin: 50% 50%;
+					transition: all .4s cubic-bezier(0.86, 0, 0.07, 1);
+					border-radius: 1rem;
+
+					&__img {
+						position: absolute;
+						left:0;
+						top:0;
+						background-image: (url("../../images/eye--color-one.svg"));
+						background-repeat: no-repeat;
+						background-size: 4rem;
+						background-position: center;
+						width: 100%;
+						height: 100%;
+						transition: all .4s cubic-bezier(0.86, 0, 0.07, 1);
+					}
+				}
+			}
+
+			&__group:hover &__icon__icon {
+				background: var(--color-one);
+				opacity: 1;
+				transform: scale(1);
+			}
+
+			&__group:hover &__icon__icon__img {
+				background-image: (url("../../images/eye--color-whitish.svg"));
+			}
+
+			&__info {
+
+				height: 12rem;
+				position: relative;
+				left: 2rem;
+
+				padding-left: 2rem;
+				padding-right: 2rem;
+				&__title {
+					font-size: 2rem;
+				}
+
+				&__description {
+					font-size: 1.4rem;
+					margin-top: 1rem;
+					color: var(--color-grey-main);
+				}
+			}
 		}
 
 		&__image {
@@ -67,41 +287,253 @@
 		}
 	}
 
+	
+
+
 	&__developer {
 		transition: all 1s cubic-bezier(0.86, 0, 0.07, 1);
 		transform: scaleX(0);
-		height: 50rem;
-		transform-origin: 100% 100%;
+		height: 35rem;
+		transform-origin: 100% 0;
 
 		&--selected {
 			position: absolute;
-			top:0;
+			top: 0;
 			right: 0;
 			width: 100%;
+			height: 35rem;
 			// border: 1px solid #ccc;
-			height: 50rem;
 			transform: scaleX(1);
+
+			@include respond(Small) {
+				// position: relative;
+			}
+		}
+
+		&__container {
+			@include clearfix;
+			perspective: 100rem;
+		}
+
+		&__info {
+
+			width: 25%;
+			height: 24rem;
+			border-radius: 1rem;
+			float: left;
+
+			@include respond(Large) {
+				display: none;
+			}
+
+			@include respond(Small) {
+				display: block;
+				width: 100%;
+				margin-bottom: 3rem;
+				height: 30rem;
+			}
+
+			&__front {
+				border-radius: 1rem;
+				height: 24rem;
+				transition: all .8s ease-out;
+				backface-visibility: hidden;
+				border-radius: 1rem;
+				overflow: hidden;
+
+				@include respond(Small) {
+					height: 30rem;
+				}
+
+				&__img {
+					background-image: (url("../../images/developer1.jpg"));
+					background-size: cover;
+					height: 100%;
+					width: 100%;
+				}
+			}
+
+			&__back {
+				width: 25%;
+				height: 24rem;
+				background: var(--color-grey-light);
+				border-radius: 1rem;
+				position: absolute;
+				top:0;
+				left:0;
+				padding: 3rem 3rem;
+				transition: all .8s ease-out;
+				transform: rotateY(180deg);
+				backface-visibility: hidden;
+				text-align: center;
+
+				@include respond(Small) {
+					width: 100%;
+					tranform: none;
+				}
+
+				&__title {
+					font-size: 2rem;
+				}
+			}
+		}
+
+		&__info:hover &__info__front {
+			transform: rotateY(-180deg);
+
+			@include respond(Small) {
+				transform: rotateY(0);
+			}
+		}
+
+		&__info:hover &__info__back {
+			transform: rotateY(0);
+
+			@include respond(Small) {
+				transform: rotateY(180deg);
+			}
+		}
+
+		&__categories {
+			@include clearfix;
+			// height: 30rem;
+			width: 75%;
+			float: left;
+
+			@include respond(Large) {
+				width: 100%;
+			}
+
+			&__group {
+				width: 50%;
+				float: left;
+				height: 12rem;
+				padding-left: 3rem;
+
+				@include respond(Small) {
+					margin-bottom: 0;
+				}
+
+
+				&:nth-child(1), &:nth-child(2) {
+					margin-bottom: 2rem;
+
+					@include respond(Small) {
+						margin-bottom: 0;
+					}
+				}
+
+				@include respond(Large) {
+					padding-left: 0;
+				}
+
+				@include respond(Small) {
+					width: 100%;
+					float: none;
+				}
+
+				&:nth-child(even) {
+					@include respond(Large) {
+						padding-left: 4rem;
+					}
+
+					@include respond(Medium) {
+						padding-left: 3rem;
+					}
+
+					@include respond(Small) {
+						padding-left: 0;
+					}
+				}
+			}
+
+			&__icon {
+				height: 10rem;
+				width: 10rem;
+				border: 1px solid var(--color-grey-light);
+				border-radius: 1rem;
+				float: left;
+				position: relative;
+				z-index: 1;
+				background-repeat: no-repeat;
+				background-size: 5rem;
+				background-position: center;
+
+				&__icon {
+					
+					height: 100%;
+					width: 100%;
+					transform: scale(0);
+					opacity: 0;
+					transform-origin: 50% 50%;
+					transition: all .4s cubic-bezier(0.86, 0, 0.07, 1);
+					border-radius: 1rem;
+
+					&__img {
+						position: absolute;
+						left:0;
+						top:0;
+						background-image: (url("../../images/eye--color-one.svg"));
+						background-repeat: no-repeat;
+						background-size: 4rem;
+						background-position: center;
+						width: 100%;
+						height: 100%;
+						transition: all .4s cubic-bezier(0.86, 0, 0.07, 1);
+					}
+				}
+			}
+
+			&__group:hover &__icon__icon {
+				background: var(--color-one);
+				opacity: 1;
+				transform: scale(1);
+			}
+
+			&__group:hover &__icon__icon__img {
+				background-image: (url("../../images/eye--color-whitish.svg"));
+			}
+
+			&__info {
+
+				height: 12rem;
+				position: relative;
+				left: 2rem;
+
+				padding-left: 2rem;
+				padding-right: 2rem;
+				&__title {
+					font-size: 2rem;
+				}
+
+				&__description {
+					font-size: 1.4rem;
+					margin-top: 1rem;
+					color: var(--color-grey-main);
+				}
+			}
 		}
 
 		&__image {
 			position: absolute;
-			right: 0;
 			top: 0;
-			background-image: (url("../../images/developer.jpg"));
+			left: 0;
+			// background: #ccc;
+			background-image: (url("../../images/designer.jpg"));
 			background-size: cover;
 			background-repeat: no-repeat;
-			height: 50rem;
 			width: 50%;
+			height: 100%;
 		}
 
 		&__description {
+			font-size: 1.6rem;
 			position: absolute;
-			left: 0;
+			right: 0;
 			top: 0;
 			height: 100%;
 			width: 50%;
 			padding: 4rem;
-			font-size: 1.6rem;
 		}
 
 		&__title {
@@ -110,7 +542,7 @@
 		}
 
 		&__text {
-
+			
 		}
 
 		&__icon {
@@ -119,10 +551,7 @@
 			height: 4rem;
 			width: 4rem;
 			@include center-horizontaly;
-			background-image: url("../../images/developer.svg");
-			background-size: cover;
-			background-repeat: no-repeat;
+			background-image: url("../../images/designer.svg");
 		}
 	}
-	
 }

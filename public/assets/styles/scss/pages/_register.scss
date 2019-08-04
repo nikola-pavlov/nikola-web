@@ -1,0 +1,100 @@
+.register {
+	box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+	height: 65rem;
+	@include clearfix;
+	border-radius: 2rem;
+	background: grey;
+
+	&__register-side {
+		width: 60%;
+		float: left;
+		height: 65rem;
+		background: var(--color-whitish);
+		border-radius: 2rem 0 0 2rem;
+
+		@include respond(Medium) {
+			width: 100%;
+			height: 55rem;
+			float: none;
+			border-radius: 2rem 2rem 0 0;
+		}
+
+		&__container {
+			padding: 7rem;
+			@include respond(Large) {
+				padding: 5rem;
+			}
+		}
+
+		&__desc {
+			text-align: center;
+			color: var(--color-grey);
+		}
+
+		&__sign-up {
+			text-align: center;
+		}
+	}
+
+	&__info-side {
+		position: relative;
+		width: 40%;
+		float: left;
+		background-image: linear-gradient(to right bottom, rgba(58, 175, 169, .8), rgba(58, 175, 169, .5)), url(../../images/register-image.jpg);
+		height: 65rem;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 0 2rem 2rem 0;
+
+		@include respond(Medium) {
+			height: 25rem;
+			width: 100%;
+			float: none;
+			border-radius: 0 0 2rem 2rem;
+		}
+
+		&__container {
+			padding: 7rem;
+			position: relative;
+			height: 60rem;
+
+			@include respond(Medium) {
+				height: 25rem;
+				padding: 5rem;
+			}
+		}
+
+		&__content {
+			position: relative;
+			@include center-content;
+			@include clearfix;
+		}
+
+		&__logo {
+			position: relative;
+			height: 10rem;
+			width: 100%;
+			background: url(../../images/logo1.svg);
+			background-repeat: no-repeat;
+			left:50%;
+			transform: translateX(-16.25%);
+
+			@include respond(Medium) {
+				height: 6rem;
+				left: 0;
+				transform: translateX(0);
+				float: left;
+				width: 20%;
+			}
+		}
+
+		&__desc {
+			color: var(--color-whitish);
+			font-weight: 100;
+			@include respond(Medium) {
+				float: left;
+				width: 80%;
+			}
+		}
+	}
+}

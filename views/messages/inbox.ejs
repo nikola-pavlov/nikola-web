@@ -24,7 +24,7 @@
  					<div class="inbox__message">
  						<div class="inbox__message__icon"> </div>
  						<div class="inbox__message__name">
- 							<p class=""><%= message.name %></p>
+ 							<p class=""><%= message.firstName %>  <%= message.lastName %></p>
  						</div>
  						<div class="inbox__message__email"><p class=""> <a href="mailto:<%= message.email %>"> <%= message.email %> </a> </p></div>
  						<div class="inbox__message__recieve-date"><p class=""><%= message.sendAt.getDate() + "." +  message.sendAt.getMonth() + "." +message.sendAt.getFullYear() %></p></div>
@@ -35,6 +35,9 @@
  						<div class="inbox__open-message__container">
  							<div class="inbox__open-message__message">
  								<%= message.message %>
+ 							</div>	
+ 							<div class="inbox__open-message__message">
+ 								<%= message.preview %>
  							</div>	
  						</div>
  					</div>

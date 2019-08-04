@@ -1,8 +1,10 @@
  var mongoose = require("mongoose");
 
  var messageSchema = new mongoose.Schema({
- 	name: String,
+ 	firstName: String,
+ 	lastName: String,
  	email: String,
+ 	subject: String,
  	message: String,
  	sendAt: {type: Date, default: Date.now}
  });
