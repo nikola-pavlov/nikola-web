@@ -8,6 +8,7 @@ import LatestWork from "./modules/LatestWork";
 import BusinessCard from "./modules/BusinessCard";
 import Inbox from "./modules/Inbox";
 import Testimonials from "./modules/Testimonials";
+import MobileReady from "./modules/MobileReady";
 
 var mobileMenu = new MobileMenu();
 var stickyHeader = new StickyHeader();

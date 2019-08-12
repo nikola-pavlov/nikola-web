@@ -46,6 +46,17 @@ a.btn.btn--white {
 	color: var(--color-one);
 }
 
+a.btn.btn--orange {
+	background-color: var(--color-five);
+	color: var(--color-whitish);
+}
+
+a.btn.btn--white--border {
+	background-color: var(--color-whitish);
+	color: var(--color-one);
+	border: 1px solid var(--color-one);
+}
+
 a.btn.btn--small {
 	padding: .6rem 1rem;
 }

@@ -1,0 +1,241 @@
+.about-me {
+
+	
+	@include respond(Medium) {
+
+		display: -webkit-box;
+		display: -moz-box;
+		display: box;
+
+		-webkit-box-orient: vertical;
+		-moz-box-orient: vertical;
+		box-orient: vertical;
+		&__headline {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	height: 70rem;
+	@include clearfix;
+
+	@include respond(Large) {
+		height: 70rem;
+	}
+
+	&__left {
+		@include respond(Medium) {
+			-webkit-box-ordinal-group: 1;
+			-moz-box-ordinal-group: 1;
+			box-ordinal-group: 1;
+		}
+		
+		position: relative;
+		height: 70rem;
+		width: 50%;
+		background: #fcfcfc;
+		float: left;
+
+		@include respond(Medium) {
+			width: 100%;
+			float: none;
+			height: 50rem;
+		}
+
+		@include respond(Small) {
+			height: 60rem;
+		}
+
+		@include respond(Tiny) {
+			height: 70rem;
+		}
+
+		&__container {
+			@include clearfix;
+			position: relative;
+			width: calc(100% - 20rem);
+			height: calc(100% - 20rem);
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+
+			@include respond(XXXLarge) {
+				width: calc(100% - 10rem);
+				height: calc(100% - 15rem);
+			}
+
+			@include respond(XXLarge) {
+				width: calc(100% - 5rem);
+				height: calc(100% - 15rem);
+			}
+
+			@include respond(Large) {
+				width: calc(100% - 5rem);
+				height: calc(100% - 15rem);
+			}
+
+			@include respond(Medium) {
+				width: calc(100% - 5rem);
+				height: calc(100% - 15rem);
+			}
+		}
+
+		&__description {
+			color: var(--color-grey-main);
+			margin-bottom: 2.5rem;
+		}
+
+		&__group {
+			position: relative;
+			height: 12rem;
+			width: 50%;
+			float: left;
+			margin-bottom: 5rem;
+
+			@include respond(XLarge) {
+				margin-bottom: 7rem;
+			}
+
+			@include respond(Large) {
+				width: 100%;
+				float: none;
+				margin-bottom: 2.5rem;
+				height: auto;
+			}
+
+			@include respond(Medium) {
+				width: 50%;
+				float: left;
+			}
+
+			@include respond(Small) {
+				width: 100%;
+				float: none;
+			}
+
+			&__icon {
+				position: absolute;
+				height: 5rem;
+				width: 5rem;
+				top: 0;
+				left: 0;
+				background: var(--color-one);
+				border-radius: 50%;
+				background-size: 2rem;
+				background-image: url("../../images/eye--color-whitish.svg");
+				background-repeat: no-repeat;
+				background-position: center;
+
+				@include respond(XLarge) {
+					height: 4rem;
+					width: 4rem;
+					display: none;
+				}
+
+				@include respond(Large) {
+					display: block;
+					height: 5rem;
+					width: 5rem;
+				}
+			}
+
+			&__title {
+				position: relative;
+				left: 7rem;
+				font-size: 2rem;
+				font-weight: 600;
+				margin-bottom: 1rem;
+				width: calc(100% - 12rem);
+
+				@include respond(XXLarge) { 
+					width: calc(100% - 9rem);
+					font-size: 1.8rem;
+					left: 6.25rem;
+				}
+
+				@include respond(XLarge) { 
+					left: 0;
+					width: calc(100% - 5rem);
+				}
+
+				@include respond(Large) { 
+					left: 7rem;
+					width: calc(100% - 7rem);
+				}
+			}
+
+			&__description {
+				position: relative;
+				left: 7rem;
+				width: calc(100% - 12rem);
+				color: var(--color-grey-main);
+
+				@include respond(XXLarge) { 
+					width: calc(100% - 9rem);
+					font-size: 1.4rem;
+					left: 6.25rem;
+				}
+
+				@include respond(XLarge) { 
+					left: 0;
+					width: calc(100% - 3rem);
+				}
+
+				@include respond(Large) { 
+					left: 7rem;
+					width: calc(100% - 7rem);
+				}
+
+				@include respond(Medium) {
+					width: calc(100% - 10rem);
+				}
+
+				@include respond(Small) {
+					width: calc(100% - 6rem);
+				}
+			}
+		}
+	}
+
+	&__right {
+		@include respond(Medium) {
+			-webkit-box-ordinal-group: 2;
+			-moz-box-ordinal-group: 2;
+			box-ordinal-group: 2;
+		}
+		position: relative;
+		height: 70rem;
+		width: 50%;
+		float: left;
+
+		@include respond(Medium) {
+			width: 100%;
+			float: none;
+		}
+
+		&__img {
+			position: relative;
+			width: 100%;
+			height: 70rem;
+			background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .6)), url(../../images/about-me.jpg);
+			background-size: auto auto;
+			background-attachment: fixed;
+			background-position: right 40vw top;
+			background-repeat: no-repeat;
+			// background-position: -25%;
+			// will-change: transform;
+
+			@include respond(Medium) {
+				height: 30rem;
+			}
+
+			@include respond(Small) {
+				height: 25rem;
+			}
+		}
+	}
+
+	&__btn {
+		margin-right: 2rem;
+	}
+}

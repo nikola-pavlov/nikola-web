@@ -9,15 +9,20 @@
 			display: block;
 			float: left;
 			width: 25%;
-			padding: 1rem 0 1rem 1rem;
-			perspective: 40rem;
+			padding: 2px 0 2px 2px;
+			perspective: 70rem;
+			// border: 5px solid var(--color-whitish);
 
 			&:not(:last-child) {
-				padding: 1rem;
+				padding: 2px;
 			}
 
 			&:first-child {
-				padding: 1rem 1rem 1rem 0;
+				padding: 2px 2px 2px 4px;
+			}
+
+			&:last-child {
+				padding: 2px 4px 2px 2px;
 			}
 		}
 	}
@@ -68,9 +73,8 @@
 	&__figure {
 		overflow: hidden;
 		position: relative;
-		border-radius: 3rem;
-		border: 1px solid #ccc;
-		transition: all .8s ease-out;
+		// border: .5rem solid white;
+		transition: all 1s ease-out;
 		backface-visibility: hidden;
 		transform: rotateY(0);
 		cursor: pointer;
@@ -82,7 +86,7 @@
 		&:after {
 			content:"";
 			position: absolute;
-			background-color: var(--color-black);
+			// background-color: var(--color-black);
 			height: 100%;
 			width: 100%;
 			top: 0;
@@ -96,66 +100,129 @@
 		}
 
 		&:hover img {
-			transform: scale(1.1);
-		}
-
-		&:hover figcaption {
-			height: 0;
-			padding: 0 2.5rem;
+			transform: scale(1.2);
 		}
 
 		& img {
 			width: 100%;
-			height: auto;
-			transition: all .3s ease-out;
-			height: 25rem;
+			transition: all .7s ease-out;
+			height: 32rem;
 			object-fit: cover;
 		}
 
 		& img:hover {
-			background-color: red;
 			transform: scale(1.1);
 		}
 
 		&__caption {
-			background: var(--color-whitish);
+			// background: var(--color-whitish);
 			font-size: 1.5rem;
 			width: 100%;
+			height: 100%;
 			bottom: -2rem;
 			left: 0;
-			
+			bottom: 0;
+			transform: scale(.5);
+			opacity: 0;
 			position: absolute;
 			z-index: 10;
-			
 			transition: all .3s ease-out;
+		}
 
+		&:hover &__caption {
+			background-image: linear-gradient(to bottom, rgba(256, 256, 256, .2), rgba(58, 175, 169, .8));
+			// height: 100%;
+			transform: scale(1);
+			opacity: 1;
+		}
+
+		&__container {
+			position: absolute;
+			width: 100%;
+			bottom: 0;
 			height: 8rem;
-			padding: 2rem 2.5rem;
-			text-align: center;
+			z-index: 15;
+			color: var(--color-whitish);
+			// padding: 1rem 2rem;
+		}
+
+		&__title {
+			display: inline-block;
+			position: relative;
+			top: 50%;
+			left: 2.5rem;
+			width: 30rem;
+			transform: translateY(-50%) scale(0);
+			transition: all .4s ease-out;
+			opacity: 0;
+			font-size: 1.8rem;
+			text-transform: uppercase;
+			transform-origin: 20% 40%;
+		}
+
+		&__comments {
+			display: inline-block;
+			position: relative;
+			top: 50%;
+			// width: 20%;
+			left: calc(100% - 36rem);
+			transform: translateY(-50%) scale(0);
+			font-size: 1.6rem;
+			transition: all .4s ease-out;
+			opacity: 0;
+			width: 5rem;
+			transform-origin: 20% 40%;
+
+			&::after {
+				position: absolute;
+				content: "";
+				height: 2rem;
+				width: 2rem;
+				top: 0;
+				left: -2.5rem;
+				// background: pink;
+				background: url(../../images/comment.svg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+		}
+
+		&:hover &__title {
+			transform: translateY(-50%) scale(1);
+			opacity: 1;
+		}
+
+		&:hover &__comments {
+			transform: translateY(-50%) scale(1);
+			opacity: 1;
 		}
 	}
 
 	&__back-side {
 		position: absolute;
-		background-color: var(--color-whitish);
-		top: 1rem;
-		border: 1px solid #ccc;
-		border-radius: 3rem;
-		left: 0;
-		width: calc(100% - 1rem);
-		height: calc(100% - 2rem);
+		background-color: var(--color-grey);
+		top: 2px;
+		// border: 1px solid #ccc;
+		// left: 2px;
+		width: calc(100% - 4px);
+		height: calc(100% - 4px);
+		// width: 100%;
+		// height: 100%;
 		transition: all .8s ease-out;
 		transform: rotateY(180deg);
 		backface-visibility: hidden;
 		cursor: pointer;
 		font-size: 1.2rem;
+		// margin-left: 4px;
 
+		
 		&--is-visible {
 			transform: rotateY(0);
 		}
 
 		&__container {
-			padding: 2rem;
+			// padding: 2rem;
 		}
 
 		&__title {
@@ -170,7 +237,6 @@
 		}
 
 		&__technologies {
-			color: red;
 			padding-bottom: 1rem;
 		}
 
@@ -184,6 +250,14 @@
 			position: absolute;
 			bottom: 2rem;
 			right: 2rem;
+		}
+
+		&--first {
+			width: calc(100% - 6px);
+		}
+
+		&--last {
+			width: calc(100% - 6px);
 		}
 	}
 }

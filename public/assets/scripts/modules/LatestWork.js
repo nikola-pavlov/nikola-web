@@ -6,6 +6,9 @@ var latestWorkSwitchButton2 = $(".latest-work__switch-btn2");
 var latestWorkSwitchButton2Icon = $(".latest-work__switch-btn__icon2");
 var latestWorkFrontSide = $(".latest-work__figure");
 var latestWorkBackSide = $(".latest-work__back-side");
+var latestWorkCaption = $(".latest-work__figure__caption");
+var latestWorkContainer = $(".latest-work__figure__container");
+
 
 // latestWorkSwitchButton.click(function(){
 // 	latestWorkBackSide.first().toggleClass("latest-work__back-side--is-visible");
@@ -39,6 +42,30 @@ latestWorkFrontSide.on( "click", function( event ) {
 // FRONT SWITCH BUTTON
 
 latestWorkSwitchButton.on( "click", function( event ) {
+	if (event.target !== this)
+		return;
+
+	// $( event.target ).closest( ".latest-work__back-side" ).toggleClass( "latest-work__back-side--is-visible" );
+	$( event.target ).parent().toggleClass( "latest-work__figure--is-visible" );
+	$( event.target ).parent().siblings().toggleClass( "latest-work__back-side--is-visible" );
+  // event.stopPropagation();
+});
+
+// CAPTION SWITCH BUTTON
+
+latestWorkCaption.on( "click", function( event ) {
+	if (event.target !== this)
+		return;
+
+	// $( event.target ).closest( ".latest-work__back-side" ).toggleClass( "latest-work__back-side--is-visible" );
+	$( event.target ).parent().toggleClass( "latest-work__figure--is-visible" );
+	$( event.target ).parent().siblings().toggleClass( "latest-work__back-side--is-visible" );
+  // event.stopPropagation();
+});
+
+// CONTAINER SWITCH BUTTON
+
+latestWorkContainer.on( "click", function( event ) {
 	if (event.target !== this)
 		return;
 
