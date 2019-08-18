@@ -8,8 +8,8 @@
 	}
 
 	&--logo-designer {
-		height: 50rem;
-		padding: 0;
+		// height: 50rem;
+		// padding: 0;
 
 		@include respond(Small) {
 			height: 85rem;
@@ -126,5 +126,17 @@
 
 	&--write-to-me {
 		background-image: linear-gradient(to right bottom, var(--color-one), var(--color-four));
+	}
+
+	&--pro-skills {
+		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(../../images/pro-skills.jpg);
+		background-size: cover;
+		// height: 70rem;
+		background-position: top;
+		background-attachment: fixed;
+	}
+
+	&--info {
+		padding: 0;
 	}
 }

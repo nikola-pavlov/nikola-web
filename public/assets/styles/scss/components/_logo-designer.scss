@@ -1,74 +1,68 @@
 .logo-designer {
-	&__container {
-		width: 50%;
-		height: 50rem;
-		float: left;
+
+	@include clearfix;
+
+	&__features {
+
 		position: relative;
-		overflow: hidden;
+		width: 27.5%;
+		float: left;
+		text-align: justify;
+		text-justify: inter-word;
 
-		@include respond(Small) {
-			width: 100%;
-			height: 40rem;
-			// Make logo designer without padding on small screens
-			width: calc(100% + 4rem);
-			@include center-horizontaly;
+		&--1 {
+			// background: red;
 		}
 
-		&--left {
-			position: relative;
-			background-image: radial-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 1)), url(../../images/lines.jpg);
-			background-size: cover;
+		&--2 {
+			// background: yellow;
 		}
 
-		&--right {
-			position: relative;
-			background-image: linear-gradient(to right bottom, var(--color-one), var(--color-four));
-			
-			&__content {
-				padding: 6rem;
-				position: relative;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
+		&__content {
 
-				@include respond(Large) {
-					padding: 4rem;
-				}
+			&:not(:last-child) {
+				margin-bottom: 5rem;
 			}
 		}
-	}
 
-	&__title {
-		color: var(--color-whitish);
-		font-size: 5rem;
-		text-align: center;
-	}
+		&__title {
+			font-size: 2rem;
+			font-weight: bold;
+			padding-bottom: 1rem;
+		}
 
-	&__desc {
-		color: var(--color-whitish);
-	}
-
-	&__icon {
-		position: relative;
-		& img {
-			position: relative;
-			width: 5rem;
-			@include center-horizontaly;
+		&__description {
+			color: var(--color-grey-main);
 		}
 	}
 
+	&__logo-animation {
+		float: left;
+		position: relative;
+		width: 45%;
+		// background: green;
+		height: 1rem;
+	}
+	
+
 	&__btn-reload {
-		width: 3rem;
-		height: 3rem;
+		width: 5rem;
+		height: 5rem;
 		position: absolute;
-		background-image: url(../../images/replay.svg);
-		background-size: cover;
+		background-image: url(../../images/replay--color-four.svg);
+		background-size: 2rem;
+		background-repeat: no-repeat;
+		background-position: center;
+		border-radius: 50%;
 		z-index: 10;
-		top: 5rem;
-		@include center-horizontaly;
+		top: 10rem;
+		left: calc(50% - 2.5rem);
+		border: 1px solid var(--color-four);
 		animation: logoFadeIn 1s 7s ease-in-out 1 both, loopInfinite 1.5s 7s linear both infinite;
 		cursor: pointer;
-		opacity: .5;
+		padding: 2rem;
+		opacity: 1;
+
 
 		&--hidden {
 			visibility: hidden;
@@ -76,11 +70,29 @@
 	}
 
 	&__btn-reload__container {
-		background: red;
+		// background: red;
 		width: 5rem;
 		height: 5rem;
 		position: absolute;
 		z-index: 30;
+	}
+
+	&__pencil {
+		position: relative;
+		width: 100%;
+		height: 20rem;
+		float: left;
+
+		&__container {
+			position: relative;
+			text-align: center;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&__container img {
+			width: 80rem;
+		}
 	}
 
 }

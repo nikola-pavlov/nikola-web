@@ -1,0 +1,33 @@
+.info {
+
+	color: var(--color-whitish);
+	@include clearfix;
+
+	&__box {
+		width: calc(100% / 3);
+		float: left;
+		padding: 5rem 8rem;
+
+		&:nth-child(1) {
+			background-color: var(--color-four);
+		}
+
+		&:nth-child(2) {
+			background-color: var(--color-one);
+		}
+
+		&:nth-child(3) {
+			background-color: var(--color-five);
+		}
+
+		&__title {
+			font-size: 2rem;
+			padding-bottom: 2rem;
+			font-weight: bold;
+		}
+
+		&__description {
+
+		}
+	}
+}

@@ -119,12 +119,28 @@
 			left: 50%;
 			transform: translateX(-50%);
 			text-align: center;
-			top: -5rem;
+			top: -8rem;
 			z-index: 3;
+			font-size: 4rem;
+			font-weight: bold;
+			line-height: 1;
 		}
 
-		&__next-btn {
-			background: red !important;
+		&__btn {
+			display: inline-block;
+			background: transparent !important;
+			margin: 0 !important;
+			height: 3rem;
+			width: 3rem;
+			position: relative;
+			cursor: pointer;
+
+			&__content {
+				position: relative;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
 		}
 	}
 }

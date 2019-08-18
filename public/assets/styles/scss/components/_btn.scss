@@ -66,6 +66,12 @@ a.btn.btn--full-width {
 	text-align: center;
 }
 
+a.btn.btn--transparent {
+	background-color: transparent;
+	border: 1px solid white;
+	color: var(--color-whitish);
+}
+
 
 button.btn {
 	border: none;

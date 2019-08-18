@@ -1,0 +1,67 @@
+.blogs {
+
+	@include clearfix;
+
+	&__box {
+		width: calc(25% - 1.5rem);
+		float: left;
+		border-radius: 1rem;
+		overflow: hidden;
+		border: 1px solid var(--color-grey-light);
+		transition: all .3s ease-out;
+
+		&:not(:last-child) {
+			margin-right: 2rem;
+		}
+
+		&__img {
+			background: grey;
+			height: 15rem;
+
+			& > img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__title {
+			padding: 1rem 2rem;
+			font-size: 2rem;
+			font-weight: bold;
+		}
+
+		&__description {
+			padding: 0 2rem;
+			color: var(--color-grey-main);
+
+		}
+
+		&__footer {
+			padding: 2rem;
+			position: relative;
+			width: 100%;
+
+			&__date {
+				display: inline-block;
+				position: relative;
+				font-size: 1.4rem;
+				left: 0;
+				color: var(--color-grey);
+			}
+
+			&__more {
+				position: absolute;
+				display: inline-block;
+				color: var(--color-one);
+				font-weight: bold;
+				right: 2rem;
+			}
+		}
+	}
+
+	&__box:hover {
+		transform: scale(1.05);
+		box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+	}
+}

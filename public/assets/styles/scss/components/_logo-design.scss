@@ -1,22 +1,19 @@
 .logo-design {
 	position: relative;
-	top: 45%;
-	left: 50%;
-	transform: scale(.25) translate(-200%, -200%);
-	width: 100%;
-	height: 100%;
+
+	// top: 150%;
+	// left: 50%;
+	// transform: scale(.3) translate(-200%, -200%);
+	top: 21rem;
+	transform: scale(.25);
 
 	@include respond(Large) {
-		left: 45%;
 	}
 
 	@include respond(Medium) {
-		left: 42%;
 	}
 
 	@include respond(Small) {
-		left: 50%;
-		top: 16rem;
 	}
 
 	&__rect--blue {
@@ -126,23 +123,23 @@
 
 	&__logo-text {
 		position: absolute;
-		font-size: 10rem;
-		color: var(--color-grey-main);
-		font-weight: 100;
+		font-size: 9rem;
+		color: var(--color-grey);
+		font-weight: bold;
 		letter-spacing: 7;
-		opacity: .85;
+		opacity: 1;
 
 		&--left { 
 			top:70rem;
 			left: 0rem;
-			width: 175rem;
+			// width: 175rem;
 			animation: logoMoveInFromRight 1.75s 6s ease-in-out 1 both;
 		}
 
 		&--right {
 			top:70rem;
 			left: 34rem;
-			width: 175rem;
+			// width: 175rem;
 			animation: logoMoveInFromLeft 1.75s 6s ease-in-out 1 both;
 
 		}
@@ -150,10 +147,12 @@
 
 	&--scale-up {
 		animation: hideFirst .5s 0s linear 1 both;
-		transform: scale(1) translate(-50%, -50%);
+		// transform: scale(1) translate(-50%, -50%);
+		transform: scale(1);
+		top: 0;
 
 		@include respond(Large) {
-			top: 20rem;
+
 		}		
 	}
 }

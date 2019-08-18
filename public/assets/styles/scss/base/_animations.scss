@@ -104,7 +104,7 @@
 	}
 
 	100% {
-		background: #000;
+		background: var(--color-grey);
 	}
 }
 
@@ -168,12 +168,12 @@
 @keyframes loopInfinite {
 	0% {
 		transform: rotate(0);
-		opacity: .25;
+		opacity: 1;
 	}
 
 	100% {
 		transform: rotate(1turn);
-		opacity: .25;
+		opacity: 1;
 	}
 }
 
