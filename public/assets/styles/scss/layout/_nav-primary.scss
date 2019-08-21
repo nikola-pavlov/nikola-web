@@ -46,6 +46,10 @@
 		display: block;
 		text-transform: uppercase;
 
+		&.is-current-link {
+			color: red;
+		}
+
 		@include respond(Medium) {
 			padding: .5rem .8rem;
 			background-color: rgba(58, 175, 169, .6);

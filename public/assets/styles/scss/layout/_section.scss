@@ -86,8 +86,8 @@
 	}
 
 	&--testimonials {
-		height: 60rem;
 		padding-top: 10rem;
+		background: var(--color-grey-light);
 	}
 
 	&--digital-services {
@@ -129,7 +129,7 @@
 	}
 
 	&--pro-skills {
-		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(../../images/pro-skills.jpg);
+		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(../../images/1980x1080.png);
 		background-size: cover;
 		// height: 70rem;
 		background-position: top;

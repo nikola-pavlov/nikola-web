@@ -10,6 +10,9 @@ import Inbox from "./modules/Inbox";
 import Testimonials from "./modules/Testimonials";
 import MobileReady from "./modules/MobileReady";
 import CountUp from "./modules/CountUp";
+import RevealOnScroll from "./modules/RevealOnScroll";
 
 var mobileMenu = new MobileMenu();
+new RevealOnScroll($(".skills__designer__categories__group"), "80%");
+new RevealOnScroll($(".digital-services__left__group"), "60%");
 var stickyHeader = new StickyHeader();

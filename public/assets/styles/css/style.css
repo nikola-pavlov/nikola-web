@@ -27,6 +27,15 @@
   --color-grey-light: #e8e8e8;
   --color-black: #000000; }
 
+.reveal-item {
+  opacity: 0;
+  transform: scale(0.75);
+  transform-origin: 50% 50%; }
+  .reveal-item--is-visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 1.5s ease-out; }
+
 *,
 *::after,
 *::before {
@@ -733,7 +742,7 @@ body {
   .hero__background {
     position: relative;
     height: calc(80vh + 20rem);
-    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(../../images/0.jpg);
+    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(../../images/1980x1080.png);
     background-size: cover;
     background-position: top;
     background-attachment: fixed; }
@@ -1116,7 +1125,7 @@ button.btn.btn--full-width {
         background: red !important;
         height: 61rem !important;
         z-index: 2;
-        background-image: url("../../images/screenshot.jpg") !important;
+        background-image: url("../../images/1980x1080.png") !important;
         background-size: cover !important; }
     .mobile-ready__mobile__btn-container {
       position: relative;
@@ -1437,7 +1446,7 @@ button.btn.btn--full-width {
           .skills__designer__info__front {
             height: 30rem; } }
         .skills__designer__info__front__img {
-          background-image: url("../../images/designer1.jpg");
+          background-image: url("../../images/1980x1080.png");
           background-size: cover;
           height: 100%;
           width: 100%; }
@@ -1561,7 +1570,7 @@ button.btn.btn--full-width {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url("../../images/designer.jpg");
+      background-image: url("../../images/1980x1080.png");
       background-size: cover;
       background-repeat: no-repeat;
       width: 50%;
@@ -1627,7 +1636,7 @@ button.btn.btn--full-width {
           .skills__developer__info__front {
             height: 30rem; } }
         .skills__developer__info__front__img {
-          background-image: url("../../images/developer1.jpg");
+          background-image: url("../../images/1980x1080.png");
           background-size: cover;
           height: 100%;
           width: 100%; }
@@ -1751,7 +1760,7 @@ button.btn.btn--full-width {
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url("../../images/designer.jpg");
+      background-image: url("../../images/1980x1080.png");
       background-size: cover;
       background-repeat: no-repeat;
       width: 50%;
@@ -2184,25 +2193,62 @@ button.btn.btn--full-width {
   .business-card--image {
     width: 100%; }
 
-.testimonials {
-  background: red; }
-  .testimonials .owl-carousel .item {
-    background: yellow;
-    height: 30rem; }
+.testimonials__item {
+  background: yellow !important; }
+  .testimonials__item__img {
+    float: left;
+    width: 20%; }
+    .testimonials__item__img__container {
+      width: 80%;
+      border-radius: 50%;
+      background: var(--color-whitish);
+      overflow: hidden; }
+  .testimonials__item__box {
+    position: relative;
+    float: left;
+    padding: 5rem;
+    width: 80%;
+    background-color: var(--color-whitish);
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); }
+    .testimonials__item__box__title {
+      font-size: 2rem;
+      font-weight: bold; }
+    .testimonials__item__box__sub-title {
+      padding-bottom: 1.5rem;
+      font-size: 1.4rem;
+      color: var(--color-grey-light); }
+    .testimonials__item__box__description {
+      color: var(--color-grey-main);
+      font-weight: 100; }
+    .testimonials__item__box::before {
+      content: "";
+      background-color: var(--color-whitish);
+      position: absolute;
+      top: 3rem;
+      left: -2.4rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      clip-path: polygon(100% 0, 100% 100%, 35% 50%); }
+    .testimonials__item__box::after {
+      content: "";
+      position: absolute;
+      background: url("../../images/quotes.svg");
+      opacity: .2;
+      top: 2rem;
+      right: 2rem;
+      width: 5rem;
+      height: 5rem; }
 
-.item {
-  background: #1ccacd;
-  height: 100px; }
-
-.my-owl-nav {
+.testimonials .my-owl-nav {
   margin-top: 40px; }
 
-.my-owl-nav span {
+.testimonials .my-owl-nav span {
   background: #eaeaea;
   padding: 20px;
   margin: 0 4px; }
 
-.my-owl-nav span:hover {
+.testimonials .my-owl-nav span:hover {
   cursor: pointer; }
 
 .digital-services {
@@ -2367,7 +2413,7 @@ button.btn.btn--full-width {
       position: relative;
       width: 100%;
       height: 70rem;
-      background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../../images/digital-services.jpg);
+      background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../../images/1980x1080.png);
       background-size: auto 100vh;
       background-attachment: fixed;
       background-position: left 40vw top;
@@ -2558,7 +2604,7 @@ button.btn.btn--full-width {
       position: relative;
       width: 100%;
       height: 70rem;
-      background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../../images/about-me.jpg);
+      background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../../images/1980x1080.png);
       background-size: auto auto;
       background-attachment: fixed;
       background-position: right 40vw top;
@@ -2904,6 +2950,8 @@ button.btn.btn--full-width {
     font-weight: 400;
     display: block;
     text-transform: uppercase; }
+    .nav-primary a.is-current-link {
+      color: red; }
     @media (max-width: 48em) {
       .nav-primary a {
         padding: .5rem .8rem;
@@ -3241,8 +3289,8 @@ button.btn.btn--full-width {
     padding-top: 20rem;
     background-image: linear-gradient(to right bottom, var(--color-two), var(--color-four)); }
   .section--testimonials {
-    height: 60rem;
-    padding-top: 10rem; }
+    padding-top: 10rem;
+    background: var(--color-grey-light); }
   .section--digital-services {
     padding: 0; }
     @media (max-width: 48em) {
@@ -3268,7 +3316,7 @@ button.btn.btn--full-width {
   .section--write-to-me {
     background-image: linear-gradient(to right bottom, var(--color-one), var(--color-four)); }
   .section--pro-skills {
-    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(../../images/pro-skills.jpg);
+    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(../../images/1980x1080.png);
     background-size: cover;
     background-position: top;
     background-attachment: fixed; }

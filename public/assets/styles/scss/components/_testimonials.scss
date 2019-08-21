@@ -1,31 +1,89 @@
 .testimonials {
-	background: red;
+	// background: red;
 
-	.owl-carousel {
-		.item {
-			background: yellow;
-			height: 30rem;
+	&__container {
+
+	}
+
+	&__item {
+		background: yellow !important;
+
+		&__img {
+			float: left;
+			width: 20%;
+
+			&__container {
+				width: 80%;
+				border-radius: 50%;
+				background: var(--color-whitish);
+				overflow: hidden;
+			}
 		}
 
+		&__box {
+
+			position: relative;
+			float: left;
+			padding: 5rem;
+			width: 80%;
+			background-color: var(--color-whitish);
+			border-radius: 1rem;
+			box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+
+			&__title {
+				font-size: 2rem;
+				font-weight: bold;
+			}
+
+			&__sub-title {
+				padding-bottom: 1.5rem;
+				font-size: 1.4rem;
+				color: var(--color-grey-light);
+			}
+
+			&__description {
+				color: var(--color-grey-main);
+				font-weight: 100;
+			}
+
+			&::before {
+				content:"";
+				background-color: var(--color-whitish);
+				position: absolute;
+				top: 3rem;
+				left: -2.4rem;
+				width: 2.5rem;
+				height: 2.5rem;
+				clip-path: polygon(100% 0, 100% 100%, 35% 50%);
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				background: url("../../images/quotes.svg");
+				opacity: .2;
+				top: 2rem;
+				right: 2rem;
+				width: 5rem;
+				height: 5rem;
+			}
+
+		}
 	}
 }
 
 /////////////////////
 
-
-.item {
-  background : #1ccacd;
-  height: 100px;
-}
-.my-owl-nav {
+.testimonials .my-owl-nav {
   margin-top: 40px;
 }
-.my-owl-nav span {
+
+.testimonials .my-owl-nav span {
   background:#eaeaea;
   padding: 20px;
   margin: 0 4px;
 }
 
-.my-owl-nav span:hover {
+.testimonials .my-owl-nav span:hover {
   cursor: pointer;
 }
