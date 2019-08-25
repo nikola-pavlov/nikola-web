@@ -27,59 +27,93 @@
 1em = 16px
 */
 
+// @mixin respond($breakpoint) {
+
+// 	@if $breakpoint == Tiny {
+// 		@media (max-width: 22.5em) {		// 360px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == XSmall {
+// 		@media (max-width: 30em) {		// 480px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == Small {
+// 		@media (max-width: 40em) {		// 640px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == Medium {
+// 		@media (max-width: 48em) {		// 768px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == Large {
+// 		@media (max-width: 62em) {		// 992px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == XLarge {
+// 		@media (max-width: 71.25em) {	// 1140px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == XXLarge {
+// 		@media (max-width: 90em) {	// 1440px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == XXXLarge {
+// 		@media (max-width: 100em) {	// 1600px
+// 			@content
+// 		};
+// 	}
+
+// 	@if $breakpoint == Huge {
+// 		@media (min-width: 125em) {	// 2000px
+// 			@content
+// 		};
+// 	}
+// }
+
 @mixin respond($breakpoint) {
 
-	@if $breakpoint == Tiny {
-		@media (max-width: 22.5em) {		// 360px
-			@content
-		};
-	}
+	@if $breakpoint == 300 { @media (max-width: 18.75em) { @content }; }
+	@if $breakpoint == 400 { @media (max-width: 25em) { @content }; }
+	@if $breakpoint == 500 { @media (max-width: 31.25em) { @content }; }
+	@if $breakpoint == 600 { @media (max-width: 37.5em) { @content }; }
+	@if $breakpoint == 700 { @media (max-width: 43.75em) { @content }; }
+	@if $breakpoint == 800 { @media (max-width: 50em) { @content }; }
+	@if $breakpoint == 900 { @media (max-width: 56.25em) { @content }; }
+	@if $breakpoint == 1000 { @media (max-width: 62.5em) { @content }; }
+	@if $breakpoint == 1100 { @media (max-width: 68.75em) { @content }; }
+	@if $breakpoint == 1200 { @media (max-width: 75em) { @content }; }
+	@if $breakpoint == 1300 { @media (max-width: 81.25em) { @content }; }
+	@if $breakpoint == 1400 { @media (max-width: 87.5em) { @content }; }
+	@if $breakpoint == 1500 { @media (max-width: 93.75em) { @content }; }
+	@if $breakpoint == 1600 { @media (max-width: 100em) { @content }; }
+	@if $breakpoint == 1700 { @media (max-width: 106.25em) { @content }; }
+	@if $breakpoint == 1800 { @media (max-width: 112.5em) { @content }; }
+	@if $breakpoint == 1900 { @media (max-width: 118.75em) { @content }; }
+	@if $breakpoint == 2000 { @media (max-width: 125em) { @content }; }
+	@if $breakpoint == 2100 { @media (max-width: 131.25em) { @content }; }
+	@if $breakpoint == 2200 { @media (max-width: 137.5em) { @content }; }
+	@if $breakpoint == 2300 { @media (max-width: 143.75em) { @content }; }
+	@if $breakpoint == 2400 { @media (max-width: 150em) { @content }; }
+	@if $breakpoint == 2500 { @media (max-width: 156.25em) { @content }; }
+	@if $breakpoint == 2600 { @media (max-width: 162.5em) { @content }; }
+	@if $breakpoint == 2700 { @media (max-width: 168.75em) { @content }; }
+	@if $breakpoint == 2800 { @media (max-width: 175em) { @content }; }
+	@if $breakpoint == 2900 { @media (max-width: 181.25em) { @content }; }
+	@if $breakpoint == 3000 { @media (max-width: 187.5em) { @content }; }
+	@if $breakpoint == 3000plus { @media (mix-width: 187.5em) { @content }; }
 
-	@if $breakpoint == XSmall {
-		@media (max-width: 30em) {		// 480px
-			@content
-		};
-	}
-
-	@if $breakpoint == Small {
-		@media (max-width: 40em) {		// 640px
-			@content
-		};
-	}
-
-	@if $breakpoint == Medium {
-		@media (max-width: 48em) {		// 768px
-			@content
-		};
-	}
-
-	@if $breakpoint == Large {
-		@media (max-width: 62em) {		// 992px
-			@content
-		};
-	}
-
-	@if $breakpoint == XLarge {
-		@media (max-width: 71.25em) {	// 1140px
-			@content
-		};
-	}
-
-	@if $breakpoint == XXLarge {
-		@media (max-width: 90em) {	// 1440px
-			@content
-		};
-	}
-
-	@if $breakpoint == XXXLarge {
-		@media (max-width: 100em) {	// 1600px
-			@content
-		};
-	}
-
-	@if $breakpoint == Huge {
-		@media (min-width: 125em) {	// 2000px
-			@content
-		};
-	}
 }

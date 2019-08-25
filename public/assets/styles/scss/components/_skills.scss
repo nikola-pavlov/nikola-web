@@ -6,26 +6,21 @@
 		text-align: center;
 		font-size: 1.6rem;
 		margin-bottom: 2rem;
-
-		@include respond(Small) {
-			margin-bottom: 4rem;
-		}
 	}
 
 	&__container {
 		position: relative;
 		top: 5rem;
+		height: 32rem;
 
-		@include respond(Small) {
-			top: 0;
-			height: 80rem;
+		@include respond(700) {
+			height: 95rem;
 		}
 	}
 
 	&__designer {
 		transition: all 1s cubic-bezier(0.86, 0, 0.07, 1);
 		transform: scaleX(0);
-		height: 35rem;
 		transform-origin: 0 0;
 
 		&--selected {
@@ -33,13 +28,7 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 35rem;
-			// border: 1px solid #ccc;
 			transform: scaleX(1);
-
-			@include respond(Small) {
-				// position: relative;
-			}
 		}
 
 		&__container {
@@ -48,45 +37,52 @@
 		}
 
 		&__info {
-
-			width: 25%;
+			width: 33.3%;
 			height: 24rem;
 			border-radius: 1rem;
 			float: left;
 
-			@include respond(Large) {
+			@include respond(1100) {
 				display: none;
 			}
 
-			@include respond(Small) {
+			@include respond(700) {
+
+				position: relative;
+				left: -2rem;
 				display: block;
-				width: 100%;
-				margin-bottom: 3rem;
+				width: calc(100% + 4rem);
+				margin-bottom: 5rem;
+				border-radius: 0;
 				height: 30rem;
 			}
 
 			&__front {
-				border-radius: 1rem;
 				height: 24rem;
 				transition: all .8s ease-out;
 				backface-visibility: hidden;
 				border-radius: 1rem;
 				overflow: hidden;
 
-				@include respond(Small) {
+				@include respond(700) {
+					border-radius: 0;
 					height: 30rem;
 				}
 
 				&__img {
 					background-image: (url("../../images/1980x1080.png"));
 					background-size: cover;
+					background-position: center;
 					height: 100%;
 					width: 100%;
+					@include respond(700) {
+						height: 30rem;
+					}
 				}
 			}
 
 			&__back {
-				width: 25%;
+				width: 33.3%;
 				height: 24rem;
 				background: var(--color-grey-light);
 				border-radius: 1rem;
@@ -99,10 +95,11 @@
 				backface-visibility: hidden;
 				text-align: center;
 
-				@include respond(Small) {
-					width: 100%;
-					tranform: none;
-				}
+				@include respond(700) {
+				transform: rotateY(0);
+				display: none;
+				border-radius: 0;
+			}
 
 				&__title {
 					font-size: 2rem;
@@ -112,27 +109,22 @@
 
 		&__info:hover &__info__front {
 			transform: rotateY(-180deg);
-
-			@include respond(Small) {
+			@include respond(700) {
 				transform: rotateY(0);
 			}
 		}
 
 		&__info:hover &__info__back {
 			transform: rotateY(0);
-
-			@include respond(Small) {
-				transform: rotateY(180deg);
-			}
 		}
 
 		&__categories {
 			@include clearfix;
 			// height: 30rem;
-			width: 75%;
+			width: 66.6%;
 			float: left;
 
-			@include respond(Large) {
+			@include respond(1100) {
 				width: 100%;
 			}
 
@@ -142,41 +134,51 @@
 				height: 12rem;
 				padding-left: 3rem;
 
-				@include respond(Small) {
-					margin-bottom: 0;
+				@include respond(1100) {
+					padding: 0;
+
+					&:nth-child(odd) {
+						padding-right: 2rem;
+					}
+
+					&:nth-child(even) {
+						padding-left: 2rem;
+					}
 				}
 
+				@include respond(800) {
+					padding: 0;
+
+					&:nth-child(odd) {
+						padding-right: 1rem;
+					}
+
+					&:nth-child(even) {
+						padding-left: 1rem;
+					}
+				}
+
+				@include respond(700) {
+					width: 100%;
+
+					&:nth-child(odd) {
+						padding: 0;
+					}
+
+					&:nth-child(even) {
+						padding: 0;
+					}
+
+					&:last-child {
+						padding-top: 2rem;
+					}
+				}
 
 				&:nth-child(1), &:nth-child(2) {
 					margin-bottom: 2rem;
-
-					@include respond(Small) {
-						margin-bottom: 0;
-					}
 				}
 
-				@include respond(Large) {
-					padding-left: 0;
-				}
-
-				@include respond(Small) {
-					width: 100%;
-					float: none;
-				}
-
-				&:nth-child(even) {
-					@include respond(Large) {
-						padding-left: 4rem;
-					}
-
-					@include respond(Medium) {
-						padding-left: 3rem;
-					}
-
-					@include respond(Small) {
-						padding-left: 0;
-					}
-				}
+				
 			}
 
 			&__icon {
@@ -239,8 +241,7 @@
 				}
 
 				&__description {
-					font-size: 1.4rem;
-					margin-top: 1rem;
+					margin-top: .5rem;
 					color: var(--color-grey-main);
 				}
 			}
@@ -250,7 +251,6 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			// background: #ccc;
 			background-image: (url("../../images/1980x1080.png"));
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -293,21 +293,14 @@
 	&__developer {
 		transition: all 1s cubic-bezier(0.86, 0, 0.07, 1);
 		transform: scaleX(0);
-		height: 35rem;
-		transform-origin: 100% 0;
+		transform-origin: 100% 100%;
 
 		&--selected {
 			position: absolute;
 			top: 0;
-			right: 0;
+			left: 0;
 			width: 100%;
-			height: 35rem;
-			// border: 1px solid #ccc;
 			transform: scaleX(1);
-
-			@include respond(Small) {
-				// position: relative;
-			}
 		}
 
 		&__container {
@@ -317,44 +310,53 @@
 
 		&__info {
 
-			width: 25%;
+			width: 33.3%;
 			height: 24rem;
 			border-radius: 1rem;
 			float: left;
 
-			@include respond(Large) {
+			@include respond(1100) {
 				display: none;
 			}
 
-			@include respond(Small) {
+			@include respond(700) {
+
+				position: relative;
+				left: -2rem;
 				display: block;
-				width: 100%;
-				margin-bottom: 3rem;
+				width: calc(100% + 4rem);
+				margin-bottom: 5rem;
+				border-radius: 0;
 				height: 30rem;
 			}
 
 			&__front {
-				border-radius: 1rem;
 				height: 24rem;
 				transition: all .8s ease-out;
 				backface-visibility: hidden;
 				border-radius: 1rem;
 				overflow: hidden;
 
-				@include respond(Small) {
+				@include respond(700) {
+					border-radius: 0;
 					height: 30rem;
 				}
 
 				&__img {
 					background-image: (url("../../images/1980x1080.png"));
 					background-size: cover;
+					background-position: center;
 					height: 100%;
 					width: 100%;
+
+					@include respond(700) {
+						height: 30rem;
+					}
 				}
 			}
 
 			&__back {
-				width: 25%;
+				width: 33.3%;
 				height: 24rem;
 				background: var(--color-grey-light);
 				border-radius: 1rem;
@@ -367,10 +369,11 @@
 				backface-visibility: hidden;
 				text-align: center;
 
-				@include respond(Small) {
-					width: 100%;
-					tranform: none;
-				}
+				@include respond(700) {
+				transform: rotateY(0);
+				display: none;
+				border-radius: 0;
+			}
 
 				&__title {
 					font-size: 2rem;
@@ -380,27 +383,22 @@
 
 		&__info:hover &__info__front {
 			transform: rotateY(-180deg);
-
-			@include respond(Small) {
+			@include respond(700) {
 				transform: rotateY(0);
 			}
 		}
 
 		&__info:hover &__info__back {
 			transform: rotateY(0);
-
-			@include respond(Small) {
-				transform: rotateY(180deg);
-			}
 		}
 
 		&__categories {
 			@include clearfix;
 			// height: 30rem;
-			width: 75%;
+			width: 66.6%;
 			float: left;
 
-			@include respond(Large) {
+			@include respond(1100) {
 				width: 100%;
 			}
 
@@ -410,41 +408,51 @@
 				height: 12rem;
 				padding-left: 3rem;
 
-				@include respond(Small) {
-					margin-bottom: 0;
+				@include respond(1100) {
+					padding: 0;
+
+					&:nth-child(odd) {
+						padding-right: 2rem;
+					}
+
+					&:nth-child(even) {
+						padding-left: 2rem;
+					}
 				}
 
+				@include respond(800) {
+					padding: 0;
+
+					&:nth-child(odd) {
+						padding-right: 1rem;
+					}
+
+					&:nth-child(even) {
+						padding-left: 1rem;
+					}
+				}
+
+				@include respond(700) {
+					width: 100%;
+
+					&:nth-child(odd) {
+						padding: 0;
+					}
+
+					&:nth-child(even) {
+						padding: 0;
+					}
+
+					&:last-child {
+						padding-top: 2rem;
+					}
+				}
 
 				&:nth-child(1), &:nth-child(2) {
 					margin-bottom: 2rem;
-
-					@include respond(Small) {
-						margin-bottom: 0;
-					}
 				}
 
-				@include respond(Large) {
-					padding-left: 0;
-				}
-
-				@include respond(Small) {
-					width: 100%;
-					float: none;
-				}
-
-				&:nth-child(even) {
-					@include respond(Large) {
-						padding-left: 4rem;
-					}
-
-					@include respond(Medium) {
-						padding-left: 3rem;
-					}
-
-					@include respond(Small) {
-						padding-left: 0;
-					}
-				}
+				
 			}
 
 			&__icon {
@@ -507,8 +515,7 @@
 				}
 
 				&__description {
-					font-size: 1.4rem;
-					margin-top: 1rem;
+					margin-top: .5rem;
 					color: var(--color-grey-main);
 				}
 			}

@@ -1,20 +1,22 @@
 .logo-design {
 	position: relative;
-
-	// top: 150%;
-	// left: 50%;
-	// transform: scale(.3) translate(-200%, -200%);
 	top: 21rem;
+	left: -2rem;
 	transform: scale(.25);
 
-	@include respond(Large) {
+	@include respond(1000) {
+		position: relative;
+		left: 2rem;
 	}
 
-	@include respond(Medium) {
+	@include respond(500) {
+		left: -1rem;
 	}
 
-	@include respond(Small) {
+	@include respond(400) {
+		left: -3rem;
 	}
+
 
 	&__rect--blue {
 		position: absolute;
@@ -151,8 +153,12 @@
 		transform: scale(1);
 		top: 0;
 
-		@include respond(Large) {
+		@include respond(1000) {
+			left: 0;
+		}	
 
-		}		
+		@include respond(500) {
+			left: 0;
+		}	
 	}
 }

@@ -4,8 +4,8 @@
 	margin-right: auto;
 	position: relative;
 
-	@include respond(XLarge) {
-	padding-left: 2rem;
-	padding-right: 2rem;
+	@include respond(1200) {
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 }

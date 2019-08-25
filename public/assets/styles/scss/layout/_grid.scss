@@ -14,11 +14,11 @@
 		&:not(:last-child) {
 			margin-right: var(--grid-gutter-horizontal-l);
 
-			@include respond(Large) {
+			@include respond(1000) {
 				margin-right: var(--grid-gutter-horizontal-l);
 			}
 
-			@include respond(Medium) {
+			@include respond(800) {
 				margin-right: var(--grid-gutter-horizontal-m);
 			}
 		}
@@ -32,6 +32,10 @@
 
 	.col-1-of-2 {
 		width: calc((100% - var(--grid-gutter-horizontal-l)) / 2);
+
+		@include respond(800) {
+			width: 100%;
+		}
 	}
 
 
@@ -42,16 +46,16 @@
 	.col-1-of-3 {
 		width: calc((100% - 2 * var(--grid-gutter-horizontal-l)) / 3);
 
-		@include respond(Large) {
+		@include respond(1000) {
 			width: calc((100% - 2 * var(--grid-gutter-horizontal-l)) / 3);
 		}
 
-		@include respond(Medium) {
+		@include respond(800) {
 			width: calc((100% - 2 * var(--grid-gutter-horizontal-m)) / 3);
 		}
 
-		@include respond(Medium) {
-			width: 100%
+		@include respond(800) {
+			width: 100%;
 		}
 	}
 
@@ -64,15 +68,15 @@
 	.col-2-of-3 {
 		width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal-l)) / 3) + var(--grid-gutter-horizontal-l);
 
-			@include respond(Large) {
+			@include respond(1000) {
 				width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal-l)) / 3) + var(--grid-gutter-horizontal-l);
 			}
 
-			@include respond(Medium) {
+			@include respond(800) {
 				width: calc(2 * ((100% - 2 * var(--grid-gutter-horizontal-m)) / 3) + var(--grid-gutter-horizontal-m);
 			}
 
-			@include respond(Medium) {
+			@include respond(800) {
 				width: 100%
 			}
 		}

@@ -6,7 +6,8 @@
 	}
 
 	&__item {
-		background: yellow !important;
+
+		@include clearfix;
 
 		&__img {
 			float: left;
@@ -68,6 +69,39 @@
 				height: 5rem;
 			}
 
+		}
+	}
+
+	&__btn-container {
+		text-align: right;
+	}
+
+	&__btn {
+		background-color: transparent !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		font-size: 5rem;
+		font-weight: 100;
+		text-align: center;
+		line-height: .77;
+		border: 1px solid var(--color-one);
+		border-radius: 50%;
+		color: var(--color-one);
+
+		&--prev {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 5rem;
+			height: 5rem;
+		}
+
+		&--next {
+			position: absolute;
+			top: 0;
+			right: 6rem;
+			width: 5rem;
+			height: 5rem;
 		}
 	}
 }

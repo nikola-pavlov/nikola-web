@@ -15,7 +15,6 @@
 		<nav class="nav-top">
 			<div class="row wrapper">
 				<ul>
-					<li>Dark Mode</li>
 					<li class="nav-top__item__language">
 						<span class="nav-top__item__language__icon"></span> Language
 						<div class="nav-sub">
@@ -38,55 +37,60 @@
 									</div>
 								</div>
 							</div>
-						</li>
-						<% if(!currentUser) { %>
-						<li><a href="/login">Login</a></li>
-						<li><a href="/register">Sign Up</a></li>
-						<% } else { %>
-						<li><a>Hello <%= currentUser.username %></a></li>
-						<li><a href="/logout">Logout</a></li>
-						<% } %>
+						</div>
+					</li>
 
-						
-						
+
+					<li>Dark Mode</li>
+					
+					<% if(!currentUser) { %>
+					<li><a href="/login">Login</a></li>
+					<li><a href="/register">Sign Up</a></li>
+					<% } else { %>
+					<li><a>Hello <%= currentUser.username %></a></li>
+					<li><a href="/logout">Logout</a></li>
+					<% } %>
+
+
+
+				</ul>
+			</div>
+		</nav>
+
+		<div class="row wrapper">
+			<a href="/">
+				<div class="header-main__logo">
+					<figure> 
+						<img src="/assets/images/logo1.svg" alt="logo"> 
+						<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
+					</figure>
+				</div>
+			</a>
+
+			<div class="header-main__menu-icon">
+				<div class="header-main__menu-icon__middle"></div>
+			</div>
+
+			<div class="header-main__menu-content">
+
+				<nav class="nav-primary nav-primary--float-right">
+					<ul>
+						<li><a href="#hi-there" id="hi-there-link">Hi There</a></li>
+						<li><a href="#digital-services" id="digital-services-link">Digital Services</a></li>
+						<li><a href="/#about-me" id="about-me-link">About Me</a></li>
+						<li><a href="#logo-design" id="logo-design-link">Logo Design</a></li>
+						<li><a href="#mobile-ready" id="mobile-ready-link">Mobile Ready</a></li>
 					</ul>
-				</div>
-			</nav>
+				</nav>
 
-			<div class="row wrapper">
-				<a href="/">
-					<div class="header-main__logo">
-						<figure> 
-							<img src="/assets/images/logo1.svg" alt="logo"> 
-							<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
-						</figure>
-					</div>
-				</a>
-
-				<div class="header-main__menu-icon">
-					<div class="header-main__menu-icon__middle"></div>
-				</div>
-
-				<div class="header-main__menu-content">
-					<div class="header-main__btn-container">
-						<a href="/contact" class="btn btn--small btn--white">Contact me</a>
-					</div>
-
-
-					<nav class="nav-primary nav-primary--float-right">
-						<ul>
-							<li><a href="#hi-there" id="hi-there-link">Hi There</a></li>
-							<li><a href="#digital-services" id="digital-services-link">Digital Services</a></li>
-							<li><a href="#about-me" id="about-me-link">About Me</a></li>
-							<li><a href="#logo-design" id="logo-design-link">Logo Design</a></li>
-							<li><a href="#mobile-ready" id="mobile-ready-link">MobileReady</a></li>
-						</ul>
-					</nav>
+				<div class="header-main__btn-container">
+					<a href="/contact" class="btn btn--small btn--main header-main__btn">Contact me</a>
 				</div>
 			</div>
-		</header>
+		</div>
+	</header> 
 
-		<div class="contact">
+		<!-- <div class="contact">
 			<input id="contact-toggle" type="checkbox" class="contact__checkbox">
 			<label for="contact-toggle" class="contact__button contact__button--front"></label>
 			<label for="contact-toggle" class="contact__button contact__button--back"></label>
@@ -133,4 +137,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
+
+

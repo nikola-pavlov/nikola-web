@@ -2,14 +2,15 @@
 	position: fixed;
 	z-index: 100;
 	width: 100%;
-	background-color: rgba(58, 175, 169, .3);
+	background-color: var(--color-whitish);
 	transition: background-color .3s ease-out;
 
 	&--opacity {
-		background-color: rgba(0, 120, 120, .95);
+		background-color: var(--color-whitish);
+		box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 	}
 	
-	@include respond(Medium) {
+	@include respond(1000) {
 		position: absolute;
 		background-color: transparent;
 		transition: background-color .3s ease-out;
@@ -17,17 +18,22 @@
 
 
 		&--is-expanded {
-		background-color: rgba(58, 175, 169, .6);
-	}
+			background-color: var(--color-whitish);
+			height: auto;
+			border-bottom: 5px solid var(--color-one);
+		}
 	}
 
 	&__btn-container {
-		position: relative;
-		float: right;
+		position: absolute;
+		right: 0;
+		top: 0;
 		@include center-verticaly;
 
-		@include respond(Medium) {
+		@include respond(1000) {
+			position: relative;
 			float: none;
+			padding-top: 5rem;
 		}
 	}
 
@@ -38,6 +44,7 @@
 		border-radius: 0 0 1rem 1rem;
 		transform-origin: 50% 0;
 		transition: all .3s ease-out;
+		z-index: 101;
 
 		.header-main--opacity & {
 			transform: scale(.66);
@@ -45,7 +52,7 @@
 			border-radius: 0;
 		}
 
-		@include respond(Medium) {
+		@include respond(1000) {
 			left: 50%;
 			transform: translateX(-50%) scale(.8);
 			transform-origin: 50% 0;
@@ -58,7 +65,7 @@
 			padding: .5rem;
 			display: inline-block;
 
-			@include respond(Medium) {
+			@include respond(1000) {
 				float: none;
 				position: relative;
 				left: 50%;
@@ -78,7 +85,7 @@
 		font-size: 1.6rem;
 		position: relative;
 
-		@include respond(Medium) {
+		@include respond(1000) {
 			width: 100%;
 			text-align: center;
 			padding: 0;
@@ -87,7 +94,9 @@
 
 	&__menu-icon {
 
-		@include respond(Medium) {
+		cursor: pointer;
+
+		@include respond(1000) {
 			width: 2.5rem;
 			height: 2.5rem;
 			position: absolute;
@@ -155,22 +164,30 @@
 	&__menu-content {
 
 		height: 6rem;
-	
-		@include respond(Medium) {
+
+		@include respond(1000) {
+			position: relative;
 			opacity: 0;
 			visibility: hidden;
-			padding-top: 12rem;
 			text-align: center;
 			transition: all .3s ease-out;
-			transform: scale(.5) translateY(5rem);
 			height: auto;
+	
 
 			&--is-visible {
 				opacity: 1;
 				visibility: visible;
-				transform: scale(1) translateY(0);
+				padding-top: 12rem;
+				padding-bottom: 3rem;
 			}
 		}
 	}
+}
 
+.header-main--is-expanded .row .header-main__menu-icon--close::before {
+	background-color: var(--color-one);
+}
+
+.header-main--is-expanded .row .header-main__menu-icon--close::after {
+	background-color: var(--color-one);
 }

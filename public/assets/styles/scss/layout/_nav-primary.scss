@@ -1,16 +1,20 @@
 .nav-primary {
 
-	position: relative;
+	position: absolute;
+	right: 10rem;
 	@include center-verticaly;
 
-	@include respond(Medium) {
-		padding-top: 2rem;
+	@include respond(1000) {
+		position: relative;
+		right: 0;
+		top: 0;
+		transform: translateY(0);
 	}
 
 	&--float-right {
 		float: right;
 
-		@include respond(Medium) {
+		@include respond(1000) {
 			float: none;
 		}
 	}
@@ -25,34 +29,30 @@
 		list-style: none;
 		float: left;
 		padding-right: 3rem;
-		@include respond(Medium) {
+		@include respond(1000) {
 			float: none;
-			display: inline-block;
-			padding-right: .7rem;
-		}
-	}
-
-	li:last-child {
-		@include respond(Medium) {
+			width: 100%;
 			padding-right: 0;
 		}
 	}
 
 	a {
-		color: var(--color-whitish);
+		color: var(--color-one);
 		text-decoration: none;
 		font-size: 1.6rem;
 		font-weight: 400;
 		display: block;
 		text-transform: uppercase;
+		font-weight: bold;
 
 		&.is-current-link {
-			color: red;
+			color: var(--color-five);
+			font-weight: bold;
 		}
 
-		@include respond(Medium) {
-			padding: .5rem .8rem;
-			background-color: rgba(58, 175, 169, .6);
+		@include respond(1000) {
+			// border-bottom: 1px solid var(--color-grey-light);
+			padding: 1rem 0;
 		}
 	}
 }

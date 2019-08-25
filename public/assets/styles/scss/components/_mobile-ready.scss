@@ -1,6 +1,13 @@
 .mobile-ready {
 
-	position: relative
+	position: relative;
+
+	&__title {
+		@include respond(800) {
+			text-align: center;
+			width: 100%;
+		}
+	}
 
 	&__description {
 		color: var(--color-grey-main);
@@ -79,7 +86,10 @@
 	&__mobile {
 		position: relative;
 		height: 70rem;
-		// background: yellow;
+
+		@include respond(800) {
+			margin-top: 5rem;
+		}
 
 		&__img {
 			position: relative;
@@ -89,6 +99,9 @@
 			background-position: top;
 			background-image: (url("../../images/iphone.png"));
 			z-index: 1;
+			@include respond(500) {
+				background-size: 25rem;
+			}
 		}
 
 		&__content {
@@ -102,6 +115,13 @@
 			overflow: hidden;
 			border-radius: 2.6rem;
 			z-index: 1;
+			@include respond(500) {
+				top: 1.5rem;
+				width: 21.8rem;
+				height: 47.6rem;
+				background: yellow;
+				border-radius: 2.2rem;
+			}
 
 			&__item {
 				width: 100%;
@@ -119,11 +139,14 @@
 			left: 50%;
 			transform: translateX(-50%);
 			text-align: center;
-			top: -8rem;
+			top: -4rem;
 			z-index: 3;
 			font-size: 4rem;
 			font-weight: bold;
 			line-height: 1;
+			@include respond(500) {
+				top: -18rem;
+			}
 		}
 
 		&__btn {

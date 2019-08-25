@@ -9,10 +9,9 @@
 
 	&--logo-designer {
 		// height: 50rem;
-		// padding: 0;
 
 		@include respond(Small) {
-			height: 85rem;
+			// height: 85rem;
 		}
 	}
 
@@ -42,7 +41,7 @@
 	}
 
 	&--skills {
-		padding-top: 0;
+		// padding-top: 0;
 	}
 
 	&--latest-work {
@@ -91,37 +90,11 @@
 	}
 
 	&--digital-services {
-		// height: 70rem;
 		padding: 0;
-
-		@include respond(Medium) {
-			height: 80rem;
-		}
-
-		@include respond(Small) {
-			height: 85rem;
-		}
-
-		@include respond(Tiny) {
-			height: 100rem;
-		}
 	}
 
 	&--about-me {
-		// height: 70rem;
 		padding: 0;
-
-		@include respond(Medium) {
-			height: 80rem;
-		}
-
-		@include respond(Small) {
-			height: 85rem;
-		}
-
-		@include respond(Tiny) {
-			height: 100rem;
-		}
 	}
 
 	&--write-to-me {
