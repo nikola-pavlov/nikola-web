@@ -13,11 +13,25 @@
 			float: left;
 			width: 20%;
 
+			@include respond(700) {
+				text-align: center;
+				position: relative;
+				left: 50%;
+				top: 5rem;
+				transform: translateX(-50%);
+				z-index: 1;
+				width: 10rem;
+			}
+
 			&__container {
 				width: 80%;
 				border-radius: 50%;
 				background: var(--color-whitish);
 				overflow: hidden;
+				@include respond(700) {
+					border: 3px solid var(--color-one);
+					width: 100%;
+				}
 			}
 		}
 
@@ -30,6 +44,11 @@
 			background-color: var(--color-whitish);
 			border-radius: 1rem;
 			box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+
+			@include respond(700) {
+				width: 100%;
+				padding: 5rem 4rem;
+			}
 
 			&__title {
 				font-size: 2rem;
@@ -56,6 +75,10 @@
 				width: 2.5rem;
 				height: 2.5rem;
 				clip-path: polygon(100% 0, 100% 100%, 35% 50%);
+
+				@include respond(700) {
+					display: none;
+				}
 			}
 
 			&::after {
@@ -87,6 +110,7 @@
 		border: 1px solid var(--color-one);
 		border-radius: 50%;
 		color: var(--color-one);
+		z-index: 5;
 
 		&--prev {
 			position: absolute;
@@ -94,6 +118,11 @@
 			right: 0;
 			width: 5rem;
 			height: 5rem;
+			@include respond(700) {
+				top: 7rem;
+				left: calc(50% + 3rem);
+				transform: translateX(-50%);
+			}
 		}
 
 		&--next {
@@ -102,6 +131,11 @@
 			right: 6rem;
 			width: 5rem;
 			height: 5rem;
+			@include respond(700) {
+				top: 7rem;
+				left: calc(50% - 3rem);
+				transform: translateX(-50%);
+			}
 		}
 	}
 }
@@ -109,15 +143,15 @@
 /////////////////////
 
 .testimonials .my-owl-nav {
-  margin-top: 40px;
+	margin-top: 40px;
 }
 
 .testimonials .my-owl-nav span {
-  background:#eaeaea;
-  padding: 20px;
-  margin: 0 4px;
+	background:#eaeaea;
+	padding: 20px;
+	margin: 0 4px;
 }
 
 .testimonials .my-owl-nav span:hover {
-  cursor: pointer;
+	cursor: pointer;
 }

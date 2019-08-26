@@ -7,6 +7,11 @@
 		position: relative;
 		float: right;
 		width: 50%;
+
+		@include respond(700) {
+			width: 100%;
+			float: none;
+		}
 	}
 
 	&__container &__skill:nth-child(2) &__skill__progress-bar &__skill__progress-bar__fill {width: 70%;}

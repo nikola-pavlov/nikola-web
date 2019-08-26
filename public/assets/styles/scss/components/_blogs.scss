@@ -3,20 +3,43 @@
 	@include clearfix;
 
 	&__box {
-		width: calc(25% - 1.5rem);
+		width: calc(25% - 2rem);
 		float: left;
 		border-radius: 1rem;
 		overflow: hidden;
 		border: 1px solid var(--color-grey-light);
 		transition: all .3s ease-out;
 
+		@include respond(1000) {
+			width: calc(50% - 1.25rem);
+			margin-bottom: 2.5rem;
+		}
+
+		@include respond(700) {
+			width: 100%;
+		}
+
 		&:not(:last-child) {
-			margin-right: 2rem;
+			margin-right: 2.5rem;
+
+			@include respond(1000) {
+				margin-right: 0;
+			}
+		}
+
+		&:nth-child(odd) {
+			@include respond(1000) {
+				margin-right: 2.5rem;
+			}
 		}
 
 		&__img {
 			background: grey;
 			height: 15rem;
+
+			@include respond(1000) {
+				height: 20rem;
+			}
 
 			& > img {
 				width: 100%;
@@ -63,5 +86,10 @@
 	&__box:hover {
 		transform: scale(1.05);
 		box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+
+		@include respond(700) {
+			transform: scale(1);
+			box-shadow: none;
+		}
 	}
 }

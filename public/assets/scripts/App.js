@@ -15,4 +15,5 @@ import RevealOnScroll from "./modules/RevealOnScroll";
 var mobileMenu = new MobileMenu();
 new RevealOnScroll($(".skills__designer__categories__group"), "80%");
 new RevealOnScroll($(".digital-services__left__group"), "60%");
+new RevealOnScroll($(".pro-skills__container"), "60%");
 var stickyHeader = new StickyHeader();

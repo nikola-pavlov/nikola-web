@@ -19,11 +19,36 @@
 		cursor: pointer;
 		backface-visibility: hidden;
 
+		@include respond(700) {
+			width: 6rem;
+			height: 6rem;
+			right: 2rem;
+			top: 2rem;
+		}
+
+		@include respond(500) {
+			width: 5rem;
+			height: 5rem;
+		}
+
+		@include respond(400) {
+			right: 1rem;
+			top: 1rem;
+		}
+
 		&--front {
 			background: white url(../../images/envelope.svg);
 			background-repeat: no-repeat;
 			background-size: 3rem;
 			background-position: center;
+
+			@include respond(700) {
+				background-size: 2.5rem
+			}
+
+			@include respond(500) {
+				background-size: 2rem;
+			}
 		}
 
 		&--back {
@@ -31,6 +56,14 @@
 			background-repeat: no-repeat;
 			background-size: 3rem;
 			background-position: center;
+
+			@include respond(700) {
+				background-size: 2.5rem
+			}
+
+			@include respond(500) {
+				background-size: 2rem;
+			}
 		}
 	}
 

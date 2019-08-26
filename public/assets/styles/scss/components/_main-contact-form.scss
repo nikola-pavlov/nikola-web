@@ -1,24 +1,18 @@
 .main-contact-form {
 	background: var(--color-whitish);
-	width: 30vw;
-	min-height: 70vh;
+	width: 60rem;
 	border-radius: 1rem;
 	overflow: hidden;
 	@include clearfix;
+	z-index: 20;
 
-	@include respond(XLarge) {
-		width: 60vw;
+	@include respond(700) {
+		width: 90vw;
+		height: 90vh;
+		overflow-y: scroll;
 	}
 
-	@include respond(Large) {
-		width: 70vw;
-	}
-
-	@include respond(Medium) {
-		width: 80vw;
-	}
-
-	@include respond(Small) {
+	@include respond(500) {
 		width: 100vw;
 		height: 100vh;
 	}
@@ -26,6 +20,10 @@
 	&__container {
 		padding: 4rem;
 		width: 100%;
+
+		@include respond(700) {
+			padding-bottom: 10rem;
+		}
 	}
 
 	&__form {
@@ -35,14 +33,14 @@
 			width: 50%;
 			float: left;
 
-			@include respond(Small) {
+			@include respond(500) {
 				width: 100%;
 			}
 
 			&:not(:nth-child(even)) {
 				padding-right: 2rem;
 
-				@include respond(Small) {
+				@include respond(500) {
 					padding: 0;
 				}
 			}

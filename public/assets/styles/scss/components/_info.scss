@@ -2,11 +2,34 @@
 
 	color: var(--color-whitish);
 	@include clearfix;
+	display: flex;
+
+	@include respond(700) {
+		display: block;
+	}
 
 	&__box {
-		width: calc(100% / 3);
+		width: 33.3%;
 		float: left;
 		padding: 5rem 8rem;
+		position: relative;
+
+		@include respond(1300) {
+			padding: 3rem 6rem;
+		}
+
+		@include respond(1000) {
+			padding: 2rem 3rem;
+		}
+
+		@include respond(800) {
+			padding: 2rem 2rem;
+		}
+
+		@include respond(700) {
+			width: 100%;
+			float: none;
+		}
 
 		&:nth-child(1) {
 			background-color: var(--color-four);
@@ -24,10 +47,22 @@
 			font-size: 2rem;
 			padding-bottom: 2rem;
 			font-weight: bold;
+			@include respond(700) {
+				text-align: center;
+			}
 		}
 
 		&__description {
+			@include respond(700) {
+				padding-bottom: 1rem;
+			}
+		}
 
+		&__btn {
+			position: relative;
+			@include respond(700) {
+				left: calc(50% - 6.8rem);
+			}
 		}
 	}
 }

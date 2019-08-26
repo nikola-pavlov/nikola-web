@@ -40,7 +40,7 @@
 		visibility: visible;
 		opacity: 1;
 
-		@include respond(Large) {
+		@include respond(1000) {
 			position: fixed;
 			top: 25%;
 			left:50%;
@@ -67,7 +67,7 @@
 		border-radius: 50%;
 		z-index: 3;
 
-		@include respond(Large) {
+		@include respond(1000) {
 			width: 8rem;
 			height: 8rem;
 			font-size: 4rem;
@@ -86,7 +86,7 @@
 		z-index: 4;
 		clip-path: polygon(100% 0, 35% 50%, 100% 100%);
 		
-		@include respond(Large) {
+		@include respond(1000) {
 			display: none;
 		}
 	}
