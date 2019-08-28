@@ -50,6 +50,7 @@
 		width: 50%;
 		background: #fcfcfc;
 		float: left;
+		overflow: hidden;
 
 		@include respond(1300) {
 			width: 100%;

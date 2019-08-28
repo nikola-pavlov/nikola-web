@@ -11,8 +11,8 @@
 		height: 7rem;
 		width: 7rem;
 		position: fixed;
-		top: 9.5rem;
-		right: 4.9rem;
+		top: 8rem;
+		right: 2.5rem;
 		border-radius: 50%;
 		z-index: 102;
 		box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
@@ -129,5 +129,17 @@
 	&__checkbox:not(:checked) ~ &__button--back {
 		animation: messageButtonBackReturn 1s linear 1 both;
 		z-index: 105;
+	}
+
+	&__checkbox:not(:checked) ~ &__button {
+		display: none;
+
+		&--visible {
+			display: block;
+		}
+	}
+
+	&__checkbox:checked ~ .back-to-top {
+		display: none;
 	}
 }

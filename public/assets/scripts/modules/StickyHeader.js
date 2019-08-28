@@ -9,16 +9,50 @@ class StickyHeader {
 		this.siteTopHeaderUl = $(".nav-top ul");
 		this.headerTriggerElement = $(".hero__title");
 		this.languageNavSubMenu = $(".nav-sub");
+		this.contactButton = $(".contact__button");
+		this.backToTopButton = $(".back-to-top");
 		this.createHeaderWaypoint();
 		this.createTopHeaderWaypoint();
+		this.createContactButtonWaypoint();
+		this.createBackToTopWaypoint();
 		this.pageSections = $(".section");
-		this.headerLinks = $(".nav-primary a")
+		this.headerLinks = $(".nav-primary a");
+		this.topPageLink = $(".back-to-top__link");
 		this.createPageSectionWaypoints();
 		this.addSmoothScrolling();
 	}
 
 	addSmoothScrolling() {
 		this.headerLinks.smoothScroll();
+		this.topPageLink.smoothScroll();
+	}
+
+	createContactButtonWaypoint() {
+		var that = this;
+		new Waypoint({
+			element: this.headerTriggerElement[0],
+			handler: function(direction) {
+				if (direction == "down") {
+					that.contactButton.addClass("contact__button--visible");
+				} else {
+					that.contactButton.removeClass("contact__button--visible");
+				}
+			}
+		});
+	}
+
+	createBackToTopWaypoint() {
+		var that = this;
+		new Waypoint({
+			element: this.headerTriggerElement[0],
+			handler: function(direction) {
+				if (direction == "down") {
+					that.backToTopButton.addClass("back-to-top--visible");
+				} else {
+					that.backToTopButton.removeClass("back-to-top--visible");
+				}
+			}
+		});
 	}
 
 	createHeaderWaypoint() {
@@ -83,7 +117,6 @@ class StickyHeader {
 			});
 		});
 	}
-
 }
 
 export default StickyHeader;

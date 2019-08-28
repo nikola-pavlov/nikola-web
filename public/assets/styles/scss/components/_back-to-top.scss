@@ -1,0 +1,47 @@
+.back-to-top {
+	bottom: 2.5rem;
+	right: 2.5rem;
+	position: fixed;
+	background-color: var(--color-whitish);
+	height: 7rem;
+	width: 7rem;
+	border-radius: 50%;
+	z-index: 102;
+	box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
+	cursor: pointer;
+	backface-visibility: hidden;
+	background: white url(../../images/arrow--top.svg);
+	background-repeat: no-repeat;
+	background-size: 3rem;
+	background-position: center;
+	overflow: hidden;
+	display: none;
+
+	&--visible {
+		display: block;
+	}
+
+	&__link {
+		display: block;
+		height: 7rem;
+		width: 7rem;
+	}
+
+	@include respond(700) {
+		width: 6rem;
+		height: 6rem;
+		right: 2rem;
+		bottom: 2rem;
+	}
+
+	@include respond(500) {
+		width: 5rem;
+		height: 5rem;
+		background-size: 2rem;
+	}
+
+	@include respond(400) {
+		right: 1rem;
+		bottom: 1rem;
+	}
+}

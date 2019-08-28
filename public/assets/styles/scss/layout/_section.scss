@@ -68,19 +68,19 @@
 	}
 
 	&--login-page {
-		height: 100rem;
+		min-height: 100vh;
 		padding-top: 20rem;
-		// background: var(--color-three);
+
 		background-image: linear-gradient(to right bottom, var(--color-two), var(--color-four));
 
-		@include respond(Medium) {
-			height: 120rem;
+		@include respond(800) {
+			padding-bottom: 10rem;
 		}
 	}
 
 	&--register-page {
-		height: 100rem;
 		padding-top: 20rem;
+		min-height: 100vh;
 		background-image: linear-gradient(to right bottom, var(--color-two), var(--color-four));
 	}
 

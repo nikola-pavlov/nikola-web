@@ -14,12 +14,15 @@
 		}
 	}
 
-	&__container &__skill:nth-child(2) &__skill__progress-bar &__skill__progress-bar__fill {width: 70%;}
-	&__container &__skill:nth-child(3) &__skill__progress-bar &__skill__progress-bar__fill {width: 95%;}
-	&__container &__skill:nth-child(4) &__skill__progress-bar &__skill__progress-bar__fill {width: 65%;}
-	&__container &__skill:nth-child(5) &__skill__progress-bar &__skill__progress-bar__fill {width: 35%;}
-	&__container &__skill:nth-child(6) &__skill__progress-bar &__skill__progress-bar__fill {width: 35%;}
-	&__container &__skill:nth-child(7) &__skill__progress-bar &__skill__progress-bar__fill {width: 35%;}
+	&__container &__skill:nth-child(2) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 100%;}
+	&__container &__skill:nth-child(3) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 95%;}
+	&__container &__skill:nth-child(4) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 90%;}
+	&__container &__skill:nth-child(5) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 85%;}
+	&__container &__skill:nth-child(6) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 80%;}
+	&__container &__skill:nth-child(7) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 75%;}
+	&__container &__skill:nth-child(8) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 70%;}
+	&__container &__skill:nth-child(9) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 65%;}
+	&__container &__skill:nth-child(10) &__skill__progress-bar &__skill__progress-bar__fill {max-width: 60%;}
 
 	&__title {
 		font-size: 2rem;
@@ -73,7 +76,6 @@
 			&__fill {
 				position: relative;
 				background-color: var(--color-whitish);
-				width: 72%;
 				height: .6rem;
 				animation: 3.2s ease-out 0s 1 scaleFromLeft;
 			}
