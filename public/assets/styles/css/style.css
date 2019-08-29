@@ -761,10 +761,50 @@ body {
           width: 100%; } }
 
 .aboutme {
-  background: white; }
+  background: white;
+  font-size: 1.6rem;
+  line-height: 1.6; }
   .aboutme__info {
-    background: green;
-    padding: 5rem; }
+    background: var(--color-three);
+    border-radius: 1rem;
+    padding: 5rem;
+    margin-bottom: 4rem; }
+    .aboutme__info::after {
+      content: "";
+      display: table;
+      clear: both; }
+    .aboutme__info__left {
+      width: calc(40% - 2rem);
+      float: left;
+      background: red; }
+      .aboutme__info__left__img {
+        position: relative;
+        background: grey;
+        height: 50rem; }
+        .aboutme__info__left__img img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
+        .aboutme__info__left__img__info {
+          position: absolute;
+          bottom: 0;
+          background: var(--color-four);
+          color: var(--color-whitish);
+          overflow: hidden;
+          height: 25%;
+          transition: all .3s ease-out;
+          padding: 3rem 5rem;
+          text-align: center; }
+          .aboutme__info__left__img__info__title {
+            font-size: 2rem; }
+        .aboutme__info__left__img:hover .aboutme__info__left__img__info {
+          height: 50%; }
+    .aboutme__info__right {
+      width: calc(60% - 2rem);
+      float: right;
+      background: yellow; }
+      .aboutme__info__right__info__title {
+        font-size: 5rem; }
   .aboutme__build {
     position: relative;
     height: 50rem; }
@@ -776,9 +816,10 @@ body {
     position: absolute;
     width: calc(50% - 2rem);
     float: left;
-    background: red;
+    background: var(--color-three);
     transition: all .25s ease-out;
-    height: 50rem; }
+    height: 50rem;
+    border-radius: 1rem; }
     .aboutme__designer--is-expanded {
       width: 100%;
       transition: all .25s ease-out; }
@@ -787,7 +828,6 @@ body {
       top: 0;
       left: 0;
       width: 100%;
-      border: 5px solid grey;
       height: 30rem;
       transition: all .25s ease-out; }
       .aboutme__designer__img img {
@@ -803,12 +843,11 @@ body {
         transition: all .25s ease-out; }
     .aboutme__designer__title {
       position: absolute;
-      background: pink;
       font-size: 2rem;
       top: 80%;
       left: 25%;
       transform: translateX(-50%);
-      z-index: 20;
+      z-index: 1;
       transition: all .25s ease-out; }
       .aboutme__designer__title--is-expanded {
         transition: all .25s ease-out;
@@ -819,23 +858,23 @@ body {
       font-size: 1.6rem;
       line-height: 1.6;
       position: absolute;
-      background: pink;
       left: calc(50% + 4rem);
       top: 30%;
-      z-index: 20;
+      z-index: 1;
       transition: all .25s 0s ease-out;
       opacity: 0;
+      visibility: hidden;
       width: calc(50% - 8rem); }
       .aboutme__designer__description--is-expanded {
-        transition: all .25s .5s ease-out;
-        opacity: 1; }
+        transition: all .25s .3s ease-out;
+        opacity: 1;
+        visibility: visible; }
     .aboutme__designer__expand-btn {
       position: absolute;
-      background: pink;
       top: 90%;
       left: 25%;
       transform: translateX(-50%);
-      z-index: 20;
+      z-index: 1;
       width: 3rem;
       height: 3rem;
       cursor: pointer;
@@ -845,29 +884,104 @@ body {
         transform: translateX(0);
         left: calc(100% - 7rem);
         top: 10%; }
+      .aboutme__designer__expand-btn__icon {
+        width: 3rem;
+        height: 3rem;
+        background-image: url("../../images/plus.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 1s ease-out; }
+        .aboutme__designer__expand-btn__icon--is-expanded {
+          transform: rotate(495deg);
+          transition: all 1s ease-out; }
   .aboutme__developer {
     position: absolute;
     width: calc(50% - 2rem);
     float: right;
     right: 0;
-    background: blue;
+    background: var(--color-three);
     height: 50rem;
-    transition: all .25s ease-out; }
+    transition: all .25s ease-out;
+    border-radius: 1rem; }
     .aboutme__developer--is-expanded {
       width: 100%;
       transition: all .25s ease-out; }
     .aboutme__developer__img {
-      border: 5px solid grey;
-      height: 20rem; }
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 30rem;
+      transition: all .25s ease-out; }
+      .aboutme__developer__img img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40rem;
+        height: 40rem; }
+      .aboutme__developer__img--is-expanded {
+        height: 50rem;
+        width: 50%;
+        transition: all .25s ease-out; }
     .aboutme__developer__info {
       padding: 5rem; }
     .aboutme__developer__title {
-      font-size: 2rem; }
+      position: absolute;
+      font-size: 2rem;
+      top: 80%;
+      right: 25%;
+      transform: translateX(50%);
+      z-index: 1;
+      transition: all .25s ease-out; }
+      .aboutme__developer__title--is-expanded {
+        transition: all .25s ease-out;
+        right: calc(50% + 4rem);
+        transform: translateX(0);
+        top: 10%; }
+    .aboutme__developer__description {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      position: absolute;
+      right: calc(50% + 4rem);
+      top: 30%;
+      z-index: 1;
+      transition: all .25s 0s ease-out;
+      opacity: 0;
+      visibility: hidden;
+      width: calc(50% - 8rem);
+      text-align: right; }
+      .aboutme__developer__description--is-expanded {
+        transition: all .25s .3s ease-out;
+        opacity: 1;
+        visibility: visible; }
     .aboutme__developer__expand-btn {
-      background: pink;
+      position: absolute;
+      top: 90%;
+      right: 25%;
+      transform: translateX(50%);
+      z-index: 1;
       width: 3rem;
       height: 3rem;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: all .25s ease-out; }
+      .aboutme__developer__expand-btn--is-expanded {
+        transition: all .25s ease-out;
+        transform: translateX(0);
+        right: calc(100% - 7rem);
+        top: 10%; }
+      .aboutme__developer__expand-btn__icon {
+        width: 3rem;
+        height: 3rem;
+        background-image: url("../../images/plus.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 1s ease-out; }
+        .aboutme__developer__expand-btn__icon--is-expanded {
+          transform: rotate(495deg);
+          transition: all 1s ease-out; }
 
 .hero {
   position: relative;
@@ -3524,6 +3638,5 @@ button.btn.btn--full-width {
   .section--info {
     padding: 0; }
   .section--aboutme {
-    background-color: yellow;
     min-height: 100vh;
     padding-top: 20rem; }
