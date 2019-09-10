@@ -2,24 +2,58 @@
 	background: white;
 	font-size: 1.6rem;
 	line-height: 1.6;
+	font-weight: 100;
+	color: var(--color-grey);
 
 	&__info {
 		background: var(--color-three);
 		border-radius: 1rem;
 		padding: 5rem;
 		margin-bottom: 4rem;
+		overflow: hidden;
 		@include clearfix;
+
+		@include respond(1000) {
+			padding: 3rem;
+		}
+
+		@include respond(800) {
+			padding: 2rem;
+		}
+
+		@include respond(700) {
+			padding: 0;
+		}
 
 		&__left {
 			width: calc(40% - 2rem);
 			float: left;
-			background: red;
+
+			@include respond(1000) {
+				width: calc(50% - 2rem);
+			}
+
+			@include respond(800) {
+				width: calc(50% - 1rem);
+			}
+
+			@include respond(700) {
+				width: 100%;
+			}
 
 			&__img {
 
 				position: relative;
 				background: grey;
 				height: 50rem;
+
+				@include respond(700) {
+					height: 35rem;
+				}
+
+				@include respond(500) {
+					height: 30rem;
+				}
 
 				& img {
 					width: 100%;
@@ -30,22 +64,61 @@
 				&__info {
 					position: absolute;
 					bottom:0;
-					background: var(--color-four);
+					background-image: linear-gradient(to bottom, var(--color-one), var(--color-four));
 					color: var(--color-whitish);
 					overflow: hidden;
 					height: 25%;
 					transition: all .3s ease-out;
-					padding: 3rem 5rem;
+					padding: 2rem 5rem;
 					text-align: center;
 
+					@include respond(1100) {
+						padding: 2rem 2rem;
+					}
+
+					@include respond(700) {
+						position: relative;
+						height: auto;
+					}
+
 					&__title {
-						font-size: 2rem;
+						font-size: 1.8rem;
+						font-weight: bold;
+						text-transform: uppercase;
 					}
 
 					&__subtitle {
+						padding-bottom: .4rem;
+						font-size: 1.6rem;
+						text-transform: uppercase;
+						opacity: .8;
 					}
 
 					&__icons {
+
+						&__icon {
+							display: inline-block;
+							background-size: 100%;
+							background-repeat: no-repeat;
+							background-position: center;
+							height: 1.8rem;
+							width: 1.8rem;
+							margin: 1rem;
+							opacity: .7;
+							transition: all .3s ease-out;
+							cursor: pointer;
+
+							&:hover {
+								opacity: 1;
+								transform: scale(1.2);
+							}
+
+							&--fb {background-image: url(../../images/facebook-logo--white.svg);}
+							&--insta {background-image: url(../../images/instagram-logo--white.svg);}
+							&--linkedin {background-image: url(../../images/linkedin-logo--white.svg);}
+							&--github {background-image: url(../../images/github-logo--white.svg);}
+							&--mail {background-image: url(../../images/envelope--white.svg);}
+						}
 
 					}
 
@@ -56,6 +129,33 @@
 
 				&:hover &__info {
 					height: 50%;
+					@include respond(700) {
+						height: auto;
+					}
+				}
+			}
+
+			&__cv {
+				background: var(--color-four);
+				color: var(--color-whitish);
+				margin-top: 1rem;
+				padding: 2rem;
+				text-align: center;
+				text-transform: uppercase;
+				font-size: 2rem;
+				font-weight: bold;
+				cursor: pointer;
+				border: 1px solid transparent;
+				transition: all .3s ease-out;
+
+				@include respond(700) {
+					margin-top: 24rem;
+				}
+
+				&:hover {
+					background: var(--color-whitish);
+					color: var(--color-four);
+					border: 1px solid var(--color-four);
 				}
 			}
 		}
@@ -63,19 +163,83 @@
 		&__right {
 			width: calc(60% - 2rem);
 			float: right;
-			background: yellow;
+
+			@include respond(1000) {
+				width: calc(50% - 2rem);
+			}
+
+			@include respond(800) {
+				width: calc(50% - 1rem);
+			}
+
+			@include respond(700) {
+				width: 100%;
+				padding: 2rem;
+			}
 
 			&__info {
+
 				&__title {
-					font-size: 5rem;
+					font-size: 4rem;
+
+					@include respond(700) {
+						text-align: center;
+						font-size: 3rem;
+					}
+
+					& span {
+						font-weight: bold;
+					}
 				}
 
 				&__subtitle {
-
+					padding-bottom: 2rem;
+					opacity: .8;
+					@include respond(700) {
+						text-align: center;
+					}
 				}
 
 				&__description {
+					border-bottom: 1px solid var(--color-four);
+					padding-bottom: 3rem;
+				}
 
+				&__item-group {
+					padding-top: 3rem;
+				}
+
+				&__item {
+					position: relative;
+					padding: 0.8rem 0;
+					list-style: none;
+					&__title {
+						font-weight: bold;
+						text-transform: uppercase;
+						display: inline-block;
+						width: calc(25% - 5px);
+
+						@include respond(1000) {
+							width: calc(30% - 5px);
+						}
+
+						@include respond(900) {
+							width: calc(50% - 5px);
+						}
+					}
+
+					&__content {
+						display: inline-block;
+						width: 75%;
+
+						@include respond(1000) {
+							width: 70%;
+						}
+
+						@include respond(900) {
+							width: 50%;
+						}
+					}
 				}
 			}
 		}
@@ -96,6 +260,24 @@
 		height: 50rem;
 		border-radius: 1rem;
 
+		@include respond(1000) {
+			width: calc(50% - 1rem);
+		}
+
+		@include respond(800) {
+			position: relative;
+			width: 100%;
+			margin-bottom: 2rem;
+		}
+
+		@include respond(700) {
+			height: 60rem;
+		}
+
+		@include respond(500) {
+			height: 45rem;
+		}
+
 		&--is-expanded {
 			width: 100%;
 			transition: all .25s ease-out;
@@ -106,7 +288,6 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			// border: 5px solid grey;
 			height: 30rem;
 			transition: all .25s ease-out;
 
@@ -117,12 +298,26 @@
 				transform: translate(-50%, -50%);
 				width: 40rem;
 				height: 40rem;
+
+				@include respond(1000) {
+					width: 25rem;
+					height: 25rem;
+				}
+
+				@include respond(500) {
+					display: none;
+				}
 			}
 
 			&--is-expanded {
 				height: 50rem;
 				width: 50%;
 				transition: all .25s ease-out;
+
+				@include respond(800) {
+					height: 30rem;
+					width: 100%;
+				}
 			}
 		}
 
@@ -130,17 +325,43 @@
 			position: absolute;
 			// background: pink;
 			font-size: 2rem;
-			top: 80%;
+			font-weight: bold;
+			top: 75%;
 			left: 25%;
 			transform: translateX(-50%);
 			z-index: 1;
 			transition: all .25s ease-out;
 
+			@include respond(800) {
+				top: 10%;
+				left: 50%;
+			}
+
+			@include respond(500) {
+				top: 7%;
+			}
+
+
 			&--is-expanded {
 				transition: all .25s ease-out;
 				left: calc(50% + 4rem);
 				transform: translateX(0);
-				top: 10%;
+				top: 8%;
+
+				@include respond(1000) {
+					left: calc(45% + 4rem);
+				}
+
+				@include respond(800) {
+					left: 50%;
+					top: 10%;
+					transform: translateX(-50%);
+				}
+
+				@include respond(500) {
+					top: 7%;
+				}
+
 			}
 		}
 
@@ -150,24 +371,51 @@
 			position: absolute;
 			// background: pink;
 			left: calc(50% + 4rem);
-			top: 30%;
+			top: 20%;
 			z-index: 1;
 			transition: all .25s 0s ease-out;
 			opacity: 0;
 			visibility: hidden;
 			width: calc(50% - 8rem);
 
+			@include respond(800) {
+				top: 60%;
+				left: 0;
+				opacity: 1;
+				visibility: visible;
+				width: 100%;
+				padding: 0 5rem;
+			}
+
+			@include respond(700) {
+				padding: 0 2rem;
+			}
+
+			@include respond(500) {
+				top: 20%;
+			}
+
 			&--is-expanded {
 				transition: all .25s .3s ease-out;
 				opacity: 1;
 				visibility: visible;
+
+				@include respond(1000) {
+					left: calc(45% + 4rem);
+					width: calc(55% - 8rem);
+				}
+
+				@include respond(800) {
+					width: 100%;
+					left: 0;
+				}
 			}
 		}
 
 		&__expand-btn {
 			position: absolute;
 			// background: pink;
-			top: 90%;
+			top: 85%;
 			left: 25%;
 			transform: translateX(-50%);
 			z-index: 1;
@@ -176,11 +424,15 @@
 			cursor: pointer;
 			transition: all .25s ease-out;
 
+			@include respond(800) {
+				display: none;
+			}
+
 			&--is-expanded {
 				transition: all .25s ease-out;
 				transform: translateX(0);
-				left: calc(100% - 7rem);
-				top: 10%;
+				left: calc(100% - 6rem);
+				top: 6%;
 			}
 
 			&__icon {
@@ -218,6 +470,23 @@
 		transition: all .25s ease-out;
 		border-radius: 1rem;
 
+		@include respond(1000) {
+			width: calc(50% - 1rem);
+		}
+
+		@include respond(800) {
+			position: relative;
+			width: 100%;
+		}
+
+		@include respond(700) {
+			height: 60rem;
+		}
+
+		@include respond(500) {
+			height: 45rem;
+		}
+
 		&--is-expanded {
 			width: 100%;
 			transition: all .25s ease-out;
@@ -239,12 +508,26 @@
 				transform: translate(-50%, -50%);
 				width: 40rem;
 				height: 40rem;
+
+				@include respond(1000) {
+					width: 25rem;
+					height: 25rem;
+				}
+
+				@include respond(500) {
+					display: none;
+				}
 			}
 
 			&--is-expanded {
 				height: 50rem;
 				width: 50%;
 				transition: all .25s ease-out;
+
+				@include respond(800) {
+					height: 30rem;
+					width: 100%;
+				}
 			}
 		}
 
@@ -256,17 +539,51 @@
 			position: absolute;
 			// background: pink;
 			font-size: 2rem;
-			top: 80%;
+			font-weight: bold;
+			top: 75%;
 			right: 25%;
 			transform: translateX(+50%);
 			z-index: 1;
 			transition: all .25s ease-out;
 
+			@include respond(800) {
+				top: 110%;
+				right: 0;
+				left: 50%;
+				width: 30rem;
+				transform: translateX(-35%);
+			}
+
+			@include respond(700) {
+				top: 135%;
+			}
+
+			@include respond(500) {
+				top: 100%;
+				width: 25rem;
+				transform: translateX(-45%);
+			}
+
 			&--is-expanded {
 				transition: all .25s ease-out;
 				right: calc(50% + 4rem);
 				transform: translateX(0);
-				top: 10%;
+				top: 8%;
+
+				@include respond(1000) {
+					right: calc(45% + 4rem);
+				}
+
+				@include respond(800) {
+					top: 135%;
+					left: 0;
+					transform: translateX(+42%);
+				}
+
+				@include respond(500) {
+					top: 100%;
+					transform: translateX(+28%);
+				}
 			}
 		}
 
@@ -276,7 +593,7 @@
 			position: absolute;
 			// background: pink;
 			right: calc(50% + 4rem);
-			top: 30%;
+			top: 20%;
 			z-index: 1;
 			transition: all .25s 0s ease-out;
 			opacity: 0;
@@ -284,17 +601,47 @@
 			width: calc(50% - 8rem);
 			text-align: right;
 
+			@include respond(800) {
+				opacity: 1;
+				visibility: visible;
+				width: 100%;
+				left:0;
+				right: 0;
+				top: 160%;
+				padding: 0 5rem;
+				text-align: left;
+			}
+
+			@include respond(700) {
+				top: 190%;
+				padding: 0 2rem;
+			}
+
+			@include respond(500) {
+				top: 114%;
+			}
+
 			&--is-expanded {
 				transition: all .25s .3s ease-out;
 				opacity: 1;
 				visibility: visible;
+
+				@include respond(1000) {
+					right: calc(45% + 4rem);
+					width: calc(55% - 8rem);
+				}
+
+				@include respond(800) {
+					width: 100%;
+					right: 0;
+				}
 			}
 		}
 
 		&__expand-btn {
 			position: absolute;
 			// background: pink;
-			top: 90%;
+			top: 85%;
 			right: 25%;
 			transform: translateX(+50%);
 			z-index: 1;
@@ -303,11 +650,15 @@
 			cursor: pointer;
 			transition: all .25s ease-out;
 
+			@include respond(800) {
+				display: none;
+			}
+
 			&--is-expanded {
 				transition: all .25s ease-out;
 				transform: translateX(0);
-				right: calc(100% - 7rem);
-				top: 10%;
+				right: calc(100% - 6rem);
+				top: 6%;
 			}
 
 			&__icon {

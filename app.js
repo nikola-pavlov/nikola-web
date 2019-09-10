@@ -61,6 +61,10 @@ app.get("/about-me", function(req, res){
 	res.render("portfolio/about-me");
 });
 
+app.get("/cv", function(req, res){
+	res.render("portfolio/cv");
+});
+
 app.get("/inbox", isLoggedIn, function(req, res){
 	Message.find({}, function(err, allMessages){
 		if(err) {

@@ -16,7 +16,6 @@
 		transition: background-color .3s ease-out;
 		overflow: hidden;
 
-
 		&--is-expanded {
 			background-color: var(--color-whitish);
 			height: auto;
@@ -172,6 +171,7 @@
 			text-align: center;
 			transition: all .3s ease-out;
 			height: auto;
+			z-index: -1;
 	
 
 			&--is-visible {
@@ -179,6 +179,7 @@
 				visibility: visible;
 				padding-top: 12rem;
 				padding-bottom: 3rem;
+				z-index: 1;
 			}
 		}
 	}
