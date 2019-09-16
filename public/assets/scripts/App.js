@@ -13,6 +13,7 @@ import CountUp from "./modules/CountUp";
 import RevealOnScroll from "./modules/RevealOnScroll";
 import BackToTop from "./modules/BackToTop";
 import AboutMe from "./modules/AboutMe";
+import Portfolio from "./modules/Portfolio";
 
 var mobileMenu = new MobileMenu();
 new RevealOnScroll($(".skills__designer__categories__group"), "80%", "reveal-item--is-visible", "reveal-item");

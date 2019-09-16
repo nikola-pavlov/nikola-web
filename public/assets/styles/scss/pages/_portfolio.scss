@@ -1,0 +1,102 @@
+.portfolio {
+
+	font-size: 1.6rem;
+	&__container {
+		max-width: 114rem;
+		margin: 0 auto;
+	}
+
+	&__header {
+		background: yellow;
+
+		display: flex;
+		align-items: center;
+
+		&__search {
+			margin-right: auto;
+		}
+
+		&__features {
+			display: flex;
+		}
+
+		&__grid {
+			padding: 2rem 3rem;
+			cursor: pointer;
+
+			&--is-active {
+				background: pink;
+			}
+
+			&__img {
+				background:green;
+				height: 2rem;
+				width: 2rem;
+				-webkit-mask-image: url("../../images/grid.svg");
+				-webkit-mask-size: 2rem;
+			}
+		}
+
+		&__list {
+			padding: 2rem 3rem;
+			cursor: pointer;
+
+			&--is-active {
+				background: pink;
+			}
+
+			&__img {
+				background:green;
+				height: 2rem;
+				width: 2rem;
+				-webkit-mask-image: url("../../images/list.svg");
+			}
+		}
+	}
+
+	&__content {
+		display: flex;
+	}
+
+	&__nav {
+		background: red;
+		flex: 0 0 20%;
+	}
+
+	&__main {
+		background: blue;
+		flex: 1;
+
+		&__group {
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 1rem;
+		}
+	}
+
+
+	&__item {
+		background: #ccc;
+		flex: 1 0 25rem;
+		padding: 1rem;
+		height: 25rem;
+		margin: 1rem;
+
+		&:nth-last-child(-n+2) {
+			height: 0;
+			border: none;
+			padding: 0;
+			margin: 0 2rem 0 0;
+			background: lime;
+		}
+
+		&--is-grid {
+			flex: 1 0 25rem;
+		}
+
+		&--is-list {
+			flex: 1 0 50rem;
+		}
+	}
+}

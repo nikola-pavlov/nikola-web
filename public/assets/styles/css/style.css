@@ -1572,6 +1572,70 @@ body {
       .cv__content__main__section__item__text.last {
         padding: 2rem 0 0 0; }
 
+.portfolio {
+  font-size: 1.6rem; }
+  .portfolio__container {
+    max-width: 114rem;
+    margin: 0 auto; }
+  .portfolio__header {
+    background: yellow;
+    display: flex;
+    align-items: center; }
+    .portfolio__header__search {
+      margin-right: auto; }
+    .portfolio__header__features {
+      display: flex; }
+    .portfolio__header__grid {
+      padding: 2rem 3rem;
+      cursor: pointer; }
+      .portfolio__header__grid--is-active {
+        background: pink; }
+      .portfolio__header__grid__img {
+        background: green;
+        height: 2rem;
+        width: 2rem;
+        -webkit-mask-image: url("../../images/grid.svg");
+        -webkit-mask-size: 2rem; }
+    .portfolio__header__list {
+      padding: 2rem 3rem;
+      cursor: pointer; }
+      .portfolio__header__list--is-active {
+        background: pink; }
+      .portfolio__header__list__img {
+        background: green;
+        height: 2rem;
+        width: 2rem;
+        -webkit-mask-image: url("../../images/list.svg"); }
+  .portfolio__content {
+    display: flex; }
+  .portfolio__nav {
+    background: red;
+    flex: 0 0 20%; }
+  .portfolio__main {
+    background: blue;
+    flex: 1; }
+    .portfolio__main__group {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1rem; }
+  .portfolio__item {
+    background: #ccc;
+    flex: 1 0 25rem;
+    padding: 1rem;
+    height: 25rem;
+    margin: 1rem; }
+    .portfolio__item:nth-last-child(-n+2) {
+      height: 0;
+      border: none;
+      padding: 0;
+      margin: 0 2rem 0 0;
+      background: lime; }
+    .portfolio__item--is-grid {
+      flex: 1 0 25rem; }
+    .portfolio__item--is-list {
+      flex: 1 0 50rem; }
+
 .hero {
   position: relative;
   background-size: cover;
@@ -4239,3 +4303,7 @@ button.btn.btn--full-width {
       .section--cv {
         min-height: auto;
         padding: 15rem 0 0 0; } }
+  .section--portfolio {
+    min-height: 100vh;
+    padding-top: 40rem;
+    background: #eee; }
