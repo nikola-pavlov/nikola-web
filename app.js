@@ -1,24 +1,27 @@
 var express 			= require("express"),
-	app 				= express(),
-	mongoose 			= require("mongoose"),
-	bodyParser 			= require("body-parser"),
-	passport			= require("passport"),
-	LocalStrategy 		= require("passport-local"),
-	Message 			= require("./models/message"),
-	User				= require("./models/user")
+app 				= express(),
+mongoose 			= require("mongoose"),
+bodyParser 			= require("body-parser"),
+passport			= require("passport"),
+LocalStrategy 		= require("passport-local"),
+Message 			= require("./models/message"),
+User				= require("./models/user"),
+Project				= require("./models/project")
 
 mongoose.connect("mongodb://localhost/portfolio_web");
 
-// Message.create({
-// 	message: "Starting data for testing",
-// 	name: "Mile Panika",
-// 	email: "mile@panika.com"
-// }, function(err, message) {
+// Project.create({
+// 	name: "Starting data for testing",
+// 	description: "Mile Panika",
+// 	category: "mile@panika.com",
+// 	date: "17/09/2019",
+// 	image: "Image"
+// }, function(err, project) {
 // 	if(err) {
 // 		console.log(err);
 // 	} else {
 // 		console.log("NEWLY CREATED MESSAGE");
-// 		console.log(message)
+// 		console.log(project)
 // 	}
 // });
 
@@ -63,10 +66,6 @@ app.get("/about-me", function(req, res){
 
 app.get("/cv", function(req, res){
 	res.render("portfolio/cv");
-});
-
-app.get("/portfolio", function(req, res){
-	res.render("portfolio/portfolio");
 });
 
 app.get("/inbox", isLoggedIn, function(req, res){
@@ -132,10 +131,10 @@ app.get("/login", function(req, res){
 // handle login logic
 
 app.post("/login", passport.authenticate("local",
-	{
-		successRedirect: "/",
-		failureRedirect: "/login"
-	}), function(req, res){
+{
+	successRedirect: "/",
+	failureRedirect: "/login"
+}), function(req, res){
 
 });
 
@@ -159,6 +158,52 @@ function checkPassword(req, res, next){
 	}
 	res.redirect("/login");
 }
+
+// portfolio routes
+
+// var projects = [
+// 	{name: "Travel Flyer", image: "https://pixabay.com/get/5ee4dc4b4857b108f5d084609620367d1c3ed9e04e50744f7d2878dd904cc2_340.jpg", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. nobis cumque molestias."},
+// 	{name: "Book Branding", image: "https://pixabay.com/get/55e2d2464f5ba814f6da8c7dda793f7f1636dfe2564c704c73277cd79e4ac45f_340.jpg", description: "Reprehenderit architecto odit consequuntur voluptas earum nulla magni nostrum. Hic ducimus, in ipsum."},
+// 	{name: "Catalogue Design", image: "https://pixabay.com/get/54e3d7464c50ab14f6da8c7dda793f7f1636dfe2564c704c73277cd79e4ac45f_340.jpg", description: "Vero facere, ullam blanditiis nostrum quod, autem atque incidunt animi nobis..."},
+// 	{name: "Amazing Webpage", image: "https://pixabay.com/get/54e0d54b4c56b108f5d084609620367d1c3ed9e04e50744f7d2878dd904cc2_340.jpg", description: "Itaque provident tenetur delectus consequatur quod maxime, perspiciatis quaerat doloremque culpa?"}
+
+// 	];
+
+app.get("/portfolio", function(req, res){
+	// Get all projects from DB
+	Project.find({}, function(err, allProjects) {
+		if(err) {
+			console.log(err); 
+		} else {
+			res.render("portfolio/portfolio", {projects:allProjects});
+		}
+	});
+});
+
+app.post("/portfolio", function(req, res) {
+
+	//get data from form and add to projects array
+	var name = req.body.name;
+	var image = req.body.image;
+	var description = req.body.description;
+	var category = req.body.category;
+	var date = req.body.date;
+	var newProject = {name: name, image: image, description: description, category: category, date: date};
+	
+	// Create a new project and save to DB
+	Project.create(newProject, function(err, newlyCreated) {
+		if(err) {
+			console.log(err);
+		} else {
+			//redirect back to portfolio page
+			res.redirect("/portfolio");
+		}
+	});
+});
+
+app.get("/portfolio/new", function(req, res) {
+	res.render("portfolio/new-project.ejs");
+});
 
 app.listen(80, "192.168.0.20", function(){
 	console.log("Server started...");

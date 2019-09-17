@@ -16,17 +16,25 @@
 				</div>
 			</header>
 			<div class="portfolio__content">
-				<nav class="portfolio__nav">Nav</nav>
+				<nav class="portfolio__nav">Nav<a href="/portfolio/new">New Project</a></nav>
 				<div class="portfolio__main">
 					<ul class="portfolio__main__group">
-						<li class="portfolio__item">Item</li>
-						<li class="portfolio__item">Item</li>
-						<li class="portfolio__item">Item</li>
-						<li class="portfolio__item">Item</li>
-						<li class="portfolio__item">Item</li>
-						<li class="portfolio__item">Item</li>
-						<li class="portfolio__item">Item</li>
-						<li class="portfolio__item">Item</li>
+						<% projects.forEach(function(project){ %>
+						<li class="portfolio__item">
+							<div class="portfolio__item__category"><%= project.category %></div>
+							<div class="portfolio__item__image">
+								<img src="<%= project.image %>" alt="test">
+							</div>
+							<div class="portfolio__item__info">
+								<div class="portfolio__item__title"><%= project.name %> </div>
+								<div class="portfolio__item__description"><%= project.description %> </div>
+							</div>
+							<div class="portfolio__item__footer">
+								<div class="portfolio__item__date"><%= project.date %></div>
+								<div class="portfolio__item__comments"><span>a</span>21</div>
+							</div>
+						</li>
+						<%  }); %>
 						<li class="portfolio__item"></li>
 						<li class="portfolio__item"></li>
 					</ul>
