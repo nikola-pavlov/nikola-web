@@ -22,9 +22,9 @@
 						<% projects.forEach(function(project){ %>
 						<li class="portfolio__item">
 							<div class="portfolio__item__category"><%= project.category %></div>
-							<div class="portfolio__item__image">
+							<a href="/portfolio/<%= project._id %>"><div class="portfolio__item__image">
 								<img src="<%= project.image %>" alt="test">
-							</div>
+							</div> </a>
 							<div class="portfolio__item__info">
 								<div class="portfolio__item__title"><%= project.name %> </div>
 								<div class="portfolio__item__description"><%= project.description %> </div>

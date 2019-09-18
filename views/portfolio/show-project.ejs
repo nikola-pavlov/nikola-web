@@ -1,0 +1,17 @@
+<h2>This is show template</h2>
+
+<a href="/portfolio">Back to Portfolio</a>
+
+<p><%= project.name %> </p>
+
+<img src="<%= project.image %>" alt="test">
+
+<p> <%= project.description %> </p>
+
+<p><a href="/portfolio/<%= project._id %>/comments/new">ADD NEW COMMENT</a></p>
+
+<% project.comments.forEach(function(comment){ %>
+
+	<p><strong> <%= comment.author %> </strong> - <%= comment.text %> </p>
+
+<% }); %>

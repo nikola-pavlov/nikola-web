@@ -6,28 +6,18 @@ passport			= require("passport"),
 LocalStrategy 		= require("passport-local"),
 Message 			= require("./models/message"),
 User				= require("./models/user"),
-Project				= require("./models/project")
+Project				= require("./models/project"),
+Comment 			= require("./models/comment"),
+seedDB				= require("./seeds")
+
 
 mongoose.connect("mongodb://localhost/portfolio_web");
-
-// Project.create({
-// 	name: "Starting data for testing",
-// 	description: "Mile Panika",
-// 	category: "mile@panika.com",
-// 	date: "17/09/2019",
-// 	image: "Image"
-// }, function(err, project) {
-// 	if(err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log("NEWLY CREATED MESSAGE");
-// 		console.log(project)
-// 	}
-// });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
+
+seedDB();
 
 // PASSPORT CONFIGURATION 
 
@@ -159,7 +149,9 @@ function checkPassword(req, res, next){
 	res.redirect("/login");
 }
 
-// portfolio routes
+// ============
+// PORTFOLIO / PROJECTS ROUTES 
+// ============
 
 // var projects = [
 // 	{name: "Travel Flyer", image: "https://pixabay.com/get/5ee4dc4b4857b108f5d084609620367d1c3ed9e04e50744f7d2878dd904cc2_340.jpg", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. nobis cumque molestias."},
@@ -168,6 +160,8 @@ function checkPassword(req, res, next){
 // 	{name: "Amazing Webpage", image: "https://pixabay.com/get/54e0d54b4c56b108f5d084609620367d1c3ed9e04e50744f7d2878dd904cc2_340.jpg", description: "Itaque provident tenetur delectus consequatur quod maxime, perspiciatis quaerat doloremque culpa?"}
 
 // 	];
+
+// INDEX - Show all projects
 
 app.get("/portfolio", function(req, res){
 	// Get all projects from DB
@@ -179,6 +173,8 @@ app.get("/portfolio", function(req, res){
 		}
 	});
 });
+
+// CREATE - add new projects to DB
 
 app.post("/portfolio", function(req, res) {
 
@@ -201,8 +197,64 @@ app.post("/portfolio", function(req, res) {
 	});
 });
 
+// NEW - show form to create new project
+
 app.get("/portfolio/new", function(req, res) {
-	res.render("portfolio/new-project.ejs");
+	res.render("portfolio/new-project");
+});
+
+// SHOW -- show more info about one project
+
+app.get("/portfolio/:id", function(req, res) {
+
+	// find the project with the provided ID
+	Project.findById(req.params.id).populate("comments").exec(function(err, foundProject){
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(foundProject);
+			// render show template with that project
+			res.render("portfolio/show-project", {project: foundProject});
+		}
+	});
+});
+
+// ============
+// COMMENTS ROUTES
+// ============
+
+app.get("/portfolio/:id/comments/new", function(req, res){
+	// find project by id
+	Project.findById(req.params.id, function(err, project){
+		if(err) {
+			console.log(err);
+		} else {
+			res.render("comments/new-comment", {project: project});
+		}
+	});
+});
+
+app.post("/portfolio/:id/comments", function(req, res){
+	// lookup project using ID
+	Project.findById(req.params.id, function(err, project) {
+		if(err) {
+			console.log(err);
+			res.redirect("/portfolio");
+		} else {
+			Comment.create(req.body.comment, function(err, comment){
+				if(err) {
+					console.log(err);
+				} else {
+					project.comments.push(comment);
+					project.save();
+					res.redirect("/portfolio/" + project._id);
+				}
+			});
+		}
+	});
+	// create new comment
+	// connect new comment to project
+	// redirect to project show page
 });
 
 app.listen(80, "192.168.0.20", function(){
