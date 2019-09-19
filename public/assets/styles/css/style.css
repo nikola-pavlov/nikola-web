@@ -1576,43 +1576,118 @@ body {
   font-size: 1.6rem; }
   .portfolio__container {
     max-width: 114rem;
-    margin: 0 auto; }
+    margin: 0 auto;
+    background: var(--color-whitish); }
   .portfolio__header {
-    background: yellow;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    border-bottom: 1px solid var(--color-grey-light); }
+    @media (max-width: 31.25em) {
+      .portfolio__header {
+        flex-wrap: wrap;
+        height: 18rem;
+        align-content: space-around; } }
     .portfolio__header__search {
-      margin-right: auto; }
+      margin-right: auto;
+      flex: 0 0 40%;
+      margin-left: 2rem; }
+      @media (max-width: 62.5em) {
+        .portfolio__header__search {
+          flex: 0 0 50%; } }
+      @media (max-width: 50em) {
+        .portfolio__header__search {
+          flex: 0 0 60%; } }
+      @media (max-width: 43.75em) {
+        .portfolio__header__search {
+          flex: 0 0 62%; } }
+      @media (max-width: 31.25em) {
+        .portfolio__header__search {
+          order: 1;
+          flex: 0 0 100%;
+          background-color: var(--color-grey-light);
+          margin-left: 0; } }
+      .portfolio__header__search__form {
+        display: flex; }
+      .portfolio__header__search__input {
+        font-family: inherit;
+        font-size: inherit;
+        background-color: var(--color-grey-light);
+        border: none;
+        color: inherit;
+        padding: 1.25rem 2rem;
+        width: 90%;
+        transition: all .3s ease-out;
+        margin-right: -3.5rem; }
+        @media (max-width: 31.25em) {
+          .portfolio__header__search__input {
+            margin-right: -5rem;
+            width: 100%;
+            padding: 2rem 2rem; } }
+        .portfolio__header__search__input:focus {
+          outline: none;
+          width: 100%; }
+        .portfolio__header__search__input::-webkit-input-placeholder {
+          font-weight: 100;
+          opacity: .5; }
+      .portfolio__header__search__btn {
+        border: none;
+        background-color: var(--color-grey-light);
+        cursor: pointer; }
+        .portfolio__header__search__btn:focus {
+          outline: none; }
+        .portfolio__header__search__btn:active {
+          transform: translateY(2px); }
+      .portfolio__header__search__icon {
+        display: block;
+        background-color: var(--color-one);
+        -webkit-mask-image: url("../../images/search.svg");
+        -webkit-mask-size: 2rem;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        height: 2.5rem;
+        width: 2.5rem; }
     .portfolio__header__features {
       display: flex; }
+      @media (max-width: 31.25em) {
+        .portfolio__header__features {
+          width: 100%;
+          justify-content: center; } }
     .portfolio__header__grid {
-      padding: 2rem 3rem;
+      padding: 3rem 3rem;
       cursor: pointer; }
       .portfolio__header__grid--is-active {
-        background: pink; }
+        background: var(--color-three); }
       .portfolio__header__grid__img {
-        background: green;
+        background: var(--color-one);
         height: 2rem;
         width: 2rem;
         -webkit-mask-image: url("../../images/grid.svg");
         -webkit-mask-size: 2rem; }
     .portfolio__header__list {
-      padding: 2rem 3rem;
+      padding: 3rem 3rem;
       cursor: pointer; }
       .portfolio__header__list--is-active {
-        background: pink; }
+        background: var(--color-three); }
       .portfolio__header__list__img {
-        background: green;
+        background: var(--color-one);
         height: 2rem;
         width: 2rem;
         -webkit-mask-image: url("../../images/list.svg"); }
   .portfolio__content {
     display: flex; }
   .portfolio__nav {
-    background: red;
+    background: var(--color-four);
     flex: 0 0 20%; }
+    @media (max-width: 62.5em) {
+      .portfolio__nav {
+        flex: 0 0 25%; } }
+    @media (max-width: 50em) {
+      .portfolio__nav {
+        flex: 0 0 30%; } }
+    @media (max-width: 50em) {
+      .portfolio__nav {
+        display: none; } }
   .portfolio__main {
-    background: blue;
     flex: 1; }
     .portfolio__main__group {
       list-style: none;
@@ -1621,9 +1696,13 @@ body {
       padding: 1rem; }
   .portfolio__item {
     position: relative;
-    background: #ccc;
-    flex: 1 0 25rem;
+    background: var(--color-whitish);
+    border: 1px solid var(--color-grey-light);
+    box-shadow: 0 0rem 0.75rem rgba(0, 0, 0, 0.15);
+    flex: 1 0 27rem;
     margin: 1rem;
+    border-radius: 1rem;
+    overflow: hidden;
     display: flex;
     flex-direction: column; }
     .portfolio__item__title {
@@ -1643,20 +1722,28 @@ body {
         height: 20rem;
         object-fit: cover; }
       .portfolio__item__image::after {
-        content: "";
+        content: "View More";
         background: white;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        text-align: center;
+        padding-top: 12rem;
         opacity: 0;
         background-image: url("../../images/more.svg");
         background-size: 0rem;
         background-position: center;
         background-repeat: no-repeat;
-        transform: scale(0.25);
+        transform: scale(1);
         transition: all .25s ease-out, background-size .25s .225s ease-out; }
+        @media (max-width: 50em) {
+          .portfolio__item__image::after {
+            content: "View More";
+            opacity: .5;
+            transform: scale(1);
+            background-size: 3rem; } }
     .portfolio__item__info {
       padding: 2rem;
       margin-bottom: auto; }
@@ -1668,6 +1755,7 @@ body {
     .portfolio__item__description {
       line-height: 1.6;
       font-size: 1.6rem;
+      color: var(--color-grey-main);
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -1686,37 +1774,54 @@ body {
       display: flex;
       padding: 0 2rem 2rem 2rem; }
     .portfolio__item__date {
-      background: yellow;
+      opacity: .5;
       margin-right: auto; }
-    .portfolio__item__comments {
-      background: pink; }
-      .portfolio__item__comments span {
-        display: inline-block;
-        height: 2rem;
-        width: 2rem;
-        background-image: url("../../images/comment.svg");
-        background-size: cover;
-        background-position: center;
-        margin-right: .75rem; }
+    .portfolio__item__comments span {
+      display: inline-block;
+      height: 2rem;
+      width: 2rem;
+      background: var(--color-one);
+      -webkit-mask-image: url("../../images/comment.svg");
+      -webkit-mask-size: cover;
+      -webkit-mask-position: center;
+      margin-right: .75rem; }
     .portfolio__item:nth-last-child(-n+2) {
       height: 0;
       border: none;
       padding: 0;
-      margin: 0 2rem 0 0;
-      background: lime; }
+      margin: 0 2rem 0 0; }
     .portfolio__item--is-grid {
       flex: 1 0 25rem; }
     .portfolio__item--is-list {
       flex: 1 0 50rem;
       flex-direction: row; }
+      @media (max-width: 31.25em) {
+        .portfolio__item--is-list {
+          flex: 1 0 96%; } }
       .portfolio__item--is-list .portfolio__item__info {
-        flex: 2 0 50rem; }
+        flex: 2 0 20rem; }
       .portfolio__item--is-list .portfolio__item__info .portfolio__item__title {
         text-align: left; }
       .portfolio__item--is-list .portfolio__item__footer {
         position: absolute;
         bottom: 0;
         right: 0; }
+      .portfolio__item--is-list img {
+        background: red !important;
+        min-width: 32rem;
+        max-width: 32rem; }
+        @media (max-width: 62.5em) {
+          .portfolio__item--is-list img {
+            min-width: 25rem;
+            max-width: 25rem; } }
+        @media (max-width: 50em) {
+          .portfolio__item--is-list img {
+            min-width: 20rem;
+            max-width: 20rem; } }
+        @media (max-width: 37.5em) {
+          .portfolio__item--is-list img {
+            min-width: 15rem;
+            max-width: 15rem; } }
 
 .hero {
   position: relative;

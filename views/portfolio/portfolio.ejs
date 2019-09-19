@@ -5,7 +5,14 @@
 	<div class="portfolio">
 		<div class="portfolio__container">
 			<header class="portfolio__header">
-				<div class="portfolio__header__search">Search</div>
+				<div class="portfolio__header__search">
+					<form action="" class="portfolio__header__search__form">
+						<input type="text" class="portfolio__header__search__input" placeholder="Search Projects">
+						<button class="portfolio__header__search__btn">
+							<span class="portfolio__header__search__icon"></span>
+						</button>
+					</form>
+				</div>
 				<div class="portfolio__header__features">
 					<div class="portfolio__header__grid portfolio__header__grid--is-active">
 						<div class="portfolio__header__grid__img"></div>
@@ -22,16 +29,18 @@
 						<% projects.forEach(function(project){ %>
 						<li class="portfolio__item">
 							<div class="portfolio__item__category"><%= project.category %></div>
-							<a href="/portfolio/<%= project._id %>"><div class="portfolio__item__image">
-								<img src="<%= project.image %>" alt="test">
-							</div> </a>
+							<a href="/portfolio/<%= project._id %>">
+								<div class="portfolio__item__image">
+									<img src="<%= project.image %>" alt="project image">
+								</div> 
+							</a>
 							<div class="portfolio__item__info">
 								<div class="portfolio__item__title"><%= project.name %> </div>
 								<div class="portfolio__item__description"><%= project.description %> </div>
 							</div>
 							<div class="portfolio__item__footer">
 								<div class="portfolio__item__date"><%= project.date %></div>
-								<div class="portfolio__item__comments"><span>a</span>21</div>
+								<div class="portfolio__item__comments"><span></span>21</div>
 							</div>
 						</li>
 						<%  }); %>

@@ -212,7 +212,7 @@ app.get("/portfolio/:id", function(req, res) {
 		if(err) {
 			console.log(err);
 		} else {
-			console.log(foundProject);
+			console.log("Found Project:" + foundProject);
 			// render show template with that project
 			res.render("portfolio/show-project", {project: foundProject});
 		}
