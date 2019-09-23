@@ -146,6 +146,58 @@
     }
 });
 
+
+
+
+
+var action = false, clicked = false;
+var Owl = {
+
+    init: function() {
+      Owl.carousel();
+    },
+
+	carousel: function() {
+		var owl;
+		$(document).ready(function() {
+			
+			owl = $('.gallery__carousel').owlCarousel({
+				items 	 : 1,
+				center	   : true, 
+				nav        : false,
+				dots       : true,
+				loop       : true,
+				margin     : 10,
+				dotsContainer: '.test',
+				navText: ['prev','next'],
+			});
+
+			  $('.owl-next').on('click',function(){
+			  	action = 'next';
+			  });
+
+			  $('.owl-prev').on('click',function(){
+			  	action = 'prev';
+			  });
+
+			 $('.gallery__bookmarks').on('click', 'li', function(e) {
+			    owl.trigger('to.owl.carousel', [$(this).index(), 300]);
+			  });
+		});
+	}
+};
+
+$(document).ready(function() {
+  Owl.init();
+});
+
+
+
+
+
+
+
+
 	$('.owl-mobile').owlCarousel({
     loop:true,
     margin:10,

@@ -1823,6 +1823,45 @@ body {
             min-width: 15rem;
             max-width: 15rem; } }
 
+.project {
+  background: red;
+  font-size: 1.6rem;
+  line-height: 1.6; }
+  .project__container {
+    max-width: 114rem;
+    margin: 0 auto;
+    min-height: 90rem;
+    background: var(--color-whitish);
+    display: flex; }
+  .project__main {
+    background: blue;
+    position: relative;
+    width: 70%; }
+  .project__main__info {
+    background: orange;
+    padding: 5rem; }
+    .project__main__info__title {
+      margin-bottom: 1.25rem; }
+  .project__main__comments {
+    padding: 5rem;
+    background: grey; }
+  .project__side {
+    background: yellow;
+    flex: 1; }
+    .project__side__info {
+      padding: 2rem; }
+      .project__side__info__title {
+        font-size: 2rem; }
+      .project__side__info__group {
+        margin-bottom: 2.5rem; }
+        .project__side__info__group__title {
+          font-weight: bold;
+          margin-bottom: .75rem;
+          border-left: 2px solid var(--color-one);
+          padding-left: 1rem; }
+        .project__side__info__group__container ul {
+          list-style: none; }
+
 .hero {
   position: relative;
   background-size: cover;
@@ -4001,6 +4040,54 @@ button.btn.btn--full-width {
       right: 1rem;
       bottom: 1rem; } }
 
+.gallery {
+  background: pink; }
+  .gallery__main {
+    width: 100%;
+    background: lime;
+    overflow: hidden; }
+  .gallery__carousel .item {
+    width: 100%;
+    height: 50rem;
+    margin: auto;
+    background: #6c6ea0; }
+    .gallery__carousel .item img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%; }
+  .gallery__carousel .owl-controls {
+    position: absolute;
+    top: 60px;
+    width: 100%; }
+    .gallery__carousel .owl-controls .owl-nav div {
+      position: absolute;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      transition: all .4s linear; }
+      .gallery__carousel .owl-controls .owl-nav div.owl-prev {
+        left: 50px; }
+      .gallery__carousel .owl-controls .owl-nav div.owl-next {
+        right: 50px; }
+  .gallery__bookmarks ul {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    padding: 5px 0;
+    margin: auto; }
+    .gallery__bookmarks ul li {
+      display: inline-block;
+      cursor: pointer;
+      height: 10rem;
+      width: 10rem;
+      background: grey; }
+      .gallery__bookmarks ul li img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+      .gallery__bookmarks ul li.active {
+        border: 5px solid black; }
+
 .header-main {
   position: fixed;
   z-index: 100;
@@ -4491,6 +4578,10 @@ button.btn.btn--full-width {
         min-height: auto;
         padding: 15rem 0 0 0; } }
   .section--portfolio {
+    min-height: 100vh;
+    padding-top: 40rem;
+    background: #eee; }
+  .section--project {
     min-height: 100vh;
     padding-top: 40rem;
     background: #eee; }

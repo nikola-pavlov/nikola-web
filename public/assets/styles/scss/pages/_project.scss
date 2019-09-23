@@ -1,0 +1,75 @@
+.project {
+	background: red;
+	font-size: 1.6rem;
+	line-height: 1.6;
+
+	&__container {
+		max-width: 114rem;
+		margin: 0 auto;
+		min-height: 90rem;
+		background: var(--color-whitish);
+
+		display: flex;
+	}
+
+	&__main {
+		background: blue;
+		position: relative;
+		width: 70%
+		// flex: 1;
+	}
+
+	&__main__info {
+		background: orange;
+		padding: 5rem;
+
+		&__title {
+			margin-bottom: 1.25rem;
+		}
+
+		&__description {
+
+		}
+	}
+
+	&__main__comments {
+		padding: 5rem;
+		background: grey;
+	}
+
+	&__side {
+		background: yellow;
+		flex: 1;
+
+		&__info {
+			padding: 2rem;
+
+			&__title {
+				font-size: 2rem;
+			}
+
+			&__group {
+
+				margin-bottom: 2.5rem;
+
+				&__title {
+					font-weight: bold;
+					margin-bottom: .75rem;
+					border-left: 2px solid var(--color-one);
+					padding-left: 1rem;
+				}
+
+				&__container {
+
+					ul {
+						list-style: none;
+					}
+
+					ul li {
+
+					}
+				}
+			}
+		}
+	}
+}

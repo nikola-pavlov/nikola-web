@@ -1,0 +1,70 @@
+.gallery {
+	background: pink;
+
+	&__main {
+		width: 100%;
+		background: lime;
+		overflow: hidden;
+	}
+
+	&__carousel {
+
+		.item {
+			width: 100%;
+			height: 50rem;
+			margin: auto;
+			background: #6c6ea0;
+
+			img {
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.owl-controls {
+			position: absolute;
+			top: 60px;
+			width: 100%;
+			.owl-nav {
+				div {
+					position: absolute;
+					letter-spacing: .5px;
+					text-transform: uppercase;
+					transition: all .4s linear;
+					&.owl-prev {left: 50px;}
+					&.owl-next {right: 50px;}
+				}
+			}
+		}
+	}
+
+	&__bookmarks {
+
+		ul {
+			display: block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			width: 100%;
+			padding: 5px 0;
+			margin: auto;
+
+			li {
+				display: inline-block;
+				cursor: pointer;
+				height: 10rem;
+				width: 10rem;
+				background: grey;
+
+				& img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+
+				&.active {
+					border: 5px solid black;
+				}
+			}
+		}
+	}
+}
