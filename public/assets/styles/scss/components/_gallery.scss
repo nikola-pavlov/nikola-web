@@ -1,9 +1,7 @@
 .gallery {
-	background: pink;
 
 	&__main {
 		width: 100%;
-		background: lime;
 		overflow: hidden;
 	}
 
@@ -13,7 +11,26 @@
 			width: 100%;
 			height: 50rem;
 			margin: auto;
-			background: #6c6ea0;
+			padding: 2rem 2rem 0 2rem;
+
+			@include respond(700) {
+				padding: 0;
+				height: 50rem;
+			}
+
+			@include respond(600) {
+				height: 40rem;
+			}
+
+			@include respond(500) {
+				height: 30rem;
+			}
+
+			@include respond(400) {
+				height: 25rem;
+			}
+
+
 
 			img {
 				object-fit: cover;
@@ -42,27 +59,75 @@
 
 		ul {
 			display: block;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			width: 100%;
-			padding: 5px 0;
+			border-bottom: 1px solid var(--color-grey-light);
+			width: calc(100% + 1rem);
+			padding: 1rem 2rem;
 			margin: auto;
+			display: flex;
+			flex-wrap: wrap;
 
 			li {
-				display: inline-block;
 				cursor: pointer;
 				height: 10rem;
-				width: 10rem;
-				background: grey;
+				// width: 10rem;
+				flex: 1 0 15%;
+				// min-width: 10rem;
+				// background: grey;
+				overflow: hidden;
+				margin-right: 1rem;
+				margin-bottom: 1rem;
+				max-width: 18%;
+
+				// &:nth-last-child(-n+4) {
+				// 	height: 0rem;
+				// 	border: none;
+				// 	padding: 0rem;
+				// 	margin: 0 0 0 1rem;
+				// 	background: lime;
+				// }
+
+				@include respond(800) {
+					height: 8rem;
+					
+				}
+
+				@include respond(600) {
+					height: 7rem;
+					
+				}
+
+				@include respond(500) {
+					height: 6rem;
+					
+				}
 
 				& img {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
+					transition: all .2s ease-out;
+
+					&:hover {
+						transform: scale(1.2);
+					}
 				}
 
 				&.active {
-					border: 5px solid black;
+					box-sizing: border-box;
+					border: 5px solid var(--color-one);
+					position: relative;
+					transition: all .2s ease-out;
+				}
+
+				&.active::after {
+					content: "";
+					position: absolute;
+					background: var(--color-whitish);
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					opacity: .6;
 				}
 			}
 		}
