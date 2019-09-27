@@ -1,5 +1,4 @@
 .project {
-	background: var(--color-two);
 	font-size: 1.6rem;
 	line-height: 1.6;
 
@@ -9,8 +8,15 @@
 		min-height: 90rem;
 		background: var(--color-whitish);
 		box-shadow: 0 0 1rem rgba(0,0,0,.15);
+		border-radius: 1rem;
+		overflow: hidden;
 
 		display: flex;
+
+		@include respond(1200) {
+			border-radius: 0;
+		}
+
 		@include respond(800) {
 			flex-direction: column;
 		}

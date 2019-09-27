@@ -145,8 +145,8 @@
 	}
 
 	&--project {
+		padding-top: 20rem;
 		min-height: 100vh;
-		padding-top: 40rem;
-		background: #eee;
+		background: var(--color-two);
 	}
 }

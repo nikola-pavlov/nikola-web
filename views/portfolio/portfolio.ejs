@@ -41,6 +41,12 @@
 							<div class="portfolio__item__footer">
 								<div class="portfolio__item__date"><%= project.date %></div>
 								<div class="portfolio__item__comments"><span></span>21</div>
+								<% if(currentUser && project.author.id.equals(currentUser._id)) { %>
+								<a href="/portfolio/<%= project._id %>/edit">Edit</a>
+								<form action="/portfolio/<%= project._id %>?_method=DELETE" method="POST">
+									<button>Delete</button>
+								</form>
+								<% } %>
 							</div>
 						</li>
 						<%  }); %>

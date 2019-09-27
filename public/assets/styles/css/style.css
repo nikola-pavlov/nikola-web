@@ -1824,7 +1824,6 @@ body {
             max-width: 15rem; } }
 
 .project {
-  background: var(--color-two);
   font-size: 1.6rem;
   line-height: 1.6; }
   .project__container {
@@ -1833,7 +1832,12 @@ body {
     min-height: 90rem;
     background: var(--color-whitish);
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    overflow: hidden;
     display: flex; }
+    @media (max-width: 75em) {
+      .project__container {
+        border-radius: 0; } }
     @media (max-width: 50em) {
       .project__container {
         flex-direction: column; } }
@@ -4825,6 +4829,6 @@ button.btn.btn--full-width {
     padding-top: 40rem;
     background: #eee; }
   .section--project {
+    padding-top: 20rem;
     min-height: 100vh;
-    padding-top: 40rem;
-    background: #eee; }
+    background: var(--color-two); }

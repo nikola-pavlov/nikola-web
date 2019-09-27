@@ -1,0 +1,12 @@
+<h1>Edit <%= project.name %></h1>
+
+<form action="/portfolio/<%= project._id %>?_method=PUT" method="POST">
+	<input type="text" name="project[name]" value="<%= project.name %>">
+	<input type="text" name="project[image]" value="<%= project.image %>">
+	<input type="text" name="project[description]" value="<%= project.description %>">
+	<input type="text" name="project[category]" value="<%= project.category %>">
+	<input type="text" name="project[date]" value="<%= project.date %>">
+	<button>Submit</button>
+</form>
+
+<a href="/portfolio">View Portfolio</a>

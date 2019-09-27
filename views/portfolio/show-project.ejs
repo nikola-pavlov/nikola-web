@@ -9,7 +9,7 @@
  					<div class="gallery__main">
  						<div class="owl-carousel gallery__carousel">
  							<div class="item">
- 								<img src="https://via.placeholder.com/1200x800" alt="test">
+ 								<img src="<%= project.image %>" alt="test">
  							</div>
  							<div class="item">
  								<img src="https://via.placeholder.com/1200x800" alt="test">
@@ -32,7 +32,7 @@
  						<div class="gallery__bookmarks">
  							<ul class="gallery__bookmarks__group">
  								<li class="active" data="0">
- 									<img src="https://via.placeholder.com/1200x800" alt="test">
+ 									<img src="<%= project.image %>" alt="test">
  								</li>
  								<li data="1">
  									<img src="https://via.placeholder.com/1200x800" alt="test">
@@ -55,8 +55,8 @@
  					</div>
  				</div>
  				<div class="project__main__info">
- 					<h2 class="project__main__info__title">Title 1</h2>
- 					<p class="project__main__info__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi placeat perferendis quam! Accusamus laborum adipisci, nostrum voluptatem laboriosam quam asperiores vero consequatur, suscipit perferendis tempore. Ullam veritatis illo, ab delectus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit deserunt accusantium dolorum veniam, quidem perspiciatis rem facilis, ad perferendis dolorem provident officia! Eveniet quam non velit voluptatem error soluta dolorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A voluptas dolor cumque ducimus natus! Odio, eaque quos aut inventore accusamus, officia error aspernatur illum dolore laborum sit laboriosam ducimus molestias?</p>
+ 					<h2 class="project__main__info__title"><%= project.name %></h2>
+ 					<p class="project__main__info__description"><%= project.description %></p>
  				</div>
 
 
@@ -67,9 +67,9 @@
  						<div class="project__side__info__group__container">
  							<ul class="project__side__info__more">
  								<li><span class="icon1"></span>CBS International</li>
- 								<li><span class="icon2"></span>Branding</li>
- 								<li><span class="icon2"></span>24/09/2019</li>
- 								<li><span class="icon2"></span>24/09/2019</li>
+ 								<li><span class="icon2"></span><%= project.category %></li>
+ 								<li><span class="icon2"></span><%= project.date %></li>
+ 								<li><span class="icon2"></span><%= project.author.username %></li>
  							</ul>
  						</div>
  					</div>
@@ -164,7 +164,7 @@
  										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2WRv6HhQL5-eK9Z-8VtkeAP58CzpFUz-FWfmgP3YSbiuj-J_HAw" alt="user image">
  									</div>
  									<div class="comment__info">
- 										<div class="comment__info__user"><%= comment.author %></div>
+ 										<div class="comment__info__user"><%= comment.author.username %></div>
  										<p class="comment__info__text"><%= comment.text %></p>
  										<div class="comment__info__date">25.09.2019</div>
  									</div>
@@ -177,15 +177,15 @@
  			</div>
  			<div class="project__side">
  				<div class="project__side__info">
- 					<h1 class="project__side__info__title">Project Name</h1>
+ 					<h1 class="project__side__info__title"><%= project.name %></h1>
  					<div class="project__side__info__group">
  						<div class="project__side__info__group__title">More Information</div>
  						<div class="project__side__info__group__container">
  							<ul class="project__side__info__more">
  								<li><span class="icon1"></span>CBS International</li>
- 								<li><span class="icon2"></span>Branding</li>
- 								<li><span class="icon2"></span>24/09/2019</li>
- 								<li><span class="icon2"></span>24/09/2019</li>
+ 								<li><span class="icon2"></span><%= project.category %></li>
+ 								<li><span class="icon2"></span><%= project.date %></li>
+ 								<li><span class="icon2"></span><%= project.author.username %></li>
  							</ul>
  						</div>
  					</div>
@@ -260,6 +260,12 @@
  							</ul>
  						</div>
  					</div>
+ 					<% if(currentUser && project.author.id.equals(currentUser._id)) { %>
+ 					<a href="/portfolio/<%= project._id %>/edit">Edit</a>
+ 					<form action="/portfolio/<%= project._id %>?_method=DELETE" method="POST">
+ 						<button>Delete</button>
+ 					</form>
+ 					<% } %>
  				</div>
  			</div>
  		</div>
