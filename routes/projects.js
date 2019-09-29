@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var Project	= require("../models/project");
+var middleware	= require("../public/assets/scripts/middleware");
+
 
 
 // INDEX - Show all projects
@@ -18,7 +20,7 @@ router.get("/", function(req, res){
 
 // CREATE - add new projects to DB
 
-router.post("/", isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
 
 	//get data from form and add to projects array
 	var name = req.body.name;
@@ -38,7 +40,7 @@ router.post("/", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 			//redirect back to portfolio page
-			console.log(newlyCreated);
+			req.flash("success", "Created new project.");
 			res.redirect("/portfolio");
 		}
 	});
@@ -46,7 +48,7 @@ router.post("/", isLoggedIn, function(req, res) {
 
 // NEW - show form to create new project
 
-router.get("/new", isLoggedIn, function(req, res) {
+router.get("/new", middleware.isLoggedIn, function(req, res) {
 	res.render("portfolio/new-project");
 });
 
@@ -68,10 +70,11 @@ router.get("/:id", function(req, res) {
 
 // EDIT PROJECT ROUTE
 
-router.get("/:id/edit", checkProjectOwnership, function(req, res) {
+router.get("/:id/edit", middleware.checkProjectOwnership, function(req, res) {
 	
 	Project.findById(req.params.id, function(err, foundProject) {
 		if(err) {
+			req.flash("error", "Something went wrong");
 			console.log(err);
 		} else {
 			res.render("portfolio/edit-project", {project: foundProject});
@@ -85,13 +88,15 @@ router.get("/:id/edit", checkProjectOwnership, function(req, res) {
 
 // UPDATE PROJECT ROUTE
 
-router.put("/:id", checkProjectOwnership, function(req, res) {
+router.put("/:id", middleware.checkProjectOwnership, function(req, res) {
 	// Find and Update the correct Project
 	Project.findByIdAndUpdate(req.params.id, req.body.project, function(err, updatedProject) {
 		if(err) {
+			req.flash("error", "Something went wrong.");
 			res.redirect("/portfolio");
 		} else {
 			// Redirect somewhere (Project Show Page)
+			req.flash("success", "Project updated.");
 			res.redirect("/portfolio/" + req.params.id);
 		}
 	});
@@ -99,42 +104,16 @@ router.put("/:id", checkProjectOwnership, function(req, res) {
 
 // DESTROY PROJECT ROUTE 
 
-router.delete("/:id", checkProjectOwnership, function(req, res) {
+router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 	Project.findByIdAndRemove(req.params.id, function(err, deletedProject) {
 		if(err) {
+			req.flash("error", "Something went wrong.");
 			res.redirect("/portfolio");
 		} else {
+			req.flash("success", "Project deleted.");
 			res.redirect("/portfolio");
 		}
 	});
 });
-
-// Middleware
-
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
-
-function checkProjectOwnership(req, res, next) {
-	if(req.isAuthenticated()) {
-		Project.findById(req.params.id, function(err, foundProject) {
-			if(err) {
-				res.redirect("back");
-			} else {
-				// Does User own the project?
-				if(foundProject.author.id.equals(req.user._id)) {
-					return next();
-				} else {
-					res.redirect("back");
-				}
-			}
-		});
-	} else {
-		res.redirect("back");
-	}
-}
 
 module.exports = router;

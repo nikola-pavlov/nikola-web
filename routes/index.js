@@ -38,12 +38,12 @@ router.post("/register", function(req, res){
 	var newUser = new User({username: req.body.username, email: req.body.email, firstName: req.body.firstName, lastName: req.body.lastName});
 	User.register(newUser, req.body.password, function(err, user){
 		if(err) {
-			console.log(err);
+			req.flash("error", err.message);
 			return res.render("login/register")
 		}
 		passport.authenticate("local")(req, res, function(){
+			req.flash("success", "You have been registered. Welcome " + user.username +".");
 			res.redirect("/");
-			console.log(user);
 		});
 	});
 });
@@ -68,16 +68,8 @@ router.post("/login", passport.authenticate("local",
 
 router.get("/logout", function(req, res) {
 	req.logout();
-	res.redirect("/");
-});
-
-// Middleware
-
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
+	req.flash("success", "You have been logged out.");
+	res.redirect("back");
+}); 
 
 module.exports = router;

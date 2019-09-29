@@ -9,10 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="/assets/styles/css/style.css">
 	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" /> 
 </head>
-<body
 
->	<header class="header-main">
-		
+<body>	
+
+
+	<header class="header-main">
 		<nav class="nav-top">
 			<div class="row wrapper">
 				<ul>
@@ -52,13 +53,10 @@
 					<li><a href="/logout">Logout</a></li>
 					<% } %>
 
-
-
 				</ul>
 			</div>
 		</nav>
-
-		<div class="row wrapper">
+		<div class="wrapper">
 			<a href="/">
 				<div class="header-main__logo">
 					<figure> 
@@ -67,35 +65,64 @@
 					</figure>
 				</div>
 			</a>
-
 			<div class="header-main__menu-icon">
 				<div class="header-main__menu-icon__middle"></div>
 			</div>
-
-			<div class="header-main__menu-content">
-
-				<nav class="nav-primary nav-primary--float-right">
+		</div>
+		<div class="header-main__menu-content">
+			<div class="wrapper">
+				<nav class="nav-primary">
 					<ul>
 						<li><a href="/#hi-there" id="hi-there-link">Hi There</a></li>
 						<li><a href="/#digital-services" id="digital-services-link">Digital Services</a></li>
 						<li><a href="/#about-me" id="about-me-link">About Me</a></li>
 						<li><a href="/#logo-design" id="logo-design-link">Logo Design</a></li>
 						<li><a href="/#mobile-ready" id="mobile-ready-link">Mobile Ready</a></li>
+						<a href="/contact" class="btn btn--small btn--main header-main__btn">Contact me</a>
 					</ul>
 				</nav>
-
-				<div class="header-main__btn-container">
-					<a href="/contact" class="btn btn--small btn--main header-main__btn">Contact me</a>
-				</div>
 			</div>
 		</div>
+		
 	</header> 
+
+	<% if(flash_error && flash_error.length > 0){ %>
+	<div class="flash-message-error">
+		<div class="wrapper">
+			<div class="flash-message-error__error">
+				<div class="flash-message-error__error__icon">
+					<div class="flash-message-error__error__icon__img"></div>
+				</div>
+				<div class="flash-message-error__error__text"><%= flash_error %></div>
+				<div class="flash-message-error__error__close">Close</div>
+			</div>
+		</div>
+	</div>
+	<% } %> 
+
+	<% if(flash_success && flash_success.length > 0){ %>
+	<div class="flash-message-success">
+		<div class="wrapper">
+			<div class="flash-message-success__success">
+				<div class="flash-message-success__success__icon">
+					<div class="flash-message-success__success__icon__img"></div>
+				</div>
+				<div class="flash-message-success__success__text"><%= flash_success %></div>
+				<div class="flash-message-success__success__close">Close</div>
+			</div>
+		</div>
+	</div>
+	<% } %> 
+
+	<!-- <% if(flash_success && flash_success.length > 0){ %>
+	<div class="flash-message">
+		<div class="flash-message__success"><%= flash_success %></div>
+	</div>
+	<% } %> -->
 
 
 
 	<div id="top-page" class="top-page-class" data-matching-link="#top-page-link"></div>
-
-
 
 
 

@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var Message = require("../models/message");
+var middleware	= require("../public/assets/scripts/middleware");
 
 router.get("/contact", function(req, res){
 	res.render("messages/contact");
@@ -25,7 +26,7 @@ router.post("/contact", function(req, res){
 	});
 });
 
-router.get("/inbox", isLoggedIn, function(req, res){
+router.get("/inbox", middleware.isLoggedIn, function(req, res){
 	Message.find({}, function(err, allMessages){
 		if(err) {
 			console.log(err);
@@ -34,12 +35,5 @@ router.get("/inbox", isLoggedIn, function(req, res){
 		}
 	});
 });
-
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
 
 module.exports = router;

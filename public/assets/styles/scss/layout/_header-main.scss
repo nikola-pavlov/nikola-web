@@ -2,7 +2,7 @@
 	position: fixed;
 	z-index: 100;
 	width: 100%;
-	background-color: var(--color-whitish);
+	// background-color: var(--color-whitish);
 	transition: background-color .3s ease-out;
 
 	&--opacity {
@@ -39,11 +39,12 @@
 	&__logo {
 		position: absolute;
 		background-color: var(--color-one);
-		padding: 1.5rem 2.5rem;
+		padding: .5rem 1.25rem;
 		border-radius: 0 0 1rem 1rem;
 		transform-origin: 50% 0;
 		transition: all .3s ease-out;
 		z-index: 101;
+		right: 0;
 
 		.header-main--opacity & {
 			transform: scale(.66);
@@ -59,7 +60,7 @@
 		}
 
 		& figure img {
-			width: 6.5rem;
+			width: 5.5rem;
 			float: left;
 			padding: .5rem;
 			display: inline-block;
@@ -162,7 +163,8 @@
 
 	&__menu-content {
 
-		height: 6rem;
+		// height: 6rem;
+		background: var(--color-whitish);
 
 		@include respond(1000) {
 			position: relative;
