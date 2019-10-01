@@ -39,8 +39,8 @@ router.post("/register", function(req, res){
 	User.register(newUser, req.body.password, function(err, user){
 		if(err) {
 			req.flash("error", err.message);
-			return res.render("login/register")
-		}
+			res.redirect("/register");
+		} else
 		passport.authenticate("local")(req, res, function(){
 			req.flash("success", "You have been registered. Welcome " + user.username +".");
 			res.redirect("/");
@@ -61,7 +61,6 @@ router.post("/login", passport.authenticate("local",
 	successRedirect: "/",
 	failureRedirect: "/login"
 }), function(req, res){
-
 });
 
 // logout route

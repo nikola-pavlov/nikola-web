@@ -8,7 +8,7 @@ var middlewareObj = {};
 middlewareObj.checkProjectOwnership = function(req, res, next) {
 	if(req.isAuthenticated()) {
 		Project.findById(req.params.id, function(err, foundProject) {
-			if(err) {
+			if(err || !foundProject) {
 				req.flash("error", "Error: Project not found.");
 				res.redirect("back");
 			} else {
@@ -30,8 +30,9 @@ middlewareObj.checkProjectOwnership = function(req, res, next) {
 middlewareObj.checkCommentOwnership = function(req, res, next) {
 	if(req.isAuthenticated()) {
 		Comment.findById(req.params.comment_id, function(err, foundComment) {
-			if(err) {
-				res.redirect("back");
+			if(err || !foundComment) {
+				req.flash("error", "Comment not found");
+				res.redirect("/portfolio");
 			} else {
 				// Does User own the comment?
 				if(foundComment.author.id.equals(req.user._id)) {

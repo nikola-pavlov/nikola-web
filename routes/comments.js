@@ -10,8 +10,9 @@ var middleware	= require("../public/assets/scripts/middleware");
 router.get("/new", middleware.isLoggedIn, function(req, res){
 	// find project by id
 	Project.findById(req.params.id, function(err, project){
-		if(err) {
-			console.log(err);
+		if(err || !project) {
+			req.flash("error", "Project not found.");
+			res.redirect("/portfolio");
 		} else {
 			res.render("comments/new-comment", {project: project});
 		}
@@ -51,12 +52,18 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 // EDIT ROUTE
 
 router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res) {
-	Comment.findById(req.params.comment_id, function(err, foundComment){
-		if(err) {
-			res.redirect("back");
-		} else {
-			res.render("comments/edit-comment", {project_id: req.params.id, comment: foundComment});
+	Project.findById(req.params.id, function(err, foundProject){
+		if(err || !foundProject) {
+			req.flash("error", "Error: Project not found.");
+			return res.redirect("/portfolio");
 		}
+		Comment.findById(req.params.comment_id, function(err, foundComment){
+			if(err) {
+				res.redirect("back");
+			} else {
+				res.render("comments/edit-comment", {project_id: req.params.id, comment: foundComment});
+			}
+		});
 	});
 });
 

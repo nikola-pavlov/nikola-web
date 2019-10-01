@@ -1,13 +1,15 @@
 <% include ../partials/header %>
 
 
+
+
 <section class="section section--portfolio">
 	<div class="portfolio">
 		<div class="portfolio__container">
 			<header class="portfolio__header">
 				<div class="portfolio__header__search">
-					<form action="" class="portfolio__header__search__form">
-						<input type="text" class="portfolio__header__search__input" placeholder="Search Projects">
+					<form action="/portfolio" method="GET" class="portfolio__header__search__form">
+						<input type="text" name="search" class="portfolio__header__search__input" placeholder="Search Projects">
 						<button class="portfolio__header__search__btn">
 							<span class="portfolio__header__search__icon"></span>
 						</button>
@@ -26,6 +28,11 @@
 				<nav class="portfolio__nav">Nav<a href="/portfolio/new">New Project</a></nav>
 				<div class="portfolio__main">
 					<ul class="portfolio__main__group">
+						<div>
+							<% if(noMatch !== undefined) { %>
+							<p> <%= noMatch %></p>
+							<% } %>
+						</div>
 						<% projects.forEach(function(project){ %>
 						<li class="portfolio__item">
 							<div class="portfolio__item__category"><%= project.category %></div>
@@ -57,6 +64,61 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+<div class="row text-center text-generic">
+    <% if (pages && pages > 0) { %>
+    <ul class="pagination text-center">
+        <% if (current == 1) { %>
+        <li class="disabled"><a>First</a></li>
+        <% } else { %>
+        <li><a href="/portfolio<%if(search){%>?search=<%=search%><%}%>">First</a></li>
+        <% } %>
+ 
+        <% if (current == 1) { %>
+        <li class="disabled"><a>«</a></li>
+        <% } else { %>
+        <li><a href="/portfolio?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
+        <% } %>
+ 
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+        <li class="disabled"><a>...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+        <% if (i == current) { %>
+        <li class="active"><a><%= i %></a></li>
+        <% } else { %>
+        <li><a href="/portfolio?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
+        <% } %>
+        <% if (i == Number(current) + 4 && i < pages) { %>
+        <li class="disabled"><a>...</a></li>
+        <% } %>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="disabled"><a>»</a></li>
+        <% } else { %>
+        <li><a href="/portfolio?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="disabled"><a>Last</a></li>
+        <% } else { %>
+        <li><a href="/portfolio?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
+        <% } %>
+    </ul>
+    <% } %>
+</div>
+
+
+
+
+
+
 </section>
 
 

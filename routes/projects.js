@@ -7,15 +7,80 @@ var middleware	= require("../public/assets/scripts/middleware");
 
 // INDEX - Show all projects
 
+// router.get("/", function(req, res){
+// 	var noMatch;
+// 	if(req.query.search) {
+// 		const regex = new RegExp(escapeRegex(req.query.search), "gi");
+// 		// Get all projects from DB
+// 		Project.find({name: regex}, function(err, foundProjects){
+// 			if(err) {
+// 				console.log(err);
+// 			} else {
+// 				if(foundProjects.length < 1) {
+// 					noMatch = "No projects found.";
+// 				}
+// 				res.render("portfolio/portfolio", {projects: foundProjects, noMatch: noMatch});
+// 			}
+// 		});
+// 	} else {
+// 	// Get all projects from DB
+// 		Project.find({}, function(err, allProjects){
+// 			if(err) {
+// 				console.log(err);
+// 			} else {
+// 				res.render("portfolio/portfolio", {projects: allProjects, noMatch: noMatch});
+// 			}
+// 		});
+// 	}
+// });
+
+
+
+
 router.get("/", function(req, res){
-	// Get all projects from DB
-	Project.find({}, function(err, allProjects) {
-		if(err) {
-			console.log(err); 
-		} else {
-			res.render("portfolio/portfolio", {projects:allProjects});
-		}
-	});
+    var perPage = 12;
+    var pageQuery = parseInt(req.query.page);
+    var page = pageQuery ? pageQuery : 1;
+    var noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Project.find({name: regex}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+            Project.count({name: regex}).exec(function (err, count) {
+                if (err) {
+                    console.log(err);
+                    res.redirect("back");
+                } else {
+                    if(allProjects.length < 1) {
+                        noMatch = "No projects match that query, please try again.";
+                    }
+                    res.render("portfolio/portfolio", {
+                        projects: allProjects,
+                        current: page,
+                        pages: Math.ceil(count / perPage),
+                        noMatch: noMatch,
+                        search: req.query.search
+                    });
+                }
+            });
+        });
+    } else {
+        // get all projects from DB
+        Project.find({}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+            Project.count().exec(function (err, count) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render("portfolio/portfolio", {
+                        projects: allProjects,
+                        current: page,
+                        pages: Math.ceil(count / perPage),
+                        noMatch: noMatch,
+                        search: false
+                    });
+                }
+            });
+        });
+    }
 });
 
 // CREATE - add new projects to DB
@@ -58,8 +123,9 @@ router.get("/:id", function(req, res) {
 
 	// find the project with the provided ID
 	Project.findById(req.params.id).populate("comments").exec(function(err, foundProject){
-		if(err) {
-			console.log(err);
+		if(err || !foundProject) {
+			req.flash("error", "Error: Project not found.");
+			res.redirect("/portfolio");
 		} else {
 			console.log("Found Project:" + foundProject);
 			// render show template with that project
@@ -81,7 +147,7 @@ router.get("/:id/edit", middleware.checkProjectOwnership, function(req, res) {
 		}
 	});
 });
-	
+
 	// Othewise redirect
 	// If not, redirect
 
@@ -115,5 +181,9 @@ router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 		}
 	});
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
