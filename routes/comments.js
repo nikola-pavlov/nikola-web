@@ -3,6 +3,7 @@ var router = express.Router({mergeParams: true});
 var passport = require("passport");
 var Project	= require("../models/project");
 var Comment	= require("../models/comment");
+var Reply	= require("../models/reply");
 var middleware	= require("../public/assets/scripts/middleware");
 
 // NEW ROUTE
@@ -23,7 +24,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 
 router.post("/", middleware.isLoggedIn, function(req, res){
 	// lookup project using ID
-	Project.findById(req.params.id, function(err, project) {
+		Project.findById(req.params.id).populate("replies").exec(function(err, project){
 		if(err) {
 			console.log(err);
 			res.redirect("/portfolio");

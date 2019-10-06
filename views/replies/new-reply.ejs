@@ -1,0 +1,13 @@
+<h2>NEW REPLY FORM</h2>
+
+<p>Add new reply</p>
+
+<h1>This is Project ID: <%= project._id %></h1>
+<h1>This is Comment ID: <%= comment._id %></h1>
+
+<form action="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies" method="POST">
+	<input type="text" name="reply[text]" placeholder="text">
+	<button>Submit</button>
+</form>
+
+<a href="/portfolio">View Portfolio</a>

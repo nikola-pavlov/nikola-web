@@ -245,6 +245,24 @@ a:hover, a:active {
   100% {
     transform: rotateX(0deg) rotateY(-180deg); } }
 
+@keyframes popupMessage {
+  0% {
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden; }
+  10% {
+    opacity: 1;
+    visibility: visible;
+    bottom: 10vh; }
+  90% {
+    opacity: 1;
+    visibility: visible;
+    bottom: 10vh; }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    bottom: 0; } }
+
 @font-face {
   font-family: 'volkswagen';
   src: url("../../fonts/Volkswagen Serial Light.otf");
@@ -1575,7 +1593,7 @@ body {
 .portfolio {
   font-size: 1.6rem; }
   .portfolio__container {
-    max-width: 114rem;
+    max-width: 120rem;
     margin: 0 auto;
     background: var(--color-whitish); }
   .portfolio__header {
@@ -1781,10 +1799,12 @@ body {
       height: 2rem;
       width: 2rem;
       background: var(--color-one);
+      position: relative;
+      top: 4px;
       -webkit-mask-image: url("../../images/comment.svg");
       -webkit-mask-size: cover;
       -webkit-mask-position: center;
-      margin-right: .75rem; }
+      margin-left: .75rem; }
     .portfolio__item:nth-last-child(-n+2) {
       height: 0;
       border: none;
@@ -1827,7 +1847,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.6; }
   .project__container {
-    max-width: 114rem;
+    max-width: 120rem;
     margin: 0 auto;
     min-height: 90rem;
     background: var(--color-whitish);
@@ -1937,32 +1957,38 @@ body {
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: center; }
           .project__side__info__share li span.fb {
-            -webkit-mask-image: url("../../images/more.svg"); }
-          .project__side__info__share li span.insta {
-            -webkit-mask-image: url("../../images/more.svg"); }
+            -webkit-mask-image: url("../../images/facebook-logo.svg"); }
+          .project__side__info__share li span.mail {
+            -webkit-mask-image: url("../../images/envelope.svg"); }
           .project__side__info__share li span.linkedin {
-            -webkit-mask-image: url("../../images/more.svg"); }
-    .project__side__info.main {
+            -webkit-mask-image: url("../../images/linkedin-logo.svg"); }
+    .project__side__info.mobile {
       display: none; }
       @media (max-width: 50em) {
-        .project__side__info.main {
+        .project__side__info.mobile {
           display: flex;
           padding: 2rem;
           border-top: 1px solid var(--color-grey-light);
           flex-direction: row;
           flex-wrap: wrap; } }
-      .project__side__info.main .project__side__info__group {
+      .project__side__info.mobile .project__side__info__group {
         flex: 0 0 50%;
         min-width: 20rem; }
-      .project__side__info.main .project__side__info__group:last-child {
+      .project__side__info.mobile .project__side__info__group.share {
         flex: 0 0 100%; }
-      .project__side__info.main .project__side__info__similar {
+      .project__side__info.mobile .project__side__info__group:last-child {
+        flex: 0 0 100%; }
+      .project__side__info.mobile .project__side__info__similar {
         display: flex;
-        flex-wrap: wrap; }
-      .project__side__info.main .project__similar {
+        flex-wrap: wrap;
+        margin-right: 0; }
+      .project__side__info.mobile .project__similar {
         margin-right: 2rem;
         flex: 1 0 20%;
         min-width: 25rem; }
+  @media (max-width: 31.25em) {
+    .project .project__side__info.mobile .project__similar {
+      margin-right: 0; } }
   .project__similar {
     background: var(--color-whitish);
     display: flex;
@@ -4442,6 +4468,86 @@ button.btn.btn--full-width {
       transition: all .2s ease-out; }
       .flash-message-success__success__close:hover {
         transform: scale(1.15); }
+
+.pagination__group {
+  list-style: none;
+  border: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap; }
+
+.pagination__item {
+  flex: 1;
+  transition: all .3s ease-out; }
+  .pagination__item:hover {
+    background: var(--color-three); }
+  .pagination__item:not(:last-child) {
+    border-right: 1px solid #eee; }
+
+.pagination__item a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 3; }
+  .pagination__item a:hover {
+    color: inherit; }
+
+.pagination__item.active {
+  background-color: var(--color-one);
+  color: var(--color-whitish);
+  transition: all .3s ease-out; }
+
+.pagination__item.disabled {
+  background-color: var(--color-grey-light); }
+
+.share-link {
+  display: flex;
+  flex-direction: column; }
+  .share-link__input {
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: var(--color-grey);
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    box-shadow: inset 0 0 8px var(--color-grey-light); }
+    .share-link__input::placeholder {
+      color: var(--color-grey-main); }
+  .share-link__btn {
+    background-color: var(--color-one);
+    color: var(--color-whitish);
+    padding: 1rem !important;
+    margin: 1rem 0; }
+  .share-link__icon {
+    display: inline-block;
+    height: 1rem;
+    width: 3rem;
+    background-image: url(../../images/clipboard.svg);
+    background-repeat: no-repeat;
+    margin-left: 1rem; }
+
+.popup-message {
+  background: var(--color-four);
+  border-radius: .5rem;
+  padding: 1rem 2rem;
+  position: fixed;
+  bottom: 0rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .popup-message--is-visible {
+    animation: popupMessage 2s ease-out 1 both; }
+  .popup-message__text {
+    font-size: 1.6rem;
+    color: var(--color-whitish); }
 
 .header-main {
   position: fixed;

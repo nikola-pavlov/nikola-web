@@ -15,6 +15,7 @@ import BackToTop from "./modules/BackToTop";
 import AboutMe from "./modules/AboutMe";
 import Portfolio from "./modules/Portfolio";
 import FlashMessages from "./modules/FlashMessages";
+import CopyClipboard from "./modules/CopyClipboard";
 
 var mobileMenu = new MobileMenu();
 new RevealOnScroll($(".skills__designer__categories__group"), "80%", "reveal-item--is-visible", "reveal-item");

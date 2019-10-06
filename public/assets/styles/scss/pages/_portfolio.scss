@@ -2,7 +2,7 @@
 
 	font-size: 1.6rem;
 	&__container {
-		max-width: 114rem;
+		max-width: 120rem;
 		margin: 0 auto;
 		background: var(--color-whitish);
 	}
@@ -300,14 +300,14 @@
 				height: 2rem;
 				width: 2rem;
 				background: var(--color-one);
-				// position: relative;
-				// top: 5px;
+				position: relative;
+				top: 4px;
 
 				-webkit-mask-image: url("../../images/comment.svg");
 				-webkit-mask-size: cover;
 				// -webkit-mask-repeat: no-repeat;
 				-webkit-mask-position: center;
-				margin-right: .75rem;
+				margin-left: .75rem;
 			}
 		}
 

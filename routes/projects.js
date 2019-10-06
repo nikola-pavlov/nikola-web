@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var Project	= require("../models/project");
+var Comment	= require("../models/comment");
+var Reply	= require("../models/reply");
 var middleware	= require("../public/assets/scripts/middleware");
 
 
@@ -38,47 +40,47 @@ var middleware	= require("../public/assets/scripts/middleware");
 
 
 router.get("/", function(req, res){
-    var perPage = 12;
-    var pageQuery = parseInt(req.query.page);
-    var page = pageQuery ? pageQuery : 1;
-    var noMatch = null;
-    if(req.query.search) {
-        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        Project.find({name: regex}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-            Project.count({name: regex}).exec(function (err, count) {
-                if (err) {
-                    console.log(err);
-                    res.redirect("back");
-                } else {
-                    if(allProjects.length < 1) {
-                        noMatch = "No projects match that query, please try again.";
-                    }
-                    res.render("portfolio/portfolio", {
-                        projects: allProjects,
-                        current: page,
-                        pages: Math.ceil(count / perPage),
-                        noMatch: noMatch,
-                        search: req.query.search
-                    });
-                }
-            });
-        });
-    } else {
+	var perPage = 15;
+	var pageQuery = parseInt(req.query.page);
+	var page = pageQuery ? pageQuery : 1;
+	var noMatch = null;
+	if(req.query.search) {
+		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+		Project.find({name: regex}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+			Project.count({name: regex}).exec(function (err, count) {
+				if (err) {
+					console.log(err);
+					res.redirect("back");
+				} else {
+					if(allProjects.length < 1) {
+						noMatch = "Error: No projects found.";
+					}
+					res.render("portfolio/portfolio", {
+						projects: allProjects,
+						current: page,
+						pages: Math.ceil(count / perPage),
+						noMatch: noMatch,
+						search: req.query.search
+					});
+				}
+			});
+		});
+	} else {
         // get all projects from DB
         Project.find({}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-            Project.count().exec(function (err, count) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    res.render("portfolio/portfolio", {
-                        projects: allProjects,
-                        current: page,
-                        pages: Math.ceil(count / perPage),
-                        noMatch: noMatch,
-                        search: false
-                    });
-                }
-            });
+        	Project.count().exec(function (err, count) {
+        		if (err) {
+        			console.log(err);
+        		} else {
+        			res.render("portfolio/portfolio", {
+        				projects: allProjects,
+        				current: page,
+        				pages: Math.ceil(count / perPage),
+        				noMatch: noMatch,
+        				search: false
+        			});
+        		}
+        	});
         });
     }
 });
@@ -127,9 +129,20 @@ router.get("/:id", function(req, res) {
 			req.flash("error", "Error: Project not found.");
 			res.redirect("/portfolio");
 		} else {
-			console.log("Found Project:" + foundProject);
-			// render show template with that project
-			res.render("portfolio/show-project", {project: foundProject});
+			Comment.find({}, function(err, foundComment){
+				if(err) {
+					console.log(err);
+				} else {
+					Reply.find({}, function(err, foundReply){
+						if(err) {
+							console.log(err);
+						} else {
+							res.render("portfolio/show-project", {project: foundProject, comment: foundComment, reply: foundReply});
+						}
+					});
+				}
+			});
+			
 		}
 	});
 });
@@ -183,7 +196,7 @@ router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 });
 
 function escapeRegex(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
 module.exports = router;

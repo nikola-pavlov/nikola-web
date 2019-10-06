@@ -10,6 +10,7 @@ Message 			= require("./models/message"),
 User				= require("./models/user"),
 Project				= require("./models/project"),
 Comment 			= require("./models/comment"),
+Reply 				= require("./models/reply"),
 seedDB				= require("./seeds")
 
 // Requiring Routes
@@ -17,7 +18,8 @@ seedDB				= require("./seeds")
 var commentRoutes 	= require("./routes/comments"),
 	projectRoutes	= require("./routes/projects"),
 	contactRoutes	= require("./routes/contact"),
-	indexRoutes		= require("./routes/index")
+	indexRoutes		= require("./routes/index"),
+	replyRoutes		= require("./routes/replies")
 
 // MongoDB Connect
 
@@ -47,17 +49,18 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
+
 	res.locals.currentUser = req.user;
 	res.locals.flash_error = req.flash("error");
 	res.locals.flash_success = req.flash("success");
-	// res.locals.flash_error = "TEST-ERROR";
-	// res.locals.flash_success = "TEST-SUCCESS";
+	res.locals.currentURL = req.protocol + '://' + req.get('host') + req.originalUrl;
 	next();
 });
 
 app.use("/", indexRoutes);
 app.use("/portfolio", projectRoutes);
 app.use("/portfolio/:id/comments", commentRoutes);
+app.use("/portfolio/:id/comments/:comment_id/replies", replyRoutes);
 app.use(contactRoutes);
 
 app.listen(80, "192.168.0.20", function(){

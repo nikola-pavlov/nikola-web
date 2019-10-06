@@ -260,3 +260,31 @@
 		transform: rotateX(0deg) rotateY(-180deg);
 	}
 }
+
+// Popup message animation
+
+@keyframes popupMessage {
+	0% {
+		bottom: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	10% {
+		opacity: 1;
+		visibility: visible;
+		bottom: 10vh;
+	}
+
+	90% {
+		opacity: 1;
+		visibility: visible;
+		bottom: 10vh;
+	}
+
+	100% {
+		opacity: 0;
+		visibility: hidden;
+		bottom: 0;
+	}
+}
