@@ -24,7 +24,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 
 router.post("/", middleware.isLoggedIn, function(req, res){
 	// lookup project using ID
-		Project.findById(req.params.id).populate("replies").exec(function(err, project){
+	Project.findById(req.params.id).populate("replies").exec(function(err, project){
 		if(err) {
 			console.log(err);
 			res.redirect("/portfolio");
@@ -85,12 +85,37 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res) 
 
 router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res) {
 	// Find by ID and Remove
-	Comment.findByIdAndRemove(req.params.comment_id, function(err){
+	Project.findById(req.params.id, function(err, project){
 		if(err) {
-			res.redirect("back");
+			console.log(err);
 		} else {
-			req.flash("success", "Your comment has been removed.");
-			res.redirect("/portfolio/" + req.params.id);
+
+			Comment.findById(req.params.comment_id, function(err, comment){
+				if(err) {
+					console.log(err);
+				} else {
+
+
+			// removes comment inside Comment Model
+			Comment.findByIdAndRemove(req.params.comment_id, function(err){
+				if(err) {
+					res.redirect("back");
+				} else {
+
+					console.log("THIS IS COMMENT: " + comment);
+					// console.log("THIS IS REPLY: " + comment.replies);
+					// removes project.comments item from array from Project Model
+					comment.replies.pop();
+					comment.save();
+					project.comments.pop(req.params.comment_id);
+					project.save();
+
+					req.flash("success", "Your comment has been removed.");
+					res.redirect("/portfolio/" + req.params.id);
+				}
+			});
+		}
+	});
 		}
 	});
 });
