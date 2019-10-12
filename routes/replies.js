@@ -17,8 +17,6 @@ router.get("/new", function(req, res){
 				if(err) {
 					console.log(err);
 				} else {
-					console.log("This is comment: " + comment);
-					console.log("This is project: " + project);
 					res.render("replies/new-reply", {comment: comment, project: project});
 				}
 			});
@@ -37,7 +35,7 @@ router.post("/", function(req, res){
 
 			Comment.findById(req.params.comment_id, function(err, comment){
 		if(err) {
-			console.log("FIRST ERROR: " + err);
+			console.log(err);
 			res.redirect("/portfolio");
 		} else {
 			Reply.create(req.body.reply, function(err, reply){

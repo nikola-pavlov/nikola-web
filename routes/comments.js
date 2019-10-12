@@ -88,34 +88,54 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
 	Project.findById(req.params.id, function(err, project){
 		if(err) {
 			console.log(err);
+			res.redirect("back");
 		} else {
 
-			Comment.findById(req.params.comment_id, function(err, comment){
-				if(err) {
-					console.log(err);
-				} else {
-
-
 			// removes comment inside Comment Model
-			Comment.findByIdAndRemove(req.params.comment_id, function(err){
+			Comment.findByIdAndRemove(req.params.comment_id, function(err, comment){
+				console.log("THIS IS REQ.PARAMS.COMMENT_ID: " + req.params.comment_id);
 				if(err) {
 					res.redirect("back");
 				} else {
+					Reply.find({}, function(err, reply){
+						if(err) {
+							console.log(err);
+							res.redirect("back");
+						} else {
 
-					console.log("THIS IS COMMENT: " + comment);
-					// console.log("THIS IS REPLY: " + comment.replies);
-					// removes project.comments item from array from Project Model
-					comment.replies.pop();
-					comment.save();
-					project.comments.pop(req.params.comment_id);
-					project.save();
+							var cid = comment._id;
+							reply.forEach(function(replyeach){
+								var replyCid = replyeach.commentID;
 
-					req.flash("success", "Your comment has been removed.");
-					res.redirect("/portfolio/" + req.params.id);
+								if(req.params.comment_id == replyeach.commentID) {
+									replyeach.remove({replyCid: cid});
+								}
+							});
+
+							function removeA(arr) {
+								var what, a = arguments, L = a.length, ax;
+								while (L > 1 && arr.length) {
+									what = a[--L];
+									while ((ax= arr.indexOf(what)) !== -1) {
+										arr.splice(ax, 1);
+									}
+								}
+								return arr;
+							}
+							
+							var proCom = project.comments;
+							removeA(proCom, cid);
+
+							project.save();
+							console.log("THIS IS PROJECT.COMMENTS: " + project.comments);
+							console.log("THIS IS REQ.PARAMS.COMMENT_ID: " + req.params.comment_id);
+							req.flash("success", "Your comment has been removed.");
+							res.redirect("/portfolio/" + req.params.id);
+
+						}
+					});
 				}
 			});
-		}
-	});
 		}
 	});
 });
