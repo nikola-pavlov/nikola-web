@@ -239,7 +239,7 @@
  									<li><span class="icon1"></span>CBS International</li>
  									<li><span class="icon2"></span><%= project.category %></li>
  									<li><span class="icon2"></span><%= moment(project.createdAt).fromNow() %></li>
- 									<li><span class="icon2"></span><%= project.author.username %></li>
+ 									<li><span class="icon2"></span><a href="/users/<%= project.author.id %>"><%= project.author.username %></a></li>
  								</ul>
  							</div>
  						</div>

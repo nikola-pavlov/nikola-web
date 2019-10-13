@@ -2,6 +2,7 @@ var express 			= require("express"),
 app 				= express(),
 mongoose 			= require("mongoose"),
 bodyParser 			= require("body-parser"),
+dotenv 				= require('dotenv').config(),
 flash				= require("connect-flash"),
 passport			= require("passport"),
 LocalStrategy 		= require("passport-local"),
@@ -20,7 +21,8 @@ var commentRoutes 	= require("./routes/comments"),
 	projectRoutes	= require("./routes/projects"),
 	contactRoutes	= require("./routes/contact"),
 	indexRoutes		= require("./routes/index"),
-	replyRoutes		= require("./routes/replies")
+	replyRoutes		= require("./routes/replies"),
+	userRoutes		= require("./routes/users")
 
 // MongoDB Connect
 
@@ -59,6 +61,7 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
+app.use("/users", userRoutes);
 app.use("/portfolio", projectRoutes);
 app.use("/portfolio/:id/comments", commentRoutes);
 app.use("/portfolio/:id/comments/:comment_id/replies", replyRoutes);

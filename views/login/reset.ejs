@@ -1,0 +1,11 @@
+<h2>Reset Password</h2>
+
+<p>Reset Password</p>
+
+<form action="/reset/<%= token %>" method="POST">
+	<input type="password" value="" name="password" placeholder="Password">
+	<input type="password" value="" name="confirm" placeholder="Confirm Password">
+	<button>Update Password</button>
+</form>
+
+<a href="/portfolio">View Portfolio</a>

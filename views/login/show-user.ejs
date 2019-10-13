@@ -1,0 +1,21 @@
+ <% include ../partials/header %>
+
+
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <div class="wrapper">
+ 	<h1>Show User Page</h1>
+
+ 	<img src="<%= user.avatar %>" alt="user profile image">
+ 	<h2><%= user.username %></h2>
+ 	<p><%= user.firstName %></p>
+ 	<p><%= user.lastName %></p>
+ 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo veniam reprehenderit voluptatibus quaerat natus doloremque doloribus pariatur commodi voluptatum eaque excepturi ullam veritatis cupiditate, eius, unde adipisci quasi! Laborum, perferendis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis, eaque molestiae! Amet asperiores fuga corrupti. Voluptatibus adipisci, dolor perspiciatis tempora eius doloremque amet magni omnis sunt possimus alias libero.</p>
+ 	<p><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
+ 	<p><%= user._id %></p>
+ 	<p><%= user.createdAt %></p>
+ 	<% if(user.isAdmin == 1) { %>
+ 	<p><%= user.username %> is <strong>Admin</strong></p>
+ 	<% } %>
+ </div>
+
+ <% include ../partials/footer %>
