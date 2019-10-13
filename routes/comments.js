@@ -37,6 +37,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 					// Add username and ID to comment
 					comment.author.id = req.user._id;
 					comment.author.username = req.user.username;
+					comment.projectID = project._id;
 					// Save comment
 					comment.save();
 					project.comments.push(comment);
@@ -93,7 +94,6 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
 
 			// removes comment inside Comment Model
 			Comment.findByIdAndRemove(req.params.comment_id, function(err, comment){
-				console.log("THIS IS REQ.PARAMS.COMMENT_ID: " + req.params.comment_id);
 				if(err) {
 					res.redirect("back");
 				} else {
@@ -125,10 +125,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
 							
 							var proCom = project.comments;
 							removeA(proCom, cid);
-
 							project.save();
-							console.log("THIS IS PROJECT.COMMENTS: " + project.comments);
-							console.log("THIS IS REQ.PARAMS.COMMENT_ID: " + req.params.comment_id);
 							req.flash("success", "Your comment has been removed.");
 							res.redirect("/portfolio/" + req.params.id);
 

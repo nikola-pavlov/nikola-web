@@ -11,7 +11,8 @@ User				= require("./models/user"),
 Project				= require("./models/project"),
 Comment 			= require("./models/comment"),
 Reply 				= require("./models/reply"),
-seedDB				= require("./seeds")
+seedDB				= require("./seeds"),
+moment 				= require('moment')
 
 // Requiring Routes
 
@@ -49,11 +50,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
-
 	res.locals.currentUser = req.user;
 	res.locals.flash_error = req.flash("error");
 	res.locals.flash_success = req.flash("success");
 	res.locals.currentURL = req.protocol + '://' + req.get('host') + req.originalUrl;
+	res.locals.moment = moment;
 	next();
 });
 

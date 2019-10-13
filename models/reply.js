@@ -20,7 +20,8 @@ var replySchema = mongoose.Schema({
 		},
 		username: String,
 	},
-	commentID: String
+	commentID: String,
+	createdAt: {type: Date, default: Date.now}
 });
 
 

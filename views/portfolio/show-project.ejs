@@ -68,7 +68,7 @@
  							<ul class="project__side__info__more">
  								<li><span class="icon1"></span>CBS International</li>
  								<li><span class="icon2"></span><%= project.category %></li>
- 								<li><span class="icon2"></span><%= project.date %></li>
+ 								<li><span class="icon2"></span><%= moment(project.createdAt).fromNow() %></li>
  								<li><span class="icon2"></span><%= project.author.username %></li>
  							</ul>
  						</div>
@@ -160,7 +160,7 @@
 
  								<ul class="comment__group">
  									<% project.comments.forEach(function(comment){ %>
- 									<% var i = 0; %>
+ 									<% var replyCount = 0; %>
  									<li class="comment__item">
  										<div class="comment__image">
  											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2WRv6HhQL5-eK9Z-8VtkeAP58CzpFUz-FWfmgP3YSbiuj-J_HAw" alt="user image">
@@ -169,7 +169,7 @@
  											<!-- <%= comment._id %> -->
  											<div class="comment__info__user"><%= comment.author.username %></div>
  											<p class="comment__info__text"><%= comment.text %></p>
- 											<div class="comment__info__date">25.09.2019</div>
+ 											<div class="comment__info__date"><%= moment(comment.createdAt).fromNow() %></div>
  											<% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
 
 
@@ -179,7 +179,7 @@
  											<ul class="reply__group">
  												<% reply.forEach(function(reply){ %>
  												<% if(reply.commentID == comment._id) {%>
- 												<% i++ %>
+ 												<% replyCount++ %>
  												
  												<li class="reply__item">
  													<div class="reply__image">
@@ -188,7 +188,16 @@
  													<div class="reply__info">
  														<div class="reply__info__user"><%= reply.author.username %></div>
  														<p class="reply__info__text"><%= reply.text %></p>
- 														<div class="reply__info__date">25.09.2019</div>
+ 														<div class="reply__info__date"><%= moment(reply.createdAt).fromNow() %></div>
+ 													</div>
+ 													<div class="reply__footer">
+ 														<a class="comment__reply-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/new">REPLY</a>
+ 														<% if(currentUser && reply.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+ 														<a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>/edit">Edit</a>
+ 														<form class="comment__delete-btn" action="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST">
+ 															<input type="submit" value="Delete">
+ 														</form>
+ 														<% } %>
  													</div>
  												</li>
  												<% } %>
@@ -197,13 +206,15 @@
  										</div>
  										<div class="reply__show__container">
  											<a class="comment__reply-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/new">REPLY</a>
+ 											<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
  											<a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/edit">Edit</a>
  											<form class="comment__delete-btn" action="/portfolio/<%= project._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
  												<input type="submit" value="Delete">
  											</form>
- 											<% if (i > 0) { %>
+ 											<% } %>
+ 											<% if (replyCount > 0) { %>
  											<div class="reply__show">Show Replies</div>
- 											<div class="reply__show__count"> <%=" (" + i + ")"%></div>
+ 											<div class="reply__show__count"> <%=" (" + replyCount + ")"%></div>
  											<% } %>
  										</div>
  										
@@ -227,7 +238,7 @@
  								<ul class="project__side__info__more">
  									<li><span class="icon1"></span>CBS International</li>
  									<li><span class="icon2"></span><%= project.category %></li>
- 									<li><span class="icon2"></span><%= project.date %></li>
+ 									<li><span class="icon2"></span><%= moment(project.createdAt).fromNow() %></li>
  									<li><span class="icon2"></span><%= project.author.username %></li>
  								</ul>
  							</div>
@@ -267,46 +278,35 @@
  							<div class="project__side__info__group__title">Similar Projects</div>
  							<div class="project__side__info__group__container">
  								<ul class="project__side__info__similar">
+ 									<% var projectCount = 0; %>
+ 									<% simPro.forEach(function(similar){ %>
+ 									<% if(!project._id.equals(similar._id)) { %>
+ 									
+ 									<% if(projectCount < 4) { %>
+ 									<% projectCount++; %>
+ 									<a href="/portfolio/<%= similar._id %>">
  									<li class="project__similar">
+ 										
  										<div class="project__similar__image">
- 											<img src="https://via.placeholder.com/1200x800" alt="test">
+ 											<img src="<%= similar.image %>" alt="test">
  										</div>
+ 										
  										<div class="project__similar__info">
- 											<h3 class="project__similar__info__title">Project Title 1</h3>
- 											<div class="project__similar__info__category">Category</div>
+ 											<h3 class="project__similar__info__title"><%= similar.name %></h3>
+ 											<div class="project__similar__info__category"><%= similar.category %></div>
  										</div>
  									</li>
- 									<li class="project__similar">
- 										<div class="project__similar__image">
- 											<img src="https://via.placeholder.com/1200x800" alt="test">
- 										</div>
- 										<div class="project__similar__info">
- 											<h3 class="project__similar__info__title">Project Title 1</h3>
- 											<div class="project__similar__info__category">Category</div>
- 										</div>
- 									</li>
- 									<li class="project__similar">
- 										<div class="project__similar__image">
- 											<img src="https://via.placeholder.com/1200x800" alt="test">
- 										</div>
- 										<div class="project__similar__info">
- 											<h3 class="project__similar__info__title">Project Title 1</h3>
- 											<div class="project__similar__info__category">Category</div>
- 										</div>
- 									</li>
- 									<li class="project__similar">
- 										<div class="project__similar__image">
- 											<img src="https://via.placeholder.com/1200x800" alt="test">
- 										</div>
- 										<div class="project__similar__info">
- 											<h3 class="project__similar__info__title">Project Title 1</h3>
- 											<div class="project__similar__info__category">Category</div>
- 										</div>
- 									</li>
+ 									</a>
+ 									<% } %>
+ 									
+ 									<% } %>
+ 									<% }); %>
+ 										
+ 									
  								</ul>
  							</div>
  						</div>
- 						<% if(currentUser && project.author.id.equals(currentUser._id)) { %>
+ 						<% if(currentUser && project.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
  						<a href="/portfolio/<%= project._id %>/edit">Edit</a>
  						<form action="/portfolio/<%= project._id %>?_method=DELETE" method="POST">
  							<button>Delete</button>

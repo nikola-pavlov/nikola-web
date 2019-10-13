@@ -49,9 +49,15 @@
 					<li><a href="/login">Login</a></li>
 					<li><a href="/register">Sign Up</a></li>
 					<% } else { %>
-					<li><a>Hello <%= currentUser.username %></a></li>
+					<li><a>Hello <%= currentUser.username %></a>
+						<%if(currentUser && currentUser.isAdmin) { %>
+						<span><strong> (Admin)</strong></span>
+						<% } %>
+					</li>
 					<li><a href="/logout">Logout</a></li>
 					<% } %>
+
+
 
 				</ul>
 			</div>

@@ -42,6 +42,7 @@
 		background-color: var(--color-whitish);
 
 		display: flex;
+		flex-wrap: wrap;
 	}
 
 	&__image {
@@ -84,5 +85,12 @@
 			font-size: 1.25rem;
 			color: var(--color-grey);
 		}
+	}
+
+	&__footer {
+		position: relative;
+		padding: 1rem 0;
+		flex: 1 0 100%;
+		display: flex;
 	}
 }

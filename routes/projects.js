@@ -37,8 +37,6 @@ var middleware	= require("../public/assets/scripts/middleware");
 // });
 
 
-
-
 router.get("/", function(req, res){
 	var perPage = 15;
 	var pageQuery = parseInt(req.query.page);
@@ -87,7 +85,7 @@ router.get("/", function(req, res){
 
 // CREATE - add new projects to DB
 
-router.post("/", middleware.isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res) {
 
 	//get data from form and add to projects array
 	var name = req.body.name;
@@ -115,7 +113,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 
 // NEW - show form to create new project
 
-router.get("/new", middleware.isLoggedIn, function(req, res) {
+router.get("/new", middleware.isLoggedIn, middleware.isAdmin, function(req, res) {
 	res.render("portfolio/new-project");
 });
 
@@ -137,7 +135,15 @@ router.get("/:id", function(req, res) {
 						if(err) {
 							console.log(err);
 						} else {
-							res.render("portfolio/show-project", {project: foundProject, comment: foundComment, reply: foundReply});
+							Project.aggregate([ { $sample: { size: 10 } } ], function(err, similarProject){
+								if(err) {
+									console.log(err);
+									res.redirect("back");
+								} else {
+									res.render("portfolio/show-project", {project: foundProject, comment: foundComment, reply: foundReply, simPro: similarProject});
+								}
+							}).limit( 3 );
+							
 						}
 					});
 				}
@@ -189,6 +195,29 @@ router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 			req.flash("error", "Something went wrong.");
 			res.redirect("/portfolio");
 		} else {
+			Comment.find({}, function(err, comment){
+				if(err) {
+					console.log(err);
+					res.redirect("back");
+				} else {
+					comment.forEach(function(commentEach){
+						if(commentEach.projectID == deletedProject._id) {
+							commentEach.remove();
+							Reply.find({}, function(err, reply){
+								if(err) {
+									console.log(err);
+									res.redirect("back");
+								} else {
+									reply.forEach(function(replyEach){
+										if(replyEach.commentID == commentEach._id)
+											replyEach.remove();
+									});
+								}
+							});
+						}
+					});
+				}
+			});
 			req.flash("success", "Project deleted.");
 			res.redirect("/portfolio");
 		}
@@ -198,5 +227,6 @@ router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 function escapeRegex(text) {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
+
 
 module.exports = router;

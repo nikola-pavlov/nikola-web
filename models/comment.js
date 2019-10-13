@@ -14,7 +14,9 @@ var commentSchema = mongoose.Schema({
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Reply"
 		}
-	]
+	],
+	projectID: String,
+	createdAt: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model("Comment", commentSchema);

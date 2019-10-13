@@ -4588,7 +4588,8 @@ button.btn.btn--full-width {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
     min-height: 9rem;
     background-color: var(--color-whitish);
-    display: flex; }
+    display: flex;
+    flex-wrap: wrap; }
   .reply__image {
     flex: 0 0 7rem;
     display: flex;
@@ -4616,6 +4617,11 @@ button.btn.btn--full-width {
       right: 2rem;
       font-size: 1.25rem;
       color: var(--color-grey); }
+  .reply__footer {
+    position: relative;
+    padding: 1rem 0;
+    flex: 1 0 100%;
+    display: flex; }
 
 .header-main {
   position: fixed;
