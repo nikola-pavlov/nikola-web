@@ -7,7 +7,7 @@ class StickyHeader {
 		this.siteHeader = $(".header-main");
 		this.siteTopHeader = $(".nav-top");
 		this.siteTopHeaderUl = $(".nav-top ul");
-		this.headerTriggerElement = $(".hero__title");
+		this.headerTriggerElement = $(".trigger");
 		this.languageNavSubMenu = $(".nav-sub");
 		this.contactButton = $(".contact__button");
 		this.backToTopButton = $(".back-to-top");

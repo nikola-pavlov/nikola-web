@@ -2,6 +2,7 @@ var Project	= require("../../../../models/project");
 var Comment	= require("../../../../models/comment");
 var Reply	= require("../../../../models/reply");
 var Message = require("../../../../models/message");
+var User = require("../../../../models/user");
 
 // ALL MIDDLEWARE GOES HERE
 var middlewareObj = {};
@@ -68,6 +69,29 @@ middlewareObj.checkReplyOwnership = function(req, res, next) {
 		});
 	} else {
 		req.flash("error", "You need to be logged in to do that.");
+		res.redirect("back");
+	}
+}
+
+middlewareObj.checkUserOwnership = function(req, res, next) {
+	if(req.isAuthenticated()) {
+		User.findById(req.params.user_id, function(err, foundUser) {
+			if(err || !foundUser) {
+				console.log(err);
+				req.flash("error", "User not found");
+				res.redirect("/portfolio");
+			} else {
+				// Does User own the user?
+				if(foundUser._id.equals(req.user._id) || req.user.isAdmin) {
+					return next();
+				} else {
+					req.flash("error", "Error: Permission denied");
+					res.redirect("back");
+				}
+			}
+		});
+	} else {
+		// req.flash("error", "You need to be logged in to do that.");
 		res.redirect("back");
 	}
 }

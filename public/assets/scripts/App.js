@@ -1,5 +1,6 @@
-import MobileMenu from "./modules/MobileMenu";
 import $ from "jquery";
+
+import MobileMenu from "./modules/MobileMenu";
 import StickyHeader from "./modules/StickyHeader";
 import ReloadAnimation from "./modules/ReloadAnimation";
 import ToggleSwitch from "./modules/ToggleSwitch";
@@ -7,16 +8,17 @@ import SubMenu from "./modules/SubMenu";
 import LatestWork from "./modules/LatestWork";
 import BusinessCard from "./modules/BusinessCard";
 import Inbox from "./modules/Inbox";
-import Testimonials from "./modules/Testimonials";
 import MobileReady from "./modules/MobileReady";
 import CountUp from "./modules/CountUp";
 import RevealOnScroll from "./modules/RevealOnScroll";
-import BackToTop from "./modules/BackToTop";
 import AboutMe from "./modules/AboutMe";
 import Portfolio from "./modules/Portfolio";
 import FlashMessages from "./modules/FlashMessages";
 import CopyClipboard from "./modules/CopyClipboard";
 import Replies from "./modules/Replies";
+
+// import BackToTop from "./modules/BackToTop";
+// import Testimonials from "./modules/Testimonials";
 
 var mobileMenu = new MobileMenu();
 new RevealOnScroll($(".skills__designer__categories__group"), "80%", "reveal-item--is-visible", "reveal-item");

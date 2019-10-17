@@ -92,8 +92,8 @@
  						<div class="project__side__info__group__title">Share Mob</div>
  						<div class="project__side__info__group__container">
  							<div class="share-link">
- 								<input class="share-link__input" type="text" id="copyTarget2" value="<%= currentURL %>"> 
- 								<button class="share-link__btn btn btn-small" id="copyButton2">Copy Link<span class="share-link__icon"></span></button>
+ 								<input class="share-link__input" type="text" id="copyClipInput" value="<%= currentURL %>"> 
+ 								<button id="copyButton" class="share-link__btn btn btn-small">Copy Link<span class="share-link__icon"></span></button>
  							</div>
  							<ul class="project__side__info__share">
  								<a href="https://www.facebook.com/sharer/sharer.php?u=<%= currentURL %>"><li><span class="fb"></span></li></a>
@@ -262,10 +262,9 @@
  							<div class="project__side__info__group__title">Share</div>
  							<div class="project__side__info__group__container">
  								<div class="share-link">
- 									<input class="share-link__input" type="text" id="copyTarget" value="<%= currentURL %>"> 
- 									<button class="share-link__btn btn btn-small" id="copyButton">Copy Link<span class="share-link__icon"></span></button>
+ 									<input class="share-link__input" type="text" id="copyClipInput" value="<%= currentURL %>"> 
+ 									<button id="copyButton" class="share-link__btn btn btn-small">Copy Link<span class="share-link__icon"></span></button>
  								</div>
-
  								<ul class="project__side__info__share">
  									<a href="https://www.facebook.com/sharer/sharer.php?u=<%= currentURL %>"><li><span class="fb"></span></li></a>
  									<a href="mailto:?&subject=<%= project.name %> Project&body=Visit <%= currentURL %> for more information about <%= project.name %>"><li><span class="mail"></span></li></a>
@@ -285,23 +284,23 @@
  									<% if(projectCount < 4) { %>
  									<% projectCount++; %>
  									<a href="/portfolio/<%= similar._id %>">
- 									<li class="project__similar">
- 										
- 										<div class="project__similar__image">
- 											<img src="<%= similar.image %>" alt="test">
- 										</div>
- 										
- 										<div class="project__similar__info">
- 											<h3 class="project__similar__info__title"><%= similar.name %></h3>
- 											<div class="project__similar__info__category"><%= similar.category %></div>
- 										</div>
- 									</li>
+ 										<li class="project__similar">
+
+ 											<div class="project__similar__image">
+ 												<img src="<%= similar.image %>" alt="test">
+ 											</div>
+
+ 											<div class="project__similar__info">
+ 												<h3 class="project__similar__info__title"><%= similar.name %></h3>
+ 												<div class="project__similar__info__category"><%= similar.category %></div>
+ 											</div>
+ 										</li>
  									</a>
  									<% } %>
  									
  									<% } %>
  									<% }); %>
- 										
+
  									
  								</ul>
  							</div>

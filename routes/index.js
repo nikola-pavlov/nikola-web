@@ -43,24 +43,28 @@ router.get("/register", function(req, res){
 
 router.post("/register", function(req, res){
 	var newUser = new User(
-		{
-			username: req.body.username, 
-			email: req.body.email, 
-			firstName: req.body.firstName, 
-			lastName: req.body.lastName, 
-			avatar: req.body.avatar
-		});
-	
-	User.register(newUser, req.body.password, function(err, user){
-		if(err) {
-			req.flash("error", err.message);
-			res.redirect("/register");
-		} else
-		passport.authenticate("local")(req, res, function(){
-			req.flash("success", "You have been registered. Welcome " + user.username +".");
-			res.redirect("/");
-		});
+	{
+		username: req.body.username, 
+		email: req.body.email, 
+		firstName: req.body.firstName, 
+		lastName: req.body.lastName, 
+		avatar: req.body.avatar
 	});
+	if(req.body.password === req.body.confirm) {
+		User.register(newUser, req.body.password, function(err, user){
+			if(err) {
+				req.flash("error", err.message);
+				res.redirect("/register");
+			} else
+			passport.authenticate("local")(req, res, function(){
+				req.flash("success", "You have been registered. Welcome " + user.username +".");
+				res.redirect("/");
+			});
+		});
+	} else {
+		req.flash("error", "Error: Passwords does not match.");
+		res.redirect("/register");
+	}
 });
 
 // show login form
@@ -71,19 +75,66 @@ router.get("/login", function(req, res){
 
 // handle login logic
 
-router.post("/login", passport.authenticate("local",
-{
-	successRedirect: "/",
-	failureRedirect: "/login"
-}), function(req, res){
+// router.post("/login", passport.authenticate("local",
+// {
+// 	successRedirect: "/",
+// 	failureRedirect: "/login",
+// }), function(req, res){
+
+// });
+
+
+
+
+// traditional route handler, passed req/res
+router.post("/login", function(req, res, next) {
+
+  // generate the authenticate method and pass the req/res
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { 
+    	return next(err); 
+    }
+    if (!user) { 
+    	return res.redirect('/'); 
+    }
+
+    // req / res held in closure
+    req.logIn(user, function(err) {
+      if (err) { 
+      	return next(err); 
+      }
+      user.isOnline = true;
+      user.save();
+      req.flash("success", "You have been logged in. Welcome " + user.username + ".");
+      return res.redirect('/');
+    });
+
+  })(req, res, next);
+
 });
+
+
+
+
+
 
 // logout route
 
 router.get("/logout", function(req, res) {
-	req.logout();
-	req.flash("success", "You have been logged out.");
-	res.redirect("back");
+	User.findById(req.user._id, function(err, user){
+		if(err) {
+			console.log(err);
+			res.redirect("back");
+		} else {
+			console.log("BEFORE LOGOUT: " + user);
+			user.isOnline = false;
+			user.save();
+			console.log("AFTER LOGOUT: " + user);
+			req.logout();
+			req.flash("success", "You have been logged out.");
+			res.redirect("back");
+		}
+	});
 });
 
 
@@ -92,119 +143,119 @@ router.get("/logout", function(req, res) {
 
 // forgot password
 router.get('/forgot', function(req, res) {
-  res.render('login/forgot');
+	res.render('login/forgot');
 });
 
 router.post('/forgot', function(req, res, next) {
-  async.waterfall([
-    function(done) {
-      crypto.randomBytes(20, function(err, buf) {
-        var token = buf.toString('hex');
-        done(err, token);
-      });
-    },
-    function(token, done) {
-      User.findOne({ email: req.body.email }, function(err, user) {
-        if (!user) {
-          req.flash('error', 'No account with that email address exists.');
-          return res.redirect('/forgot');
-        }
+	async.waterfall([
+		function(done) {
+			crypto.randomBytes(20, function(err, buf) {
+				var token = buf.toString('hex');
+				done(err, token);
+			});
+		},
+		function(token, done) {
+			User.findOne({ email: req.body.email }, function(err, user) {
+				if (!user) {
+					req.flash('error', 'No account with that email address exists.');
+					return res.redirect('/forgot');
+				}
 
-        user.resetPasswordToken = token;
+				user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
 
         user.save(function(err) {
-          done(err, token, user);
+        	done(err, token, user);
         });
-      });
-    },
-    function(token, user, done) {
-      var smtpTransport = nodemailer.createTransport({
-        service: 'Gmail', 
-        auth: {
-          user: 'nikola8989@gmail.com',
-          pass: process.env.GMAILPW
-        }
-      });
-      var mailOptions = {
-        to: user.email,
-        from: 'nikola8989@gmail.com',
-        subject: 'Node.js Password Reset',
-        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-      };
-      smtpTransport.sendMail(mailOptions, function(err) {
-        console.log('mail sent');
-        req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
-        done(err, 'done');
-      });
-    }
-  ], function(err) {
-    if (err) return next(err);
-    res.redirect('/forgot');
-  });
+    });
+		},
+		function(token, user, done) {
+			var smtpTransport = nodemailer.createTransport({
+				service: 'Gmail', 
+				auth: {
+					user: 'nikola8989@gmail.com',
+					pass: process.env.GMAILPW
+				}
+			});
+			var mailOptions = {
+				to: user.email,
+				from: 'nikola8989@gmail.com',
+				subject: 'Node.js Password Reset',
+				text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+				'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+				'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+				'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+			};
+			smtpTransport.sendMail(mailOptions, function(err) {
+				console.log('mail sent');
+				req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+				done(err, 'done');
+			});
+		}
+		], function(err) {
+			if (err) return next(err);
+			res.redirect('/forgot');
+		});
 });
 
 router.get('/reset/:token', function(req, res) {
-  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-    if (!user) {
-      req.flash('error', 'Password reset token is invalid or has expired.');
-      return res.redirect('/forgot');
-    }
-    res.render('login/reset', {token: req.params.token});
-  });
+	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+		if (!user) {
+			req.flash('error', 'Password reset token is invalid or has expired.');
+			return res.redirect('/forgot');
+		}
+		res.render('login/reset', {token: req.params.token});
+	});
 });
 
 router.post('/reset/:token', function(req, res) {
-  async.waterfall([
-    function(done) {
-      User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-        if (!user) {
-          req.flash('error', 'Password reset token is invalid or has expired.');
-          return res.redirect('back');
-        }
-        if(req.body.password === req.body.confirm) {
-          user.setPassword(req.body.password, function(err) {
-            user.resetPasswordToken = undefined;
-            user.resetPasswordExpires = undefined;
+	async.waterfall([
+		function(done) {
+			User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+				if (!user) {
+					req.flash('error', 'Password reset token is invalid or has expired.');
+					return res.redirect('back');
+				}
+				if(req.body.password === req.body.confirm) {
+					user.setPassword(req.body.password, function(err) {
+						user.resetPasswordToken = undefined;
+						user.resetPasswordExpires = undefined;
 
-            user.save(function(err) {
-              req.logIn(user, function(err) {
-                done(err, user);
-              });
-            });
-          })
-        } else {
-            req.flash("error", "Passwords do not match.");
-            return res.redirect('back');
-        }
-      });
-    },
-    function(user, done) {
-      var smtpTransport = nodemailer.createTransport({
-        service: 'Gmail', 
-        auth: {
-          user: 'nikola8989@gmail.com',
-          pass: process.env.GMAILPW
-        }
-      });
-      var mailOptions = {
-        to: user.email,
-        from: 'nikola8989@gmail.com',
-        subject: 'Your password has been changed',
-        text: 'Hello,\n\n' +
-          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-      };
-      smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash('success', 'Success! Your password has been changed.');
-        done(err);
-      });
-    }
-  ], function(err) {
-    res.redirect('/portfolio');
-  });
+						user.save(function(err) {
+							req.logIn(user, function(err) {
+								done(err, user);
+							});
+						});
+					})
+				} else {
+					req.flash("error", "Passwords do not match.");
+					return res.redirect('back');
+				}
+			});
+		},
+		function(user, done) {
+			var smtpTransport = nodemailer.createTransport({
+				service: 'Gmail', 
+				auth: {
+					user: 'nikola8989@gmail.com',
+					pass: process.env.GMAILPW
+				}
+			});
+			var mailOptions = {
+				to: user.email,
+				from: 'nikola8989@gmail.com',
+				subject: 'Your password has been changed',
+				text: 'Hello,\n\n' +
+				'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+			};
+			smtpTransport.sendMail(mailOptions, function(err) {
+				req.flash('success', 'Success! Your password has been changed.');
+				done(err);
+			});
+		}
+		], function(err) {
+			res.redirect('/portfolio');
+		});
 });
 
 

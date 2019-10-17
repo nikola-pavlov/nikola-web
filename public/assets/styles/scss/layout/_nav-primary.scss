@@ -24,10 +24,11 @@
 		&:not(:last-child) {
 			padding-right: 3rem;
 		}
+
 		@include respond(1000) {
 			float: none;
 			width: 100%;
-			padding-right: 0;
+			padding: 0;
 		}
 	}
 
@@ -47,7 +48,7 @@
 
 		@include respond(1000) {
 			// border-bottom: 1px solid var(--color-grey-light);
-			padding: 1rem 0;
+			padding: .7rem 0;
 		}
 	}
 }

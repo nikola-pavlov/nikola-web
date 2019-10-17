@@ -49,9 +49,8 @@
 			@include respond(700) {
 
 				position: relative;
-				left: -2rem;
 				display: block;
-				width: calc(100% + 4rem);
+				width: 100%;
 				margin-bottom: 5rem;
 				border-radius: 0;
 				height: 30rem;
@@ -320,11 +319,9 @@
 			}
 
 			@include respond(700) {
-
+				width: 100%;
 				position: relative;
-				left: -2rem;
 				display: block;
-				width: calc(100% + 4rem);
 				margin-bottom: 5rem;
 				border-radius: 0;
 				height: 30rem;

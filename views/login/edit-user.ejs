@@ -1,0 +1,66 @@
+ <% include ../partials/header %>
+
+ <section class="section section--register-page">
+
+ 	<div class="wrapper">
+
+ 		<div class="register text-generic">
+ 			<div class="register__register-side">
+ 				<div class="register__register-side__container">
+ 					
+ 					<h2 class="headline-4 u-center-horizontaly u-margin-bottom-small headline--stylish-1">Edit your profile.</h2>
+
+ 					<p class="register__register-side__desc u-margin-bottom-xsmall">Here you can change all of your profile information.</p>
+
+ 					<form action="/users/<%= user._id %>?_method=PUT" method="POST">
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="text" name="user[username]" value="<%= user.username %>" placeholder="Username">
+ 							<label for="register-username" class="main-contact-form__form__label">Your Username</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="email" name="user[email]" value="<%= user.email %>" placeholder="Email">
+ 							<label for="register-email" class="main-contact-form__form__label">Your Email</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="text" name="user[firstName]" value="<%= user.firstName %>" placeholder="First Name">
+ 							<label for="register-firstName" class="main-contact-form__form__label">Your First Name</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<input class="main-contact-form__form__input" type="text" name="user[lastName]" value="<%= user.lastName %>" placeholder="Last Name">
+ 							<label for="register-lastName" class="main-contact-form__form__label">Your Last Name</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group2">
+ 							<textarea rows="5" class="main-contact-form__form__input" type="text" name="user[info]" value="<%= user.info %>" placeholder="Basic information about yourself."></textarea>
+ 							<label for="register-lastName" class="main-contact-form__form__label">Basic information about yourself.</label>
+ 						</div>
+
+ 						<p class="login__login-side__sign-up u-margin-top-xsmall">Want to change your password? <span class="strong--color-one"><a href="/forgot">Go to the following link.</a></span></p>
+
+
+ 						<button class="btn btn--main btn--full-width">Edit</button>
+ 						<p><a href="/users/<%= user._id %> %>">Go back</a> to your user profile</p>
+ 					</form>
+
+ 				</div>
+ 			</div>
+
+ 			<div class="register__info-side">
+ 				<div class="register__info-side__container">
+ 					<div class="register__info-side__content">
+ 						<div class="register__info-side__logo u-margin-bottom-xsmall"></div>
+ 						<p class="register__info-side__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit fugiat perspiciatis incidunt assumenda veritatis numquam, dolorem hic nostrum sequi reprehenderit, aliquam harum nam soluta velit repudiandae illo totam nihil sed?</p>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+
+ 	</div>
+
+ </section>
+
+ <% include ../partials/footer %>

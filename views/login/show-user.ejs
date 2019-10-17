@@ -9,13 +9,20 @@
  	<h2><%= user.username %></h2>
  	<p><%= user.firstName %></p>
  	<p><%= user.lastName %></p>
- 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo veniam reprehenderit voluptatibus quaerat natus doloremque doloribus pariatur commodi voluptatum eaque excepturi ullam veritatis cupiditate, eius, unde adipisci quasi! Laborum, perferendis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis, eaque molestiae! Amet asperiores fuga corrupti. Voluptatibus adipisci, dolor perspiciatis tempora eius doloremque amet magni omnis sunt possimus alias libero.</p>
+ 	<p><%= user.info %></p>
  	<p><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
  	<p><%= user._id %></p>
  	<p><%= user.createdAt %></p>
  	<% if(user.isAdmin == 1) { %>
  	<p><%= user.username %> is <strong>Admin</strong></p>
  	<% } %>
+ 	<p><%= user.isOnline %> <strong> : IS ONLINE STATUS</strong></p>
+
+ 	<a class="comment__edit-btn" href="/users/<%= user._id %>/edit">Edit</a>
+ <form class="comment__delete-btn" action="/users/<%= user._id %>?_method=DELETE" method="POST">
+ 	<input type="submit" value="Delete">
+ </form>
  </div>
+
 
  <% include ../partials/footer %>
