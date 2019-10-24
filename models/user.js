@@ -7,13 +7,14 @@ var UserSchema = new mongoose.Schema ({
 	firstName: String,
 	lastName: String,
 	password: String,
-	avatar: String,
+	avatar: {type: String, default:"http://oakclifffilmfestival.com/assets/placeholder-user.png"},
 	info: String,
 	isAdmin: {type: Boolean, default: false},
 	createdAt: {type: Date, default: Date.now},
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
-	isOnline: {type: Boolean, default: false}
+	isOnline: {type: Boolean, default: false},
+	isPublic: {type: Boolean, default: true}
 });
 
 UserSchema.plugin(passportLocalMongoose);

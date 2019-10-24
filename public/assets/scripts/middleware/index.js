@@ -112,4 +112,30 @@ middlewareObj.isAdmin = function(req, res, next){
 	res.redirect("/portfolio");
 }
 
+// middlewareObj.isPublic = function(req, res, next){
+// 	User.findById(req.params.user_id, function(err, user){
+// 		if(err || !user) {
+// 			console.log(err);
+// 			req.flash("error", "Error: User does not exist.");
+// 			res.redirect("back");
+// 		} else {
+// 			console.log(user);
+
+// 			if(user.isPublic){
+// 				return next();
+// 			}
+// 			if(req.isAuthenticated() && req.user.isAdmin) {
+// 				return next();
+// 			}
+
+// 			if(req.isAuthenticated() && req.user._id.equals(user._id)) {
+// 				return next();
+// 			}
+			
+// 			req.flash("error", "Error: User Profile is set to private.");
+// 			res.redirect("back");
+// 		}
+// 	});
+// }
+
 module.exports = middlewareObj;

@@ -16,6 +16,8 @@ import Portfolio from "./modules/Portfolio";
 import FlashMessages from "./modules/FlashMessages";
 import CopyClipboard from "./modules/CopyClipboard";
 import Replies from "./modules/Replies";
+import Warning from "./modules/Warning";
+import Likes from "./modules/Likes";
 
 // import BackToTop from "./modules/BackToTop";
 // import Testimonials from "./modules/Testimonials";

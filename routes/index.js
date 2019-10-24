@@ -142,7 +142,7 @@ router.get("/logout", function(req, res) {
 // FORGOT PASSWORD ROUTES 
 
 // forgot password
-router.get('/forgot', function(req, res) {
+router.get('/reset', function(req, res) {
 	res.render('login/forgot');
 });
 
@@ -158,7 +158,7 @@ router.post('/forgot', function(req, res, next) {
 			User.findOne({ email: req.body.email }, function(err, user) {
 				if (!user) {
 					req.flash('error', 'No account with that email address exists.');
-					return res.redirect('/forgot');
+					return res.redirect('/reset');
 				}
 
 				user.resetPasswordToken = token;
@@ -194,7 +194,7 @@ router.post('/forgot', function(req, res, next) {
 		}
 		], function(err) {
 			if (err) return next(err);
-			res.redirect('/forgot');
+			res.redirect('/reset');
 		});
 });
 
@@ -202,7 +202,7 @@ router.get('/reset/:token', function(req, res) {
 	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 		if (!user) {
 			req.flash('error', 'Password reset token is invalid or has expired.');
-			return res.redirect('/forgot');
+			return res.redirect('/reset');
 		}
 		res.render('login/reset', {token: req.params.token});
 	});

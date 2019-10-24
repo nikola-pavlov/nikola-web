@@ -19,7 +19,14 @@ var projectSchema = new mongoose.Schema ({
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Comment"
 		}
-	]
+	],
+	likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    views: {type: Number, default: 0}
 });
 
 var Project = mongoose.model("Project", projectSchema);

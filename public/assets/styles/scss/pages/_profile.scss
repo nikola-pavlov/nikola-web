@@ -1,0 +1,170 @@
+.profile {
+
+	display: flex;
+	font-size: 1.6rem;
+	font-weight: 100;
+	line-height: 1.6;
+	background: var(--color-whitish);
+	border-radius: 1rem;
+
+	&__image {
+		height: 25rem;
+		overflow: hidden;
+		flex: 0 0 25rem;
+		height: 25rem;
+
+		& img {
+			object-fit: cover;
+			height: 25rem;
+			width: 25rem;
+			
+		}
+	}
+
+
+
+
+
+	&__right {
+		flex: 1;
+		// background: var(--color-three);
+		padding: 7rem;
+	}
+
+	&__info {
+
+		display: flex;
+		position: relative;
+
+		&__field {
+
+			flex: 1;
+
+			ul {
+				list-style: none;
+			}
+
+			ul li {
+				height: 3.25rem;
+				font-weight: bold;
+			}
+
+			ul li span {
+				position: absolute;
+				left: 17rem;
+				font-weight: 100;
+			}
+
+		}
+	}
+
+	&__firstname {
+		margin-top: 3rem;
+	}
+
+	&__username {
+		font-size: 3rem;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+
+		& span {
+			font-size: 1.6rem;
+		}
+	}
+
+	&__isadmin {
+		background-color: var(--color-three);
+		color: var(--color-one);
+		padding: 2px 4px;
+		font-size: 1.4rem;
+		font-weight: bold;
+		width: auto !important;
+		align-self: center;
+		justify-self: center;
+		height: auto !important;
+		text-align: center;
+		max-width: 6rem;
+	}
+
+	&__info-msg {
+		padding: 0;
+		margin: 0;
+		position: relative;
+		font-size: 1.4rem;
+		top: -.5rem;
+	}
+
+	&__visibility {
+		margin: 3.75rem 0 0 0;
+	}
+
+	&__password {
+		margin: 3.75rem 0 0 0;
+		&__text {
+			font-weight: bold;
+		}
+
+		&__button {
+			margin: 1rem 0 .4rem 0;
+		}
+
+		&__info {
+			font-size: 1.4rem;
+		}
+	}
+
+	&__bio {
+		margin-top: 3rem;
+		&__text {
+			font-weight: bold;
+		}
+
+		&__info {
+			margin-top: .5rem;
+		}
+	}
+
+	&__status {
+		position: relative;
+		display: block;
+	}
+
+	&__indicator {
+		position: absolute !important;
+		height: 1rem;
+		width: 1rem;
+		border-radius: 50%;
+		display: block;
+		left: 5rem !important;
+		top: .8rem;
+
+
+		&.online {
+			background: green;
+		}
+
+		&.offline {
+			background: red;
+		}
+	}
+
+	&__delete {
+		display: inline-block;
+		margin-left: 2rem;
+	}
+
+	&__buttons {
+		position: relative;
+		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-top: 5rem;
+
+	}
+
+	&__private {
+		margin-top: 3rem;
+	}
+}

@@ -122,7 +122,7 @@ router.get("/new", middleware.isLoggedIn, middleware.isAdmin, function(req, res)
 router.get("/:id", function(req, res) {
 
 	// find the project with the provided ID
-	Project.findById(req.params.id).populate("comments").exec(function(err, foundProject){
+	Project.findById(req.params.id).populate("comments likes").exec(function(err, foundProject){
 		if(err || !foundProject) {
 			req.flash("error", "Error: Project not found.");
 			res.redirect("/portfolio");
@@ -140,6 +140,9 @@ router.get("/:id", function(req, res) {
 									console.log(err);
 									res.redirect("back");
 								} else {
+									// Add + 1 to views and saves number of views.
+									foundProject.views++;
+									foundProject.save();
 									res.render("portfolio/show-project", {project: foundProject, comment: foundComment, reply: foundReply, simPro: similarProject});
 								}
 							}).limit( 3 );
@@ -222,6 +225,40 @@ router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 			res.redirect("/portfolio");
 		}
 	});
+});
+
+
+// Project Likes Route
+
+// Project Like Route
+router.post("/:id/like", middleware.isLoggedIn, function (req, res) {
+    Project.findById(req.params.id, function (err, foundProject) {
+        if (err) {
+            console.log(err);
+            return res.redirect("/portfolio");
+        }
+
+        // check if req.user._id exists in foundProject.likes
+        var foundUserLike = foundProject.likes.some(function (like) {
+            return like.equals(req.user._id);
+        });
+
+        if (foundUserLike) {
+            // user already liked, removing like
+            foundProject.likes.pull(req.user._id);
+        } else {
+            // adding the new user like
+            foundProject.likes.push(req.user);
+        }
+
+        foundProject.save(function (err) {
+            if (err) {
+                console.log(err);
+                return res.redirect("/portfolio");
+            }
+            return res.redirect("/portfolio/" + foundProject._id);
+        });
+    });
 });
 
 function escapeRegex(text) {
