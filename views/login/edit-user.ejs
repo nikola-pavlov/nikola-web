@@ -12,7 +12,7 @@
 
  					<p class="register__register-side__desc u-margin-bottom-xsmall">Here you can change all of your profile information.</p>
 
- 					<form action="/users/<%= user._id %>?_method=PUT" method="POST">
+ 					<form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
  						<div class="main-contact-form__form__group">
  							<input class="main-contact-form__form__input" type="text" name="user[username]" value="<%= user.username %>" placeholder="Username">
@@ -37,6 +37,11 @@
  						<div class="main-contact-form__form__group2">
  							<textarea rows="5" class="main-contact-form__form__input" type="text" name="user[info]" value="<%= user.info %>" placeholder="Basic information about yourself."></textarea>
  							<label for="register-lastName" class="main-contact-form__form__label">Basic information about yourself.</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group">
+ 							<label for="image">Image</label>
+ 							<input type="file" id="image" name="image" accept="image/*">
  						</div>
 
  						<p class="login__login-side__sign-up u-margin-top-xsmall">Want to change your password? <span class="strong--color-one"><a href="/forgot">Go to the following link.</a></span></p>

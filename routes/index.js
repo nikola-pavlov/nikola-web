@@ -9,6 +9,27 @@ var async 	= require("async");
 var dotenv 	= require('dotenv').config();
 var nodemailer 	= require("nodemailer");
 var crypto 	= require("crypto");
+var multer = require('multer');
+var storage = multer.diskStorage({
+	filename: function(req, file, callback) {
+		callback(null, Date.now() + file.originalname);
+	}
+});
+var imageFilter = function (req, file, cb) {
+    // accept image files only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+    	return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+var upload = multer({ storage: storage, fileFilter: imageFilter})
+
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+	cloud_name: process.env.CLOUDINARY_NAME, 
+	api_key: process.env.CLOUDINARY_API_KEY, 
+	api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 
 // Root route
@@ -41,30 +62,49 @@ router.get("/register", function(req, res){
 
 // handle signup logic
 
-router.post("/register", function(req, res){
-	var newUser = new User(
-	{
-		username: req.body.username, 
-		email: req.body.email, 
-		firstName: req.body.firstName, 
-		lastName: req.body.lastName, 
-		avatar: req.body.avatar
-	});
-	if(req.body.password === req.body.confirm) {
-		User.register(newUser, req.body.password, function(err, user){
-			if(err) {
-				req.flash("error", err.message);
-				res.redirect("/register");
-			} else
-			passport.authenticate("local")(req, res, function(){
-				req.flash("success", "You have been registered. Welcome " + user.username +".");
-				res.redirect("/");
+router.post("/register", upload.single('image'), function(req, res){
+	cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+		if(err) {
+			req.flash("error", "Can't upload image, try again later.");
+			res.redirect("back");
+		} else {
+
+
+
+			req.body.image = result.secure_url;
+			req.body.imageId = result.public_id;
+
+			var newUser = new User(
+			{
+				username: req.body.username, 
+				email: req.body.email, 
+				firstName: req.body.firstName, 
+				lastName: req.body.lastName, 
+				avatar: req.body.avatar,
+				image: req.body.image,
+				imageId: req.body.imageId
 			});
-		});
-	} else {
-		req.flash("error", "Error: Passwords does not match.");
-		res.redirect("/register");
-	}
+
+			console.log(req.body.imageId);
+
+			if(req.body.password === req.body.confirm) {
+				User.register(newUser, req.body.password, function(err, user){
+					if(err) {
+						req.flash("error", err.message);
+						res.redirect("/register");
+					} else
+					passport.authenticate("local")(req, res, function(){
+						req.flash("success", "You have been registered. Welcome " + user.username +".");
+						res.redirect("/");
+					});
+				});
+			} else {
+				req.flash("error", "Error: Passwords does not match.");
+				res.redirect("/register");
+			}
+		}
+	});
+
 });
 
 // show login form
@@ -91,25 +131,25 @@ router.post("/login", function(req, res, next) {
 
   // generate the authenticate method and pass the req/res
   passport.authenticate('local', function(err, user, info) {
-    if (err) { 
-    	return next(err); 
-    }
-    if (!user) { 
-    	return res.redirect('/'); 
-    }
+  	if (err) { 
+  		return next(err); 
+  	}
+  	if (!user) { 
+  		return res.redirect('/'); 
+  	}
 
     // req / res held in closure
     req.logIn(user, function(err) {
-      if (err) { 
-      	return next(err); 
-      }
-      user.isOnline = true;
-      user.save();
-      req.flash("success", "You have been logged in. Welcome " + user.username + ".");
-      return res.redirect('/');
+    	if (err) { 
+    		return next(err); 
+    	}
+    	user.isOnline = true;
+    	user.save();
+    	req.flash("success", "You have been logged in. Welcome " + user.username + ".");
+    	return res.redirect('/');
     });
 
-  })(req, res, next);
+})(req, res, next);
 
 });
 

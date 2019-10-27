@@ -6,6 +6,9 @@ var Comment	= require("../models/comment");
 var Reply	= require("../models/reply");
 var middleware	= require("../public/assets/scripts/middleware");
 
+
+
+
 // NEW ROUTE
 
 router.get("/new", middleware.isLoggedIn, function(req, res){
@@ -136,6 +139,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
 		}
 	});
 });
+
 
 
 

@@ -12,7 +12,7 @@
 
  					<p class="register__register-side__desc u-margin-bottom-xsmall">Please fill out the fields below to sign up!</p>
 
- 					<form action="/register" method="POST">
+ 					<form action="/register" method="POST" enctype="multipart/form-data">
 
  						<div class="main-contact-form__form__group">
  							<input class="main-contact-form__form__input" type="text" name="username" placeholder="Username">
@@ -42,6 +42,10 @@
  						<div class="main-contact-form__form__group">
  							<input class="main-contact-form__form__input" type="password" name="confirm" placeholder="Confirm Password">
  							<label for="register-confirm" class="main-contact-form__form__label">Confirm Password</label>
+ 						</div>
+ 						<div class="main-contact-form__form__group">
+ 							<label for="image">Image</label>
+ 							<input type="file" id="image" name="image" accept="image/*" required>
  						</div>
 
  						<button class="btn btn--main btn--full-width">Sign Up</button>

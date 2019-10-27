@@ -8,6 +8,8 @@ var UserSchema = new mongoose.Schema ({
 	lastName: String,
 	password: String,
 	avatar: {type: String, default:"http://oakclifffilmfestival.com/assets/placeholder-user.png"},
+	image: String,
+	imageId: String, 
 	info: String,
 	isAdmin: {type: Boolean, default: false},
 	createdAt: {type: Date, default: Date.now},
