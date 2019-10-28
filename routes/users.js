@@ -69,7 +69,10 @@ router.put("/:user_id", upload.single('image'), middleware.checkUserOwnership, f
 			if(req.file) {
 				try {
 					await cloudinary.v2.uploader.destroy(foundUser.imageId);
-					var result = await cloudinary.v2.uploader.upload(req.file.path);
+					var result = await cloudinary.v2.uploader.upload(req.file.path, {transformation: [
+  {aspect_ratio: "1:1", crop: "fill"},
+  {width: "400", dpr: "auto", crop: "scale", quality: "auto:eco"}
+  ]});
 					foundUser.imageId = result.public_id;
 					foundUser.image = result.secure_url;
 

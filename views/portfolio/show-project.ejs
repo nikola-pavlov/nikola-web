@@ -227,14 +227,20 @@
 
  								<ul class="comment__group">
  									<% project.comments.forEach(function(comment){ %>
+ 									
+
+ 									
  									<% var replyCount = 0; %>
  									<li class="comment__item">
+ 										<% user.forEach(function(user){ %>
+ 										<% if(user._id.equals(comment.author.id)){ %>
  										<div class="comment__image">
- 											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2WRv6HhQL5-eK9Z-8VtkeAP58CzpFUz-FWfmgP3YSbiuj-J_HAw" alt="user image">
+ 											<img src="<%= user.image %>" alt="user image">
  										</div>
+ 										
  										<div class="comment__info">
  											<!-- <%= comment._id %> -->
- 											<div class="comment__info__user"><%= comment.author.username %></div>
+ 											<div class="comment__info__user"><a href="/users/<%= user._id %>"><%= comment.author.username %></a></div>
  											<p class="comment__info__text"><%= comment.text %></p>
  											<div class="comment__info__date"><%= moment(comment.createdAt).fromNow() %></div>
  											<% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
@@ -242,6 +248,8 @@
 
  											<% } %>
  										</div>
+ 										<% } %>
+ 										<% }); %>
  										<div class="reply">
  											<ul class="reply__group">
  												<% reply.forEach(function(reply){ %>
@@ -249,14 +257,19 @@
  												<% replyCount++ %>
 
  												<li class="reply__item">
+ 													<% user.forEach(function(user){ %>
+ 													<% if(user._id.equals(reply.author.id)){ %>
  													<div class="reply__image">
- 														<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2WRv6HhQL5-eK9Z-8VtkeAP58CzpFUz-FWfmgP3YSbiuj-J_HAw" alt="user image">
+ 														<img src="<%= user.image %>" alt="user image">
  													</div>
+ 													
  													<div class="reply__info">
- 														<div class="reply__info__user"><%= reply.author.username %></div>
+ 														<div class="reply__info__user"><a href="/users/<%= user._id %>"><%= reply.author.username %></a></div>
  														<p class="reply__info__text"><%= reply.text %></p>
  														<div class="reply__info__date"><%= moment(reply.createdAt).fromNow() %></div>
  													</div>
+ 													<% } %>
+ 													<% }); %>
  													<div class="reply__footer">
  														<a class="comment__reply-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/new">REPLY</a>
  														<% if(currentUser && reply.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>

@@ -3,6 +3,7 @@ var router = express.Router();
 var Project	= require("../models/project");
 var Comment	= require("../models/comment");
 var Reply	= require("../models/reply");
+var User	= require("../models/user");
 var middleware	= require("../public/assets/scripts/middleware");
 
 
@@ -140,10 +141,19 @@ router.get("/:id", function(req, res) {
 									console.log(err);
 									res.redirect("back");
 								} else {
+
+									User.find({}, function(err, foundUsers){
+										if(err) {
+											console.log(err);
+											res.redirect("back");
+										} else {
 									// Add + 1 to views and saves number of views.
 									foundProject.views++;
 									foundProject.save();
-									res.render("portfolio/show-project", {project: foundProject, comment: foundComment, reply: foundReply, simPro: similarProject});
+									res.render("portfolio/show-project", {project: foundProject, comment: foundComment, reply: foundReply, simPro: similarProject, user: foundUsers});
+								}
+							});
+									
 								}
 							}).limit( 3 );
 							
@@ -232,15 +242,15 @@ router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 
 // Project Like Route
 router.post("/:id/like", middleware.isLoggedIn, function (req, res) {
-    Project.findById(req.params.id, function (err, foundProject) {
-        if (err) {
-            console.log(err);
-            return res.redirect("/portfolio");
-        }
+	Project.findById(req.params.id, function (err, foundProject) {
+		if (err) {
+			console.log(err);
+			return res.redirect("/portfolio");
+		}
 
         // check if req.user._id exists in foundProject.likes
         var foundUserLike = foundProject.likes.some(function (like) {
-            return like.equals(req.user._id);
+        	return like.equals(req.user._id);
         });
 
         if (foundUserLike) {
@@ -252,11 +262,11 @@ router.post("/:id/like", middleware.isLoggedIn, function (req, res) {
         }
 
         foundProject.save(function (err) {
-            if (err) {
-                console.log(err);
-                return res.redirect("/portfolio");
-            }
-            return res.redirect("/portfolio/" + foundProject._id);
+        	if (err) {
+        		console.log(err);
+        		return res.redirect("/portfolio");
+        	}
+        	return res.redirect("/portfolio/" + foundProject._id);
         });
     });
 });
