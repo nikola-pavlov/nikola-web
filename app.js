@@ -12,6 +12,7 @@ User				= require("./models/user"),
 Project				= require("./models/project"),
 Comment 			= require("./models/comment"),
 Reply 				= require("./models/reply"),
+Photo				= require("./models/photo"),
 seedDB				= require("./seeds"),
 moment 				= require('moment')
 
@@ -22,7 +23,8 @@ var commentRoutes 	= require("./routes/comments"),
 	contactRoutes	= require("./routes/contact"),
 	indexRoutes		= require("./routes/index"),
 	replyRoutes		= require("./routes/replies"),
-	userRoutes		= require("./routes/users")
+	userRoutes		= require("./routes/users"),
+	photoRoutes		= require("./routes/photos")
 
 // MongoDB Connect
 
@@ -65,6 +67,7 @@ app.use("/users", userRoutes);
 app.use("/portfolio", projectRoutes);
 app.use("/portfolio/:id/comments", commentRoutes);
 app.use("/portfolio/:id/comments/:comment_id/replies", replyRoutes);
+app.use("/portfolio/:id/photos", photoRoutes);
 app.use(contactRoutes);
 
 app.listen(80, "192.168.0.20", function(){

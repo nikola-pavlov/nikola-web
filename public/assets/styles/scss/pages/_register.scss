@@ -1,120 +1,167 @@
 .register {
-	box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
-	@include clearfix;
-	border-radius: 2rem;
-	display: flex;
 
-	@include respond(1000) {
-		display: block;
-	}
+	&__main {
 
-	&__register-side {
-		width: 60%;
-		float: left;
-		background: var(--color-whitish);
-		border-radius: 2rem 0 0 2rem;
+		background-color: var(--color-whitish);
+		padding: 7rem;
+		display: flex;
+		// flex-wrap: wrap;
 
 		@include respond(1000) {
-			width: 100%;
-			float: none;
-			border-radius: 2rem 2rem 0 0;
+			padding: 5rem;
 		}
 
-		&__container {
-			padding: 7rem;
+		@include respond(800) {
+			flex-direction: column;
+		}
+
+		@include respond(600) {
+			padding: 2rem;
+		}
+
+		&__fields {
+			flex: 0 0 70%;
+
 			@include respond(1000) {
-				padding: 5rem;
+				flex: 0 0 60%;
 			}
 		}
 
-		&__desc {
-			text-align: center;
-			color: var(--color-grey);
+		&__upload {
+			flex: 0 0 30%;
+			padding-left: 5rem;
+
+			@include respond(1000) {
+				flex: 0 0 40%;
+			}
+
+			@include respond(800) {
+				padding: 0;
+				flex: 1;
+				max-width: 30rem;
+				align-self: center;
+				padding: 5rem 0;
+			}
+
+			&__group {
+				position: relative;
+				display: flex;
+
+				@include respond(1000) {
+					width: 100% !important;
+				}
+
+				@include respond(800) {
+				}
+			}
+
+			&__image {
+				width: 100%;
+				padding-top: 100%;
+				background-image: url("http://oakclifffilmfestival.com/assets/placeholder-user.png");
+				background-size: cover;
+
+				&--edit {
+					width: 100%;
+					padding-top: 100%;
+					background: var(--color-grey-light);
+					background-size: cover;
+					position: relative;
+
+					& img {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+					}
+				}
+
+				&__input {
+					font-family: inherit;
+					background-color: var(--color-four);
+					color: var(--color-whitish);
+					height: 4rem;
+					padding: 9px 0;
+
+					@include respond(1000) {
+						width: 100%;
+					}
+				}
+
+				&__label {
+					position: relative;
+					font-family: inherit;
+					cursor: pointer;
+					transition: all .3s ease-out;
+					padding: 1rem;
+					background: var(--color-one);
+					color: var(--color-whitish);
+					position: absolute;
+					font-size: 1.4rem;
+					width: 8.7rem;
+					height: 4rem;
+					top: 0;
+					left: 0;
+					padding: 9px 0;
+					text-align: center;
+
+					@include respond(1000) {
+						width: 9.2rem;
+					}
+
+					@include respond(800) {
+						width: 9.7rem;
+					}
+
+					@include respond(500) {
+						width: 10.4rem;
+					}
+				}
+
+				&__label:hover {
+					
+				}
+			}
+
+			&__text:first-of-type {
+				margin-top: 5rem;
+			}
+			&__text {
+				margin-top: 1rem;
+				font-size: 1.4rem;
+				color: var(--color-grey-main);
+			}
+
+			&__footer {
+				flex: 0 0 100%;
+			}
+
+			&__btn {
+				
+			}
+
+			&__signup {
+				text-align: center;
+			}
 		}
 
-		&__sign-up {
+		&__info {
 			text-align: center;
+			margin-bottom: 5rem;
 		}
 	}
 
-	&__info-side {
-		position: relative;
-		width: 40%;
-		float: left;
-		background-image: linear-gradient(to right bottom, rgba(58, 175, 169, .8), rgba(58, 175, 169, .5)), url(../../images/register-image.jpg);
-		background-size: cover;
-		background-repeat: no-repeat;
-		border-radius: 0 2rem 2rem 0;
+	&__radio {
 
-		@include respond(1000) {
+		&__group {
+			display: flex;
+			margin-top: 3rem;
 			width: 100%;
-			float: none;
-			border-radius: 0 0 2rem 2rem;
-		}
 
-		&__container {
-			padding: 7rem;
-			position: relative;
-
-			@include respond(800) {
-				padding: 5rem;
+			& label {
+				margin-right: 2rem;
 			}
 		}
 
-		&__content {
-			position: relative;
-			@include clearfix;
-		}
-
-		&__logo {
-			position: relative;
-			height: 10rem;
-			width: 100%;
-			background: url(../../images/logo1.svg);
-			background-repeat: no-repeat;
-			left:50%;
-			transform: translateX(-16.25%);
-
-			@include respond(1000) {
-				height: 6rem;
-				left: 0;
-				transform: translateX(0);
-				float: left;
-				width: 20%;
-			}
-
-			@include respond(800) {
-				height: 6rem;
-				left: 0;
-				transform: translateX(0);
-				float: left;
-				width: 20%;
-			}
-
-			@include respond(700) {
-				width: 100%;
-				float: none;
-				left: calc(50% - 3rem);
-			}
-		}
-
-		&__desc {
-			color: var(--color-whitish);
-			font-weight: 100;
-			@include respond(1000) {
-				float: left;
-				width: 80%;
-			}
-
-			@include respond(800) {
-				float: left;
-				width: 80%;
-			}
-
-			@include respond(700) {
-				float: none;
-				width: 100%;
-			}
-		}
 	}
 }

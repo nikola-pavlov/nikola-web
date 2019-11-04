@@ -5,22 +5,24 @@
  	<div class="wrapper">
 
  		<div class="register text-generic">
- 			<div class="register__register-side">
- 				<div class="register__register-side__container">
- 					
- 					<h2 class="headline-4 u-center-horizontaly u-margin-bottom-small headline--stylish-1">Sign Up!</h2>
+ 			<form action="/register" method="POST" enctype="multipart/form-data">
+ 				<div class="register__main">
 
- 					<p class="register__register-side__desc u-margin-bottom-xsmall">Please fill out the fields below to sign up!</p>
+ 					<div class="register__main__fields">
 
- 					<form action="/register" method="POST" enctype="multipart/form-data">
+ 						<h2 class="headline-4 u-center-horizontaly u-margin-bottom-small headline--stylish-1">Sign Up!</h2>
+
+ 						<p class="register__main__info">Please fill out the fields below to sign up!</p>
+
+
 
  						<div class="main-contact-form__form__group">
- 							<input class="main-contact-form__form__input" type="text" name="username" placeholder="Username">
+ 							<input class="main-contact-form__form__input" type="text" name="username" placeholder="Username" required>
  							<label for="register-username" class="main-contact-form__form__label">Your Username</label>
  						</div>
 
  						<div class="main-contact-form__form__group">
- 							<input class="main-contact-form__form__input" type="email" name="email" placeholder="Email">
+ 							<input class="main-contact-form__form__input" type="email" name="email" placeholder="Email" required>
  							<label for="register-email" class="main-contact-form__form__label">Your Email</label>
  						</div>
 
@@ -35,35 +37,51 @@
  						</div>
 
  						<div class="main-contact-form__form__group">
- 							<input class="main-contact-form__form__input" type="password" name="password" placeholder="Password">
+ 							<input class="main-contact-form__form__input" type="password" name="password" placeholder="Password" required>
  							<label for="register-password" class="main-contact-form__form__label">Your Password</label>
  						</div>
 
  						<div class="main-contact-form__form__group">
- 							<input class="main-contact-form__form__input" type="password" name="confirm" placeholder="Confirm Password">
+ 							<input class="main-contact-form__form__input" type="password" name="confirm" placeholder="Confirm Password" required>
  							<label for="register-confirm" class="main-contact-form__form__label">Confirm Password</label>
  						</div>
- 						<div class="main-contact-form__form__group">
- 							<label for="image">Image</label>
- 							<input type="file" id="image" name="image" accept="image/*" required>
+
+						
+ 						<div class="register__radio__group">
+ 							<label class="main-contact-form__form__radio__container">Public
+ 								<input type="radio" checked name="user[isPublic]" value="true">
+ 								<span class="main-contact-form__form__radio__checkmark"></span>
+ 							</label>
+ 							<label class="main-contact-form__form__radio__container">Private
+ 								<input type="radio" name="user[isPublic]" value="false">
+ 								<span class="main-contact-form__form__radio__checkmark"></span>
+ 							</label>
  						</div>
+ 						
+ 						<label for="register-lastName" class="main-contact-form__form__label">Profile Visibility</label>
 
- 						<button class="btn btn--main btn--full-width">Sign Up</button>
- 					</form>
+ 						<p class="register__main__upload__signup u-margin-top-xsmall">Already have an account? <span class="strong--color-one"><a href="/login">Log in here</a></span></p>
+ 						
 
- 					<p class="login__login-side__sign-up u-margin-top-xsmall">Already have an account? <span class="strong--color-one"><a href="/login">Log in here</a></span></p>
+ 						
 
- 				</div>
- 			</div>
-
- 			<div class="register__info-side">
- 				<div class="register__info-side__container">
- 					<div class="register__info-side__content">
- 						<div class="register__info-side__logo u-margin-bottom-xsmall"></div>
- 						<p class="register__info-side__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit fugiat perspiciatis incidunt assumenda veritatis numquam, dolorem hic nostrum sequi reprehenderit, aliquam harum nam soluta velit repudiandae illo totam nihil sed?</p>
+ 					</div>
+ 					<div class="register__main__upload">
+ 						<div class="register__main__upload__image"></div>
+ 						<div class="main-contact-form__form__group register__main__upload__group">
+ 							<input class="register__main__upload__image__input" type="file" id="image" name="image" accept="image/*">
+ 							<label class="register__main__upload__image__label" for="image">Upload</label>
+ 						</div>
+ 						<p class="register__main__upload__text">Suggested aspect ratio is 1:1.</p>
+ 						<p class="register__main__upload__text">Your image will be scaled and cropped to W:400px H:400px after signing up.</p>
+ 						<p class="register__main__upload__text">The image you upload will be <strong>publicly</strong> availible in your profile.</p>
  					</div>
  				</div>
- 			</div>
+ 				<div class="register__main__upload__footer">
+ 					<button class="btn btn--main btn--full-width register__main__upload__btn">Sign Up</button>
+ 					
+ 				</div>
+ 			</form>
  		</div>
 
  	</div>

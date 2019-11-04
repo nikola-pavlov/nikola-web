@@ -70,9 +70,9 @@ router.put("/:user_id", upload.single('image'), middleware.checkUserOwnership, f
 				try {
 					await cloudinary.v2.uploader.destroy(foundUser.imageId);
 					var result = await cloudinary.v2.uploader.upload(req.file.path, {transformation: [
-  {aspect_ratio: "1:1", crop: "fill"},
-  {width: "400", dpr: "auto", crop: "scale", quality: "auto:eco"}
-  ]});
+						{aspect_ratio: "1:1", crop: "fill"},
+						{width: "400", dpr: "auto", crop: "scale", quality: "auto:eco"}
+						]});
 					foundUser.imageId = result.public_id;
 					foundUser.image = result.secure_url;
 
@@ -82,11 +82,16 @@ router.put("/:user_id", upload.single('image'), middleware.checkUserOwnership, f
 				}
 			}
 
-			foundUser.username = req.body.user.username;
-			foundUser.email = req.body.user.email;
-			foundUser.firstname = req.body.user.firstName;
-			foundUser.lastname = req.body.user.lastName;
-			foundUser.info = req.body.user.info;
+			if(req.body.user) { 
+
+				foundUser.username = req.body.user.username;
+				foundUser.email = req.body.user.email;
+				foundUser.firstName = req.body.user.firstName;
+				foundUser.lastName = req.body.user.lastName;
+				foundUser.info = req.body.user.info;
+				foundUser.isPublic = req.body.user.isPublic;
+
+			}
 
 			foundUser.save();
 			

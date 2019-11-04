@@ -62,48 +62,51 @@ router.get("/register", function(req, res){
 
 // handle signup logic
 
-router.post("/register", upload.single('image'), function(req, res){
-	cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
-		if(err) {
-			req.flash("error", "Can't upload image, try again later.");
-			res.redirect("back");
-		} else {
-
-
-
+router.post("/register", upload.single('image'), async function(req, res){
+	if(req.file) {
+		try {
+			var result = await cloudinary.v2.uploader.upload(req.file.path, {transformation: [
+				{aspect_ratio: "1:1", crop: "fill"},
+				{width: "400", dpr: "auto", crop: "scale", quality: "auto:eco"}
+				]});
 			req.body.image = result.secure_url;
 			req.body.imageId = result.public_id;
-
-			var newUser = new User(
-			{
-				username: req.body.username, 
-				email: req.body.email, 
-				firstName: req.body.firstName, 
-				lastName: req.body.lastName, 
-				avatar: req.body.avatar,
-				image: req.body.image,
-				imageId: req.body.imageId
-			});
-
-			console.log(req.body.imageId);
-
-			if(req.body.password === req.body.confirm) {
-				User.register(newUser, req.body.password, function(err, user){
-					if(err) {
-						req.flash("error", err.message);
-						res.redirect("/register");
-					} else
-					passport.authenticate("local")(req, res, function(){
-						req.flash("success", "You have been registered. Welcome " + user.username +".");
-						res.redirect("/");
-					});
-				});
-			} else {
-				req.flash("error", "Error: Passwords does not match.");
-				res.redirect("/register");
-			}
+		} catch(err) {
+			req.flash("error", "Can't upload image, try again later.");
+			return res.redirect("back");
 		}
+	}
+
+	var newUser = new User(
+	{
+		username: req.body.username, 
+		email: req.body.email, 
+		firstName: req.body.firstName, 
+		lastName: req.body.lastName, 
+		avatar: req.body.avatar,
+		image: req.body.image,
+		imageId: req.body.imageId,
+		isPublic: req.body.isPublic
 	});
+
+	if(req.body.password === req.body.confirm) {
+		User.register(newUser, req.body.password, function(err, user){
+			if(err) {
+				req.flash("error", err.message);
+				res.redirect("/register");
+			} else {
+				passport.authenticate("local")(req, res, function(){
+					user.isOnline = true;
+					user.save();
+					req.flash("success", "You have been registered. Welcome " + user.username +".");
+					res.redirect("/");
+				});
+			}
+		});
+	} else {
+		req.flash("error", "Error: Passwords does not match.");
+		res.redirect("/register");
+	}
 
 });
 

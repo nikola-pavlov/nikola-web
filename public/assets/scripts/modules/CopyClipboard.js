@@ -6,6 +6,7 @@ import $ from "jquery";
 var copyClipBtn = $("button#copyButton");
 var copyClipBtn2 = $("button#copyButton2");
 var copyClipInput = $(".share-link__input");
+var copyClipInput2 = $(".share-link__input2");
 var copyClipPopupMsg = $(".popup-message");
 
 
@@ -26,7 +27,7 @@ copyClipBtn.on( "click", function( event ) {
 });
 
 copyClipBtn2.on( "click", function( event ) {
-    copyClipInput.select();
+    copyClipInput2.select();
 
     copyClipPopupMsg.removeClass( 'popup-message--is-visible');
     setTimeout(function(){ 
@@ -35,6 +36,10 @@ copyClipBtn2.on( "click", function( event ) {
     50);
 });
 
-$(".share-link__input").focus(function(){
+copyClipInput.focus(function(){
+    this.select();
+});
+
+copyClipInput2.focus(function(){
     this.select();
 });

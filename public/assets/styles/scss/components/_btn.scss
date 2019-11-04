@@ -20,7 +20,7 @@
 		text-decoration: none;
 		padding: 1.5rem 2rem;
 		display: inline-block;
-		border-radius: 1rem;
+		border-radius: .5rem;
 		transition: all .15s ease-out;
 		font-size: 1.5rem;
 
@@ -75,7 +75,7 @@
 
 	button.btn {
 		border: none;
-		border-radius: 1rem;
+		border-radius: .5rem;
 		padding: 1.5rem 2rem;
 		text-transform: uppercase;
 		cursor: pointer;
@@ -114,7 +114,7 @@
 
 	input[type=submit].btn { 
 		border: none;
-		border-radius: 1rem;
+		border-radius: .5rem;
 		padding: 1.5rem 2rem;
 		text-transform: uppercase;
 		cursor: pointer;

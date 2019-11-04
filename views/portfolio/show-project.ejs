@@ -8,47 +8,33 @@
  				<div class="gallery">
  					<div class="gallery__main">
  						<div class="owl-carousel gallery__carousel">
+ 							<% project.photos.forEach(function(photo){ %>
  							<div class="item">
+ 								<img src="<%= photo.photo %>" alt="test">
+ 								<p style="z-index: 1000; position: absolute; top: 0; left: 0;"><a href="/portfolio/<%= project._id %>/photos/<%= photo._id %>/edit">Edit</a></p>
+ 								<form style="z-index: 1000; position: absolute; top: 0; left: 40px;" action="/portfolio/<%= project._id %>/photos/<%= photo._id %>?_method=DELETE" method="POST">
+ 									<input type="submit" value="Delete">
+ 								</form>
+ 							</div>
+ 							<% }); %>
+ 							<!-- <div class="item">
  								<img src="<%= project.image %>" alt="test">
- 							</div>
- 							<div class="item">
- 								<img src="https://via.placeholder.com/1200x800" alt="test">
- 							</div>
- 							<div class="item">
- 								<img src="https://via.placeholder.com/1200x800" alt="test">
- 							</div>
- 							<div class="item">
- 								<img src="https://via.placeholder.com/1200x800" alt="test">
- 							</div>
- 							<div class="item">
- 								<img src="https://via.placeholder.com/1200x800" alt="test">
- 							</div>
- 							<div class="item">
- 								<img src="https://via.placeholder.com/1200x800" alt="test">
- 							</div>
+ 							</div> -->
+ 							
  							
  						</div>
 
  						<div class="gallery__bookmarks">
  							<ul class="gallery__bookmarks__group">
+ 								<% project.photos.forEach(function(photo){ %>
  								<li class="active" data="0">
+ 									<img src="<%= photo.photo %>" alt="test">
+ 								</li>
+ 								<% }); %>
+ 								<!-- <li class="active" data="0">
  									<img src="<%= project.image %>" alt="test">
- 								</li>
- 								<li data="1">
- 									<img src="https://via.placeholder.com/1200x800" alt="test">
- 								</li>
- 								<li data="2">
- 									<img src="https://via.placeholder.com/1200x800" alt="test">
- 								</li>
- 								<li data="3">
- 									<img src="https://via.placeholder.com/1200x800" alt="test">
- 								</li>
- 								<li data="4">
- 									<img src="https://via.placeholder.com/1200x800" alt="test">
- 								</li>
- 								<li data="5">
- 									<img src="https://via.placeholder.com/1200x800" alt="test">
- 								</li>
+ 								</li> -->
+ 								
  								
  							</ul>
  						</div>
@@ -126,94 +112,7 @@
  					<p class="project__main__info__description"><%= project.description %></p>
  				</div>
 
- 				<!-- MOBILE SIDE -->
-
- 				<div class="project__side__info mobile">
- 					<div class="project__side__info__group">
- 						<div class="project__side__info__group__title">More Information</div>
- 						<div class="project__side__info__group__container">
- 							<ul class="project__side__info__more">
- 								<li><span class="icon1"></span>CBS International</li>
- 								<li><span class="icon2"></span><%= project.category %></li>
- 								<li><span class="icon2"></span><%= moment(project.createdAt).fromNow() %></li>
- 								<li><span class="icon2"></span><%= project.author.username %></li>
- 							</ul>
- 						</div>
- 					</div>
-
- 					<div class="project__side__info__group">
- 						<div class="project__side__info__group__title">Technology</div>
- 						<div class="project__side__info__group__container">
- 							<ul class="project__side__info__technology">
- 								<li>HTML / CSS</li>
- 								<li>AdobePhotoshop</li>
- 								<li>JavaScript</li>
- 								<li>JavaScript</li>
- 								<li>JavaScript</li>
- 								<li>JavaScript</li>
- 							</ul>
- 						</div>
- 					</div>
-
- 					<div class="project__side__info__group share">
- 						<div class="project__side__info__group__title">Share Mob</div>
- 						<div class="project__side__info__group__container">
- 							<div class="share-link">
- 								<input class="share-link__input" type="text" id="copyClipInput" value="<%= currentURL %>"> 
- 								<button id="copyButton" class="share-link__btn btn btn-small">Copy Link<span class="share-link__icon"></span></button>
- 							</div>
- 							<ul class="project__side__info__share">
- 								<a href="https://www.facebook.com/sharer/sharer.php?u=<%= currentURL %>"><li><span class="fb"></span></li></a>
- 								<a href="mailto:?&subject=<%= project.name %> Project&body=Visit <%= currentURL %> for more information about <%= project.name %>"><li><span class="mail"></span></li></a>
- 								<a href="https://www.linkedin.com/shareArticle?mini=true&url=<%= currentURL %>&title=<%= project.name %>&summary=Visit <%= currentURL %> for more information about <%= project.name %>&source="><li><span class="linkedin"></span></li></a>
- 							</ul>
- 						</div>
- 					</div>
-
- 					<div class="project__side__info__group">
- 						<div class="project__side__info__group__title">Similar Projects</div>
- 						<div class="project__side__info__group__container">
- 							<ul class="project__side__info__similar">
- 								<li class="project__similar">
- 									<div class="project__similar__image">
- 										<img src="https://via.placeholder.com/1200x800" alt="test">
- 									</div>
- 									<div class="project__similar__info">
- 										<h3 class="project__similar__info__title">Project Title 1</h3>
- 										<div class="project__similar__info__category">Category</div>
- 									</div>
- 								</li>
- 								<li class="project__similar">
- 									<div class="project__similar__image">
- 										<img src="https://via.placeholder.com/1200x800" alt="test">
- 									</div>
- 									<div class="project__similar__info">
- 										<h3 class="project__similar__info__title">Project Title 1</h3>
- 										<div class="project__similar__info__category">Category</div>
- 									</div>
- 								</li>
- 								<li class="project__similar">
- 									<div class="project__similar__image">
- 										<img src="https://via.placeholder.com/1200x800" alt="test">
- 									</div>
- 									<div class="project__similar__info">
- 										<h3 class="project__similar__info__title">Project Title 1</h3>
- 										<div class="project__similar__info__category">Category</div>
- 									</div>
- 								</li>
- 								<li class="project__similar">
- 									<div class="project__similar__image">
- 										<img src="https://via.placeholder.com/1200x800" alt="test">
- 									</div>
- 									<div class="project__similar__info">
- 										<h3 class="project__similar__info__title">Project Title 1</h3>
- 										<div class="project__similar__info__category">Category</div>
- 									</div>
- 								</li>
- 							</ul>
- 						</div>
- 					</div>
- 				</div>
+ 				
 
 
 
@@ -385,12 +284,16 @@
  								</ul>
  							</div>
  						</div>
+ 						<p><a href="/portfolio/<%= project._id %>/photos/new">Add new Photo</a></p>
  						<% if(currentUser && project.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
  						<a href="/portfolio/<%= project._id %>/edit">Edit</a>
  						<form action="/portfolio/<%= project._id %>?_method=DELETE" method="POST">
  							<button>Delete</button>
  						</form>
  						<% } %>
+ 						<% project.photos.forEach(function(photo){ %>
+ 						<img width="100px" src="<%= photo.photo %>" alt="test"> 
+ 						<% }) %>
  					</div>
  				</div>
  			</div>
@@ -398,7 +301,9 @@
  		<div class="popup-message">
  			<div class="popup-message__text">Copied to clipboard</div>
  		</div>
+
  	</div>
+
  </div>
 
 

@@ -134,7 +134,7 @@
 			flex-direction: column;
 
 			@include respond(800) {
-				display: none;
+			
 			}
 
 			&__title {

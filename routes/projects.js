@@ -123,7 +123,7 @@ router.get("/new", middleware.isLoggedIn, middleware.isAdmin, function(req, res)
 router.get("/:id", function(req, res) {
 
 	// find the project with the provided ID
-	Project.findById(req.params.id).populate("comments likes").exec(function(err, foundProject){
+	Project.findById(req.params.id).populate("comments likes photos").exec(function(err, foundProject){
 		if(err || !foundProject) {
 			req.flash("error", "Error: Project not found.");
 			res.redirect("/portfolio");

@@ -15,18 +15,24 @@ var projectSchema = new mongoose.Schema ({
 		username: String
 	},
 	comments: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Comment"
-		}
+	{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Comment"
+	}
 	],
 	likes: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ],
-    views: {type: Number, default: 0}
+	{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User"
+	}
+	],
+	photos: [
+	{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Photo"
+	}
+	],
+	views: {type: Number, default: 0}
 });
 
 var Project = mongoose.model("Project", projectSchema);

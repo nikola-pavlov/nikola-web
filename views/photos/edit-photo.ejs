@@ -1,0 +1,8 @@
+<h1>Edit photo</h1>
+
+<form action="/portfolio/<%= project._id %>/photos/<%= photo._id %>?_method=PUT" method="POST">
+	<input type="text" name="photo[photo]" value="<%= photo.photo %>">
+	<button>Submit</button>
+</form>
+
+<a href="/portfolio">View Portfolio</a>

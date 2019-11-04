@@ -155,4 +155,16 @@
 		min-height: 100vh;
 		background: var(--color-two);
 	}
+
+	&--forgot {
+		padding-top: 20rem;
+		min-height: 100vh;
+		background: var(--color-three);
+	}
+
+	&--reset {
+		padding-top: 20rem;
+		min-height: 100vh;
+		background: var(--color-three);
+	}
 }

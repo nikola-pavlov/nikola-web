@@ -8,16 +8,66 @@
 	border-radius: 1rem;
 
 	&__image {
-		height: 25rem;
-		overflow: hidden;
-		flex: 0 0 25rem;
-		height: 25rem;
+		height: 26rem;
+		flex: 0 0 26rem;
+		height: 26rem;
+		position: relative;
+
+		@include respond(800) {
+			flex: 1 0 100%;
+			order: 1;
+			margin-bottom: 5rem;
+			text-align: center;
+		}
 
 		& img {
 			object-fit: cover;
-			height: 25rem;
-			width: 25rem;
+			height: 26rem;
+			width: 26rem;
+			border-radius: 50%;
+			border: .5rem solid var(--color-one);
+		}
+
+		&__input {
+			display: none;
+		}
+
+		&__label {
+			position: absolute;
+			height: 6rem;
+			width: 6rem;
+			border-radius: 50%;
+			bottom: -1rem;
+			left: 3rem;
+			background-color: var(--color-whitish);
+			border: .5rem solid var(--color-one);
+			transition: .3s ease-out;
+			cursor: pointer;
+
+			@include respond(800) {
+				left: 50%;
+				bottom: -2rem;
+				transform: translateX(-50%);
+			}
+
+			&:hover {
+				transform: scale(1.15);
+			}
 			
+
+			&__img {
+				position: relative;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				height: 3rem;
+				width: 3rem;
+				background-color: var(--color-one);
+				-webkit-mask-size: 3rem;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-position: center;
+				-webkit-mask-image: url("../../images/plus.svg");
+			}
 		}
 	}
 
@@ -27,8 +77,14 @@
 
 	&__right {
 		flex: 1;
-		// background: var(--color-three);
 		padding: 7rem;
+		@include respond(800) {
+			padding: 5rem;
+		}
+
+		@include respond(500) {
+			padding: 2rem;
+		}
 	}
 
 	&__info {
@@ -36,9 +92,18 @@
 		display: flex;
 		position: relative;
 
+		@include respond(800) {
+			flex-wrap: wrap;
+		}
+
 		&__field {
 
 			flex: 1;
+
+			@include respond(800) {
+				flex: 1 0 100%;
+				order: 2;
+			}
 
 			ul {
 				list-style: none;
@@ -53,6 +118,14 @@
 				position: absolute;
 				left: 17rem;
 				font-weight: 100;
+
+				@include respond(800) {
+					left: 15rem;
+				}
+
+				@include respond(500) {
+					left: 12.5rem;
+				}
 			}
 
 		}
@@ -106,7 +179,7 @@
 		}
 
 		&__button {
-			margin: 1rem 0 .4rem 0;
+			margin: 1rem .5rem .4rem 0;
 		}
 
 		&__info {
@@ -125,9 +198,13 @@
 		}
 	}
 
-	&__status {
+	&__online {
+		margin-top: 2rem;
 		position: relative;
-		display: block;
+	}
+
+	&__status {
+		margin-left: 1.5rem
 	}
 
 	&__indicator {
@@ -136,9 +213,7 @@
 		width: 1rem;
 		border-radius: 50%;
 		display: block;
-		left: 5rem !important;
-		top: .8rem;
-
+		top: 1rem;
 
 		&.online {
 			background: green;

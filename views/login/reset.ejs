@@ -1,17 +1,30 @@
  <% include ../partials/header %>
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<h2>Reset Password</h2>
 
-<p>Reset Password</p>
 
-<form action="/reset/<%= token %>" method="POST">
-	<input type="password" value="" name="password" placeholder="Password">
-	<input type="password" value="" name="confirm" placeholder="Confirm Password">
-	<button>Update Password</button>
-</form>
 
-<a href="/portfolio">View Portfolio</a>
+ <section class="section section--reset">
+ 	<div class="wrapper">
+ 		<div class="reset__reset">
+ 			<div class="reset__reset__image"></div>
+ 			<h2 class="reset__reset__title">Enter your new password.</h2>
+ 			<form action="/reset/<%= token %>" method="POST">
+ 				<div class="reset__reset__container">
+ 					<div class="reset__reset__input-group">
+ 						<input class="main-contact-form__form__input reset__reset__password" type="password" name="password" placeholder="Password">
+ 						<label for="register-password" class="main-contact-form__form__label">Password</label>
+ 					</div>
+ 					<div class="reset__reset__input-group">
+ 						<input class="main-contact-form__form__input reset__reset__confirm" type="password" name="confirm" placeholder="Confirm Password"
+ 						><label for="register-confirm" class="main-contact-form__form__label">Confirm Password</label>
+ 					</div>
+ 					<button class="btn btn--main reset__forgot__btn">Update Password</button>
+ 				</div>
+ 			</form>
+ 			<p class="reset__reset__text">Your token is valid for <strong>1 hour.</strong> After that, this link will no longer be active.</p>
+ 		</div>
+ 	</div>
+ </section>
 
  <% include ../partials/footer %>
