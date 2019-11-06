@@ -1,10 +1,25 @@
-<h2>EDDIT COMMENT FORM</h2>
-
-<p>Edit Comment</p>
-
-<form action="/portfolio/<%= project_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
-	<input type="text" name="comment[text]" value="<%= comment.text %>">
-	<button>Submit</button>
-</form>
+ <% include ../partials/header %>
 
 <a href="/portfolio">View Portfolio</a>
+
+<section class="section section--newcomment">
+ 	<div class="wrapper">
+ 		<div class="reset__reset">
+ 			<div class="reset__reset__image newcomment"></div>
+ 			<h2 class="reset__reset__title">Edit your comment for project "<strong><%= project.name %></strong>"</h2>
+ 			<p class="reset__reset__info">Your are posting as <strong><%= currentUser.username %></strong>. <a href="/logout">Log Out?</a></p>
+ 			<form action="/portfolio/<%= project._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+ 				<div class="reset__reset__container">
+ 					<div class="main-contact-form__form__group">
+ 						<textarea rows="4" class="main-contact-form__form__textarea" name="comment[text]" placeholder="Your Comment" required><%= comment.text %></textarea>
+ 						<label for="contact-message" class="main-contact-form__form__label">Your Comment</label>
+ 					</div>
+ 					<button class="btn btn--main reset__forgot__btn">Edit Comment</button>
+ 				</div>
+ 			</form>
+ 			<p class="reset__reset__text">The comment your post will be visible <strong>publicly</strong>.</p>
+ 		</div>
+ 	</div>
+ </section>
+
+  <% include ../partials/footer %>

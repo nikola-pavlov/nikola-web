@@ -70,6 +70,13 @@
 			background-repeat: no-repeat;
 			@include center-horizontaly;
 			margin-bottom: 5rem;
+
+			&.newcomment {
+				width: 25rem;
+				height: 25rem;
+				background-size: 25rem;
+				background-image: url("../../images/comment-background.svg");
+			}
 		}
 
 		&__container {
@@ -98,6 +105,13 @@
 		}
 
 		&__text {
+			font-size: 1.4rem;
+			text-align: center;
+			color: var(--color-grey-main);
+		}
+
+		&__info {
+			margin-top: 2rem;
 			font-size: 1.4rem;
 			text-align: center;
 			color: var(--color-grey-main);

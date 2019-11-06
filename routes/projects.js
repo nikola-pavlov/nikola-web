@@ -4,6 +4,7 @@ var Project	= require("../models/project");
 var Comment	= require("../models/comment");
 var Reply	= require("../models/reply");
 var User	= require("../models/user");
+var Photo	= require("../models/photo");
 var middleware	= require("../public/assets/scripts/middleware");
 
 
@@ -231,6 +232,20 @@ router.delete("/:id", middleware.checkProjectOwnership, function(req, res) {
 					});
 				}
 			});
+
+			Photo.find({}, function(err, photo){
+				if(err) {
+					console.log(err);
+					res.redirect("back");
+				} else {
+					photo.forEach(function(photoEach){
+						if(photoEach.projectID == deletedProject._id) {
+							photoEach.remove();
+						}
+					});
+				}
+			});
+
 			req.flash("success", "Project deleted.");
 			res.redirect("/portfolio");
 		}

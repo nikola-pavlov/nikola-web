@@ -66,7 +66,7 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
 			if(err) {
 				res.redirect("back");
 			} else {
-				res.render("comments/edit-comment", {project_id: req.params.id, comment: foundComment});
+				res.render("comments/edit-comment", {project: foundProject, comment: foundComment});
 			}
 		});
 	});

@@ -1,10 +1,26 @@
-<h2>NEW REPLY FORM</h2>
+<% include ../partials/header %>
 
-<p>Edit a reply</p>
+<section class="section section--newcomment">
+ 	<div class="wrapper">
+ 		<div class="reset__reset">
+ 			<div class="reset__reset__image newcomment"></div>
+ 			<h2 class="reset__reset__title">Edit your reply for project "<strong><%= project.name %></strong>"</h2>
+ 			<p class="reset__reset__info">Your are posting as <strong><%= currentUser.username %></strong>. <a href="/logout">Log Out?</a></p>
+ 			<p class="reset__reset__info">You are editing a reply for the following comment:<br><br><em>"<%= comment.text %>"</em></p>
 
-<form action="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>?_method=PUT" method="POST">
-	<input type="text" name="reply[text]" placeholder="text" value="<%= reply.text %>">
-	<button>Submit</button>
-</form>
+ 			<form action="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>?_method=PUT" method="POST">
+ 				<div class="reset__reset__container">
+ 					<div class="main-contact-form__form__group">
+ 						<textarea rows="4" class="main-contact-form__form__textarea" name="reply[text]" placeholder="Your Reply" required><%= reply.text %></textarea>
+ 						<label for="contact-message" class="main-contact-form__form__label">Your Reply</label>
+ 					</div>
+ 					<button class="btn btn--main reset__forgot__btn">Edit Reply</button>
+ 				</div>
+ 			</form>
+ 			<p class="reset__reset__text">The reply your post will be visible <strong>publicly</strong>.</p>
+ 		</div>
+ 	</div>
+ </section>
 
-<a href="/portfolio">View Portfolio</a>
+
+<% include ../partials/footer %>

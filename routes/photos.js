@@ -24,7 +24,7 @@ router.get("/new", middleware.isAdmin, function(req, res){
 	});
 });
 
-// SHOW ROUTE
+// CREATE ROUTE
 
 router.post("/", function(req, res){
 	Project.findById(req.params.id, function(err, project){
@@ -37,6 +37,8 @@ router.post("/", function(req, res){
 					req.flash("error", "Error: Something went wrong. Photo not created.");
 					res.redirect("/portfolio");
 				} else {
+					photo.projectID = project._id;
+					photo.save();
 					project.photos.push(photo);
 					project.save();
 					req.flash("success", "Photo created.");
@@ -73,21 +75,54 @@ router.put("/:photo_id", middleware.isAdmin, function(req, res){
 			req.flash("error", "Error: Photo not edited");
 			return res.redirect("back");
 		} 
-			req.flash("success", "Your photo has been edited.");
-			res.redirect("/portfolio/" + req.params.id);
+		req.flash("success", "Your photo has been edited.");
+		res.redirect("/portfolio/" + req.params.id);
 	});
 });
 
 // DESTROY ROUTE
 
 router.delete("/:photo_id", middleware.isAdmin, function(req, res){
-	Photo.findByIdAndRemove(req.params.photo_id, function(err){
+	// Photo.findByIdAndRemove(req.params.photo_id, function(err){
+	// 	if(err) {
+	// 		req.flash("error", "Error: Photo not deleted");
+	// 		return res.redirect("back");
+	// 	}
+	// 	req.flash("success", "Your photo has been deleted.");
+	// 	res.redirect("/portfolio/" + req.params.id);
+	// });
+
+	Project.findById(req.params.id, function(err, project){
 		if(err) {
-			req.flash("error", "Error: Photo not deleted");
-			return res.redirect("back");
+			console.log(err);
+			res.redirect("back");
+		} else {
+			Photo.findByIdAndRemove(req.params.photo_id, function(err, photo){
+				if(err) {
+					console.log(err);
+					res.redirect("back");
+				} else {
+					var pid = photo._id;
+
+					function removeA(arr) {
+						var what, a = arguments, L = a.length, ax;
+						while (L > 1 && arr.length) {
+							what = a[--L];
+							while ((ax= arr.indexOf(what)) !== -1) {
+								arr.splice(ax, 1);
+							}
+						}
+						return arr;
+					}
+
+					var proPho = project.photos;
+					removeA(proPho, pid);
+					project.save();
+					req.flash("success", "Your photo has been removed.");
+					res.redirect("/portfolio/" + req.params.id);
+				}
+			});
 		}
-		req.flash("success", "Your photo has been deleted.");
-		res.redirect("/portfolio/" + req.params.id);
 	});
 });
 
