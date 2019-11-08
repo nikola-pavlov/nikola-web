@@ -14,24 +14,25 @@ var projectSchema = new mongoose.Schema ({
 		},
 		username: String
 	},
-	comments: [
-	{
+	comments: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Comment"
-	}
-	],
-	likes: [
-	{
+	}],
+	likes: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
-	}
-	],
+	}],
 	photos: [
 	{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Photo"
-	}
-	],
+	}],
+	tech: [{
+		type: String
+	}],
+	techAll: [{
+		type: String
+	}],
 	views: {type: Number, default: 0}
 });
 

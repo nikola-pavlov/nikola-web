@@ -6,7 +6,44 @@
 	<input type="text" name="project[description]" value="<%= project.description %>">
 	<input type="text" name="project[category]" value="<%= project.category %>">
 	<input type="text" name="project[date]" value="<%= project.date %>">
-	<button>Submit</button>
+
+
+
+
+	<% var k1 = project.techAll.filter(element => !project.tech.includes(element)) %>
+	
+
+	<% k1.forEach(function(k){  %>
+
+	<div><input name="project[tech]" type="checkbox"><%= k %></div>
+
+   <% }); %>
+
+
+	
+
+
+	<br><br><br><br><br>
+
+	<% project.tech.forEach(function(techEach){ %>
+
+	<div class="checkbox">
+		<label><input name="project[tech]" type="checkbox" value="<%= techEach %>" checked><%= techEach %></label>
+	</div>
+
+	
+	<% }); %>
+	
+
+    <!-- <div class="checkbox">
+        <label><input name="tech" type="checkbox" value="meat">Meat</label>
+    </div>
+    <div class="checkbox">
+        <label><input name="tech" type="checkbox" value="fish">Fish</label>
+    </div> -->
+
+
+    <button>Submit</button>
 </form>
 
 <a href="/portfolio">View Portfolio</a>

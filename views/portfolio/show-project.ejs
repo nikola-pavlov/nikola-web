@@ -230,12 +230,9 @@
  							<div class="project__side__info__group__title">Technology</div>
  							<div class="project__side__info__group__container">
  								<ul class="project__side__info__technology">
- 									<li>HTML / CSS</li>
- 									<li>AdobePhotoshop</li>
- 									<li>JavaScript</li>
- 									<li>JavaScript</li>
- 									<li>JavaScript</li>
- 									<li>JavaScript</li>
+ 									<% project.tech.forEach(function(project){ %>
+ 									<li> <%= project %> </li>
+ 									<% }); %>
  								</ul>
  							</div>
  						</div>

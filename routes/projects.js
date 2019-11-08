@@ -95,18 +95,23 @@ router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res) {
 	var description = req.body.description;
 	var category = req.body.category;
 	var date = req.body.date;
+	var tech = req.body.tech;
 	var author = {
 		id: req.user._id,
 		username: req.user.username
 	}
-	var newProject = {name: name, image: image, description: description, category: category, date: date, author: author};
+	var techData = ["html", "css", "javascript", "jquery", "nodejs"];
+
+	// console.log("THIS IS TECH-ALL: " + req.body.techAll);
+	var newProject = {name: name, image: image, description: description, category: category, date: date, author: author, tech: tech};
 
 	// Create a new project and save to DB
 	Project.create(newProject, function(err, newlyCreated) {
 		if(err) {
 			console.log(err);
 		} else {
-			//redirect back to portfolio page
+			newlyCreated.techAll.push(...techData);
+			newlyCreated.save();
 			req.flash("success", "Created new project.");
 			res.redirect("/portfolio");
 		}
@@ -172,6 +177,7 @@ router.get("/:id", function(req, res) {
 router.get("/:id/edit", middleware.checkProjectOwnership, function(req, res) {
 	
 	Project.findById(req.params.id, function(err, foundProject) {
+		
 		if(err) {
 			req.flash("error", "Something went wrong");
 			console.log(err);
@@ -181,14 +187,12 @@ router.get("/:id/edit", middleware.checkProjectOwnership, function(req, res) {
 	});
 });
 
-	// Othewise redirect
-	// If not, redirect
-
 
 // UPDATE PROJECT ROUTE
 
 router.put("/:id", middleware.checkProjectOwnership, function(req, res) {
 	// Find and Update the correct Project
+	console.log("This is req.body.project: " + req.body.project.tech);
 	Project.findByIdAndUpdate(req.params.id, req.body.project, function(err, updatedProject) {
 		if(err) {
 			req.flash("error", "Something went wrong.");
