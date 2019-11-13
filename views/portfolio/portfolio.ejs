@@ -12,8 +12,8 @@
 							<span class="portfolio__header__search__icon"></span>
 						</button>
 					</form>
-					<%if(search || filter) {%> 
-					<p>You searched for <%= search %> Your Filters: <%= filter %> Count: <%= count %> <a href="/portfolio">Clear Query</a></p>
+					<%if(search || category) {%> 
+					<p>You searched for <%= search %> Your Filters: <%= category %> Count: <%= count %> <a href="/portfolio">Clear Query</a></p>
 					<% } %>
 					
 				</div>
@@ -28,20 +28,31 @@
 			</header>
 			<div class="portfolio__content">
 				
-				<nav class="portfolio__nav">Nav
+				<nav class="portfolio__nav">
 					<% if(currentUser && currentUser.isAdmin)  { %> 
 					<a href="/portfolio/new">New Project</a>
 
 
-			
-					<% } %>
 
-					 <li class=""><a href="/portfolio?filter=test<%if(search){%>&search=<%=search%><%}%>">Test</a></li>
-					<li class=""><a href="/portfolio?filter=branding<%if(search){%>&search=<%=search%><%}%>">branding</a></li>
-					<li class=""><a href="/portfolio?filter=design<%if(search){%>&search=<%=search%><%}%>">Design</a></li>
-					<!-- <li class=""><a href="/portfolio?filter=test">Test</a></li>
-					<li class=""><a href="/portfolio?filter=branding">branding</a></li>
-					<li class=""><a href="/portfolio?filter=design">Design</a></li> -->
+					<% } %>
+					<div class="portfolio__nav__filter">
+
+						<div class="portfolio__nav__filter__heading">Filters</div>
+						<div class="portfolio__nav__filter__header">
+							<div class="portfolio__nav__filter__title">Category</div>
+							<div class="portfolio__nav__filter__icon"></div>
+						</div>
+						<div class="portfolio__nav__group">
+							<ul>
+								<li><a href="/portfolio?category=test<%if(search){%>&search=<%=search%><%}%>"><div class="<% if(category == "test"){%>active<% } %>">Test</div></a></li>
+								<li><a href="/portfolio?category=branding<%if(search){%>&search=<%=search%><%}%>"><div class="<% if(category == "branding"){%>active<% } %>">branding</div></a></li>
+								<li><a href="/portfolio?category=design<%if(search){%>&search=<%=search%><%}%>"><div class="<% if(category == "design"){%>active<% } %>">Design</div></a></li>
+								<li><a href="/portfolio?category=book<%if(search){%>&search=<%=search%><%}%>"><div class="<% if(category == "book"){%>active<% } %>">Book</div></a></li>
+								<li><a href="/portfolio?category=work<%if(search){%>&search=<%=search%><%}%>"><div class="<% if(category == "work"){%>active<% } %>">Work</div></a></li>
+								<li><a href="/portfolio?category=fun<%if(search){%>&search=<%=search%><%}%>"><div class="<% if(category == "fun"){%>active<% } %>">Fun</div></a></li>
+							</ul>
+						</div>
+					</div>
 
 				</nav>
 				
@@ -56,7 +67,7 @@
 						<% var i = 0; %>
 						<%project.comments.forEach(function(comment){  %>
 						<% i++ %>
-					<% }); %>
+						<% }); %>
 						<li class="portfolio__item">
 							<div class="portfolio__item__category"><%= project.category %></div>
 							<a href="/portfolio/<%= project._id %>">
@@ -94,64 +105,64 @@
 							<% } else { %>
 							<li class="pagination__item"><a href="/portfolio
 								<%if(search){%>?search=<%=search%><%}%>
-								<%if(filter){%>?filter=<%=filter%><%}%>">First</a></li>
-							<% } %>
+								<%if(category){%>?category=<%=category%><%}%>">First</a></li>
+								<% } %>
 
-							<% if (current == 1) { %>
-							<li class="disabled pagination__item"><a>«</a></li>
-							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) - 1 %>
-								<%if(search){%>&search=<%=search%><%}%>
-								<%if(filter){%>&filter=<%=filter%><%}%>">«</a></li>
-							<% } %>
-
-							<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
-							<% if (i !== 1) { %>
-							<li class="pagination__item disabled"><a>...</a></li>
-							<% } %>
-							<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
-							<% if (i == current) { %>
-							<li class="pagination__item active"><a><%= i %></a></li>
-							<% } else { %>
-							<li class="pagination__item">
-								<a href="/portfolio?page=<%= i %>
+								<% if (current == 1) { %>
+								<li class="disabled pagination__item"><a>«</a></li>
+								<% } else { %>
+								<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) - 1 %>
 									<%if(search){%>&search=<%=search%><%}%>
-									<%if(filter){%>&filter=<%=filter%><%}%>"><%= i %>
-								</a></li> <% } %>
-							<% if (i == Number(current) + 4 && i < pages) { %>
-							<li class="pagination__item disabled"><a>...</a></li>
-							<% } %>
-							<% } %>
+									<%if(category){%>&category=<%=category%><%}%>">«</a></li>
+									<% } %>
 
-							<% if (current == pages) { %>
-							<li class="pagination__item disabled"><a>»</a></li>
-							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) + 1 %>
-								<%if(search){%>&search=<%=search%><%}%>
-								<%if(filter){%>&filter=<%=filter%><%}%>">»</a></li>
-							<% } %>
+									<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+									<% if (i !== 1) { %>
+									<li class="pagination__item disabled"><a>...</a></li>
+									<% } %>
+									<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+									<% if (i == current) { %>
+									<li class="pagination__item active"><a><%= i %></a></li>
+									<% } else { %>
+									<li class="pagination__item">
+										<a href="/portfolio?page=<%= i %>
+											<%if(search){%>&search=<%=search%><%}%>
+											<%if(category){%>&category=<%=category%><%}%>"><%= i %>
+										</a></li> <% } %>
+										<% if (i == Number(current) + 4 && i < pages) { %>
+										<li class="pagination__item disabled"><a>...</a></li>
+										<% } %>
+										<% } %>
 
-							<% if (current == pages) { %>
-							<li class="pagination__item disabled"><a>Last</a></li>
-							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio?page=<%= pages %>
-								<%if(search){%>&search=<%=search%><%}%>
-								<%if(filter){%>&filter=<%=filter%><%}%>">Last</a></li>
-							<% } %>
-						</ul>
-						<% } %>
-					</div>
+										<% if (current == pages) { %>
+										<li class="pagination__item disabled"><a>»</a></li>
+										<% } else { %>
+										<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) + 1 %>
+											<%if(search){%>&search=<%=search%><%}%>
+											<%if(category){%>&category=<%=category%><%}%>">»</a></li>
+											<% } %>
 
-					<!-- Pagination end -->
-				</div>
-			</div>
-		</div>
-	</div>
+											<% if (current == pages) { %>
+											<li class="pagination__item disabled"><a>Last</a></li>
+											<% } else { %>
+											<li class="pagination__item"><a href="/portfolio?page=<%= pages %>
+												<%if(search){%>&search=<%=search%><%}%>
+												<%if(category){%>&category=<%=category%><%}%>">Last</a></li>
+												<% } %>
+											</ul>
+											<% } %>
+										</div>
+
+										<!-- Pagination end -->
+									</div>
+								</div>
+							</div>
+						</div>
 
 
 
 
-</section>
+					</section>
 
 
-<% include ../partials/footer %>
+					<% include ../partials/footer %>

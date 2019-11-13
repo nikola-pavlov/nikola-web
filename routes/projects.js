@@ -44,13 +44,8 @@ router.get("/", function(req, res){
 	var pageQuery = parseInt(req.query.page);
 	var page = pageQuery ? pageQuery : 1;
 	var noMatch = null;
-	var filter = req.query.filter;
+	var category = req.query.category;
 	var searchQuery = req.query.search;
-
-	console.log("req.query.search: " + req.query.search);
-	console.log("req.query.filter: " + req.query.filter);
-	console.log("pageQuery: " + pageQuery);
-	console.log("page: " + page);
 	
 
 
@@ -65,9 +60,9 @@ router.get("/", function(req, res){
 					if(allProjects.length < 1) {
 						noMatch = "Error: No projects found.";
 					}
-					if(req.query.search && req.query.filter) {
-						Project.find( { name: regex, category: req.query.filter } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-							Project.count( {name: regex, category: req.query.filter } ).exec(function (err, count) {
+					if(req.query.search && req.query.category) {
+						Project.find( { name: regex, category: req.query.category } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+							Project.count( {name: regex, category: req.query.category } ).exec(function (err, count) {
 								if(err) {
 									console.log(err);
 								} else {
@@ -78,7 +73,7 @@ router.get("/", function(req, res){
 										noMatch: noMatch,
 										count: count,
 										search: req.query.search,
-										filter: req.query.filter
+										category: req.query.category
 									});
 								}
 							});
@@ -91,16 +86,16 @@ router.get("/", function(req, res){
 							noMatch: noMatch,
 							count: count,
 							search: req.query.search,
-							filter: false
+							category: false
 						});
 					}
 				}
 			});
 		});
 	} else {
-		if(req.query.filter) {
-			Project.find({category: req.query.filter}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
-				Project.count({category: req.query.filter}).exec(function (err, count) {
+		if(req.query.category) {
+			Project.find({category: req.query.category}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
+				Project.count({category: req.query.category}).exec(function (err, count) {
 					if(err) {
 						console.log(err);
 					} else {
@@ -111,7 +106,7 @@ router.get("/", function(req, res){
 							search: false,
 							count: count,
 							current: page,
-							filter: req.query.filter
+							category: req.query.category
 						});
 					}
 				});
@@ -130,7 +125,7 @@ router.get("/", function(req, res){
         					count: count,
         					noMatch: noMatch,
         					search: false,
-        					filter: false
+        					category: false
         				});
         			}
         		});

@@ -1703,7 +1703,8 @@ body {
   .portfolio__content {
     display: flex; }
   .portfolio__nav {
-    background: var(--color-four);
+    background: var(--color-whitish);
+    border-right: 1px solid var(--color-grey-light);
     flex: 0 0 20%; }
     @media (max-width: 62.5em) {
       .portfolio__nav {
@@ -1714,6 +1715,65 @@ body {
     @media (max-width: 50em) {
       .portfolio__nav {
         display: none; } }
+    .portfolio__nav__group {
+      max-height: 20rem;
+      height: auto;
+      overflow: hidden;
+      transition: all .3s ease-out; }
+      .portfolio__nav__group--is-closed {
+        height: auto;
+        max-height: 0; }
+      .portfolio__nav__group ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1.4rem;
+        padding: 1rem; }
+      .portfolio__nav__group ul li {
+        flex: 0 0 50%; }
+      .portfolio__nav__group ul li div {
+        background-color: var(--color-whitish);
+        margin-bottom: 1rem;
+        padding: 1rem 1.5rem;
+        border-radius: 5px;
+        text-align: center;
+        border: 1px solid var(--color-grey-light); }
+        .portfolio__nav__group ul li div:hover {
+          background-color: var(--color-grey-light); }
+        .portfolio__nav__group ul li div.active {
+          background: var(--color-three); }
+      .portfolio__nav__group ul li:nth-child(odd) div {
+        margin-right: 1rem; }
+    .portfolio__nav__filter {
+      background: var(--color-whitish);
+      border-bottom: 1px solid var(--color-grey-light); }
+      .portfolio__nav__filter__heading {
+        text-align: center;
+        font-size: 2rem;
+        padding: 2rem;
+        min-height: 7rem;
+        font-weight: bold;
+        color: var(--color-two);
+        border-bottom: 1px solid var(--color-grey-light); }
+      .portfolio__nav__filter__header {
+        background: var(--color-whitish);
+        display: flex;
+        padding: 1rem;
+        cursor: pointer; }
+        .portfolio__nav__filter__header:hover {
+          background: var(--color-grey-light); }
+      .portfolio__nav__filter__icon {
+        margin-left: auto;
+        width: 2rem;
+        height: 2rem;
+        background: var(--color-two);
+        -webkit-mask-image: url("../../images/close.svg");
+        -webkit-mask-size: 1.4rem;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        transition: all .4s ease-out; }
+        .portfolio__nav__filter__icon--is-closed {
+          transform: rotate(405deg); }
   .portfolio__main {
     flex: 1; }
     .portfolio__main__group {
