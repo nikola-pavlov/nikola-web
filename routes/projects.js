@@ -45,6 +45,7 @@ router.get("/", function(req, res){
 	var page = pageQuery ? pageQuery : 1;
 	var noMatch = null;
 	var category = req.query.category;
+	var date = req.query.date;
 	var searchQuery = req.query.search;
 	
 
@@ -66,28 +67,72 @@ router.get("/", function(req, res){
 								if(err) {
 									console.log(err);
 								} else {
-									res.render("portfolio/portfolio", {
-										projects: allProjects,
-										current: page,
-										pages: Math.ceil(count / perPage),
-										noMatch: noMatch,
-										count: count,
-										search: req.query.search,
-										category: req.query.category
-									});
+									if(req.query.search && req.query.category && req.query.date) {
+										Project.find( { name: regex, category: req.query.category, date: req.query.date } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+											Project.count( {name: regex, category: req.query.category, date: req.query.date } ).exec(function (err, count) {
+												if(err) {
+													console.log(err);
+												} else {
+													res.render("portfolio/portfolio", {
+														projects: allProjects,
+														current: page,
+														pages: Math.ceil(count / perPage),
+														noMatch: noMatch,
+														count: count,
+														search: req.query.search,
+														category: req.query.category,
+														date: req.query.date
+													});
+												}
+											});
+										});
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: req.query.search,
+											category: req.query.category,
+											date: false
+										});
+									}
 								}
 							});
 						});
 					} else {
-						res.render("portfolio/portfolio", {
-							projects: allProjects,
-							current: page,
-							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
-							count: count,
-							search: req.query.search,
-							category: false
-						});
+						if(req.query.search && req.query.date) {
+							Project.find( { name: regex, date: req.query.date } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, date: req.query.date } ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: req.query.search,
+											category: false,
+											date: req.query.date
+										});
+									}
+								});
+							});
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: req.query.search,
+								category: false,
+								date: false
+							});
+						}
 					}
 				}
 			});
@@ -99,19 +144,61 @@ router.get("/", function(req, res){
 					if(err) {
 						console.log(err);
 					} else {
-						res.render("portfolio/portfolio", {
-							projects: foundProjects,
-							noMatch: noMatch,
-							pages: Math.ceil(count / perPage),
-							search: false,
-							count: count,
-							current: page,
-							category: req.query.category
-						});
+						if(req.query.category && req.query.date) {
+							Project.find({category: req.query.category, date: req.query.date}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
+								Project.count({category: req.query.category, date: req.query.date}).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: foundProjects,
+											noMatch: noMatch,
+											pages: Math.ceil(count / perPage),
+											search: false,
+											count: count,
+											current: page,
+											category: req.query.category,
+											date: req.query.date
+										});
+									}
+								});
+							});
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: foundProjects,
+								noMatch: noMatch,
+								pages: Math.ceil(count / perPage),
+								search: false,
+								count: count,
+								current: page,
+								category: req.query.category,
+								date: false
+							});
+						}
 					}
 				});
 			});
 		} else {
+			if(req.query.date) {
+				Project.find({date: req.query.date}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
+					Project.count({date: req.query.date}).exec(function (err, count) {
+						if(err) {
+							console.log(err);
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: foundProjects,
+								noMatch: noMatch,
+								pages: Math.ceil(count / perPage),
+								search: false,
+								count: count,
+								current: page,
+								category: false,
+								date: req.query.date
+							});
+						}
+					});
+				});
+			} else {
         	// get all projects from DB
         	Project.find({}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
         		Project.count().exec(function (err, count) {
@@ -125,13 +212,15 @@ router.get("/", function(req, res){
         					count: count,
         					noMatch: noMatch,
         					search: false,
-        					category: false
+        					category: false,
+        					date: false
         				});
         			}
         		});
         	});
         }
     }
+}
 });
 
 // CREATE - add new projects to DB
