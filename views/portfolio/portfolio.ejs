@@ -1,8 +1,6 @@
 <% include ../partials/header %>
 
 
-
-
 <section class="section section--portfolio">
 	<div class="portfolio">
 		<div class="portfolio__container">
@@ -14,6 +12,10 @@
 							<span class="portfolio__header__search__icon"></span>
 						</button>
 					</form>
+					<%if(search || filter) {%> 
+					<p>You searched for <%= search %> Your Filters: <%= filter %> Count: <%= count %> <a href="/portfolio">Clear Query</a></p>
+					<% } %>
+					
 				</div>
 				<div class="portfolio__header__features">
 					<div class="portfolio__header__grid portfolio__header__grid--is-active">
@@ -29,7 +31,18 @@
 				<nav class="portfolio__nav">Nav
 					<% if(currentUser && currentUser.isAdmin)  { %> 
 					<a href="/portfolio/new">New Project</a>
+
+
+			
 					<% } %>
+
+					 <li class=""><a href="/portfolio?filter=test<%if(search){%>&search=<%=search%><%}%>">Test</a></li>
+					<li class=""><a href="/portfolio?filter=branding<%if(search){%>&search=<%=search%><%}%>">branding</a></li>
+					<li class=""><a href="/portfolio?filter=design<%if(search){%>&search=<%=search%><%}%>">Design</a></li>
+					<!-- <li class=""><a href="/portfolio?filter=test">Test</a></li>
+					<li class=""><a href="/portfolio?filter=branding">branding</a></li>
+					<li class=""><a href="/portfolio?filter=design">Design</a></li> -->
+
 				</nav>
 				
 				<div class="portfolio__main">
@@ -79,13 +92,17 @@
 							<% if (current == 1) { %>
 							<li class="disabled pagination__item"><a>First</a></li>
 							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio<%if(search){%>?search=<%=search%><%}%>">First</a></li>
+							<li class="pagination__item"><a href="/portfolio
+								<%if(search){%>?search=<%=search%><%}%>
+								<%if(filter){%>?filter=<%=filter%><%}%>">First</a></li>
 							<% } %>
 
 							<% if (current == 1) { %>
 							<li class="disabled pagination__item"><a>«</a></li>
 							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
+							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) - 1 %>
+								<%if(search){%>&search=<%=search%><%}%>
+								<%if(filter){%>&filter=<%=filter%><%}%>">«</a></li>
 							<% } %>
 
 							<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
@@ -96,8 +113,11 @@
 							<% if (i == current) { %>
 							<li class="pagination__item active"><a><%= i %></a></li>
 							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
-							<% } %>
+							<li class="pagination__item">
+								<a href="/portfolio?page=<%= i %>
+									<%if(search){%>&search=<%=search%><%}%>
+									<%if(filter){%>&filter=<%=filter%><%}%>"><%= i %>
+								</a></li> <% } %>
 							<% if (i == Number(current) + 4 && i < pages) { %>
 							<li class="pagination__item disabled"><a>...</a></li>
 							<% } %>
@@ -106,13 +126,17 @@
 							<% if (current == pages) { %>
 							<li class="pagination__item disabled"><a>»</a></li>
 							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
+							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) + 1 %>
+								<%if(search){%>&search=<%=search%><%}%>
+								<%if(filter){%>&filter=<%=filter%><%}%>">»</a></li>
 							<% } %>
 
 							<% if (current == pages) { %>
 							<li class="pagination__item disabled"><a>Last</a></li>
 							<% } else { %>
-							<li class="pagination__item"><a href="/portfolio?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
+							<li class="pagination__item"><a href="/portfolio?page=<%= pages %>
+								<%if(search){%>&search=<%=search%><%}%>
+								<%if(filter){%>&filter=<%=filter%><%}%>">Last</a></li>
 							<% } %>
 						</ul>
 						<% } %>

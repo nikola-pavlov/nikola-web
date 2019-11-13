@@ -40,14 +40,24 @@ var middleware	= require("../public/assets/scripts/middleware");
 
 
 router.get("/", function(req, res){
-	var perPage = 15;
+	var perPage = 6;
 	var pageQuery = parseInt(req.query.page);
 	var page = pageQuery ? pageQuery : 1;
 	var noMatch = null;
+	var filter = req.query.filter;
+	var searchQuery = req.query.search;
+
+	console.log("req.query.search: " + req.query.search);
+	console.log("req.query.filter: " + req.query.filter);
+	console.log("pageQuery: " + pageQuery);
+	console.log("page: " + page);
+	
+
+
 	if(req.query.search) {
 		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-		Project.find({name: regex}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-			Project.count({name: regex}).exec(function (err, count) {
+		Project.find( { name: regex } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+			Project.count( {name: regex } ).exec(function (err, count) {
 				if (err) {
 					console.log(err);
 					res.redirect("back");
@@ -55,33 +65,77 @@ router.get("/", function(req, res){
 					if(allProjects.length < 1) {
 						noMatch = "Error: No projects found.";
 					}
-					res.render("portfolio/portfolio", {
-						projects: allProjects,
-						current: page,
-						pages: Math.ceil(count / perPage),
-						noMatch: noMatch,
-						search: req.query.search
-					});
+					if(req.query.search && req.query.filter) {
+						Project.find( { name: regex, category: req.query.filter } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+							Project.count( {name: regex, category: req.query.filter } ).exec(function (err, count) {
+								if(err) {
+									console.log(err);
+								} else {
+									res.render("portfolio/portfolio", {
+										projects: allProjects,
+										current: page,
+										pages: Math.ceil(count / perPage),
+										noMatch: noMatch,
+										count: count,
+										search: req.query.search,
+										filter: req.query.filter
+									});
+								}
+							});
+						});
+					} else {
+						res.render("portfolio/portfolio", {
+							projects: allProjects,
+							current: page,
+							pages: Math.ceil(count / perPage),
+							noMatch: noMatch,
+							count: count,
+							search: req.query.search,
+							filter: false
+						});
+					}
 				}
 			});
 		});
 	} else {
-        // get all projects from DB
-        Project.find({}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-        	Project.count().exec(function (err, count) {
-        		if (err) {
-        			console.log(err);
-        		} else {
-        			res.render("portfolio/portfolio", {
-        				projects: allProjects,
-        				current: page,
-        				pages: Math.ceil(count / perPage),
-        				noMatch: noMatch,
-        				search: false
-        			});
-        		}
+		if(req.query.filter) {
+			Project.find({category: req.query.filter}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
+				Project.count({category: req.query.filter}).exec(function (err, count) {
+					if(err) {
+						console.log(err);
+					} else {
+						res.render("portfolio/portfolio", {
+							projects: foundProjects,
+							noMatch: noMatch,
+							pages: Math.ceil(count / perPage),
+							search: false,
+							count: count,
+							current: page,
+							filter: req.query.filter
+						});
+					}
+				});
+			});
+		} else {
+        	// get all projects from DB
+        	Project.find({}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+        		Project.count().exec(function (err, count) {
+        			if (err) {
+        				console.log(err);
+        			} else {
+        				res.render("portfolio/portfolio", {
+        					projects: allProjects,
+        					current: page,
+        					pages: Math.ceil(count / perPage),
+        					count: count,
+        					noMatch: noMatch,
+        					search: false,
+        					filter: false
+        				});
+        			}
+        		});
         	});
-        });
+        }
     }
 });
 
@@ -291,7 +345,11 @@ router.post("/:id/like", middleware.isLoggedIn, function (req, res) {
 });
 
 function escapeRegex(text) {
-	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+	if(text) {
+		return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+	} else {
+		return "";
+	}
 };
 
 

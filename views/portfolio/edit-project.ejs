@@ -14,8 +14,9 @@
 	
 
 	<% k1.forEach(function(k){  %>
-
-	<div><input name="project[tech]" type="checkbox"><%= k %></div>
+	<div class="checkbox">
+	<label><input name="project[tech]" type="checkbox" value="<%= k %>"><%= k %></label>
+	</div>
 
    <% }); %>
 
