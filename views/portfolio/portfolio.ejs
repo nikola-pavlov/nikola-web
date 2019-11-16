@@ -12,12 +12,12 @@
 							<span class="portfolio__header__search__icon"></span>
 						</button>
 					</form>
-					<%if(search || category || date) {%> 
+					<%if(search || category || year) {%> 
 					<p>You searched for <%= search %>   <a href="/portfolio">Clear Query</a></p>
 					<p>Count: <%= count %></p>
 					<p>Search: <%= search %></p>
 					<p>Category: <%= category %></p>
-					<p>Date: <%= date %></p>
+					<p>Year: <%= year %></p>
 					<% } %>
 					
 				</div>
@@ -49,23 +49,23 @@
 							<ul>
 								<li><a href="/portfolio?category=test
 									<%if(search){%>&search=<%=search%><%}%>
-									<%if(date){%>&date=<%=date%><%}%>"><div class="<% if(category == "test"){%>active<% } %>">Test</div></a>
+									<%if(year){%>&year=<%=year%><%}%>"><div class="<% if(category == "test"){%>active<% } %>">Test</div></a>
 								</li>
 								<li><a href="/portfolio?category=branding
 									<%if(search){%>&search=<%=search%><%}%>
-									<%if(date){%>&date=<%=date%><%}%>"><div class="<% if(category == "branding"){%>active<% } %>">branding</div></a>
+									<%if(year){%>&year=<%=year%><%}%>"><div class="<% if(category == "branding"){%>active<% } %>">branding</div></a>
 								</li>
 								<li><a href="/portfolio?category=design
 									<%if(search){%>&search=<%=search%><%}%>
-									<%if(date){%>&date=<%=date%><%}%>"><div class="<% if(category == "design"){%>active<% } %>">Design</div></a>
+									<%if(year){%>&year=<%=year%><%}%>"><div class="<% if(category == "design"){%>active<% } %>">Design</div></a>
 								</li>
 								<li><a href="/portfolio?category=book
 									<%if(search){%>&search=<%=search%><%}%>
-									<%if(date){%>&date=<%=date%><%}%>"><div class="<% if(category == "book"){%>active<% } %>">Book</div></a>
+									<%if(year){%>&year=<%=year%><%}%>"><div class="<% if(category == "book"){%>active<% } %>">Book</div></a>
 								</li>
 								<li><a href="/portfolio?category=
 									<%if(search){%>&search=<%=search%><%}%>
-									<%if(date){%>&date=<%=date%><%}%>"><div class="<% if(category == ""){%>active<% } %>">Any</div></a>
+									<%if(year){%>&year=<%=year%><%}%>"><div class="<% if(category == ""){%>active<% } %>">Any</div></a>
 								</li>
 							</ul>
 						</div>
@@ -73,25 +73,25 @@
 
 					<div class="portfolio__nav__filter">
 						<div class="portfolio__nav__filter__header">
-							<div class="portfolio__nav__filter__title">Date</div>
+							<div class="portfolio__nav__filter__title">Year</div>
 							<div class="portfolio__nav__filter__icon"></div>
 						</div>
 						<div class="portfolio__nav__group">
 							<ul>
-								<li><a href="/portfolio?date=date
+								<li><a href="/portfolio?year=2019
 									<%if(search){%>&search=<%=search%><%}%>
 									<%if(category){%>&category=<%=category%><%}%>
-									"><div class="<% if(date == "date"){%>active<% } %>">Date</div></a>
+									"><div class="<% if(year == "2019"){%>active<% } %>">2019</div></a>
 								</li>
-								<li><a href="/portfolio?date=test
+								<li><a href="/portfolio?year=2018
 									<%if(search){%>&search=<%=search%><%}%>
 									<%if(category){%>&category=<%=category%><%}%>
-									"><div class="<% if(date == "test"){%>active<% } %>">Test</div></a>
+									"><div class="<% if(year == "2018"){%>active<% } %>">2018</div></a>
 								</li>
-								<li><a href="/portfolio?date=
+								<li><a href="/portfolio?year=
 									<%if(search){%>&search=<%=search%><%}%>
 									<%if(category){%>&category=<%=category%><%}%>
-									"><div class="<% if(date == ""){%>active<% } %>">Any</div></a>
+									"><div class="<% if(year == ""){%>active<% } %>">Any</div></a>
 								</li>
 							</ul>
 						</div>
@@ -149,7 +149,7 @@
 							<li class="pagination__item"><a href="/portfolio
 								<%if(search){%>?search=<%=search%><%}%>
 								<%if(category){%>?category=<%=category%><%}%>
-								<%if(date){%>?date=<%=date%><%}%>">First</a></li>
+								<%if(year){%>?year=<%=year%><%}%>">First</a></li>
 								<% } %>
 
 								<% if (current == 1) { %>
@@ -158,7 +158,7 @@
 								<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) - 1 %>
 									<%if(search){%>&search=<%=search%><%}%>
 									<%if(category){%>&category=<%=category%><%}%>
-									<%if(date){%>&date=<%=date%><%}%>">«</a></li>
+									<%if(year){%>&year=<%=year%><%}%>">«</a></li>
 									<% } %>
 
 									<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
@@ -173,7 +173,7 @@
 										<a href="/portfolio?page=<%= i %>
 											<%if(search){%>&search=<%=search%><%}%>
 											<%if(category){%>&category=<%=category%><%}%>
-											<%if(date){%>&date=<%=date%><%}%>"><%= i %>
+											<%if(year){%>&year=<%=year%><%}%>"><%= i %>
 										</a></li> <% } %>
 										<% if (i == Number(current) + 4 && i < pages) { %>
 										<li class="pagination__item disabled"><a>...</a></li>
@@ -186,7 +186,7 @@
 										<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) + 1 %>
 											<%if(search){%>&search=<%=search%><%}%>
 											<%if(category){%>&category=<%=category%><%}%>
-											<%if(date){%>&date=<%=date%><%}%>">»</a></li>
+											<%if(year){%>&year=<%=year%><%}%>">»</a></li>
 											<% } %>
 
 											<% if (current == pages) { %>
@@ -195,7 +195,7 @@
 											<li class="pagination__item"><a href="/portfolio?page=<%= pages %>
 												<%if(search){%>&search=<%=search%><%}%>
 												<%if(category){%>&category=<%=category%><%}%>
-												<%if(date){%>&date=<%=date%><%}%>">Last</a></li>
+												<%if(year){%>&year=<%=year%><%}%>">Last</a></li>
 												<% } %>
 											</ul>
 											<% } %>

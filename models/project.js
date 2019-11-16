@@ -6,6 +6,7 @@ var projectSchema = new mongoose.Schema ({
 	description: String,
 	category: String,
 	date: String,
+	year: String,
 	createdAt: {type: Date, default: Date.now},
 	author: {
 		id: {

@@ -45,7 +45,7 @@ router.get("/", function(req, res){
 	var page = pageQuery ? pageQuery : 1;
 	var noMatch = null;
 	var category = req.query.category;
-	var date = req.query.date;
+	var year = req.query.year;
 	var searchQuery = req.query.search;
 	
 
@@ -67,9 +67,9 @@ router.get("/", function(req, res){
 								if(err) {
 									console.log(err);
 								} else {
-									if(req.query.search && req.query.category && req.query.date) {
-										Project.find( { name: regex, category: req.query.category, date: req.query.date } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-											Project.count( {name: regex, category: req.query.category, date: req.query.date } ).exec(function (err, count) {
+									if(req.query.search && req.query.category && req.query.year) {
+										Project.find( { name: regex, category: req.query.category, year: req.query.year } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+											Project.count( {name: regex, category: req.query.category, year: req.query.year } ).exec(function (err, count) {
 												if(err) {
 													console.log(err);
 												} else {
@@ -81,7 +81,7 @@ router.get("/", function(req, res){
 														count: count,
 														search: req.query.search,
 														category: req.query.category,
-														date: req.query.date
+														year: req.query.year
 													});
 												}
 											});
@@ -95,16 +95,16 @@ router.get("/", function(req, res){
 											count: count,
 											search: req.query.search,
 											category: req.query.category,
-											date: false
+											year: false
 										});
 									}
 								}
 							});
 						});
 					} else {
-						if(req.query.search && req.query.date) {
-							Project.find( { name: regex, date: req.query.date } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-								Project.count( {name: regex, date: req.query.date } ).exec(function (err, count) {
+						if(req.query.search && req.query.year) {
+							Project.find( { name: regex, year: req.query.year } ).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, year: req.query.year } ).exec(function (err, count) {
 									if(err) {
 										console.log(err);
 									} else {
@@ -116,7 +116,7 @@ router.get("/", function(req, res){
 											count: count,
 											search: req.query.search,
 											category: false,
-											date: req.query.date
+											year: req.query.year
 										});
 									}
 								});
@@ -130,7 +130,7 @@ router.get("/", function(req, res){
 								count: count,
 								search: req.query.search,
 								category: false,
-								date: false
+								year: false
 							});
 						}
 					}
@@ -144,9 +144,9 @@ router.get("/", function(req, res){
 					if(err) {
 						console.log(err);
 					} else {
-						if(req.query.category && req.query.date) {
-							Project.find({category: req.query.category, date: req.query.date}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
-								Project.count({category: req.query.category, date: req.query.date}).exec(function (err, count) {
+						if(req.query.category && req.query.year) {
+							Project.find({category: req.query.category, year: req.query.year}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
+								Project.count({category: req.query.category, year: req.query.year}).exec(function (err, count) {
 									if(err) {
 										console.log(err);
 									} else {
@@ -158,7 +158,7 @@ router.get("/", function(req, res){
 											count: count,
 											current: page,
 											category: req.query.category,
-											date: req.query.date
+											year: req.query.year
 										});
 									}
 								});
@@ -172,16 +172,16 @@ router.get("/", function(req, res){
 								count: count,
 								current: page,
 								category: req.query.category,
-								date: false
+								year: false
 							});
 						}
 					}
 				});
 			});
 		} else {
-			if(req.query.date) {
-				Project.find({date: req.query.date}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
-					Project.count({date: req.query.date}).exec(function (err, count) {
+			if(req.query.year) {
+				Project.find({year: req.query.year}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, foundProjects) {
+					Project.count({year: req.query.year}).exec(function (err, count) {
 						if(err) {
 							console.log(err);
 						} else {
@@ -193,7 +193,7 @@ router.get("/", function(req, res){
 								count: count,
 								current: page,
 								category: false,
-								date: req.query.date
+								year: req.query.year
 							});
 						}
 					});
@@ -213,7 +213,7 @@ router.get("/", function(req, res){
         					noMatch: noMatch,
         					search: false,
         					category: false,
-        					date: false
+        					year: false
         				});
         			}
         		});
@@ -233,6 +233,7 @@ router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res) {
 	var description = req.body.description;
 	var category = req.body.category;
 	var date = req.body.date;
+	var year = req.body.year;
 	var tech = req.body.tech;
 	var author = {
 		id: req.user._id,
@@ -241,7 +242,7 @@ router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res) {
 	var techData = ["html", "css", "javascript", "jquery", "nodejs"];
 
 	// console.log("THIS IS TECH-ALL: " + req.body.techAll);
-	var newProject = {name: name, image: image, description: description, category: category, date: date, author: author, tech: tech};
+	var newProject = {name: name, image: image, description: description, category: category, date: date, author: author, tech: tech, year: year};
 
 	// Create a new project and save to DB
 	Project.create(newProject, function(err, newlyCreated) {
