@@ -1,12 +1,31 @@
 <h1>Edit <%= project.name %></h1>
 
+	<% function formatDate(date) {
+		var d = new Date(date) 
+		var month = '' + (d.getMonth() + 1)
+		var day = '' + d.getDate();
+		var year = d.getFullYear(); 
+
+		if (month.length < 2) 
+			month = '0' + month; 
+		if (day.length < 2) 
+			day = '0' + day; 
+
+		return [year, month, day].join('-'); 
+	} %>
+
+
+
 <form action="/portfolio/<%= project._id %>?_method=PUT" method="POST">
-	<input type="text" name="project[name]" value="<%= project.name %>">
-	<input type="text" name="project[image]" value="<%= project.image %>">
-	<input type="text" name="project[description]" value="<%= project.description %>">
-	<input type="text" name="project[category]" value="<%= project.category %>">
-	<input type="text" name="project[date]" value="<%= project.date %>">
-	<input type="text" name="project[year]" value="<%= project.year %>">
+	<input type="text" name="project[name]" value="<%= project.name %>" placeholder="name">
+	<input type="text" name="project[image]" value="<%= project.image %>" placeholder="image">
+	<input type="text" name="project[description]" value="<%= project.description %>" placeholder="description">
+	<input type="text" name="project[category]" value="<%= project.category %>" placeholder="category">
+	<input type="date" name="project[date]" value="<%= formatDate(project.date)%>">
+	<input type="text" name="project[order]" value="<%= project.order %>" placeholder="order">
+	<input type="text" name="project[color]" value="<%= project.color %>" placeholder="color">
+
+	
 
 
 
@@ -16,10 +35,10 @@
 
 	<% k1.forEach(function(k){  %>
 	<div class="checkbox">
-	<label><input name="project[tech]" type="checkbox" value="<%= k %>"><%= k %></label>
+		<label><input name="project[tech]" type="checkbox" value="<%= k %>"><%= k %></label>
 	</div>
 
-   <% }); %>
+	<% }); %>
 
 
 	

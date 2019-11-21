@@ -5,7 +5,7 @@ var projectSchema = new mongoose.Schema ({
 	image: String,
 	description: String,
 	category: String,
-	date: String,
+	date: Date,
 	year: String,
 	createdAt: {type: Date, default: Date.now},
 	author: {
@@ -34,7 +34,9 @@ var projectSchema = new mongoose.Schema ({
 	techAll: [{
 		type: String
 	}],
-	views: {type: Number, default: 0}
+	views: {type: Number, default: 0},
+	order: Number,
+	color: String
 });
 
 var Project = mongoose.model("Project", projectSchema);
