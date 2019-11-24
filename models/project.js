@@ -5,6 +5,7 @@ var projectSchema = new mongoose.Schema ({
 	image: String,
 	description: String,
 	category: String,
+	type: String,
 	date: Date,
 	year: String,
 	createdAt: {type: Date, default: Date.now},

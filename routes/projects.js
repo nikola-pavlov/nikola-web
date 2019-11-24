@@ -52,77 +52,177 @@ router.get("/", function(req, res){
 																				if(err) {
 																					console.log(err);
 																				} else {
-																					res.render("portfolio/portfolio", {
-																						projects: allProjects,
-																						current: page,
-																						pages: Math.ceil(count / perPage),
-																						noMatch: noMatch,
-																						count: count,
-																						search: req.query.search,
-																						category: req.query.category,
-																						year: req.query.year,
-																						views: req.query.views,
-																						color: req.query.color
-																					});
+																					if(req.query.search && req.query.category && req.query.year && req.query.color && req.query.views && req.query.type) {
+																						Project.find( { name: regex, category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+																							Project.count( {name: regex, category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
+																								if(err) {
+																									console.log(err);
+																								} else {
+																									res.render("portfolio/portfolio", {
+																										projects: allProjects,
+																										current: page,
+																										pages: Math.ceil(count / perPage),
+																										noMatch: noMatch,
+																										count: count,
+																										search: req.query.search,
+																										category: req.query.category,
+																										year: req.query.year,
+																										views: req.query.views,
+																										color: req.query.color,
+																										type: req.query.type
+																									});
+																								}
+																							});
+																						});
+																					} else {
+																						res.render("portfolio/portfolio", {
+																							projects: allProjects,
+																							current: page,
+																							pages: Math.ceil(count / perPage),
+																							noMatch: noMatch,
+																							count: count,
+																							search: req.query.search,
+																							category: req.query.category,
+																							year: req.query.year,
+																							views: req.query.views,
+																							color: req.query.color,
+																							type: false
+																						});
+																					}
 																				}
 																			});
 																		});
 																	} else {
-																		res.render("portfolio/portfolio", {
-																			projects: allProjects,
-																			current: page,
-																			pages: Math.ceil(count / perPage),
-																			noMatch: noMatch,
-																			count: count,
-																			search: req.query.search,
-																			category: req.query.category,
-																			year: req.query.year,
-																			views: false,
-																			color: req.query.color
-																		});
+																		if(req.query.search && req.query.category && req.query.year && req.query.color && req.query.type) {
+																			Project.find( { name: regex, category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+																				Project.count( {name: regex, category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
+																					if(err) {
+																						console.log(err);
+																					} else {
+																						res.render("portfolio/portfolio", {
+																							projects: allProjects,
+																							current: page,
+																							pages: Math.ceil(count / perPage),
+																							noMatch: noMatch,
+																							count: count,
+																							search: req.query.search,
+																							category: req.query.category,
+																							year: req.query.year,
+																							views: false,
+																							color: req.query.color,
+																							type: req.query.type
+																						});
+																					}
+																				});
+																			});
+																		} else {
+																			res.render("portfolio/portfolio", {
+																				projects: allProjects,
+																				current: page,
+																				pages: Math.ceil(count / perPage),
+																				noMatch: noMatch,
+																				count: count,
+																				search: req.query.search,
+																				category: req.query.category,
+																				year: req.query.year,
+																				views: false,
+																				color: req.query.color,
+																				type: false
+																			});
+																		}
 																	}
 																}
 															});
-														});
-													} else {
-														if(req.query.search && req.query.category && req.query.year && req.query.views) {
-															Project.find( { name: regex, category: req.query.category, year: req.query.year } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-																Project.count( {name: regex, category: req.query.category, year: req.query.year } ).exec(function (err, count) {
-																	if(err) {
-																		console.log(err);
-																	} else {
-																		res.render("portfolio/portfolio", {
-																			projects: allProjects,
-																			current: page,
-																			pages: Math.ceil(count / perPage),
-																			noMatch: noMatch,
-																			count: count,
-																			search: req.query.search,
-																			category: req.query.category,
-																			year: req.query.year,
-																			views: req.query.views,
-																			color: false
-																		});
-																	}
-																});
-															});
-														} else {
-															res.render("portfolio/portfolio", {
-																projects: allProjects,
-																current: page,
-																pages: Math.ceil(count / perPage),
-																noMatch: noMatch,
-																count: count,
-																search: req.query.search,
-																category: req.query.category,
-																year: req.query.year,
-																views: false,
-																color: false
-															});
-														}
-													}
-												}
-											});
+});
+} else {
+	if(req.query.search && req.query.category && req.query.year && req.query.views) {
+		Project.find( { name: regex, category: req.query.category, year: req.query.year } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+			Project.count( {name: regex, category: req.query.category, year: req.query.year } ).exec(function (err, count) {
+				if(err) {
+					console.log(err);
+				} else {
+					if(req.query.search && req.query.category && req.query.year && req.query.views && req.query.type) {
+						Project.find( { name: regex, category: req.query.category, year: req.query.year, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+							Project.count( {name: regex, category: req.query.category, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
+								if(err) {
+									console.log(err);
+								} else {
+									res.render("portfolio/portfolio", {
+										projects: allProjects,
+										current: page,
+										pages: Math.ceil(count / perPage),
+										noMatch: noMatch,
+										count: count,
+										search: req.query.search,
+										category: req.query.category,
+										year: req.query.year,
+										views: req.query.views,
+										color: false,
+										type: req.query.type
+									});
+								}
+							});
+						});
+					} else {
+						res.render("portfolio/portfolio", {
+							projects: allProjects,
+							current: page,
+							pages: Math.ceil(count / perPage),
+							noMatch: noMatch,
+							count: count,
+							search: req.query.search,
+							category: req.query.category,
+							year: req.query.year,
+							views: req.query.views,
+							color: false,
+							type: false
+						});
+					}
+				}
+			});
+		});
+	} else {
+		if(req.query.search && req.query.category && req.query.year && req.query.type) {
+			Project.find( { name: regex, category: req.query.category, year: req.query.year, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+				Project.count( {name: regex, category: req.query.category, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
+					if(err) {
+						console.log(err);
+					} else {
+						res.render("portfolio/portfolio", {
+							projects: allProjects,
+							current: page,
+							pages: Math.ceil(count / perPage),
+							noMatch: noMatch,
+							count: count,
+							search: req.query.search,
+							category: req.query.category,
+							year: req.query.year,
+							views: false,
+							color: false,
+							type: req.query.type
+						});
+					}
+				});
+			});
+		} else {
+			res.render("portfolio/portfolio", {
+				projects: allProjects,
+				current: page,
+				pages: Math.ceil(count / perPage),
+				noMatch: noMatch,
+				count: count,
+				search: req.query.search,
+				category: req.query.category,
+				year: req.query.year,
+				views: false,
+				color: false,
+				type: false
+			});
+		}
+	}
+}
+}
+});
 });
 } else {
 	if(req.query.search && req.query.category && req.query.color) {
@@ -137,34 +237,84 @@ router.get("/", function(req, res){
 								if(err) {
 									console.log(err);
 								} else {
-									res.render("portfolio/portfolio", {
-										projects: allProjects,
-										current: page,
-										pages: Math.ceil(count / perPage),
-										noMatch: noMatch,
-										count: count,
-										search: req.query.search,
-										category: req.query.category,
-										year: false,
-										views: req.query.views,
-										color: req.query.color
-									});
+									if(req.query.search && req.query.category && req.query.color && req.query.views && req.query.type) {
+										Project.find( { name: regex, category: req.query.category, color: req.query.color, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+											Project.count( {name: regex, category: req.query.category, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
+												if(err) {
+													console.log(err);
+												} else {
+													res.render("portfolio/portfolio", {
+														projects: allProjects,
+														current: page,
+														pages: Math.ceil(count / perPage),
+														noMatch: noMatch,
+														count: count,
+														search: req.query.search,
+														category: req.query.category,
+														year: false,
+														views: req.query.views,
+														color: req.query.color,
+														type: req.query.type
+													});
+												}
+											});
+										});
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: req.query.search,
+											category: req.query.category,
+											year: false,
+											views: req.query.views,
+											color: req.query.color,
+											type: false
+										});
+									}
 								}
 							});
 						});
 					} else {
-						res.render("portfolio/portfolio", {
-							projects: allProjects,
-							current: page,
-							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
-							count: count,
-							search: req.query.search,
-							category: req.query.category,
-							year: false,
-							views: false,
-							color: req.query.color
-						});
+						if(req.query.search && req.query.category && req.query.color && req.query.type) {
+							Project.find( { name: regex, category: req.query.category, color: req.query.color, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, category: req.query.category, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: req.query.search,
+											category: req.query.category,
+											year: false,
+											views: false,
+											color: req.query.color,
+											type: req.query.type
+										});
+									}
+								});
+							});
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: req.query.search,
+								category: req.query.category,
+								year: false,
+								views: false,
+								color: req.query.color,
+								type: false
+							});
+						}
 					}
 				}
 			});
@@ -176,34 +326,84 @@ router.get("/", function(req, res){
 					if(err) {
 						console.log(err);
 					} else {
-						res.render("portfolio/portfolio", {
-							projects: allProjects,
-							current: page,
-							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
-							count: count,
-							search: req.query.search,
-							category: req.query.category,
-							year: false,
-							views: req.query.views,
-							color: false
-						});
+						if(req.query.search && req.query.category && req.query.views && req.query.type) {
+							Project.find( { name: regex, category: req.query.category, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, category: req.query.category, type: req.query.type } ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: req.query.search,
+											category: req.query.category,
+											year: false,
+											views: req.query.views,
+											color: false,
+											type: req.query.type
+										});
+									}
+								});
+							});
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: req.query.search,
+								category: req.query.category,
+								year: false,
+								views: req.query.views,
+								color: false,
+								type: false
+							});
+						}
 					}
 				});
 			});
 		} else {
-			res.render("portfolio/portfolio", {
-				projects: allProjects,
-				current: page,
-				pages: Math.ceil(count / perPage),
-				noMatch: noMatch,
-				count: count,
-				search: req.query.search,
-				category: req.query.category,
-				year: false,
-				views: false,
-				color: false
-			});
+			if(req.query.search && req.query.category && req.query.type) {
+				Project.find( { name: regex, category: req.query.category, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+					Project.count( {name: regex, category: req.query.category, type: req.query.type } ).exec(function (err, count) {
+						if(err) {
+							console.log(err);
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: req.query.search,
+								category: req.query.category,
+								year: false,
+								views: false,
+								color: false,
+								type: req.query.type
+							});
+						}
+					});
+				});
+			} else {
+				res.render("portfolio/portfolio", {
+					projects: allProjects,
+					current: page,
+					pages: Math.ceil(count / perPage),
+					noMatch: noMatch,
+					count: count,
+					search: req.query.search,
+					category: req.query.category,
+					year: false,
+					views: false,
+					color: false,
+					type: false
+				});
+			}
 		}
 	}
 }
@@ -229,6 +429,197 @@ router.get("/", function(req, res){
 												if(err) {
 													console.log(err);
 												} else {
+													if(req.query.search && req.query.year && req.query.color && req.query.views && req.query.type) {
+														Project.find( { name: regex, year: req.query.year, color: req.query.color, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+															Project.count( {name: regex, year: req.query.year, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
+																if(err) {
+																	console.log(err);
+																} else {
+																	res.render("portfolio/portfolio", {
+																		projects: allProjects,
+																		current: page,
+																		pages: Math.ceil(count / perPage),
+																		noMatch: noMatch,
+																		count: count,
+																		search: req.query.search,
+																		category: false,
+																		year: req.query.year,
+																		views: req.query.views,
+																		color: req.query.color,
+																		type: req.query.type
+																	});
+																}
+															});
+														});
+													} else {
+														res.render("portfolio/portfolio", {
+															projects: allProjects,
+															current: page,
+															pages: Math.ceil(count / perPage),
+															noMatch: noMatch,
+															count: count,
+															search: req.query.search,
+															category: false,
+															year: req.query.year,
+															views: req.query.views,
+															color: req.query.color,
+															type: false
+														});
+													}
+												}
+											});
+										});
+									} else {
+										if(req.query.search && req.query.year && req.query.color && req.query.type) {
+											Project.find( { name: regex, year: req.query.year, color: req.query.color, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+												Project.count( {name: regex, year: req.query.year, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
+													if(err) {
+														console.log(err);
+													} else {
+														res.render("portfolio/portfolio", {
+															projects: allProjects,
+															current: page,
+															pages: Math.ceil(count / perPage),
+															noMatch: noMatch,
+															count: count,
+															search: req.query.search,
+															category: false,
+															year: req.query.year,
+															views: false,
+															color: req.query.color,
+															type: req.query.type
+														});
+													}
+												});
+											});
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												noMatch: noMatch,
+												count: count,
+												search: req.query.search,
+												category: false,
+												year: req.query.year,
+												views: false,
+												color: req.query.color,
+												type: false
+											});
+										}
+									}
+								}
+							});
+						});
+					} else {
+						if(req.query.search && req.query.year && req.query.views) {
+							Project.find( { name: regex, year: req.query.year } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, year: req.query.year } ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										if(req.query.search && req.query.year && req.query.views && req.query.type) {
+											Project.find( { name: regex, year: req.query.year, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+												Project.count( {name: regex, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
+													if(err) {
+														console.log(err);
+													} else {
+														res.render("portfolio/portfolio", {
+															projects: allProjects,
+															current: page,
+															pages: Math.ceil(count / perPage),
+															noMatch: noMatch,
+															count: count,
+															search: req.query.search,
+															category: false,
+															year: req.query.year,
+															views: req.query.views,
+															color: false,
+															type: req.query.type
+														});
+													}
+												});
+											});
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												noMatch: noMatch,
+												count: count,
+												search: req.query.search,
+												category: false,
+												year: req.query.year,
+												views: req.query.views,
+												color: false,
+												type: false
+											});
+										}
+									}
+								});
+							});
+						} else {
+							if(req.query.search && req.query.year && req.query.type) {
+								Project.find( { name: regex, year: req.query.year, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+									Project.count( {name: regex, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
+										if(err) {
+											console.log(err);
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												noMatch: noMatch,
+												count: count,
+												search: req.query.search,
+												category: false,
+												year: req.query.year,
+												views: false,
+												color: false,
+												type: req.query.type
+											});
+										}
+									});
+								});
+							} else {
+								res.render("portfolio/portfolio", {
+									projects: allProjects,
+									current: page,
+									pages: Math.ceil(count / perPage),
+									noMatch: noMatch,
+									count: count,
+									search: req.query.search,
+									category: false,
+									year: req.query.year,
+									views: false,
+									color: false,
+									type: false
+								});
+							}
+						}
+					}
+				}
+			});
+});
+} else {
+	if(req.query.search && req.query.color) {
+		Project.find( { name: regex, color: req.query.color } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+			Project.count( {name: regex, color: req.query.color } ).exec(function (err, count) {
+				if(err) {
+					console.log(err);
+				} else {
+					if(req.query.search && req.query.color && req.query.views) {
+						Project.find( { name: regex, color: req.query.color } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+							Project.count( {name: regex, color: req.query.color } ).exec(function (err, count) {
+								if(err) {
+									console.log(err);
+								} else {
+									if(req.query.search && req.query.color && req.query.views && req.query.type) {
+										Project.find( { name: regex, color: req.query.color, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+											Project.count( {name: regex, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
+												if(err) {
+													console.log(err);
+												} else {
 													res.render("portfolio/portfolio", {
 														projects: allProjects,
 														current: page,
@@ -237,9 +628,10 @@ router.get("/", function(req, res){
 														count: count,
 														search: req.query.search,
 														category: false,
-														year: req.query.year,
+														year: false,
 														views: req.query.views,
-														color: req.query.color
+														color: req.query.color,
+														type: req.query.type
 													});
 												}
 											});
@@ -253,18 +645,19 @@ router.get("/", function(req, res){
 											count: count,
 											search: req.query.search,
 											category: false,
-											year: req.query.year,
-											views: false,
-											color: req.query.color
+											year: false,
+											views: req.query.views,
+											color: req.query.color,
+											type: false
 										});
 									}
 								}
 							});
 						});
 					} else {
-						if(req.query.search && req.query.year && req.query.views) {
-							Project.find( { name: regex, year: req.query.year } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-								Project.count( {name: regex, year: req.query.year } ).exec(function (err, count) {
+						if(req.query.search && req.query.color && req.query.type) {
+							Project.find( { name: regex, color: req.query.color, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, color: req.query.color, type: req.query.type } ).exec(function (err, count) {
 									if(err) {
 										console.log(err);
 									} else {
@@ -276,9 +669,10 @@ router.get("/", function(req, res){
 											count: count,
 											search: req.query.search,
 											category: false,
-											year: req.query.year,
-											views: req.query.views,
-											color: false
+											year: false,
+											views: false,
+											color: req.query.color,
+											type: req.query.type
 										});
 									}
 								});
@@ -292,9 +686,10 @@ router.get("/", function(req, res){
 								count: count,
 								search: req.query.search,
 								category: false,
-								year: req.query.year,
+								year: false,
 								views: false,
-								color: false
+								color: req.query.color,
+								type: false
 							});
 						}
 					}
@@ -302,15 +697,15 @@ router.get("/", function(req, res){
 			});
 		});
 	} else {
-		if(req.query.search && req.query.color) {
-			Project.find( { name: regex, color: req.query.color } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-				Project.count( {name: regex, color: req.query.color } ).exec(function (err, count) {
+		if(req.query.search && req.query.views) {
+			Project.find( { name: regex } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+				Project.count( {name: regex } ).exec(function (err, count) {
 					if(err) {
 						console.log(err);
 					} else {
-						if(req.query.search && req.query.color && req.query.views) {
-							Project.find( { name: regex, color: req.query.color } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-								Project.count( {name: regex, color: req.query.color } ).exec(function (err, count) {
+						if(req.query.search && req.query.views && req.query.type) {
+							Project.find( { name: regex, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, type: req.query.type } ).exec(function (err, count) {
 									if(err) {
 										console.log(err);
 									} else {
@@ -324,7 +719,8 @@ router.get("/", function(req, res){
 											category: false,
 											year: false,
 											views: req.query.views,
-											color: req.query.color
+											color: false,
+											type: req.query.type
 										});
 									}
 								});
@@ -339,17 +735,18 @@ router.get("/", function(req, res){
 								search: req.query.search,
 								category: false,
 								year: false,
-								views: false,
-								color: req.query.color
+								views: req.query.views,
+								color: false,
+								type: false
 							});
 						}
 					}
 				});
 			});
 		} else {
-			if(req.query.search && req.query.views) {
-				Project.find( { name: regex } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-					Project.count( {name: regex } ).exec(function (err, count) {
+			if(req.query.search && req.query.type) {
+				Project.find( { name: regex, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+					Project.count( {name: regex, type: req.query.type } ).exec(function (err, count) {
 						if(err) {
 							console.log(err);
 						} else {
@@ -362,8 +759,9 @@ router.get("/", function(req, res){
 								search: req.query.search,
 								category: false,
 								year: false,
-								views: req.query.views,
-								color: false
+								views: false,
+								color: false,
+								type: req.query.type
 							});
 						}
 					});
@@ -379,11 +777,13 @@ router.get("/", function(req, res){
 					category: false,
 					year: false,
 					views: false,
-					color: false
+					color: false,
+					type: false
 				});
 			}
 		}
 	}
+}
 }
 }
 });
@@ -413,163 +813,363 @@ router.get("/", function(req, res){
 																if(err) {
 																	console.log(err);
 																} else {
-																	res.render("portfolio/portfolio", {
-																		projects: allProjects,
-																		current: page,
-																		pages: Math.ceil(count / perPage),
-																		noMatch: noMatch,
-																		count: count,
-																		search: false,
-																		category: req.query.category,
-																		year: req.query.year,
-																		views: req.query.views,
-																		color: req.query.color
-																	});
+																	if(req.query.category && req.query.year && req.query.color && req.query.views && req.query.type) {
+																		Project.find( {category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+																			Project.count( {category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type} ).exec(function (err, count) {
+																				if(err) {
+																					console.log(err);
+																				} else {
+																					res.render("portfolio/portfolio", {
+																						projects: allProjects,
+																						current: page,
+																						pages: Math.ceil(count / perPage),
+																						noMatch: noMatch,
+																						count: count,
+																						search: false,
+																						category: req.query.category,
+																						year: req.query.year,
+																						views: req.query.views,
+																						color: req.query.color,
+																						type: req.query.type
+																					});
+																				}
+																			});
+																		});
+																	} else {
+																		res.render("portfolio/portfolio", {
+																			projects: allProjects,
+																			current: page,
+																			pages: Math.ceil(count / perPage),
+																			noMatch: noMatch,
+																			count: count,
+																			search: false,
+																			category: req.query.category,
+																			year: req.query.year,
+																			views: req.query.views,
+																			color: req.query.color,
+																			type: false
+																		});
+																	}
 																}
 															});
 														});
 													} else {
-														res.render("portfolio/portfolio", {
-															projects: allProjects,
-															current: page,
-															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
-															count: count,
-															search: false,
-															category: req.query.category,
-															year: req.query.year,
-															views: false,
-															color: req.query.color
-														});
+														if(req.query.category && req.query.year && req.query.color && req.query.type) {
+															Project.find( {category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+																Project.count( {category: req.query.category, year: req.query.year, color: req.query.color, type: req.query.type} ).exec(function (err, count) {
+																	if(err) {
+																		console.log(err);
+																	} else {
+																		res.render("portfolio/portfolio", {
+																			projects: allProjects,
+																			current: page,
+																			pages: Math.ceil(count / perPage),
+																			noMatch: noMatch,
+																			count: count,
+																			search: false,
+																			category: req.query.category,
+																			year: req.query.year,
+																			views: false,
+																			color: req.query.color,
+																			type: req.query.type
+																		});
+																	}
+																});
+															});
+														} else {
+															res.render("portfolio/portfolio", {
+																projects: allProjects,
+																current: page,
+																pages: Math.ceil(count / perPage),
+																noMatch: noMatch,
+																count: count,
+																search: false,
+																category: req.query.category,
+																year: req.query.year,
+																views: false,
+																color: req.query.color,
+																type: false
+															});
+														}
 													}
+												}
+											});
+});
+} else {
+	if(req.query.category && req.query.year && req.query.views) {
+		Project.find( {category: req.query.category, year: req.query.year} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+			Project.count( {category: req.query.category, year: req.query.year} ).exec(function (err, count) {
+				if(err) {
+					console.log(err);
+				} else {
+					if(req.query.category && req.query.year && req.query.views && req.query.type) {
+						Project.find( {category: req.query.category, year: req.query.year, type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+							Project.count( {category: req.query.category, year: req.query.year, type: req.query.type} ).exec(function (err, count) {
+								if(err) {
+									console.log(err);
+								} else {
+									res.render("portfolio/portfolio", {
+										projects: allProjects,
+										current: page,
+										pages: Math.ceil(count / perPage),
+										noMatch: noMatch,
+										count: count,
+										search: false,
+										category: req.query.category,
+										year: req.query.year,
+										views: req.query.views,
+										color: false,
+										type: req.query.type
+									});
+								}
+							});
+						});
+					} else {
+						res.render("portfolio/portfolio", {
+							projects: allProjects,
+							current: page,
+							pages: Math.ceil(count / perPage),
+							noMatch: noMatch,
+							count: count,
+							search: false,
+							category: req.query.category,
+							year: req.query.year,
+							views: req.query.views,
+							color: false,
+							type: false
+						});
+					}
+				}
+			});
+		});
+	} else {
+		if(req.query.category && req.query.year && req.query.type) {
+			Project.find( {category: req.query.category, year: req.query.year, type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+				Project.count( {category: req.query.category, year: req.query.year, type: req.query.type} ).exec(function (err, count) {
+					if(err) {
+						console.log(err);
+					} else {
+						res.render("portfolio/portfolio", {
+							projects: allProjects,
+							current: page,
+							pages: Math.ceil(count / perPage),
+							noMatch: noMatch,
+							count: count,
+							search: false,
+							category: req.query.category,
+							year: req.query.year,
+							views: false,
+							color: false,
+							type: req.query.type
+						});
+					}
+				});
+			});
+		} else {
+			res.render("portfolio/portfolio", {
+				projects: allProjects,
+				current: page,
+				pages: Math.ceil(count / perPage),
+				noMatch: noMatch,
+				count: count,
+				search: false,
+				category: req.query.category,
+				year: req.query.year,
+				views: false,
+				color: false,
+				type: false
+			});
+		}
+	}
+}
+}
+});
+});
+} else {
+	if(req.query.category && req.query.color) {
+		Project.find( {category: req.query.category, color: req.query.color} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+			Project.count( {category: req.query.category, color: req.query.color} ).exec(function (err, count) {
+				if(err){
+					console.log(err);
+				} else {
+					if(req.query.category && req.query.color && req.query.views) {
+						Project.find( {category: req.query.category, color: req.query.color} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+							Project.count( {category: req.query.category, color: req.query.color} ).exec(function (err, count) {
+								if(err) {
+									console.log(err);
+								} else {
+									if(req.query.category && req.query.color && req.query.views && req.query.type) {
+										Project.find( {category: req.query.category, color: req.query.color, type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+											Project.count( {category: req.query.category, color: req.query.color, type: req.query.type} ).exec(function (err, count) {
+												if(err) {
+													console.log(err);
+												} else {
+													res.render("portfolio/portfolio", {
+														projects: allProjects,
+														current: page,
+														pages: Math.ceil(count / perPage),
+														noMatch: noMatch,
+														count: count,
+														search: false,
+														category: req.query.category,
+														year: false,
+														views: req.query.views,
+														color: req.query.color,
+														type: req.query.type
+													});
 												}
 											});
 										});
 									} else {
-										if(req.query.category && req.query.year && req.query.views) {
-											Project.find( {category: req.query.category, year: req.query.year} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-												Project.count( {category: req.query.category, year: req.query.year} ).exec(function (err, count) {
-													if(err) {
-														console.log(err);
-													} else {
-														res.render("portfolio/portfolio", {
-															projects: allProjects,
-															current: page,
-															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
-															count: count,
-															search: false,
-															category: req.query.category,
-															year: req.query.year,
-															views: req.query.views,
-															color: false
-														});
-													}
-												});
-											});
-										} else {
-											res.render("portfolio/portfolio", {
-												projects: allProjects,
-												current: page,
-												pages: Math.ceil(count / perPage),
-												noMatch: noMatch,
-												count: count,
-												search: false,
-												category: req.query.category,
-												year: req.query.year,
-												views: false,
-												color: false
-											});
-										}
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: false,
+											category: req.query.category,
+											year: false,
+											views: req.query.views,
+											color: req.query.color,
+											type: false
+										});
 									}
 								}
 							});
 						});
 					} else {
-						if(req.query.category && req.query.color) {
-							Project.find( {category: req.query.category, color: req.query.color} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-								Project.count( {category: req.query.category, color: req.query.color} ).exec(function (err, count) {
-									if(err){
+						if(req.query.category && req.query.color && req.query.type) {
+							Project.find( {category: req.query.category, color: req.query.color, type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {category: req.query.category, color: req.query.color, type: req.query.type} ).exec(function (err, count) {
+									if(err) {
 										console.log(err);
 									} else {
-										if(req.query.category && req.query.color && req.query.views) {
-											Project.find( {category: req.query.category, color: req.query.color} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-												Project.count( {category: req.query.category, color: req.query.color} ).exec(function (err, count) {
-													if(err) {
-														console.log(err);
-													} else {
-														res.render("portfolio/portfolio", {
-															projects: allProjects,
-															current: page,
-															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
-															count: count,
-															search: false,
-															category: req.query.category,
-															year: false,
-															views: req.query.views,
-															color: req.query.color
-														});
-													}
-												});
-											});
-										} else {
-											res.render("portfolio/portfolio", {
-												projects: allProjects,
-												current: page,
-												pages: Math.ceil(count / perPage),
-												noMatch: noMatch,
-												count: count,
-												search: false,
-												category: req.query.category,
-												year: false,
-												views: false,
-												color: req.query.color
-											});
-										}
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: false,
+											category: req.query.category,
+											year: false,
+											views: false,
+											color: req.query.color,
+											type: req.query.type
+										});
 									}
 								});
 							});
 						} else {
-							if(req.query.category && req.query.views) {
-								Project.find( {category: req.query.category} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-									Project.count( {category: req.query.category} ).exec(function (err, count) {
-										if(err) {
-											console.log(err);
-										} else {
-											res.render("portfolio/portfolio", {
-												projects: allProjects,
-												current: page,
-												pages: Math.ceil(count / perPage),
-												noMatch: noMatch,
-												count: count,
-												search: false,
-												category: req.query.category,
-												year: false,
-												views: req.query.views,
-												color: false
-											});
-										}
-									});
-								});
-							} else {
-								res.render("portfolio/portfolio", {
-									projects: allProjects,
-									current: page,
-									pages: Math.ceil(count / perPage),
-									noMatch: noMatch,
-									count: count,
-									search: false,
-									category: req.query.category,
-									year: false,
-									views: false,
-									color: false
-								});
-							}
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: false,
+								category: req.query.category,
+								year: false,
+								views: false,
+								color: req.query.color,
+								type: false
+							});
 						}
 					}
 				}
 			});
+		});
+	} else {
+		if(req.query.category && req.query.views) {
+			Project.find( {category: req.query.category} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+				Project.count( {category: req.query.category} ).exec(function (err, count) {
+					if(err) {
+						console.log(err);
+					} else {
+						if(req.query.category && req.query.views && req.query.type) {
+							Project.find( {category: req.query.category, type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {category: req.query.category, type: req.query.type} ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: false,
+											category: req.query.category,
+											year: false,
+											views: req.query.views,
+											color: false,
+											type: req.query.type
+										});
+									}
+								});
+							});
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: false,
+								category: req.query.category,
+								year: false,
+								views: req.query.views,
+								color: false,
+								type: false
+							});
+						}
+					}
+				});
+			});
+		} else {
+			if(req.query.category && req.query.type) {
+				Project.find( {category: req.query.category, type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+					Project.count( {category: req.query.category, type: req.query.type} ).exec(function (err, count) {
+						if(err) {
+							console.log(err);
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: false,
+								category: req.query.category,
+								year: false,
+								views: false,
+								color: false,
+								type: req.query.type
+							});
+						}
+					});
+				});
+			} else {
+				res.render("portfolio/portfolio", {
+					projects: allProjects,
+					current: page,
+					pages: Math.ceil(count / perPage),
+					noMatch: noMatch,
+					count: count,
+					search: false,
+					category: req.query.category,
+					year: false,
+					views: false,
+					color: false,
+					type: false
+				});
+			}
+		}
+	}
+}
+}
+});
 });
 } else {
 	if(req.query.year) {
@@ -590,6 +1190,197 @@ router.get("/", function(req, res){
 												if(err) {
 													console.log(err);
 												} else {
+													if(req.query.year && req.query.color && req.query.views && req.query.type) {
+														Project.find( {year: req.query.year, color: req.query.color, type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+															Project.count( {year: req.query.year, color: req.query.color, type: req.query.type} ).exec(function (err, count) {
+																if(err) {
+																	console.log(err);
+																} else {
+																	res.render("portfolio/portfolio", {
+																		projects: allProjects,
+																		current: page,
+																		pages: Math.ceil(count / perPage),
+																		noMatch: noMatch,
+																		count: count,
+																		search: false,
+																		category: false,
+																		year: req.query.year,
+																		views: req.query.views,
+																		color: req.query.color,
+																		type: req.query.type
+																	});
+																}
+															});
+														});
+													} else {
+														res.render("portfolio/portfolio", {
+															projects: allProjects,
+															current: page,
+															pages: Math.ceil(count / perPage),
+															noMatch: noMatch,
+															count: count,
+															search: false,
+															category: false,
+															year: req.query.year,
+															views: req.query.views,
+															color: req.query.color,
+															type: false
+														});
+													}
+												}
+											});
+										});
+									} else {
+										if(req.query.year && req.query.color && req.query.type) {
+											Project.find( {year: req.query.year, color: req.query.color, type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+												Project.count( {year: req.query.year, color: req.query.color, type: req.query.type} ).exec(function (err, count) {
+													if(err) {
+														console.log(err);
+													} else {
+														res.render("portfolio/portfolio", {
+															projects: allProjects,
+															current: page,
+															pages: Math.ceil(count / perPage),
+															noMatch: noMatch,
+															count: count,
+															search: false,
+															category: false,
+															year: req.query.year,
+															views: false,
+															color: req.query.color,
+															type: req.query.type
+														});
+													}
+												});
+											});
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												noMatch: noMatch,
+												count: count,
+												search: false,
+												category: false,
+												year: req.query.year,
+												views: false,
+												color: req.query.color,
+												type: false
+											});
+										}
+									}
+								}
+							});
+						});
+					} else {
+						if(req.query.year && req.query.views) {
+							Project.find( {year: req.query.year} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {year: req.query.year} ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										if(req.query.year && req.query.views && req.query.type) {
+											Project.find( {year: req.query.year, type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+												Project.count( {year: req.query.year, type: req.query.type} ).exec(function (err, count) {
+													if(err) {
+														console.log(err);
+													} else {
+														res.render("portfolio/portfolio", {
+															projects: allProjects,
+															current: page,
+															pages: Math.ceil(count / perPage),
+															noMatch: noMatch,
+															count: count,
+															search: false,
+															category: false,
+															year: req.query.year,
+															views: req.query.views,
+															color: false,
+															type: req.query.type
+														});
+													}
+												});
+											});
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												noMatch: noMatch,
+												count: count,
+												search: false,
+												category: false,
+												year: req.query.year,
+												views: req.query.views,
+												color: false,
+												type: false
+											});
+										}
+									}
+								});
+							});
+						} else {
+							if(req.query.year && req.query.type) {
+								Project.find( {year: req.query.year, type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+									Project.count( {year: req.query.year, type: req.query.type } ).exec(function (err, count) {
+										if(err) {
+											console.log(err);
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												noMatch: noMatch,
+												count: count,
+												search: false,
+												category: false,
+												year: req.query.year,
+												views: false,
+												color: false,
+												type: req.query.type
+											});
+										}
+									});
+								});
+							} else {
+								res.render("portfolio/portfolio", {
+									projects: allProjects,
+									current: page,
+									pages: Math.ceil(count / perPage),
+									noMatch: noMatch,
+									count: count,
+									search: false,
+									category: false,
+									year: req.query.year,
+									views: false,
+									color: false,
+									type: false
+								});
+							}
+						}
+					}
+				}
+			});
+});
+} else {
+	if(req.query.color) {
+		Project.find( {color: req.query.color} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+			Project.count( {color: req.query.color} ).exec(function (err, count) {
+				if(err) {
+					console.log(err);
+				} else {
+					if(req.query.color && req.query.views) {
+						Project.find( {color: req.query.color} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+							Project.count( {color: req.query.color} ).exec(function (err, count) {
+								if(err) {
+									console.log(err);
+								} else {
+									if(req.query.color && req.query.views && req.query.type) {
+										Project.find( {color: req.query.color, type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+											Project.count( {color: req.query.color, type: req.query.type} ).exec(function (err, count) {
+												if(err) {
+													console.log(err);
+												} else {
 													res.render("portfolio/portfolio", {
 														projects: allProjects,
 														current: page,
@@ -598,9 +1389,10 @@ router.get("/", function(req, res){
 														count: count,
 														search: false,
 														category: false,
-														year: req.query.year,
+														year: false,
 														views: req.query.views,
-														color: req.query.color
+														color: req.query.color,
+														type: req.query.type
 													});
 												}
 											});
@@ -614,62 +1406,18 @@ router.get("/", function(req, res){
 											count: count,
 											search: false,
 											category: false,
-											year: req.query.year,
-											views: false,
-											color: req.query.color
+											year: false,
+											views: req.query.views,
+											color: req.query.color,
+											type: false
 										});
 									}
 								}
 							});
 						});
 					} else {
-						if(req.query.year && req.query.views) {
-							Project.find( {year: req.query.year} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-								Project.count( {year: req.query.year} ).exec(function (err, count) {
-									if(err) {
-										console.log(err);
-									} else {
-										res.render("portfolio/portfolio", {
-											projects: allProjects,
-											current: page,
-											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
-											count: count,
-											search: false,
-											category: false,
-											year: req.query.year,
-											views: req.query.views,
-											color: false
-										});
-									}
-								});
-							});
-						}
-						res.render("portfolio/portfolio", {
-							projects: allProjects,
-							current: page,
-							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
-							count: count,
-							search: false,
-							category: false,
-							year: req.query.year,
-							views: false,
-							color: false
-						});
-					}
-				}
-			});
-		});
-	} else {
-		if(req.query.color) {
-			Project.find( {color: req.query.color} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-				Project.count( {color: req.query.color} ).exec(function (err, count) {
-					if(err) {
-						console.log(err);
-					} else {
-						if(req.query.color && req.query.views) {
-							Project.find( {color: req.query.color} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+						if(req.query.color && req.query.type) {
+							Project.find( {color: req.query.color, type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
 								Project.count( {color: req.query.color} ).exec(function (err, count) {
 									if(err) {
 										console.log(err);
@@ -683,8 +1431,9 @@ router.get("/", function(req, res){
 											search: false,
 											category: false,
 											year: false,
-											views: req.query.views,
-											color: req.query.color
+											views: false,
+											color: req.query.color,
+											type: req.query.type
 										});
 									}
 								});
@@ -700,17 +1449,67 @@ router.get("/", function(req, res){
 								category: false,
 								year: false,
 								views: false,
-								color: req.query.color
+								color: req.query.color,
+								type: false
+							});
+						}
+					}
+				}
+			});
+		});
+	} else {
+		if(req.query.views) {
+			Project.find( {} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+				Project.count( {} ).exec(function (err, count) {
+					if(err) {
+						console.log(err);
+					} else {
+						if(req.query.views && req.query.type) {
+							Project.find( {type: req.query.type} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {type: req.query.type} ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										res.render("portfolio/portfolio", {
+											projects: allProjects,
+											current: page,
+											pages: Math.ceil(count / perPage),
+											noMatch: noMatch,
+											count: count,
+											search: false,
+											category: false,
+											year: false,
+											views: req.query.views,
+											color: false,
+											type: req.query.type
+										});
+									}
+								});
+							});
+						} else {
+							res.render("portfolio/portfolio", {
+								projects: allProjects,
+								current: page,
+								pages: Math.ceil(count / perPage),
+								noMatch: noMatch,
+								count: count,
+								search: false,
+								category: false,
+								year: false,
+								views: req.query.views,
+								color: false,
+								type: false
 							});
 						}
 					}
 				});
 			});
-		} else {
-			if(req.query.views) {
-				Project.find( {} ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-					Project.count( {} ).exec(function (err, count) {
-						if(err) {
+		}
+		else {
+			if(req.query.type) {
+				Project.find( {type: req.query.type} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+					Project.count( {type: req.query.type} ).exec(function (err, count) {
+						if(err){
 							console.log(err);
 						} else {
 							res.render("portfolio/portfolio", {
@@ -723,13 +1522,13 @@ router.get("/", function(req, res){
 								category: false,
 								year: false,
 								views: req.query.views,
-								color: false
+								color: false,
+								type: req.query.type
 							});
 						}
 					});
 				});
-			}
-			else {
+			} else {
 				Project.find( {} ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
 					Project.count( {} ).exec(function (err, count) {
 						if(err) {
@@ -745,7 +1544,8 @@ router.get("/", function(req, res){
 								category: false,
 								year: false,
 								views: false,
-								color: false
+								color: false,
+								type: false
 							});
 						}
 					});
@@ -753,6 +1553,7 @@ router.get("/", function(req, res){
 			}
 		}
 	}
+}
 }
 }
 });
@@ -771,6 +1572,7 @@ router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res) {
 	var tech = req.body.tech;
 	var order = req.body.order;
 	var color = req.body.color;
+	var type = req.body.type;
 
 	var newDate = new Date(date);
 	var year = newDate.getYear() + 1900;
@@ -784,7 +1586,7 @@ router.post("/", middleware.isLoggedIn, middleware.isAdmin, function(req, res) {
 	var colorData = ["red", "green", "blue", "orange", "pink"];
 
 	// console.log("THIS IS TECH-ALL: " + req.body.techAll);
-	var newProject = {name: name, image: image, description: description, category: category, date: date, author: author, tech: tech, order: order, year: year, color: color};
+	var newProject = {name: name, image: image, description: description, category: category, date: date, author: author, tech: tech, order: order, year: year, color: color, type: type};
 
 	// Create a new project and save to DB
 	Project.create(newProject, function(err, newlyCreated) {

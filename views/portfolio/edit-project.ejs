@@ -24,6 +24,7 @@
 	<input type="date" name="project[date]" value="<%= formatDate(project.date)%>">
 	<input type="text" name="project[order]" value="<%= project.order %>" placeholder="order">
 	<input type="text" name="project[color]" value="<%= project.color %>" placeholder="color">
+	<input type="text" name="project[type]" value="<%= project.type %>" placeholder="type">
 
 	
 
@@ -54,14 +55,7 @@
 
 	
 	<% }); %>
-	
 
-    <!-- <div class="checkbox">
-        <label><input name="tech" type="checkbox" value="meat">Meat</label>
-    </div>
-    <div class="checkbox">
-        <label><input name="tech" type="checkbox" value="fish">Fish</label>
-    </div> -->
 
 
     <button>Submit</button>

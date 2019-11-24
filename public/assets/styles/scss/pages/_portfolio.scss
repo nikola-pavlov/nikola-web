@@ -262,6 +262,8 @@
 
 	&__main {
 		flex: 1;
+		position: relative;
+		padding-bottom: 5rem;
 
 		&__group {
 			list-style: none;
