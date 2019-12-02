@@ -31,6 +31,15 @@
 			border-radius: 5px;
 			background: white;
 
+			&.all {
+				background: var(--color-grey);
+				-webkit-mask-size: 1rem;
+				-webkit-mask-position: center;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-image: url("../../images/close.svg");
+			};
+
+
 			&.grey {background-color: grey};
 			&.red {background-color: red};
 			&.maroon {background-color: maroon};

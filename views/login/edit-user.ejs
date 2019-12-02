@@ -1,5 +1,8 @@
- <% include ../partials/header %>
+ <% var pageTitle = user.username + " edit profile" %> 
+ <% var pageDescription = "Profile page for" + user.username + ". Update all information regarding your profile including username, first name, last name, email, image and description."%>
+ <% var pageKeywords = "Username, Profile, Edit Profile page, Edit Account, Update, Profile information, User, First name, Last name" %> 
 
+ <% include ../partials/header %>
 
  <section class="section section--register-page">
 
@@ -19,27 +22,27 @@
 
  						<div class="main-contact-form__form__group">
  							<input class="main-contact-form__form__input" type="text" name="user[username]" value="<%= user.username %>" placeholder="Username">
- 							<label for="register-username" class="main-contact-form__form__label">Your Username</label>
+ 							<label class="main-contact-form__form__label">Your Username</label>
  						</div>
 
  						<div class="main-contact-form__form__group">
  							<input class="main-contact-form__form__input" type="email" name="user[email]" value="<%= user.email %>" placeholder="Email">
- 							<label for="register-email" class="main-contact-form__form__label">Your Email</label>
+ 							<label class="main-contact-form__form__label">Your Email</label>
  						</div>
 
  						<div class="main-contact-form__form__group">
  							<input class="main-contact-form__form__input" type="text" name="user[firstName]" value="<%= user.firstName %>" placeholder="First Name">
- 							<label for="register-firstName" class="main-contact-form__form__label">Your First Name</label>
+ 							<label class="main-contact-form__form__label">Your First Name</label>
  						</div>
 
  						<div class="main-contact-form__form__group">
  							<input class="main-contact-form__form__input" type="text" name="user[lastName]" value="<%= user.lastName %>" placeholder="Last Name">
- 							<label for="register-lastName" class="main-contact-form__form__label">Your Last Name</label>
+ 							<label class="main-contact-form__form__label">Your Last Name</label>
  						</div>
 
  						<div class="main-contact-form__form__group2">
- 							<textarea rows="5" class="main-contact-form__form__input" type="text" name="user[info]" value="<%= user.info %>" placeholder="Basic information about yourself."><%= user.info %></textarea>
- 							<label for="register-lastName" class="main-contact-form__form__label">Basic information about yourself.</label>
+ 							<textarea rows="5" class="main-contact-form__form__input" name="user[info]" placeholder="Basic information about yourself."><%= user.info %></textarea>
+ 							<label class="main-contact-form__form__label">Basic information about yourself.</label>
  						</div>
 
 						
@@ -70,11 +73,9 @@
  						</div>
  						<% } %>
 
- 						<label for="register-lastName" class="main-contact-form__form__label">Profile Visibility Settings</label>
+ 						<label class="main-contact-form__form__label">Profile Visibility Settings</label>
 
  						<p class="register__main__upload__signup u-margin-top-xsmall">Want to reset your password? <span class="strong--color-one"><a href="/reset">Click here</a></span></p>
- 						
-
  						
 
  					</div>

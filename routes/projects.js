@@ -15,12 +15,10 @@ router.get("/", function(req, res){
 	var perPage = 6;
 	var pageQuery = parseInt(req.query.page);
 	var page = pageQuery ? pageQuery : 1;
-	var noMatch = null;
 	var category = req.query.category;
 	var year = req.query.year;
 	var searchQuery = req.query.search;
 	var tech = req.query.tech;
-	
 
 	Project.count({}).exec(function (err, totalCount) {
 
@@ -67,7 +65,7 @@ router.get("/", function(req, res){
 																											projects: allProjects,
 																											current: page,
 																											pages: Math.ceil(count / perPage),
-																											noMatch: noMatch,
+
 																											count: count,
 																											search: req.query.search,
 																											category: req.query.category,
@@ -85,7 +83,7 @@ router.get("/", function(req, res){
 																								projects: allProjects,
 																								current: page,
 																								pages: Math.ceil(count / perPage),
-																								noMatch: noMatch,
+
 																								count: count,
 																								search: req.query.search,
 																								category: req.query.category,
@@ -110,7 +108,6 @@ router.get("/", function(req, res){
 																								projects: allProjects,
 																								current: page,
 																								pages: Math.ceil(count / perPage),
-																								noMatch: noMatch,
 																								count: count,
 																								search: req.query.search,
 																								category: req.query.category,
@@ -128,7 +125,6 @@ router.get("/", function(req, res){
 																					projects: allProjects,
 																					current: page,
 																					pages: Math.ceil(count / perPage),
-																					noMatch: noMatch,
 																					count: count,
 																					search: req.query.search,
 																					category: req.query.category,
@@ -160,7 +156,6 @@ router.get("/", function(req, res){
 										projects: allProjects,
 										current: page,
 										pages: Math.ceil(count / perPage),
-										noMatch: noMatch,
 										count: count,
 										search: req.query.search,
 										category: req.query.category,
@@ -178,7 +173,6 @@ router.get("/", function(req, res){
 							projects: allProjects,
 							current: page,
 							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
 							count: count,
 							search: req.query.search,
 							category: req.query.category,
@@ -203,7 +197,6 @@ router.get("/", function(req, res){
 							projects: allProjects,
 							current: page,
 							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
 							count: count,
 							search: req.query.search,
 							category: req.query.category,
@@ -221,7 +214,6 @@ router.get("/", function(req, res){
 				projects: allProjects,
 				current: page,
 				pages: Math.ceil(count / perPage),
-				noMatch: noMatch,
 				count: count,
 				search: req.query.search,
 				category: req.query.category,
@@ -260,7 +252,6 @@ router.get("/", function(req, res){
 														projects: allProjects,
 														current: page,
 														pages: Math.ceil(count / perPage),
-														noMatch: noMatch,
 														count: count,
 														search: req.query.search,
 														category: req.query.category,
@@ -278,7 +269,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: req.query.search,
 											category: req.query.category,
@@ -303,7 +293,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: req.query.search,
 											category: req.query.category,
@@ -321,7 +310,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: req.query.search,
 								category: req.query.category,
@@ -353,7 +341,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: req.query.search,
 											category: req.query.category,
@@ -371,7 +358,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: req.query.search,
 								category: req.query.category,
@@ -396,7 +382,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: req.query.search,
 								category: req.query.category,
@@ -414,7 +399,6 @@ router.get("/", function(req, res){
 					projects: allProjects,
 					current: page,
 					pages: Math.ceil(count / perPage),
-					noMatch: noMatch,
 					count: count,
 					search: req.query.search,
 					category: req.query.category,
@@ -460,7 +444,6 @@ router.get("/", function(req, res){
 																		projects: allProjects,
 																		current: page,
 																		pages: Math.ceil(count / perPage),
-																		noMatch: noMatch,
 																		count: count,
 																		search: req.query.search,
 																		category: false,
@@ -478,7 +461,6 @@ router.get("/", function(req, res){
 															projects: allProjects,
 															current: page,
 															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
 															count: count,
 															search: req.query.search,
 															category: false,
@@ -503,7 +485,6 @@ router.get("/", function(req, res){
 															projects: allProjects,
 															current: page,
 															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
 															count: count,
 															search: req.query.search,
 															category: false,
@@ -521,7 +502,6 @@ router.get("/", function(req, res){
 												projects: allProjects,
 												current: page,
 												pages: Math.ceil(count / perPage),
-												noMatch: noMatch,
 												count: count,
 												search: req.query.search,
 												category: false,
@@ -536,99 +516,95 @@ router.get("/", function(req, res){
 								}
 							});
 						});
-} else {
-	if(req.query.search && req.query.year && req.query.views) {
-		Project.find( { name: regex, year: req.query.year } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-			Project.count( {name: regex, year: req.query.year } ).exec(function (err, count) {
-				if(err) {
-					console.log(err);
-				} else {
-					if(req.query.search && req.query.year && req.query.views && req.query.type) {
-						Project.find( { name: regex, year: req.query.year, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-							Project.count( {name: regex, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
-								if(err) {
-									console.log(err);
-								} else {
-									res.render("portfolio/portfolio", {
-										projects: allProjects,
-										current: page,
-										pages: Math.ceil(count / perPage),
-										noMatch: noMatch,
-										count: count,
-										search: req.query.search,
-										category: false,
-										year: req.query.year,
-										views: req.query.views,
-										color: false,
-										type: req.query.type,
-										totalCount: totalCount
-									});
-								}
-							});
-						});
 					} else {
-						res.render("portfolio/portfolio", {
-							projects: allProjects,
-							current: page,
-							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
-							count: count,
-							search: req.query.search,
-							category: false,
-							year: req.query.year,
-							views: req.query.views,
-							color: false,
-							type: false,
-							totalCount: totalCount
-						});
+						if(req.query.search && req.query.year && req.query.views) {
+							Project.find( { name: regex, year: req.query.year } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+								Project.count( {name: regex, year: req.query.year } ).exec(function (err, count) {
+									if(err) {
+										console.log(err);
+									} else {
+										if(req.query.search && req.query.year && req.query.views && req.query.type) {
+											Project.find( { name: regex, year: req.query.year, type: req.query.type } ).sort({views: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+												Project.count( {name: regex, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
+													if(err) {
+														console.log(err);
+													} else {
+														res.render("portfolio/portfolio", {
+															projects: allProjects,
+															current: page,
+															pages: Math.ceil(count / perPage),
+															count: count,
+															search: req.query.search,
+															category: false,
+															year: req.query.year,
+															views: req.query.views,
+															color: false,
+															type: req.query.type,
+															totalCount: totalCount
+														});
+													}
+												});
+											});
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												count: count,
+												search: req.query.search,
+												category: false,
+												year: req.query.year,
+												views: req.query.views,
+												color: false,
+												type: false,
+												totalCount: totalCount
+											});
+										}
+									}
+								});
+							});
+						} else {
+							if(req.query.search && req.query.year && req.query.type) {
+								Project.find( { name: regex, year: req.query.year, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
+									Project.count( {name: regex, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
+										if(err) {
+											console.log(err);
+										} else {
+											res.render("portfolio/portfolio", {
+												projects: allProjects,
+												current: page,
+												pages: Math.ceil(count / perPage),
+												count: count,
+												search: req.query.search,
+												category: false,
+												year: req.query.year,
+												views: false,
+												color: false,
+												type: req.query.type,
+												totalCount: totalCount
+											});
+										}
+									});
+								});
+							} else {
+								res.render("portfolio/portfolio", {
+									projects: allProjects,
+									current: page,
+									pages: Math.ceil(count / perPage),
+									count: count,
+									search: req.query.search,
+									category: false,
+									year: req.query.year,
+									views: false,
+									color: false,
+									type: false,
+									totalCount: totalCount
+								});
+							}
+						}
 					}
 				}
 			});
-		});
-	} else {
-		if(req.query.search && req.query.year && req.query.type) {
-			Project.find( { name: regex, year: req.query.year, type: req.query.type } ).sort({order: -1}).skip((perPage * page) - perPage).limit(perPage).exec(function (err, allProjects) {
-				Project.count( {name: regex, year: req.query.year, type: req.query.type } ).exec(function (err, count) {
-					if(err) {
-						console.log(err);
-					} else {
-						res.render("portfolio/portfolio", {
-							projects: allProjects,
-							current: page,
-							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
-							count: count,
-							search: req.query.search,
-							category: false,
-							year: req.query.year,
-							views: false,
-							color: false,
-							type: req.query.type,
-							totalCount: totalCount
-						});
-					}
-				});
-			});
-		} else {
-			res.render("portfolio/portfolio", {
-				projects: allProjects,
-				current: page,
-				pages: Math.ceil(count / perPage),
-				noMatch: noMatch,
-				count: count,
-				search: req.query.search,
-				category: false,
-				year: req.query.year,
-				views: false,
-				color: false,
-				type: false,
-				totalCount: totalCount
-			});
-		}
-	}
-}
-}
-});
 });
 } else {
 	if(req.query.search && req.query.color) {
@@ -653,7 +629,6 @@ router.get("/", function(req, res){
 														projects: allProjects,
 														current: page,
 														pages: Math.ceil(count / perPage),
-														noMatch: noMatch,
 														count: count,
 														search: req.query.search,
 														category: false,
@@ -671,7 +646,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: req.query.search,
 											category: false,
@@ -696,7 +670,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: req.query.search,
 											category: false,
@@ -714,7 +687,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: req.query.search,
 								category: false,
@@ -746,7 +718,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: req.query.search,
 											category: false,
@@ -764,7 +735,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: req.query.search,
 								category: false,
@@ -789,7 +759,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: req.query.search,
 								category: false,
@@ -807,7 +776,6 @@ router.get("/", function(req, res){
 					projects: allProjects,
 					current: page,
 					pages: Math.ceil(count / perPage),
-					noMatch: noMatch,
 					count: count,
 					search: req.query.search,
 					category: false,
@@ -860,7 +828,6 @@ router.get("/", function(req, res){
 																						projects: allProjects,
 																						current: page,
 																						pages: Math.ceil(count / perPage),
-																						noMatch: noMatch,
 																						count: count,
 																						search: false,
 																						category: req.query.category,
@@ -878,7 +845,6 @@ router.get("/", function(req, res){
 																			projects: allProjects,
 																			current: page,
 																			pages: Math.ceil(count / perPage),
-																			noMatch: noMatch,
 																			count: count,
 																			search: false,
 																			category: req.query.category,
@@ -903,7 +869,6 @@ router.get("/", function(req, res){
 																			projects: allProjects,
 																			current: page,
 																			pages: Math.ceil(count / perPage),
-																			noMatch: noMatch,
 																			count: count,
 																			search: false,
 																			category: req.query.category,
@@ -921,7 +886,6 @@ router.get("/", function(req, res){
 																projects: allProjects,
 																current: page,
 																pages: Math.ceil(count / perPage),
-																noMatch: noMatch,
 																count: count,
 																search: false,
 																category: req.query.category,
@@ -953,7 +917,6 @@ router.get("/", function(req, res){
 										projects: allProjects,
 										current: page,
 										pages: Math.ceil(count / perPage),
-										noMatch: noMatch,
 										count: count,
 										search: false,
 										category: req.query.category,
@@ -971,7 +934,6 @@ router.get("/", function(req, res){
 							projects: allProjects,
 							current: page,
 							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
 							count: count,
 							search: false,
 							category: req.query.category,
@@ -996,7 +958,6 @@ router.get("/", function(req, res){
 							projects: allProjects,
 							current: page,
 							pages: Math.ceil(count / perPage),
-							noMatch: noMatch,
 							count: count,
 							search: false,
 							category: req.query.category,
@@ -1014,7 +975,6 @@ router.get("/", function(req, res){
 				projects: allProjects,
 				current: page,
 				pages: Math.ceil(count / perPage),
-				noMatch: noMatch,
 				count: count,
 				search: false,
 				category: req.query.category,
@@ -1053,7 +1013,6 @@ router.get("/", function(req, res){
 														projects: allProjects,
 														current: page,
 														pages: Math.ceil(count / perPage),
-														noMatch: noMatch,
 														count: count,
 														search: false,
 														category: req.query.category,
@@ -1071,7 +1030,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: false,
 											category: req.query.category,
@@ -1096,7 +1054,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: false,
 											category: req.query.category,
@@ -1114,7 +1071,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: false,
 								category: req.query.category,
@@ -1146,7 +1102,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: false,
 											category: req.query.category,
@@ -1164,7 +1119,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: false,
 								category: req.query.category,
@@ -1189,7 +1143,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: false,
 								category: req.query.category,
@@ -1207,7 +1160,6 @@ router.get("/", function(req, res){
 					projects: allProjects,
 					current: page,
 					pages: Math.ceil(count / perPage),
-					noMatch: noMatch,
 					count: count,
 					search: false,
 					category: req.query.category,
@@ -1253,7 +1205,6 @@ router.get("/", function(req, res){
 																		projects: allProjects,
 																		current: page,
 																		pages: Math.ceil(count / perPage),
-																		noMatch: noMatch,
 																		count: count,
 																		search: false,
 																		category: false,
@@ -1271,7 +1222,6 @@ router.get("/", function(req, res){
 															projects: allProjects,
 															current: page,
 															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
 															count: count,
 															search: false,
 															category: false,
@@ -1296,7 +1246,6 @@ router.get("/", function(req, res){
 															projects: allProjects,
 															current: page,
 															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
 															count: count,
 															search: false,
 															category: false,
@@ -1314,7 +1263,6 @@ router.get("/", function(req, res){
 												projects: allProjects,
 												current: page,
 												pages: Math.ceil(count / perPage),
-												noMatch: noMatch,
 												count: count,
 												search: false,
 												category: false,
@@ -1346,7 +1294,6 @@ router.get("/", function(req, res){
 															projects: allProjects,
 															current: page,
 															pages: Math.ceil(count / perPage),
-															noMatch: noMatch,
 															count: count,
 															search: false,
 															category: false,
@@ -1364,7 +1311,6 @@ router.get("/", function(req, res){
 												projects: allProjects,
 												current: page,
 												pages: Math.ceil(count / perPage),
-												noMatch: noMatch,
 												count: count,
 												search: false,
 												category: false,
@@ -1389,7 +1335,6 @@ router.get("/", function(req, res){
 												projects: allProjects,
 												current: page,
 												pages: Math.ceil(count / perPage),
-												noMatch: noMatch,
 												count: count,
 												search: false,
 												category: false,
@@ -1407,7 +1352,6 @@ router.get("/", function(req, res){
 									projects: allProjects,
 									current: page,
 									pages: Math.ceil(count / perPage),
-									noMatch: noMatch,
 									count: count,
 									search: false,
 									category: false,
@@ -1446,7 +1390,6 @@ router.get("/", function(req, res){
 														projects: allProjects,
 														current: page,
 														pages: Math.ceil(count / perPage),
-														noMatch: noMatch,
 														count: count,
 														search: false,
 														category: false,
@@ -1464,7 +1407,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: false,
 											category: false,
@@ -1489,7 +1431,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: false,
 											category: false,
@@ -1507,7 +1448,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: false,
 								category: false,
@@ -1539,7 +1479,6 @@ router.get("/", function(req, res){
 											projects: allProjects,
 											current: page,
 											pages: Math.ceil(count / perPage),
-											noMatch: noMatch,
 											count: count,
 											search: false,
 											category: false,
@@ -1557,7 +1496,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: false,
 								category: false,
@@ -1583,7 +1521,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: false,
 								category: false,
@@ -1606,7 +1543,6 @@ router.get("/", function(req, res){
 								projects: allProjects,
 								current: page,
 								pages: Math.ceil(count / perPage),
-								noMatch: noMatch,
 								count: count,
 								search: false,
 								category: false,

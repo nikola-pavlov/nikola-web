@@ -21,7 +21,7 @@ latestWorkFrontSide.on( "click", function( event ) {
 	if (event.target !== this)
 		return;
 
-	$( event.target ).closest( "figure" ).toggleClass( "latest-work__figure--is-visible" );
+	$( event.target ).closest( ".latest-work__figure" ).toggleClass( "latest-work__figure--is-visible" );
 	$( event.target ).siblings().toggleClass( "latest-work__back-side--is-visible" );
   // event.stopPropagation()
 });

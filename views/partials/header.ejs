@@ -1,9 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8"/>
+	<% if(pageTitle) { %>
+	<title><%= pageTitle %></title>
+	<% } else { %>
 	<title>Nikola Pavlov Portfolio</title>
-	<meta name="keywords" content="CV, Portfolio, Nikola, Pavlov, Webdesign, Logo, Design, Developer">
+	<% } %>
+	<% if(pageDescription) {%>
+	<meta name="description" content="<%= pageDescription %>">
+	<% } else { %>
 	<meta name="description" content="Portfolio website for Nikola Pavlov">
+	<%} %>
+	<% if(pageKeywords) {%>
+	<meta name="keywords" content="<%= pageKeywords %>">
+	<% } else { %>
+	<meta name="keywords" content="CV, Portfolio, Designer, Web Design, Graphic Design, Logo, Nikola Pavlov, Design, Developer, Project">
+	<%} %>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/styles/css/style.css">
@@ -35,8 +49,7 @@
 							<div class="nav-sub__item">
 								<div class="nav-sub__item__container">
 									<div class="nav-sub__item__icon nav-sub__item__icon--alb"></div>
-									<div class="nav-sub__item__lang">Serbia<n/div> 
-									</div>
+									<div class="nav-sub__item__lang">Serbian</div> 
 								</div>
 							</div>
 						</div>
@@ -84,7 +97,7 @@
 						<li><a href="/#about-me" id="about-me-link">About Me</a></li>
 						<li><a href="/#logo-design" id="logo-design-link">Logo Design</a></li>
 						<li><a href="/#mobile-ready" id="mobile-ready-link">Mobile Ready</a></li>
-						<a href="/contact" class="btn btn--small btn--main header-main__btn">Contact me</a>
+						<li><a href="/contact" class="btn btn--small btn--main header-main__btn">Contact me</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -158,8 +171,8 @@
 							</div>
 
 							<div class="main-contact-form__form__group">
-								<input type="text" class="main-contact-form__form__input" name="lastName" placeholder="Your Last Name" id="contact-email" required>
-								<label for="contact-email" class="main-contact-form__form__label">Your Last Name</label>
+								<input type="text" class="main-contact-form__form__input" name="lastName" placeholder="Your Last Name" id="contact-last-name" required>
+								<label for="contact-last-name" class="main-contact-form__form__label">Your Last Name</label>
 							</div>
 
 							<div class="main-contact-form__form__group--2">
@@ -173,7 +186,7 @@
 							</div>
 
 							<div class="main-contact-form__form__group--2">
-								<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message"required></textarea>
+								<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message" required></textarea>
 								<label for="contact-message" class="main-contact-form__form__label">Your Message</label>
 							</div>
 
@@ -187,5 +200,5 @@
 	</div> 
 
 
-<div class="trigger"></div>
+	<div class="trigger"></div>
 

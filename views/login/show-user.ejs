@@ -1,3 +1,7 @@
+ <% var pageTitle = user.username + " profile page" %> 
+ <% var pageDescription = "Profile page for " + user.username + ". Here you can view all the profile information for this user and update it if you are the owner of this profile."%>
+ <% var pageKeywords = "Username, Profile, Profile page, Account, ID, Profile information, User, First name, Last name" %> 
+
  <% include ../partials/header %>
 
 
@@ -8,10 +12,9 @@
  			<div class="profile__right">
  				<div class="profile__info">
  					<div class="profile__info__field">
+ 						<h2 class="profile__username"><%= user.username %> Profile Page</h2>
  						<ul>
- 							<li class="profile__username"><%= user.username %> 
- 								
- 							</li>
+ 							
  							<% if(user.isAdmin) { %>
  							<li class="profile__isadmin">Admin</li>
  							<% } %>
@@ -52,8 +55,9 @@
  						<% if(currentUser && currentUser.isAdmin || currentUser && currentUser._id.equals(user._id)) { %>
  						<form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
  							<label class="profile__image__label" for="image">
- 								<div class="profile__image__label__img"></div>
+ 								
  							</label>
+ 							<div class="profile__image__label__img"></div>
  							<input onchange="form.submit()" class="profile__image__input" type="file" id="image" name="image" accept="image/*">
  						</form>
  						<% } %>

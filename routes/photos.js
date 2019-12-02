@@ -38,6 +38,7 @@ router.post("/", function(req, res){
 					res.redirect("/portfolio");
 				} else {
 					photo.projectID = project._id;
+					console.log(photo.order);
 					photo.save();
 					project.photos.push(photo);
 					project.save();
