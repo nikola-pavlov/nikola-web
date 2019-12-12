@@ -16,25 +16,29 @@
 			outline: none;
 			cursor: pointer;
 
-			& a {
+			&__img {
+				position: relative;
+				-webkit-mask-size: 18rem;
+				background: var(--color-four);
 				width: 3rem;
 				height: 3rem;
-				background-color: var(--color-four);
-				-webkit-mask-size: 1.5rem;
-				-webkit-mask-position: center;
-				-webkit-mask-repeat: no-repeat;
+			}
+
+			& a {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 3rem;
+				height: 3rem;
 				display: block;
+				opacity: 0;
 			}
 
 			& input {
 				width: 3rem;
 				height: 3rem;
 				background-color: var(--color-four);
-				-webkit-mask-size: 1.5rem;
-				-webkit-mask-position: center;
-				-webkit-mask-repeat: no-repeat;
 				display: block;
-				-webkit-mask-image: url("../../images/bin.svg");
 				cursor: pointer;
 			}
 
@@ -42,7 +46,7 @@
 				top: 3rem;
 				right: 11rem;
 
-				& a { -webkit-mask-image: url("../../images/plus.svg");	}
+				& a { }
 			}
 
 			&.edit {

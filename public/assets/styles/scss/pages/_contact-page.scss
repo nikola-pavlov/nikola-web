@@ -4,7 +4,6 @@
 	height: 80rem;
 
 	&__contact-info {
-		// background: green;
 		position: relative;
 		height: 80rem;
 		width: 50%;
@@ -13,13 +12,11 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
-		// padding: 20rem 25rem;
 		font-size: 1.4rem;
 
 		&__container {
 			position: relative;
 			color: var(--color-whitish);
-			// background: pink;
 			height: 50rem;
 			width: 50%;
 			@include center-content;
@@ -62,7 +59,7 @@
 				width: 2rem;
 				height: 2rem;
 				background: url("../../images/envelope--white.svg");
-				background-size: left;
+				background-size: cover;
 				background-repeat: no-repeat;
 			}
 

@@ -22,7 +22,7 @@
 
 		&:hover {
 			background: var(--color-three);
-			border: 1px solid var(--color-grey-light);
+			// border: 1px solid var(--color-grey-light);
 		}
 
 		&__color {
@@ -33,10 +33,9 @@
 
 			&.all {
 				background: var(--color-grey);
-				-webkit-mask-size: 1rem;
-				-webkit-mask-position: center;
-				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-image: url("../../images/close.svg");
+				height: 3.1rem !important;
+				width: 3.1rem !important;
+				-webkit-mask-size: 15rem;
 			};
 
 

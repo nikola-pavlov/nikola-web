@@ -107,10 +107,13 @@
 				left: 0;
 				background: var(--color-one);
 				border-radius: 50%;
-				background-size: 2rem;
-				background-image: url("../../images/eye--color-whitish.svg");
-				background-repeat: no-repeat;
-				background-position: center;
+
+				&__img {
+					background: var(--color-whitish);
+					width: 5rem !important;
+					height: 5rem !important;
+					-webkit-mask-size: 30rem;
+				}
 			}
 
 			&__title {

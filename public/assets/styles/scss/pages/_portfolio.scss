@@ -52,12 +52,10 @@
 
 			&.clear-all__icon {
 				background: var(--color-one);
-				-webkit-mask-image: url("../../images/close.svg");
 				width: 2rem;
 				height: 2rem;
-				-webkit-mask-size: 2rem;
+				-webkit-mask-size: 15rem;
 				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-position: center;
 				padding: 0;
 				margin: 0;
 			}
@@ -76,12 +74,11 @@
 				
 				&__icon {
 					background: var(--color-whitish);
-					-webkit-mask-image: url("../../images/close.svg");
 					width: 1rem;
 					height: 1rem;
-					-webkit-mask-size: 1rem;
+					-webkit-mask-size: 11rem;
 					-webkit-mask-repeat: no-repeat;
-					-webkit-mask-position: center;
+					-webkit-mask-position: -2% 55% !important;
 				}
 			}
 		}
@@ -170,12 +167,9 @@
 			&__icon {
 				display: block;
 				background-color: var(--color-one);
-				-webkit-mask-image: url("../../images/search.svg");
-				-webkit-mask-size: 2rem;
-				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-position: center;
-				height: 2.5rem;
-				width: 2.5rem;
+				-webkit-mask-size: 21rem;
+				height: 3rem !important;
+				width: 3rem !important;
 				margin-right: 2.5rem;
 			}
 		}
@@ -200,10 +194,9 @@
 
 			&__img {
 				background: var(--color-one);
-				height: 2rem;
-				width: 2rem;
-				-webkit-mask-image: url("../../images/grid.svg");
-				-webkit-mask-size: 2rem;
+				height: 3.8rem !important;
+				width: 3.8rem !important;
+				-webkit-mask-size: 24rem;
 			}
 		}
 
@@ -217,9 +210,9 @@
 
 			&__img {
 				background: var(--color-one);
-				height: 2rem;
-				width: 2rem;
-				-webkit-mask-image: url("../../images/list.svg");
+				height: 3.8rem !important;
+				width: 3.8rem !important;
+				-webkit-mask-size: 24rem;
 			}
 		}
 	}
@@ -323,14 +316,12 @@
 
 			&__icon {
 				margin-left: auto;
-				width: 2rem;
-				height: 2rem;
+				width: 2.5rem !important;
+				height: 2.5rem !important;
 				background: var(--color-two);
-				-webkit-mask-image: url("../../images/close.svg");
-				-webkit-mask-size: 1.4rem;
-				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-position: center;
+				-webkit-mask-size: 16rem;
 				transition: all .4s ease-out;
+				transform-origin: 50% 50%;
 
 				&--is-closed {
 					transform: rotate(405deg);

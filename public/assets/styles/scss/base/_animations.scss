@@ -14,28 +14,28 @@
 	0% {
 		opacity: 0;
 		transform: scale(1.5) translateY(-83.5%);
-		background-color: FFF200;
+		background-color: #FFF200;
 	}
 
 	20% {
 		opacity: 1;
 		transform: scale(1.5);
-		background-color: FFF200;
+		background-color: #FFF200;
 	}
 
 	50% {
 		transform: scale(1);
-		background-color: FFF200;
+		background-color: #FFF200;
 	}
 
 	75% {
 		transform: scale(1);
-		background-color: FFF200;
+		background-color: #FFF200;
 	}
 
 	100% {
 		opacity: 1;
-		background-color: 00A651;
+		background-color: #00A651;
 	}
 }
 
@@ -95,7 +95,7 @@
 
 	100% {
 		opacity: 1;
-		visibility: 1;
+		visibility: visible;
 	}
 }
 

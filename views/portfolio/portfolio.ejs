@@ -14,7 +14,7 @@
  					<form action="/portfolio" method="GET" class="portfolio__header__search__form">
  						<input type="text" name="search" class="portfolio__header__search__input" placeholder="Search Projects">
  						<button class="portfolio__header__search__btn">
- 							<span class="portfolio__header__search__icon"></span>
+ 							<span class="portfolio__header__search__icon icon icon--search"></span>
  						</button>
  					</form>
  				</div>
@@ -24,7 +24,7 @@
  						Search: <%= search %>
  						<a href="/portfolio?search=<%if(type){%>&type=<%=type%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>">
  						<div class="portfolio__header__filter-btn__cancel">
- 							<div class="portfolio__header__filter-btn__cancel__icon"></div>
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
  						</div></a>
  					</div>
  					<% } %>
@@ -34,7 +34,7 @@
  						Category: <%= category %>
  						<a href="/portfolio?category=<%if(type){%>&type=<%=type%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(search){%>&search=<%=search%><%}%>">
  						<div class="portfolio__header__filter-btn__cancel">
- 							<div class="portfolio__header__filter-btn__cancel__icon"></div>
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
  						</div></a>
  					</div>
  					<% } %>
@@ -44,7 +44,7 @@
  						year: <%= year %>
  						<a href="/portfolio?year=<%if(type){%>&type=<%=type%><%}%><%if(search){%>&search=<%=search%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>">
  						<div class="portfolio__header__filter-btn__cancel">
- 							<div class="portfolio__header__filter-btn__cancel__icon"></div>
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
  						</div></a>
  					</div>
  					<% } %>
@@ -54,7 +54,7 @@
  						Color: <%= color %>
  						<a href="/portfolio?color=<%if(type){%>&type=<%=type%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%>">
  						<div class="portfolio__header__filter-btn__cancel">
- 							<div class="portfolio__header__filter-btn__cancel__icon"></div>
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
  						</div></a>
  					</div>
  					<% } %>
@@ -64,7 +64,7 @@
  						Type: <%= type %>
  						<a href="/portfolio?type=<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>">
  						<div class="portfolio__header__filter-btn__cancel">
- 							<div class="portfolio__header__filter-btn__cancel__icon"></div>
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
  						</div></a>
  					</div>
  					<% } %>
@@ -83,8 +83,7 @@
  					<%if(search || category || year || color || type) {%> 
  					<div class="portfolio__header__filter-btn clear-all">
  						<a href="/portfolio">
- 							<div class="portfolio__header__filter-btn clear-all__icon">
- 							</div>
+ 							<div class="portfolio__header__filter-btn clear-all__icon icon icon--close"></div>
  						</a>
  					</div>
  					<% } %>
@@ -95,10 +94,10 @@
 
  					<div class="portfolio__header__features">
  						<div class="portfolio__header__grid portfolio__header__grid--is-active">
- 							<div class="portfolio__header__grid__img"></div>
+ 							<div class="portfolio__header__grid__img icon icon--grid"></div>
  						</div>
  						<div class="portfolio__header__list">
- 							<div class="portfolio__header__list__img"></div>
+ 							<div class="portfolio__header__list__img icon icon--list"></div>
  						</div>
  					</div>
  				</div>
@@ -113,7 +112,7 @@
  						<div class="portfolio__nav__filter__heading">Filters</div>
  						<div class="portfolio__nav__filter__header">
  							<div class="portfolio__nav__filter__title">Type</div>
- 							<div class="portfolio__nav__filter__icon"></div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
  						</div>
  						<div class="portfolio__nav__group">
  							<ul>
@@ -127,7 +126,7 @@
  					<div class="portfolio__nav__filter">
  						<div class="portfolio__nav__filter__header">
  							<div class="portfolio__nav__filter__title">Category</div>
- 							<div class="portfolio__nav__filter__icon"></div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
  						</div>
  						<div class="portfolio__nav__group">
  							<ul>
@@ -148,7 +147,7 @@
  					<div class="portfolio__nav__filter">
  						<div class="portfolio__nav__filter__header">
  							<div class="portfolio__nav__filter__title">Year</div>
- 							<div class="portfolio__nav__filter__icon"></div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
  						</div>
  						<div class="portfolio__nav__group">
  							<ul>
@@ -175,7 +174,7 @@
  					<div class="portfolio__nav__filter">
  						<div class="portfolio__nav__filter__header">
  							<div class="portfolio__nav__filter__title">Sort by</div>
- 							<div class="portfolio__nav__filter__icon"></div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
  						</div>
  						<div class="portfolio__nav__group">
  							<ul>
@@ -190,14 +189,14 @@
  					<div class="portfolio__nav__filter">
  						<div class="portfolio__nav__filter__header">
  							<div class="portfolio__nav__filter__title">Color</div>
- 							<div class="portfolio__nav__filter__icon"></div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
  						</div>
  						<div class="portfolio__nav__group">
  							<div class="color-picker">
  								<div class="color-picker__group">
  									
- 									<a href="/portfolio?color=<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>"class="color-picker__item all<%if(color == ""){%>active<%}%>">
- 										<div class="color-picker__item__color all"></div>
+ 									<a href="/portfolio?color=<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item all<%if(color == ""){%>active<%}%>">
+ 										<div class="color-picker__item__color all icon icon--close"></div>
  									</a>
 
  									<a href="/portfolio?color=grey<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item grey <% if(color == "grey"){%>active<% } %>">

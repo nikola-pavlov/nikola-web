@@ -29,10 +29,10 @@
 		&__icon {
 			background-color: var(--color-grey);
 			display: inline-block;
-			width: 2rem;
-			height: 2rem;
-			-webkit-mask-image: url("../../images/pdf.svg");
-			-webkit-mask-size: cover;
+			width: 2.5rem;
+			height: 2.5rem;
+			-webkit-mask-size: 18rem;
+			transform: translate(5px, -4px);
 			transition: all .2s ease-out;
 
 			@include respond(700) {
@@ -159,32 +159,19 @@
 						align-items: center;
 						justify-content: center;
 
+						&__img {
+							-webkit-mask-size: 18rem;
+							background: var(--color-grey);
+							width: 3rem;
+							height: 3rem;
+						}
+
 						@include respond(700) {
 							margin-bottom: .5rem;
 							width: 2.5rem;
 							height: 2.5rem;
 							min-width: 2.5rem;
 						}
-
-						&::before {
-							position: absolute;
-							content: "";
-							height: 1.75rem;
-							width: 1.75rem;
-							background: var(--color-grey);
-							-webkit-mask-size: cover;
-
-							@include respond(700) {
-								height: 1.5rem;
-								width: 1.5rem;
-							}
-						}
-
-						&.icon1 {&::before {-webkit-mask-image: url("../../images/location.svg");}}
-						&.icon2 {&::before {-webkit-mask-image: url("../../images/phone.svg");}}
-						&.icon3 {&::before {-webkit-mask-image: url("../../images/envelope.svg");}}
-						&.icon4 {&::before {-webkit-mask-image: url("../../images/birthday.svg");}}
-						&.icon5 {&::before {-webkit-mask-image: url("../../images/house.svg");}}
 					}
 
 					&__desc {
@@ -270,6 +257,17 @@
 							align-items: center;
 							justify-content: center;
 
+							&__img {
+								-webkit-mask-size: 15rem;
+								background: var(--color-grey);
+								width: 2.5rem;
+								height: 2.5rem;
+
+								&.icon-color {
+									background: var(--color-four);
+								}
+							}
+
 							@include respond(900) {
 								height: 2.25rem;
 								width: 2.25rem;
@@ -291,20 +289,6 @@
 									margin-right: 2.5rem;
 								}
 							}
-
-							&::before {
-								position: absolute;
-								content: "";
-								height: 1.5rem;
-								width: 1.5rem;
-								background-color: var(--color-one);
-								-webkit-mask-size: cover;
-								-webkit-mask-image: url("../../images/check-mark.svg");
-							}
-
-							&.icon1 {&::before {-webkit-mask-image: url("../../images/ear.svg"); background-color: var(--color-grey);}}
-							&.icon2 {&::before {-webkit-mask-image: url("../../images/speaking.svg"); background-color: var(--color-grey);}}
-							&.icon3 {&::before {-webkit-mask-image: url("../../images/pencil.svg"); background-color: var(--color-grey);}}
 						}
 					}
 				}
@@ -336,9 +320,9 @@
 			}
 
 			&__subtitle {
+				letter-spacing: 3;
 				font-size: 2rem;
 				font-weight: 100;
-				letter-spacing: 3;
 				margin-bottom: 5rem;
 
 				@include respond(700) {

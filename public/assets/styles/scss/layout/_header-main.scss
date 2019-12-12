@@ -39,12 +39,19 @@
 	&__logo {
 		position: absolute;
 		background-color: var(--color-one);
-		padding: .43rem 1.35rem;
 		// border-radius: 0 0 1rem 1rem;
 		transform-origin: 50% 0;
 		transition: all .3s ease-out;
+		padding: 0 2rem 0 0;
 		z-index: 101;
 		right: 0;
+
+		&__img {
+			background: var(--color-whitish);
+			width: 7rem !important;
+			height: 7rem !important;
+			-webkit-mask-size: 44rem;
+		}
 
 		.header-main--opacity & {
 			// transform: scale(1);
@@ -58,30 +65,17 @@
 			transform-origin: 50% 0;
 			min-width: 20rem;
 		}
+	}
 
-		& figure img {
-			width: 5.5rem;
-			float: left;
-			padding: .5rem;
-			display: inline-block;
-
-			@include respond(1000) {
-				float: none;
-				position: relative;
-				left: 50%;
-				transform: translateX(-50%);
-			}
-		}
-
-		& figure {
-			@include clearfix;
-		}
+	figure {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	&__logo-caption {
 		display: inline-block;
 		color: var(--color-whitish);
-		padding: 1.8rem 0 0 .7rem;
 		font-size: 1.6rem;
 		position: relative;
 

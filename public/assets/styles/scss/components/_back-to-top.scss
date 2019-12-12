@@ -1,19 +1,26 @@
 .back-to-top {
-	bottom: 2.5rem;
-	right: 2.5rem;
-	position: fixed;
-	background-color: var(--color-whitish);
-	height: 7rem;
-	width: 7rem;
+
+	&__container {
+		background: white;
+		height: 7rem;
+		width: 7rem;
+		position: fixed;
+		bottom: 2.5rem;
+		right: 2.5rem;
+		border-radius: 50%;
+		z-index: 100;
+		box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
+	}
+
+	position: relative;
+	background-color: var(--color-one);
+	height: 7rem !important;
+    width: 7rem !important;
+    -webkit-mask-size: 40rem;
 	border-radius: 50%;
 	z-index: 102;
-	box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
 	cursor: pointer;
 	backface-visibility: hidden;
-	background: white url(../../images/arrow--top.svg);
-	background-repeat: no-repeat;
-	background-size: 3rem;
-	background-position: center;
 	overflow: hidden;
 	display: none;
 	

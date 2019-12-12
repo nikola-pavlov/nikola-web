@@ -4,22 +4,21 @@
 		border: none;
 		padding: .5rem 1rem;
 		outline: none;
-		height: 2.5rem;
-		width: 2.5rem;
-		-webkit-mask-size: 2.5rem;
-		-webkit-mask-repeat: no-repeat;
-		-webkit-mask-position: center;
 		cursor: pointer;
 		background: var(--color-one);
 		transition: all .2s ease-out;
 
 
 		&--liked {
-			-webkit-mask-image: url("../../images/heart-fill.svg");
+			height: 3rem !important;
+			width: 3rem !important;
+			-webkit-mask-size: 21rem;
 		}
 
 		&--unliked {
-			-webkit-mask-image: url("../../images/heart-outline.svg");
+			height: 3rem !important;
+			width: 3rem !important;
+			-webkit-mask-size: 21rem;
 		}
 
 		&:hover {
@@ -62,17 +61,14 @@
 			}
 
 			&__close {
-				height: 2rem;
-				width: 2rem;
+				height: 2.5rem;
+				width: 2.5rem;
 				background: grey;
 				position: absolute;
 				top: 1.25rem;
 				right: 2rem;
 				cursor: pointer;
-				-webkit-mask-size: 2rem;
-				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-position: center;
-				-webkit-mask-image: url("../../images/close.svg");
+				-webkit-mask-size: 17rem;
 				transition: all .2s ease-out;
 
 				&:hover {

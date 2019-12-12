@@ -10,11 +10,16 @@
 	&__background {
 		position: relative;
 		height: 100vh;
-		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(../../images/1980x1080.png);
+		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(https://res.cloudinary.com/dlw9kxuj0/image/upload/v1575491145/Site%20Gallery/Landing/hero.png);
 		// background: var(--color-four);
-	background-size: cover;
-	background-position: top;
-	background-attachment: fixed;
+		background-size: cover;
+		background-position: top;
+		background-attachment: fixed;
+
+		@include respond(800) {
+			background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(https://res.cloudinary.com/dlw9kxuj0/image/upload/v1575491145/Site%20Gallery/Landing/hero-small.png);
+		}
+
 	}
 
 	&__content {
@@ -68,22 +73,33 @@
 			text-align: center;
 		}
 
-		&__icon {
-			width: 5rem;
-			display: inline-block;
-			height: 5rem;
-			// background: grey;
-			background-size: 2.2rem;
-			background-repeat: no-repeat;
-			background-position: center;
-			transition: transform .2s ease-out;
+		& ul {
+			display: flex;
+		}
 
-			&__facebook {background-image: (url("../../images/facebook-logo--color-three.svg"));}
-			&__instagram {background-image: (url("../../images/instagram-logo--color-three.svg"));}
-			&__linkedin {background-image: (url("../../images/linkedin-logo--color-three.svg"));}
-			&__email {background-image: (url("../../images/envelope--color-three.svg"));}
-			&__skype {background-image: (url("../../images/skype-logo--color-three.svg"));}
-			&__github {background-image: (url("../../images/github-logo--color-three.svg"));}
+		&__icon {
+			width: 4rem !important;
+			height: 4rem !important;
+			background-color: var(--color-three);
+			
+			-webkit-mask-repeat: no-repeat;
+			transition: transform .2s ease-out;
+			-webkit-mask-size: 23rem !important;
+
+			&__facebook {
+			}
+
+			&__instagram {
+			}
+
+			&__linkedin {
+			}
+			&__email {
+			}
+			&__skype {
+			}
+			&__github {
+			}
 
 			&:hover {
 				transform: scale(1.4);

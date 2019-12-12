@@ -49,21 +49,17 @@
 		border-radius: 50%;
 		
 		&__icon {
-			background: url(../../images/flip-arrows.svg);
-			background-position: center;
-			background-size: 2.5rem;
-			height: 3.5rem;
-			width: 3.5rem;
-			background-repeat: no-repeat;
+			-webkit-mask-size: 21rem;
+			height: 3.5rem !important;
+			width: 3.5rem !important;
+			background-color: var(--color-four);
 		}
 
 		&__icon2 {
-			background: url(../../images/flip-arrows.svg);
-			background-position: center;
-			background-size: 2.5rem;
-			height: 3.5rem;
-			width: 3.5rem;
-			background-repeat: no-repeat;
+			height: 3.5rem !important;
+			width: 3.5rem !important;
+			background-color: var(--color-four);
+			-webkit-mask-size: 21rem;
 		}
 	}
 
@@ -180,20 +176,6 @@
 			opacity: 0;
 			width: 5rem;
 			transform-origin: 20% 40%;
-
-			&::after {
-				position: absolute;
-				content: "";
-				height: 2rem;
-				width: 2rem;
-				top: 0;
-				left: -2.5rem;
-				// background: pink;
-				background: url(../../images/comment.svg);
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: center;
-			}
 		}
 
 		&:hover &__title {

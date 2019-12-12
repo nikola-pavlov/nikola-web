@@ -36,7 +36,6 @@
 		}
 
 		&__box {
-
 			position: relative;
 			float: left;
 			padding: 5rem;
@@ -81,15 +80,15 @@
 				}
 			}
 
-			&::after {
-				content: "";
+			&__icon {
+				width: 7rem;
+				height: 7rem;
+				-webkit-mask-size: 52rem;
 				position: absolute;
-				background: url("../../images/quotes.svg");
+				background-color: var(--color-one);
 				opacity: .2;
-				top: 2rem;
-				right: 2rem;
-				width: 5rem;
-				height: 5rem;
+				top: 1rem;
+				right: 1rem;
 			}
 
 		}

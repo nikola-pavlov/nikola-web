@@ -1,0 +1,216 @@
+/* Do not edit modules/_sprite directly because it is generated automaticaly by Gulp within templates/sprite.css file */
+
+
+.icon {
+	-webkit-mask-image: url("/assets/images/sprites/sprite-d943927c.svg");
+	-webkit-mask-repeat: no-repeat;
+}
+
+.icon--arrow-top {
+	-webkit-mask-position: 20% 0;
+}
+
+
+
+.icon--bin {
+	-webkit-mask-position: 80% 20%;
+}
+
+
+
+.icon--birthday {
+	-webkit-mask-position: 0 20%;
+}
+
+
+
+.icon--calendar {
+	-webkit-mask-position: 20% 20%;
+}
+
+
+
+.icon--check-mark {
+	-webkit-mask-position: 40% 0;
+}
+
+
+
+.icon--clipboard {
+	-webkit-mask-position: 40% 20%;
+}
+
+
+
+.icon--close {
+	-webkit-mask-position: 0 40%;
+}
+
+
+
+.icon--comment {
+	-webkit-mask-position: 20% 40%;
+}
+
+
+
+.icon--designer {
+	-webkit-mask-position: 40% 40%;
+}
+
+
+
+.icon--developer {
+	-webkit-mask-position: 60% 0;
+}
+
+
+
+.icon--ear {
+	-webkit-mask-position: 60% 20%;
+}
+
+
+
+.icon--envelope {
+	-webkit-mask-position: 60% 40%;
+}
+
+
+
+.icon--eye {
+	-webkit-mask-position: 0 60%;
+}
+
+
+
+.icon--facebook-logo {
+	-webkit-mask-position: 20% 60%;
+}
+
+
+
+.icon--flip-arrows {
+	-webkit-mask-position: 40% 60%;
+}
+
+
+
+.icon--github-logo {
+	-webkit-mask-position: 60% 60%;
+}
+
+
+
+.icon--grid {
+	-webkit-mask-position: 80% 0;
+}
+
+
+
+.icon--heart-fill {
+	-webkit-mask-position: 0 0;
+}
+
+
+
+.icon--heart-outline {
+	-webkit-mask-position: 80% 40%;
+}
+
+
+
+.icon--house {
+	-webkit-mask-position: 80% 60%;
+}
+
+
+
+.icon--instagram-logo {
+	-webkit-mask-position: 0 80%;
+}
+
+
+
+.icon--linkedin-logo {
+	-webkit-mask-position: 20% 80%;
+}
+
+
+
+.icon--list {
+	-webkit-mask-position: 40% 80%;
+}
+
+
+
+.icon--location {
+	-webkit-mask-position: 60% 80%;
+}
+
+
+
+.icon--logo {
+	-webkit-mask-position: 80% 80%;
+}
+
+
+
+.icon--logo-design {
+	-webkit-mask-position: 100% 0;
+}
+
+
+
+.icon--pdf {
+	-webkit-mask-position: 100% 20%;
+}
+
+
+
+.icon--pencil {
+	-webkit-mask-position: 100% 40%;
+}
+
+
+
+.icon--phone {
+	-webkit-mask-position: 100% 60%;
+}
+
+
+
+.icon--plus {
+	-webkit-mask-position: 100% 80%;
+}
+
+
+
+.icon--quotes {
+	-webkit-mask-position: 0 100%;
+}
+
+
+
+.icon--replay {
+	-webkit-mask-position: 20% 100%;
+}
+
+
+
+.icon--search {
+	-webkit-mask-position: 40% 100%;
+}
+
+
+
+.icon--skype-logo {
+	-webkit-mask-position: 60% 100%;
+}
+
+
+
+.icon--speaking {
+	-webkit-mask-position: 80% 100%;
+}
+

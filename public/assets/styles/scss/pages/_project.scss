@@ -52,14 +52,11 @@
 				align-items: center;
 
 				&__icon {
-					height: 2.5rem;
-					width: 2.5rem;
-					-webkit-mask-size: 2.5rem;
-					-webkit-mask-repeat: no-repeat;
-					-webkit-mask-position: center;
+					height: 3rem !important;
+					width: 3rem !important;
+					-webkit-mask-size: 23rem;
 					cursor: pointer;
 					background: var(--color-one);
-					-webkit-mask-image: url("../../images/eye.svg");
 				}
 
 				&__number {
@@ -72,14 +69,12 @@
 				flex-direction: column;
 				align-items: center;
 				&__icon {
-					height: 2.5rem;
-					width: 2.5rem;
-					-webkit-mask-size: 2.5rem;
+					height: 3rem !important;
+					width: 3rem !important;
+					-webkit-mask-size: 21rem;
 					-webkit-mask-repeat: no-repeat;
-					-webkit-mask-position: center;
 					cursor: pointer;
 					background: var(--color-one);
-					-webkit-mask-image: url("../../images/comment.svg");
 				}
 
 				&__number {

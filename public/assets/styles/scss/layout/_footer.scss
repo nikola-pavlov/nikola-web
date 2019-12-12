@@ -79,12 +79,11 @@
 			position: relative;
 			float: left;
 
-			img {
-				position: relative;
-				width: 4rem;
-				height: 4rem;
-				display: inline-block;
-				@include center-verticaly;
+			&__img {
+				width: 5rem !important;
+				height: 5rem !important;
+				-webkit-mask-size: 38rem;
+				background: var(--color-one);
 			}
 
 			@include respond(Large) {
@@ -177,13 +176,18 @@
 
 					&__icon {
 						position: relative;
-						width: 4rem;
-						height: 4rem;
-						background-repeat: no-repeat !important;
-						background-size: 2.5rem !important;
-						background-position: center !important;
+						width: 4rem !important;
+						height: 4rem !important;
+						background-color: var(--color-grey);
+						-webkit-mask-size: 25rem;
 						float: left;
 						margin-right: 2px;
+
+						&--instagram {
+						}
+
+						&--linkedin {
+						}
 
 						@include respond(XLarge) {
 							float: none;
@@ -198,18 +202,6 @@
 						@include respond(Tiny) {
 							float: none;
 							@include center-horizontaly;
-						}
-
-						&--facebook {
-							background: url(../../images/facebook-logo.svg);
-						}
-
-						&--instagram {
-							background: url(../../images/instagram-logo.svg);
-						}
-
-						&--linkedin {
-							background: url(../../images/linkedin-logo.svg);
 						}
 					}
 

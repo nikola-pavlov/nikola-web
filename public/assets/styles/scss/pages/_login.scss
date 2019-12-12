@@ -70,12 +70,12 @@
 
 		&__logo {
 			position: relative;
-			height: 10rem;
-			width: 100%;
-			background: url(../../images/logo1.svg);
-			background-repeat: no-repeat;
+			height: 12rem;
+			width: 12rem;
+			background-color: var(--color-whitish);
+			-webkit-mask-size: 85rem;
 			left:50%;
-			transform: translateX(-12.5%);
+			transform: translateX(-50%);
 
 			@include respond(800) {
 				height: 6rem;

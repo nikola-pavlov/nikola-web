@@ -98,26 +98,19 @@
 
 						&__icon {
 							display: inline-block;
-							background-size: 100%;
-							background-repeat: no-repeat;
-							background-position: center;
-							height: 1.8rem;
-							width: 1.8rem;
+							background-color: var(--color-whitish);
+							height: 3rem;
+							width: 3rem;
 							margin: 1rem;
 							opacity: .7;
 							transition: all .3s ease-out;
 							cursor: pointer;
+							-webkit-mask-size: 19rem;
 
 							&:hover {
 								opacity: 1;
 								transform: scale(1.2);
 							}
-
-							&--fb {background-image: url(../../images/facebook-logo--white.svg);}
-							&--insta {background-image: url(../../images/instagram-logo--white.svg);}
-							&--linkedin {background-image: url(../../images/linkedin-logo--white.svg);}
-							&--github {background-image: url(../../images/github-logo--white.svg);}
-							&--mail {background-image: url(../../images/envelope--white.svg);}
 						}
 
 					}
@@ -436,12 +429,10 @@
 			}
 
 			&__icon {
-				width: 3rem;
-				height: 3rem;
-				background-image: url("../../images/plus.svg");
-				background-size: cover;
-				background-repeat: no-repeat;
-				background-position: center;
+				width: 5rem;
+				height: 5rem;
+				background-color: var(--color-four);
+				-webkit-mask-size: 32rem;
 				transition: all 1s ease-out;
 
 				&--is-expanded {
@@ -662,12 +653,10 @@
 			}
 
 			&__icon {
-				width: 3rem;
-				height: 3rem;
-				background-image: url("../../images/plus.svg");
-				background-size: cover;
-				background-repeat: no-repeat;
-				background-position: center;
+				width: 5rem;
+				height: 5rem;
+				background-color: var(--color-four);
+				-webkit-mask-size: 32rem;
 				transition: all 1s ease-out;
 
 				&--is-expanded {

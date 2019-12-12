@@ -29,10 +29,11 @@
 
 	&__icon {
 		display: inline-block;
-		height: 1rem;
-		width: 3rem;
-		background-image: url(../../images/clipboard.svg);
-		background-repeat: no-repeat;
+		background: var(--color-whitish);
+		height: 1.45rem;
+		width: 2rem;
 		margin-left: 1rem;
+		-webkit-mask-size: 17rem;
+		transform: translateY(-2px) scale(1.1);
 	}
 }

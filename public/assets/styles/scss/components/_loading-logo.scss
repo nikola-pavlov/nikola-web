@@ -23,22 +23,28 @@
 		height: 10rem;
 		width: 10rem;
 		border-radius: 1rem;
-		border:1px solid #ccc;
+		border: 1px solid #ccc;
 
 		&--front {
-			background: url(../../images/logo1-grey.svg);
-			background-repeat: no-repeat;
 			animation: loadingLogoFront 5s linear infinite;
-			background-size: 7rem;
-			background-position: center;
+
+			&__img {
+				width: 10rem !important;
+				height: 10rem !important;
+				background: var(--color-grey-main);
+				-webkit-mask-size: 62rem;
+			}
 		}
 
 		&--back {
-			background: url(../../images/logo1-grey.svg);
-			background-repeat: no-repeat;
 			animation: loadingLogoBack 5s linear infinite;
-			background-size: 7rem;
-			background-position: center;
+
+			&__img {
+				width: 10rem !important;
+				height: 10rem !important;
+				background: var(--color-grey-main);
+				-webkit-mask-size: 62rem;
+			}
 		}
 
 	}

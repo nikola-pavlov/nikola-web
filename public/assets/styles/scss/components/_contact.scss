@@ -37,10 +37,20 @@
 		}
 
 		&--front {
-			background: white url(../../images/envelope.svg);
 			background-repeat: no-repeat;
 			background-size: 3rem;
 			background-position: center;
+
+			&__icon {
+				position: relative;
+				height: 3.8rem !important;
+				width: 3.8rem !important;
+				-webkit-mask-size: 27rem;
+				background: var(--color-one);
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
 
 			@include respond(700) {
 				background-size: 2.5rem
@@ -52,10 +62,20 @@
 		}
 
 		&--back {
-			background: white url(../../images/close.svg);
 			background-repeat: no-repeat;
 			background-size: 3rem;
 			background-position: center;
+
+			&__icon {
+				position: relative;
+				height: 4rem !important;
+				width: 4rem !important;
+				-webkit-mask-size: 24rem;
+				background: var(--color-one);
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
 
 			@include respond(700) {
 				background-size: 2.5rem

@@ -31,7 +31,7 @@
 		<nav class="nav-top">
 			<div class="row wrapper">
 				<ul>
-					<li class="nav-top__item__language">
+					<!-- <li class="nav-top__item__language">
 						<span class="nav-top__item__language__icon"></span> Language
 						<div class="nav-sub">
 							<div class="nav-sub__item">
@@ -53,10 +53,10 @@
 								</div>
 							</div>
 						</div>
-					</li>
+					</li> -->
 
 
-					<li>Dark Mode</li>
+					<!-- <li>Dark Mode</li> -->
 					
 					<% if(!currentUser) { %>
 					<li><a href="/login">Login</a></li>
@@ -79,7 +79,7 @@
 			<a href="/">
 				<div class="header-main__logo">
 					<figure> 
-						<img src="/assets/images/logo1.svg" alt="logo"> 
+						<div class="header-main__logo__img logo icon icon--logo"></div> 
 						<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
 					</figure>
 				</div>
@@ -110,7 +110,7 @@
 		<div class="wrapper">
 			<div class="flash-message-error__error">
 				<div class="flash-message-error__error__icon">
-					<div class="flash-message-error__error__icon__img"></div>
+					<div class="flash-message-error__error__icon__img icon icon--close"></div>
 				</div>
 				<div class="flash-message-error__error__text"><%= flash_error %></div>
 				<div class="flash-message-error__error__close">Close</div>
@@ -124,7 +124,7 @@
 		<div class="wrapper">
 			<div class="flash-message-success__success">
 				<div class="flash-message-success__success__icon">
-					<div class="flash-message-success__success__icon__img"></div>
+					<div class="flash-message-success__success__icon__img icon icon--check-mark"></div>
 				</div>
 				<div class="flash-message-success__success__text"><%= flash_success %></div>
 				<div class="flash-message-success__success__close">Close</div>
@@ -149,11 +149,17 @@
 
 	<div class="contact">
 		<input id="contact-toggle" type="checkbox" class="contact__checkbox">
-		<div class="back-to-top">
-			<a href="/#top-page" class="back-to-top__link" id="top-page-link"></a>
+		<div class="back-to-top__container">
+			<div class="back-to-top icon icon--arrow-top">
+				<a href="/#top-page" class="back-to-top__link" id="top-page-link"></a>
+			</div>
 		</div>
-		<label for="contact-toggle" class="contact__button contact__button--front"></label>
-		<label for="contact-toggle" class="contact__button contact__button--back"></label>
+		<label for="contact-toggle" class="contact__button contact__button--front">
+			<div class="contact__button--front__icon icon icon--envelope"></div>
+		</label>
+		<label for="contact-toggle" class="contact__button contact__button--back">
+			<div class="contact__button--back__icon icon icon--close"></div>
+		</label>
 		<div class="contact__background">test</div>
 		<div class="contact__content">
 			<div class="contact__content__container">
