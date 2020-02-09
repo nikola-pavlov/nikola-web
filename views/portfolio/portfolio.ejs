@@ -12,7 +12,11 @@
  			<header class="portfolio__header">
  				<div class="portfolio__header__search">
  					<form action="/portfolio" method="GET" class="portfolio__header__search__form">
+ 						<%if(search) {%> 
+ 						<input type="text" name="search" class="portfolio__header__search__input" placeholder="Search Projects" value="<%= search %>">
+ 						<% } else { %>
  						<input type="text" name="search" class="portfolio__header__search__input" placeholder="Search Projects">
+ 						<% } %>
  						<button class="portfolio__header__search__btn">
  							<span class="portfolio__header__search__icon icon icon--search"></span>
  						</button>

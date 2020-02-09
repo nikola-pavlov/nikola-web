@@ -10,7 +10,7 @@ class StickyHeader {
 		this.headerTriggerElement = $(".trigger");
 		this.languageNavSubMenu = $(".nav-sub");
 		this.contactButton = $(".contact__button");
-		this.backToTopButton = $(".back-to-top");
+		this.backToTopButton = $(".back-to-top__container");
 		this.createHeaderWaypoint();
 		this.createTopHeaderWaypoint();
 		this.createContactButtonWaypoint();
@@ -47,9 +47,9 @@ class StickyHeader {
 			element: this.headerTriggerElement[0],
 			handler: function(direction) {
 				if (direction == "down") {
-					that.backToTopButton.addClass("back-to-top--visible");
+					that.backToTopButton.addClass("back-to-top__container--visible");
 				} else {
-					that.backToTopButton.removeClass("back-to-top--visible");
+					that.backToTopButton.removeClass("back-to-top__container--visible");
 				}
 			}
 		});

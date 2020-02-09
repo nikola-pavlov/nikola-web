@@ -60,11 +60,26 @@
 	}
 
 	&--contact-page {
-		height: 80rem;
-		// background: url("../../images/contact-page-image.jpg");
-		background: var(--color-whitish);
+		position: relative;
+		background: url("../../images/login-image.jpg");
 		background-size: cover;
-		padding-top: 10rem;
+		padding-top: 25rem;
+		@include respond(600) {
+			background: var(--color-whitish);
+			padding-top: 4rem;
+		}
+		z-index: 1;
+
+		&::after {
+			content: "";
+			position: absolute;
+			background: rgba(255,255,255,.5);
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
 	}
 
 	&--login-page {
