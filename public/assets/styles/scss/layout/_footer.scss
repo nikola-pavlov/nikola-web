@@ -1,5 +1,7 @@
 .site-footer {
 
+	color: var(--color-text);
+
 	&__item-content {
 		border-right: 1px solid #eee;
 		@include clearfix;
@@ -32,13 +34,11 @@
 		}
 
 		&__title {
-			color: var(--color-grey);
 			height: 5rem;
 			font-size: 2rem;
 		}
 
 		&__list {
-			color: var(--color-grey-main);
 			font-size: 1.4rem;
 
 			ul {
@@ -54,7 +54,6 @@
 	&__bottom {
 		border-top: 1px solid #eee;
 		font-size: 1.4rem;
-		color: var(--color-grey-main);
 
 		&__content {
 			position: relative;
@@ -138,7 +137,7 @@
 			margin-top: 3rem;
 
 			@include respond(Medium) {
-				background-color: var(--color-grey-light);
+				background-color: var(--color-light-grey);
 			}
 
 			&__container {
@@ -157,7 +156,7 @@
 				transition: opacity .2s ease-out;
 
 				&:not(:last-child) {
-					border-right: 1px solid var(--color-grey-main);
+					border-right: 1px solid var(--color-two);
 					;
 				}
 
@@ -178,7 +177,7 @@
 						position: relative;
 						width: 4rem !important;
 						height: 4rem !important;
-						background-color: var(--color-grey);
+						background-color: var(--color-two);
 						-webkit-mask-size: 25rem;
 						float: left;
 						margin-right: 2px;

@@ -1,16 +1,15 @@
 .aboutme {
 	background: white;
 	font-size: 1.6rem;
-	line-height: 1.6;
-	font-weight: 100;
-	color: var(--color-grey);
+	line-height: 1.5;
+	color: var(--color-text);
 
 	&__info {
-		background: var(--color-three);
-		border-radius: 1rem;
+		background: var(--color-whitish);
 		padding: 5rem;
 		margin-bottom: 4rem;
 		overflow: hidden;
+		box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 		@include clearfix;
 
 		@include respond(1000) {
@@ -64,7 +63,7 @@
 				&__info {
 					position: absolute;
 					bottom:0;
-					background-image: linear-gradient(to bottom, var(--color-one), var(--color-four));
+					background-image: linear-gradient(to bottom, var(--color-one), var(--color-two));
 					color: var(--color-whitish);
 					overflow: hidden;
 					height: 25%;
@@ -84,13 +83,11 @@
 					&__title {
 						font-size: 1.8rem;
 						font-weight: bold;
-						text-transform: uppercase;
 					}
 
 					&__subtitle {
 						padding-bottom: .4rem;
 						font-size: 1.6rem;
-						text-transform: uppercase;
 						opacity: .8;
 					}
 
@@ -129,13 +126,12 @@
 			}
 
 			&__cv {
-				background: var(--color-four);
+				background: var(--color-two);
 				color: var(--color-whitish);
 				margin-top: 1rem;
 				padding: 2rem;
 				text-align: center;
-				text-transform: uppercase;
-				font-size: 2rem;
+				font-size: 2.4rem;
 				font-weight: bold;
 				cursor: pointer;
 				border: 1px solid transparent;
@@ -146,9 +142,9 @@
 				}
 
 				&:hover {
-					background: var(--color-whitish);
-					color: var(--color-four);
-					border: 1px solid var(--color-four);
+					background: var(--color-one);
+					color: var(--whitish);
+					border: 1px solid var(--color-two);
 				}
 			}
 		}
@@ -194,7 +190,7 @@
 				}
 
 				&__description {
-					border-bottom: 1px solid var(--color-four);
+					border-bottom: 1px solid var(--color-two);
 					padding-bottom: 3rem;
 				}
 
@@ -208,7 +204,6 @@
 					list-style: none;
 					&__title {
 						font-weight: bold;
-						text-transform: uppercase;
 						display: inline-block;
 						width: calc(25% - 5px);
 
@@ -248,10 +243,9 @@
 		position: absolute;
 		width: calc(50% - 2rem);
 		float: left;
-		background: var(--color-three);
+		background: var(--color-one);
 		transition: all .25s ease-out;
 		height: 50rem;
-		border-radius: 1rem;
 
 		@include respond(1000) {
 			width: calc(50% - 1rem);
@@ -317,13 +311,14 @@
 		&__title {
 			position: absolute;
 			// background: pink;
-			font-size: 2rem;
+			font-size: 2.4rem;
 			font-weight: bold;
 			top: 75%;
 			left: 25%;
 			transform: translateX(-50%);
 			z-index: 1;
 			transition: all .25s ease-out;
+			color: white;
 
 			@include respond(800) {
 				top: 10%;
@@ -370,6 +365,7 @@
 			opacity: 0;
 			visibility: hidden;
 			width: calc(50% - 8rem);
+			color: var(--color-whitish);
 
 			@include respond(800) {
 				top: 60%;
@@ -431,7 +427,7 @@
 			&__icon {
 				width: 5rem;
 				height: 5rem;
-				background-color: var(--color-four);
+				background-color: var(--color-whitish);
 				-webkit-mask-size: 32rem;
 				transition: all 1s ease-out;
 
@@ -459,7 +455,6 @@
 		background: var(--color-three);
 		height: 50rem;
 		transition: all .25s ease-out;
-		border-radius: 1rem;
 
 		@include respond(1000) {
 			width: calc(50% - 1rem);
@@ -529,7 +524,7 @@
 		&__title {
 			position: absolute;
 			// background: pink;
-			font-size: 2rem;
+			font-size: 2.4rem;
 			font-weight: bold;
 			top: 75%;
 			right: 25%;
@@ -655,7 +650,7 @@
 			&__icon {
 				width: 5rem;
 				height: 5rem;
-				background-color: var(--color-four);
+				background-color: var(--color-two);
 				-webkit-mask-size: 32rem;
 				transition: all 1s ease-out;
 

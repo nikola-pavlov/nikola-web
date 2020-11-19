@@ -6,8 +6,7 @@
 	transition: background-color .3s ease-out;
 
 	&--opacity {
-		background-color: var(--color-whitish);
-		box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+		background-color: var(--color-one);
 	}
 	
 	@include respond(1000) {
@@ -42,7 +41,7 @@
 		// border-radius: 0 0 1rem 1rem;
 		transform-origin: 50% 0;
 		transition: all .3s ease-out;
-		padding: 0 2rem 0 0;
+		padding: .1rem 2rem .1rem 0;
 		z-index: 101;
 		right: 0;
 
@@ -180,6 +179,7 @@
 	&__menu-content {
 
 		// height: 6rem;
+		box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 		background: var(--color-whitish);
 
 		@include respond(1000) {

@@ -5,13 +5,14 @@
 		max-width: 120rem;
 		margin: 0 auto;
 		background: var(--color-whitish);
+		box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 	}
 
 	&__header {
 
 		display: flex;
 		align-items: center;
-		border-bottom: 1px solid var(--color-grey-light);
+		border-bottom: 1px solid var(--color-light-grey);
 		flex-wrap: wrap;
 
 		@include respond(500) {
@@ -21,11 +22,11 @@
 		}
 
 		&__filters {
-			border-top: 1px solid var(--color-grey-light);
+			border-top: 1px solid var(--color-light-grey);
 			flex: 0 0 100%;
 			display: flex;
 			padding: 0 0 0 2rem;
-			font-size: 1.24rem;
+			font-size: 1.6rem;
 		}
 
 		&__filter-btn {
@@ -33,15 +34,15 @@
 			background-color: var(--color-whitish);
 			text-align: center;
 			padding: 1rem 2rem;
-			border: 1px solid var(--color-grey-light);
-			border-radius: 50rem;
+			border: 1px solid var(--color-light-grey);
 			display: inline-block;
 			margin-right: 1rem;
 			align-self: center;
-			color: var(--color-grey-main);
+			color: var(--color-text);
 
 			&.sort {
-				background: var(--color-three) !important;
+				background: var(--color-one);
+				color: var(--color-whitish);
 			}
 
 			&.clear-all {
@@ -66,7 +67,6 @@
 				right: -.5rem;
 				width: 2rem;
 				height: 2rem;
-				border-radius: 50%;
 				background: var(--color-one);
 				display: flex;
 				align-items: center;
@@ -112,7 +112,7 @@
 			@include respond(500) {
 				order: 1;
 				flex: 0 0 100%;
-				background-color: var(--color-grey-light);
+				background-color: var(--color-light-grey);
 				margin-left: 0;
 			}
 
@@ -123,7 +123,7 @@
 			&__input {
 				font-family: inherit;
 				font-size: inherit;
-				background-color: var(--color-grey-light);
+				background-color: var(--color-light-grey);
 				border: none;
 				color: inherit;
 				padding: 1.5rem 2rem;
@@ -143,14 +143,13 @@
 				}
 
 				&::-webkit-input-placeholder {
-					font-weight: 100;
 					opacity: .5;
 				}
 			}
 
 			&__btn {
 				border: none;
-				background-color: var(--color-grey-light);
+				background-color: var(--color-light-grey);
 				cursor: pointer;
 
 				&:focus {
@@ -187,11 +186,11 @@
 			cursor: pointer;
 
 			&--is-active {
-				background: var(--color-three);
+				background: var(--color-one);
 			}
 
 			&__img {
-				background: var(--color-one);
+				background: var(--color-whitish);
 				height: 3.8rem !important;
 				width: 3.8rem !important;
 				-webkit-mask-size: 24rem;
@@ -203,11 +202,11 @@
 			cursor: pointer;
 
 			&--is-active {
-				background: var(--color-three);
+				background: var(--color-one);
 			}
 
 			&__img {
-				background: var(--color-one);
+				background: var(--color-whitish);
 				height: 3.8rem !important;
 				width: 3.8rem !important;
 				-webkit-mask-size: 24rem;
@@ -221,7 +220,7 @@
 
 	&__nav {
 		background: var(--color-whitish);
-		border-right: 1px solid var(--color-grey-light);
+		border-right: 1px solid var(--color-light-grey);
 		flex: 0 0 20%;
 
 		@include respond(1000) {
@@ -252,7 +251,7 @@
 				list-style: none;
 				display: flex;
 				flex-wrap: wrap;
-				font-size: 1.4rem;
+				font-size: 1.6rem;
 				padding: 1rem;
 			}
 
@@ -264,16 +263,16 @@
 				background-color: var(--color-whitish);
 				margin-bottom: 1rem;
 				padding: 1rem 1.5rem;
-				border-radius: 5px;
 				text-align: center;
-				border: 1px solid var(--color-grey-light);
+				border: 1px solid var(--color-light-grey);
 
 				&:hover {
-					background-color: var(--color-grey-light);
+					background-color: var(--color-light-grey);
 				}
 
 				&.active {
-					background: var(--color-three);
+					background: var(--color-one);
+					color: var(--color-whitish)
 				}
 			}
 
@@ -285,16 +284,16 @@
 		&__filter {
 
 			background: var(--color-whitish);
-			border-bottom: 1px solid var(--color-grey-light);
+			border-bottom: 1px solid var(--color-light-grey);
 
 			&__heading {
 				text-align: center;
-				font-size: 2rem;
+				font-size: 2.4rem;
 				padding: 2rem;
 				min-height: 7rem;
 				font-weight: bold;
 				color: var(--color-two);
-				border-bottom: 1px solid var(--color-grey-light);
+				border-bottom: 1px solid var(--color-light-grey);
 			}
 
 			&__header {
@@ -304,7 +303,7 @@
 				cursor: pointer;
 
 				&:hover {
-					background: var(--color-grey-light);
+					background: var(--color-light-grey);
 				}
 			}
 
@@ -332,6 +331,7 @@
 		flex: 1;
 		position: relative;
 		padding-bottom: 5rem;
+		box-shadow: inset 5px 5px 10px 0 rgba(0,0,0,.15);
 
 		&__group {
 			list-style: none;
@@ -354,7 +354,7 @@
 			text-align: center;
 
 			&__title {
-				font-size: 2.5rem;
+				font-size: 2.4rem;
 				position: absolute;
 				top: -10rem;
 				left: 50%;
@@ -362,8 +362,8 @@
 			}
 
 			&__desc {
-				font-size: 1.4rem;
-				color: var(--color-grey-main);
+				font-size: 1.6rem;
+				color: var(--color-text);
 				position: absolute;
 				top: -5rem;
 				left: 50%;
@@ -378,19 +378,18 @@
 
 		position: relative;
 		background: var(--color-whitish);
-		border: 1px solid var(--color-grey-light);
-		box-shadow: 0 0rem .75rem rgba(0,0,0,.15);
+		border: 1px solid var(--color-light-grey);
+		box-shadow: 0 0rem 1rem 0 rgba(0,0,0,.15);
 		flex: 1 0 27rem;
 		// padding: 1rem;
 		margin: 1rem;
-		border-radius: 1rem;
 		overflow: hidden;
 
 		display: flex;
 		flex-direction: column;
 
 		&__title {
-			font-size: 2rem;
+			font-size: 2.4rem;
 		}
 
 		&:hover &__image::after {
@@ -405,7 +404,6 @@
 			right: 1rem;
 			width: 2rem;
 			height: 2rem;
-			border-radius: 5rem;
 			background-color: var(--color-whitish);
 			
 
@@ -427,7 +425,6 @@
 			right: 3.5rem;
 			width: 2rem;
 			height: 2rem;
-			border-radius: 5rem;
 			background-color: var(--color-whitish);
 			cursor: pointer;
 
@@ -493,17 +490,18 @@
 		}
 
 		&__title {
-			font-size: 1.8rem;
+			font-size: 2rem;
 			font-weight: bold;
 			text-align: center;
-			border-bottom: 1px solid var(--color-grey-light);
+			border-bottom: 1px solid var(--color-light-grey);
 			padding: 1.25rem 2rem;
+			color: var(--color-text);
 		}
 
 		&__description {
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 			line-height: 1.5;
-			color: var(--color-grey-main);
+			color: var(--color-text);
 			padding: 1.5rem 2rem 0 2rem;
 			margin-bottom: 1.5rem;
 			overflow: hidden;
@@ -517,11 +515,10 @@
 			background: var(--color-whitish);
 			opacity: .8;
 			padding: .5rem 1rem;
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 			top: 1rem;
 			left: 1rem;
 			z-index: 1;
-			border-radius: 1rem;
 		}
 
 		&__views {
@@ -536,9 +533,9 @@
 			display: flex;
 			padding: 1.5rem 2rem;
 			font-size: 1.25rem;
-			border-top: 1px solid var(--color-grey-light);
-			color: var(--color-grey-main);
-			background: var(--color-grey-light);
+			border-top: 1px solid var(--color-light-grey);
+			color: var(--color-text);
+			background: var(--color-light-grey);
 		}
 
 		&__date {
@@ -613,4 +610,14 @@
 				}
 			}
 		}
+	}
+
+	.portfolio__header__list__img.icon.icon--list,
+	.portfolio__header__grid__img.icon.icon--grid {
+		background: var(--color-one);
+	}
+
+	.portfolio__header__list--is-active .portfolio__header__list__img.icon.icon--list,
+	.portfolio__header__grid--is-active .portfolio__header__grid__img.icon.icon--grid {
+		background: white;
 	}

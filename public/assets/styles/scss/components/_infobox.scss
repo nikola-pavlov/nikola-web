@@ -1,5 +1,5 @@
 .infobox {
-	color: var(--color-grey);
+	color: var(--color-two);
 	font-weight: 600;
 	cursor: pointer; 
 	position: relative;
@@ -61,7 +61,7 @@
 		right: -3rem;
 		background: var(--color-whitish);
 		color: var(--color-one);
-		border: 5px solid #3aafa9;
+		border: 5px solid var(--color-one);
 		width: 6rem;
 		height: 6rem;
 		border-radius: 50%;

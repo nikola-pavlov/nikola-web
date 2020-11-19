@@ -1,6 +1,5 @@
 .info {
 
-	color: var(--color-whitish);
 	@include clearfix;
 	display: flex;
 
@@ -32,15 +31,17 @@
 		}
 
 		&:nth-child(1) {
-			background-color: var(--color-four);
+			background-color: var(--color-one);
+			color: var(--color-whitish);
 		}
 
 		&:nth-child(2) {
-			background-color: var(--color-one);
+			background-color: var(--color-two);
+			color: var(--color-whitish);
 		}
 
 		&:nth-child(3) {
-			background-color: var(--color-five);
+			background-color: var(--color-three);
 		}
 
 		&__title {

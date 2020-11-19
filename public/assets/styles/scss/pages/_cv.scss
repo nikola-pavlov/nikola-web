@@ -1,8 +1,10 @@
 .cv {
 
+	color: var(--color-text);
+
 	& p {
-		line-height: 1.6;
-		color: var(--color-grey-main);
+		line-height: 1.5;
+		color: var(--color-two);
 	}
 
 	&__pdf {
@@ -27,7 +29,7 @@
 		}
 
 		&__icon {
-			background-color: var(--color-grey);
+			background-color: var(--color-two);
 			display: inline-block;
 			width: 2.5rem;
 			height: 2.5rem;
@@ -51,7 +53,7 @@
 		max-width: 114rem;
 		margin: 0 auto;
 		min-height: 80rem;
-		box-shadow: 0 2rem 6rem rgba(0,0,0,.3);
+		box-shadow: 0 0 1rem 0 rgba(0,0,0,.15);
 		font-size: 1.6rem;
 		border-radius: 1rem;
 		overflow: hidden;
@@ -82,13 +84,13 @@
 			}
 
 			&--black {
-				border-bottom: 3px solid var(--color-grey);
-				color: var(--color--grey);
+				border-bottom: 3px solid var(--color-two);
+				color: var(--color--two);
 			}
 		}
 
 		&__side {
-			background-color: var(--color-grey);
+			background-color: var(--color-two);
 			color: var(--color-whitish);
 			font-weight: 100;
 			flex: 0 0 33.33%;
@@ -161,7 +163,7 @@
 
 						&__img {
 							-webkit-mask-size: 18rem;
-							background: var(--color-grey);
+							background: var(--color-two);
 							width: 3rem;
 							height: 3rem;
 						}
@@ -203,12 +205,12 @@
 					&__progress-bar {
 
 						height: 2rem;
-						background: var(--color-grey-light);
+						background: var(--color-one);
 
 						&__fill {
 							width: 70%;
 							height: 2rem;
-							background: var(--color-one);
+							background: var(--color-three);
 
 							&.fill-1 {width: 75%;}
 							&.fill-2 {width: 80%;}
@@ -259,12 +261,12 @@
 
 							&__img {
 								-webkit-mask-size: 15rem;
-								background: var(--color-grey);
+								background: var(--color-two);
 								width: 2.5rem;
 								height: 2.5rem;
 
 								&.icon-color {
-									background: var(--color-four);
+									background: var(--color-two);
 								}
 							}
 
@@ -378,7 +380,7 @@
 							flex: 0 0 3rem;
 							border-radius: 50%;
 							background: transparent;
-							border: 3px solid var(--color-grey);
+							border: 3px solid var(--color-two);
 							margin: .75rem 0;
 						}
 

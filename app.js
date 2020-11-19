@@ -70,6 +70,6 @@ app.use("/portfolio/:id/comments/:comment_id/replies", replyRoutes);
 app.use("/portfolio/:id/photos", photoRoutes);
 app.use(contactRoutes);
 
-app.listen(80, "192.168.0.20", function(){
+app.listen(80, "192.168.0.18", function(){
 	console.log("Server started...");
 });

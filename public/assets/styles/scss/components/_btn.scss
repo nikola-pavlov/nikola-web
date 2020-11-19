@@ -96,6 +96,13 @@
 	button.btn.btn--main {
 		background-color: var(--color-one);
 		color: var(--color-whitish);
+		font-weight: bold;
+	}
+
+	button.btn.btn--second {
+		color: var(--color-two);
+		background-color: var(--color-three);
+		font-weight: bold;
 	}
 
 	button.btn.btn--white {

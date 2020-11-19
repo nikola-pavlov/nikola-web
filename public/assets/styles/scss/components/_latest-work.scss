@@ -1,6 +1,8 @@
 .latest-work {
 
 	font-size: 1.6rem;
+	color: var(--color-text);
+	
 	&__showcase {
 		list-style: none;
 		width: 100%;
@@ -52,13 +54,13 @@
 			-webkit-mask-size: 21rem;
 			height: 3.5rem !important;
 			width: 3.5rem !important;
-			background-color: var(--color-four);
+			background-color: var(--color-two);
 		}
 
 		&__icon2 {
 			height: 3.5rem !important;
 			width: 3.5rem !important;
-			background-color: var(--color-four);
+			background-color: var(--color-two);
 			-webkit-mask-size: 21rem;
 		}
 	}
@@ -135,7 +137,7 @@
 		}
 
 		&:hover &__caption {
-			background-image: linear-gradient(to bottom, rgba(256, 256, 256, .2), rgba(58, 175, 169, .8));
+			background-image: linear-gradient(to bottom, rgba(48, 71, 94, .8), rgba(34, 40, 49, .2));
 			// height: 100%;
 			transform: scale(1);
 			opacity: 1;
@@ -191,7 +193,7 @@
 
 	&__back-side {
 		position: absolute;
-		background-color: var(--color-grey-light);
+		background-color: var(--color-light-grey);
 		top: 2px;
 		// border: 1px solid #ccc;
 		// left: 2px;
@@ -221,7 +223,6 @@
 		}
 
 		&__description {
-			color: var(--color-grey);
 			padding-bottom: 1rem;
 		}
 

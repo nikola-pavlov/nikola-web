@@ -1,11 +1,14 @@
 .testimonials {
 	// background: red;
+	color: var(--color-text);
 
 	&__container {
 
 	}
 
 	&__item {
+
+		padding: .5rem 0;
 
 		@include clearfix;
 
@@ -42,7 +45,7 @@
 			width: 80%;
 			background-color: var(--color-whitish);
 			border-radius: 1rem;
-			box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+			box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 
 			@include respond(700) {
 				width: 100%;
@@ -50,19 +53,17 @@
 			}
 
 			&__title {
-				font-size: 2rem;
+				font-size: 2.4rem;
 				font-weight: bold;
 			}
 
 			&__sub-title {
 				padding-bottom: 1.5rem;
-				font-size: 1.4rem;
-				color: var(--color-grey-light);
+				font-size: 1.6rem;
+				opacity: .7;
 			}
 
 			&__description {
-				color: var(--color-grey-main);
-				font-weight: 100;
 			}
 
 			&::before {
@@ -99,14 +100,14 @@
 	}
 
 	&__btn {
-		background-color: transparent !important;
 		padding: 0 !important;
 		margin: 0 !important;
 		font-size: 5rem;
+		background-color: var(--color-whitish) !important;
+		box-shadow: 0 0 1rem 0 rgba(0,0,0,.15);
 		font-weight: 100;
 		text-align: center;
-		line-height: .77;
-		border: 1px solid var(--color-one);
+		line-height: 1;
 		border-radius: 50%;
 		color: var(--color-one);
 		z-index: 5;

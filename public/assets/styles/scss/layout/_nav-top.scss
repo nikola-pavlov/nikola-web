@@ -1,10 +1,11 @@
 .nav-top {
-	background: var(--color-three);
+	background: var(--color-one);
 	// padding: .5rem 0;
 	font-size: 1.6rem;
 	z-index: 10;
 	transition: all .3s ease-out;
 	height: 4rem;
+	color: var(--color-whitish);
 
 	display: flex;
 	align-items: center;

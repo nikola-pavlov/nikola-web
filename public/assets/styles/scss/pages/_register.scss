@@ -3,8 +3,9 @@
 	&__main {
 
 		background-color: var(--color-whitish);
-		padding: 7rem;
+		padding: 3rem;
 		display: flex;
+		box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
 		// flex-wrap: wrap;
 
 		@include respond(1000) {
@@ -21,6 +22,8 @@
 
 		&__fields {
 			flex: 0 0 70%;
+			padding: 5rem;
+			border: 5px solid var(--color-one);
 
 			@include respond(1000) {
 				flex: 0 0 60%;
@@ -58,13 +61,14 @@
 			&__image {
 				width: 100%;
 				padding-top: 100%;
-				background-image: url("http://oakclifffilmfestival.com/assets/placeholder-user.png");
-				background-size: cover;
+				// background-image: url("http://oakclifffilmfestival.com/assets/placeholder-user.png");
+				// background-size: cover;
+				background-color: var(--color-light-grey);
 
 				&--edit {
 					width: 100%;
 					padding-top: 100%;
-					background: var(--color-grey-light);
+					background: var(--color-light-grey);
 					background-size: cover;
 					position: relative;
 
@@ -78,7 +82,7 @@
 
 				&__input {
 					font-family: inherit;
-					background-color: var(--color-four);
+					background-color: var(--color-two);
 					color: var(--color-whitish);
 					height: 4rem;
 					padding: 9px 0;

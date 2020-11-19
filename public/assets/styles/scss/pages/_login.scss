@@ -4,6 +4,9 @@
 	border-radius: 2rem;
 	overflow: hidden;
 	display: flex;
+	max-width: 60rem;
+	    left: 50%;
+    transform: translateX(-50%);
 
 	@include respond(800) {
 		display: block;
@@ -11,10 +14,9 @@
 
 
 	&__login-side {
-		width: 50%;
-		float: left;
 		background: var(--color-whitish);
 		border-radius: 2rem 0 0 2rem;
+		flex: 0 0 100%;
 
 		@include respond(800) {
 			width: 100%;
@@ -36,74 +38,6 @@
 
 		&__sign-up {
 			text-align: center;
-		}
-	}
-
-	&__info-side {
-		position: relative;
-		width: 50%;
-		float: left;
-		background-image: linear-gradient(to right bottom, rgba(58, 175, 169, .8), rgba(58, 175, 169, .5)), url(../../images/login-image.jpg);
-		background-size: cover;
-		background-repeat: no-repeat;
-		border-radius: 0 2rem 2rem 0;
-
-		@include respond(800) {
-			width: 100%;
-			float: none;
-			border-radius: 0 0 2rem 2rem;
-		}
-
-		&__container {
-			padding: 7rem;
-			position: relative;
-
-			@include respond(800) {
-				padding: 5rem;
-			}
-		}
-
-		&__content {
-			position: relative;
-			@include clearfix;
-		}
-
-		&__logo {
-			position: relative;
-			height: 12rem;
-			width: 12rem;
-			background-color: var(--color-whitish);
-			-webkit-mask-size: 85rem;
-			left:50%;
-			transform: translateX(-50%);
-
-			@include respond(800) {
-				height: 6rem;
-				left: 0;
-				transform: translateX(0);
-				float: left;
-				width: 20%;
-			}
-
-			@include respond(700) {
-				width: 100%;
-				float: none;
-				left: calc(50% - 3rem);
-			}
-		}
-
-		&__desc {
-			color: var(--color-whitish);
-			font-weight: 100;
-			@include respond(800) {
-				float: left;
-				width: 80%;
-			}
-
-			@include respond(700) {
-				float: none;
-				width: 100%;
-			}
 		}
 	}
 }
