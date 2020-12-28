@@ -1,153 +1,26 @@
 .btn:link,
 .btn:visited {
-	// background-color: var(--color-three);
-	// color: var(--color-two);
-	// text-decoration: none;
-	// padding: 1.2rem 1.6rem;
-	// display: inline-block;
-	// font-size: 1.4rem;
-	// border-radius: .5rem;
-	// text-transform: uppercase;
-	// font-weight: 700;
-	// letter-spacing: 1;
-	// border: none;
+	background-color: var(--color-one);
+	color: var(--color-whitish);
+	text-decoration: none;
+	padding: 1.4rem 1.8rem;
+	display: inline-block;
+	font-size: 1.8rem;
+	border-radius: 0.5rem;
+	transition: transform box-shadow .3s ease-out;
 
-	// &--small {
-		// 	padding: .6rem 1rem;
-		// }
-
-		text-transform: uppercase;
-		text-decoration: none;
-		padding: 1.5rem 2rem;
-		display: inline-block;
-		border-radius: .5rem;
-		transition: all .15s ease-out;
-		font-size: 1.5rem;
-
-		&:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
-		}
-
-		&:active {
-			transform: translateY(-1px);
-			box-shadow: 0 .3rem .7rem rgba(0,0,0,.3);
-		}
-
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
 	}
 
-	a.btn.btn--main {
-		background-color: var(--color-one);
-		color: var(--color-whitish);
+	&:active {
+		transform: translateY(-1px);
+		box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.3);
 	}
 
-	a.btn.btn--white {
-		background-color: var(--color-whitish);
-		color: var(--color-one);
-	}
-
-	a.btn.btn--orange {
-		background-color: var(--color-five);
-		color: var(--color-whitish);
-	}
-
-	a.btn.btn--white--border {
-		background-color: var(--color-whitish);
-		color: var(--color-one);
-		border: 1px solid var(--color-one);
-	}
-
-	a.btn.btn--small {
-		padding: .6rem 1rem;
-	}
-
-	a.btn.btn--full-width {
+	@include respond(600) {
 		width: 100%;
 		text-align: center;
 	}
-
-	a.btn.btn--transparent {
-		background-color: transparent;
-		border: 1px solid white;
-		color: var(--color-whitish);
-	}
-
-
-	button.btn {
-		border: none;
-		border-radius: .5rem;
-		padding: 1.5rem 2rem;
-		text-transform: uppercase;
-		cursor: pointer;
-		outline: none;
-		transition: all .15s ease-out;
-
-		&:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
-		}
-
-		&:active {
-			transform: translateY(-1px);
-			box-shadow: 0 .3rem .7rem rgba(0,0,0,.3);
-		}
-	}
-
-	button.btn.btn--main {
-		background-color: var(--color-one);
-		color: var(--color-whitish);
-		font-weight: bold;
-	}
-
-	button.btn.btn--second {
-		color: var(--color-two);
-		background-color: var(--color-three);
-		font-weight: bold;
-	}
-
-	button.btn.btn--white {
-		background-color: var(--color-whitish);
-		color: var(--color-one);
-	}
-
-	button.btn.btn--small {
-		padding: .6rem 1rem;
-	}
-
-	button.btn.btn--full-width {
-		width: 100%;
-		text-align: center;
-	}
-
-	input[type=submit].btn { 
-		border: none;
-		border-radius: .5rem;
-		padding: 1.5rem 2rem;
-		text-transform: uppercase;
-		cursor: pointer;
-		outline: none;
-		display: inline-block;
-		transition: all .15s ease-out;
-		top: 3px;
-
-		&:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
-		}
-
-		&:active {
-			transform: translateY(-1px);
-			box-shadow: 0 .3rem .7rem rgba(0,0,0,.3);
-		}
-	}
-
-	input[type=submit].btn.btn--small { 
-		position: relative;
-		padding: 1rem 1rem;
-		color: var(--color-whitish);
-	}
-
-	input[type=submit].btn.btn--danger { 
-		background: #de3c10;
-		color: var(--color-whitish);
-	}
+}

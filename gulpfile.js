@@ -1,4 +1,4 @@
-var gulp 		= require("gulp");
+var gulp = require("gulp");
 
 require("./gulp/tasks/watch");
 require("./gulp/tasks/scripts");

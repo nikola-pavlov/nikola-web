@@ -11,6 +11,7 @@
 		z-index: 100;
 		box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
 		display: none;
+		padding: 1.2rem;
 
 		@include respond(700) {
 			width: 6rem;
@@ -22,6 +23,7 @@
 		@include respond(500) {
 			width: 5rem;
 			height: 5rem;
+			padding: .8rem;
 		}
 
 		&--visible {
@@ -31,9 +33,9 @@
 
 	position: relative;
 	background-color: var(--color-one);
-	height: 7rem;
-    width: 7rem;
-    -webkit-mask-size: 40rem;
+	height: 5rem;
+    width: 5rem;
+    -webkit-mask-size: 32.2rem;
 	border-radius: 50%;
 	z-index: 102;
 	cursor: pointer;
@@ -41,15 +43,15 @@
 	overflow: hidden;
 
 	@include respond(700) {
-		-webkit-mask-size: 35rem;
-		height: 6rem;
-		width: 6rem;
+		-webkit-mask-size: 25rem;
+		height: 4rem;
+		width: 4rem;
 	}
 
 	@include respond(500) {
-		-webkit-mask-size: 28rem;
-		height: 5.4rem;
-		width: 5.4rem;
+		-webkit-mask-size: 24rem;
+		height: 3.4rem;
+		width: 3.4rem;
 	}
 	
 

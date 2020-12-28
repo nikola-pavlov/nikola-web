@@ -8,6 +8,18 @@ var Photo   = require("../models/photo");
 var middleware  = require("../public/assets/scripts/middleware");
 
 
+// TESTING TO SHOW PROJECTS ON LANDING PAGE
+
+// router.get("/", function(req, res){
+// 	Project.find({}, function(err, myProjects){
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			res.render("landing", {projects: myProjects});
+// 		}
+// 	});
+// });
+
 
 // INDEX - Show all projects
 

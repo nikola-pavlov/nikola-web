@@ -154,6 +154,7 @@
 
 
 
+
 var action = false, clicked = false;
 var Owl = {
 
@@ -170,7 +171,7 @@ var Owl = {
 				center	   : true, 
 				nav        : false,
 				dots       : true,
-				loop       : true,
+				loop       : false,
 				margin     : 10,
 				dotsContainer: '.gallery__bookmarks__group',
 				navText: ['prev','next'],
@@ -231,6 +232,48 @@ $('.my-next-button').click(function() {
 $('.my-prev-button').click(function() {
   selector.trigger('prev.owl.carousel');
 });
+
+
+
+
+
+
+
+
+
+
+//  PROJECTS
+
+$('.owl-projects').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    dots: true,
+    responsive:{
+        0:{
+            items:1
+        },
+        500:{
+            items:2
+		},
+		1000:{
+            items:3
+        },
+        1200:{
+            items:4
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
 </script>
 
 

@@ -1,6 +1,5 @@
 .section {
-	padding: 6rem 0;
-	border-bottom: 1px solid #ccc;
+	padding: 12rem 0;
 
 	@include respond(XLarge) {
 		padding-left: 0;
@@ -103,11 +102,10 @@
 	}
 
 	&--digital-services {
-		padding: 0;
+		background-color: var(--color-two);
 	}
 
 	&--about-me {
-		padding: 0;
 	}
 
 	&--write-to-me {

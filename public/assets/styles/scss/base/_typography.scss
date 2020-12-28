@@ -1,59 +1,102 @@
-@import url("../../fonts/gilroy/stylesheet.css");
+@import url("../../fonts/Rubik/stylesheet.css");
 
 body {
-	font-family: gilroy, sans-serif;
+	font-family: rubik, sans-serif;
 }
 
 // ----------------- GENERIC TEXT --------------
 
-.text-generic {
-	position: relative;
-	font-size: 1.6rem;
-	font-weight: 400;
+.text {
+	font-size: 1.8rem;
 	line-height: 1.5;
 	color: var(--color-text);
+	font-weight: 360;
 }
 
-.text-centered {
-	text-align: center;
-}
+.text--large {font-size: 2rem;}
+.text--small {font-size: 1.6rem;}
+.text--xsmall {font-size: 1.4rem;}
+.text--tiny {font-size: 1.2rem;}
 
-// ----------------- HEADLINES --------------
+.text--white {color: white};
 
-.headline-1 {font-size: 8rem !important;}
-.headline-2 {font-size: 6rem !important;}
-.headline-3 {font-size: 5rem !important;}
-.headline-4 {
-	font-size: 3.6rem !important;
-	&--black {
-		color: var(--color-two);
-	}
-}
-.headline-5 {font-size: 3rem !important;}
-.headline-6 {font-size: 2rem !important;}
+// .text-generic {
+// 	position: relative;
+// 	font-size: 1.6rem;
+// 	font-weight: 400;
+// 	line-height: 1.5;
+// 	color: var(--color-text);
+// }
 
-.headline--stylish-1 {
-	font-weight: 700;
+// .text-centered {
+// 	text-align: center;
+// }
+
+// // ----------------- HEADLINES --------------
+
+.heading {
+	font-size: 4.8rem;
+	font-weight: bold;
 	display: inline-block;
 	background-image: linear-gradient(to right, var(--color-one), var(--color-two));
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 	position: relative;
+	transition: font-weight .45s ease-out;
 }
 
-.headline--stylish-white {
-	font-weight: 700;
-	display: inline-block;
-	background-color: var(--color-whitish);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-	position: relative;
+.heading:hover {
+	font-weight: 100;
 }
 
-.strong--color-one {
-	font-weight: bold !important;
-	color: var(--color-one) !important;
+.heading__subtitle {
+	font-size: 2.4rem;
+	font-weight: 500;
+	color: var(--color-text);
 }
+
+.heading__subtitle--white {color: white;}
+.heading__subtitle--three {color: var(--color-three);}
+
+.heading--white {
+	color: white;
+}
+
+// .headline-1 {font-size: 8rem !important;}
+// .headline-2 {font-size: 6rem !important;}
+// .headline-3 {font-size: 5rem !important;}
+// .headline-4 {
+// 	font-size: 3.6rem !important;
+// 	&--black {
+// 		color: var(--color-two);
+// 	}
+// }
+// .headline-5 {font-size: 3rem !important;}
+// .headline-6 {font-size: 2rem !important;}
+
+// .headline--stylish-1 {
+// 	font-weight: 700;
+// 	display: inline-block;
+// 	background-image: linear-gradient(to right, var(--color-one), var(--color-two));
+// 	-webkit-background-clip: text;
+// 	background-clip: text;
+// 	color: transparent;
+// 	position: relative;
+// }
+
+// .headline--stylish-white {
+// 	font-weight: 700;
+// 	display: inline-block;
+// 	background-color: var(--color-whitish);
+// 	-webkit-background-clip: text;
+// 	background-clip: text;
+// 	color: transparent;
+// 	position: relative;
+// }
+
+// .strong--color-one {
+// 	font-weight: bold !important;
+// 	color: var(--color-one) !important;
+// }
 

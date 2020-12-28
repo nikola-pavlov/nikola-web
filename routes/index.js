@@ -35,8 +35,18 @@ cloudinary.config({
 // Root route
 
 router.get("/", function(req, res){
-	res.render("landing", {currentUser: req.user});
+	Project.find({}, function(err, myProjects){
+		if(err) {
+			console.log(err);
+		} else {
+			res.render("landing", {projects: myProjects, currentUser: req.user});
+		}
+	});
 });
+
+// router.get("/", function(req, res){
+// 	res.render("landing", {currentUser: req.user});
+// });
 
 // About- me Route
 

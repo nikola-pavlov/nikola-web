@@ -59,15 +59,15 @@
 					<!-- <li>Dark Mode</li> -->
 					
 					<% if(!currentUser) { %>
-					<li><a href="/login">Login</a></li>
-					<li><a href="/register">Sign Up</a></li>
+					<li><a class="text--white" href="/login">Login</a></li>
+					<li><a class="text--white" href="/register">Sign Up</a></li>
 					<% } else { %>
-					<li><a href="/users/<%= currentUser._id %>">Hello <%= currentUser.username %></a>
+					<li><a class="text--white" href="/users/<%= currentUser._id %>">Hello <%= currentUser.username %></a>
 						<%if(currentUser && currentUser.isAdmin) { %>
 						<span><strong> (Admin)</strong></span>
 						<% } %>
 					</li>
-					<li><a href="/logout">Logout</a></li>
+					<li><a class="text--white" href="/logout">Logout</a></li>
 					<% } %>
 
 

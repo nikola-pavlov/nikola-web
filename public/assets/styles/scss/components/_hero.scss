@@ -10,7 +10,7 @@
 	&__background {
 		position: relative;
 		height: 100vh;
-		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(https://res.cloudinary.com/dlw9kxuj0/image/upload/v1575491145/Site%20Gallery/Landing/hero.png);
+		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg);
 		// background: var(--color-four);
 		background-size: cover;
 		background-position: top;
@@ -42,9 +42,9 @@
 
 	&__title {
 		color: var(--color-whitish);
-		font-size: 7rem;
+		font-size: 8rem;
 		line-height: 1.25;
-		text-transform: uppercase;
+		font-weight: bold;
 
 		@include respond(1000) {
 			font-size: 6rem;
@@ -57,7 +57,7 @@
 
 	&__desc {
 		color: var(--color-whitish);
-		font-size: 1.6rem;
+		font-size: 2.8rem;
 	}
 
 	&__icons {

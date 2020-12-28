@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 50 50" overflow="visible" xml:space="preserve">
+<g display="none">
+	<g display="inline">
+		<rect x="-5" y="-4.9" fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" width="60" height="60"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="25" y1="-4.9" x2="25" y2="55.2"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="55" y1="25.1" x2="-5" y2="25.1"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="-5" y1="-4.9" x2="55" y2="55.2"/>
+		<rect x="3" y="3.1" fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" width="44" height="44"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="55" y1="-4.9" x2="-5" y2="55.2"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="-5" y1="25.1" x2="25" y2="-4.9"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="25" y1="-4.9" x2="55" y2="25.1"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="55" y1="25.1" x2="25" y2="55.2"/>
+		<line fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" x1="25" y1="55.2" x2="-5" y2="25.1"/>
+		<circle fill="none" stroke="#B3B3B3" stroke-width="0.1" stroke-miterlimit="10" cx="25" cy="25.1" r="21"/>
+	</g>
+</g>
+<g>
+	<polygon points="21.1,50 15.5,44.4 21.1,38.8 22.2,39.9 17.8,44.4 22.2,48.8 	"/>
+	<path d="M44.3,0H5.7C3.4,0,1.5,1.8,1.5,4.2V41c0,2.3,1.8,4.2,4.2,4.2h8.2l-0.8-0.8l0.8-0.8H5.7c-1.4,0-2.5-1.1-2.5-2.5V8.4h43.6V41
+		c0,1.4-1.1,2.5-2.5,2.5h-8.2l0.8,0.8l-0.8,0.8h8.2c2.3,0,4.2-1.8,4.2-4.2V4.2C48.5,1.8,46.6,0,44.3,0z M3.2,4.2
+		c0-1.4,1.1-2.5,2.5-2.5h32.7v5H3.2V4.2z M40.1,6.7v-5h4.2c1.4,0,2.5,1.1,2.5,2.5v2.5H40.1z"/>
+	<polygon points="28.9,50 27.8,48.8 32.2,44.4 27.8,39.9 28.9,38.8 34.5,44.4 	"/>
+	<rect x="19.9" y="43.5" transform="matrix(0.1646 -0.9864 0.9864 0.1646 -22.9182 61.6936)" width="10.2" height="1.7"/>
+	<rect x="4.9" y="11.7" width="35.2" height="1.7"/>
+	<rect x="4.9" y="16.8" width="40.2" height="1.7"/>
+	<rect x="4.9" y="21.8" width="31.8" height="1.7"/>
+	<rect x="4.9" y="26.8" width="35.2" height="1.7"/>
+	<rect x="4.9" y="31.8" width="40.2" height="1.7"/>
+</g>
+</svg>
