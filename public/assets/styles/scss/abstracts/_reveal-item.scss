@@ -1,0 +1,40 @@
+.reveal-item {
+	opacity: 0;
+	transform: scale(0.75);
+	transform-origin: 50% 50%;
+
+	&--is-visible {
+		opacity: 1;
+		transform: scale(1);
+		transition: all 1.5s ease-out;
+	}
+}
+
+.slide-item {
+	transform: translateX(100%);
+	&--is-visible {
+		transform: translateX(0);
+		transition: all 0.5s ease-out;
+	}
+}
+
+.fill-bar {
+	opacity: 0;
+	transform: scaleX(0);
+	transform-origin: 0 0;
+
+	&--is-visible {
+		opacity: 1;
+		transform: scale(1);
+		transition: all 1.5s ease-out;
+	}
+}
+
+.reveal-counter {
+
+	opacity: 0;
+	&--is-visible {
+		transition: all 1.5s ease-in;
+		opacity: 1;
+	}
+}

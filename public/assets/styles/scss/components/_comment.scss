@@ -1,0 +1,106 @@
+.comment {
+
+	color: var(--color-grey);
+
+	&__container {
+		@include respond(800) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	&__group {
+
+	}
+
+	&__feedback {
+		padding: 1rem 0;
+		margin-bottom: 2rem;
+		
+		@include respond(800) {
+			text-align: center;
+		}
+	}
+
+	&__item {
+		position: relative;
+		margin-bottom: 1.25rem;
+		border: 1px solid var(--color-grey-light);
+		border-radius: 5px;
+		box-shadow: 0 0 1rem rgba(0,0,0,.15);
+		min-height: 9rem;
+
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__image {
+		flex: 0 0 9rem;
+
+		display: flex;
+		justify-content: center;
+
+		img {
+			position: relative;
+			display: block;
+			width: 5rem;
+			height: 5rem;
+			top: 2rem;
+			object-fit: cover;
+			border-radius: 50%;
+			text-align: right;
+		}
+	}
+
+	&__info {
+		position: relative;
+		padding: 2rem 2rem 2rem 0;
+		flex: 1;
+
+		&__user {
+			margin-bottom: 1rem;
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+
+		&__text {
+
+		}
+
+		&__date {
+			position: absolute;
+			top: 1rem;
+			right: 2rem;
+			font-size: 1.25rem;
+			color: var(--color-grey);
+		}
+	}
+
+	&__btn--new {
+		@include respond(800) {
+			max-width: 25rem;
+			text-align: center;
+			justify-self: center;
+			align-self: center;
+			margin: 2rem 0;
+		}
+	}
+
+	&__reply-btn {
+		margin-left: 9rem;
+	}
+
+	&__edit-btn {
+		margin-left: 2rem;
+	}
+
+	&__delete-btn {
+		margin-left: 2rem;
+	}
+}
+
+// Image moving to the left after --is-visible (FIX)
+
+.comment__image.reply--is-visible {
+	display: flex !important;
+}

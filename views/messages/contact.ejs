@@ -1,0 +1,140 @@
+<% var pageTitle = "Contact | Nikola Pavlov" %> 
+<% var pageDescription = "Contact page for Nikola Pavlov portfolio webpage" %> 
+<% var pageKeywords = "Nikola Pavlov, Inbox, Message, Contact, Text, Contact me, Portfolio" %> 
+
+<% include ../partials/header %>
+
+<section class="section section--contact-page">
+	<div class="wrapper contact-page__wrapper">
+		<div class="contact-page">
+			<div class="contact-page__get-in-touch">
+				<div class="contact-page__get-in-touch__container">
+					<h2 class="contact-page__heading">Send me a message.</h2>
+					<p class="contact-page__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe optio odio iusto incidunt, vero ducimus cumque veritatis blanditiis rerum beatae. Nulla obcaecati, quidem quos laboriosam amet nobis culpa rem architecto.</p>
+
+					<div class="contact-page__get-in-touch__icons">
+						<div class="contact-page__get-in-touch__icons__item">
+							<div class="contact-page__get-in-touch__icons__item__icon icon icon--envelope"></div>
+							<div class="contact-page__get-in-touch__icons__item__text">nikola@pavlov.mk</div>
+						</div>
+						<div class="contact-page__get-in-touch__icons__item">
+							<div class="contact-page__get-in-touch__icons__item__icon icon icon--phone"></div>
+							<div class="contact-page__get-in-touch__icons__item__text">+38970240617</div>
+						</div>
+						<div class="contact-page__get-in-touch__icons__item">
+							<div class="contact-page__get-in-touch__icons__item__icon icon icon--location"></div>
+							<div class="contact-page__get-in-touch__icons__item__text">Skopje, Macedonia</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="contact-page__form">
+				<div class="contact-page__form__container">
+					<div class="contact-page__contact-form">
+				<div class="contact-page__contact-form__container">
+
+					<h2 class="headline-4 u-margin-bottom-medium headline--stylish-1">Send me a message.</h2>
+
+					<form action="/contact" method="POST" class="main-contact-form__form">
+						<div class="main-contact-form__form__group">
+							<input type="text" class="main-contact-form__form__input" name="firstName" placeholder="Your Name" id="contact-name" required>
+							<label for="contact-name" class="main-contact-form__form__label">Your First Name</label>
+						</div>
+
+						<div class="main-contact-form__form__group">
+							<input type="text" class="main-contact-form__form__input" name="lastName" placeholder="Your Last Name" id="contact-last-name" required>
+							<label for="contact-last-name" class="main-contact-form__form__label">Your Last Name</label>
+						</div>
+
+						<div class="main-contact-form__form__group--2">
+							<input type="email" class="main-contact-form__form__input" name="email" placeholder="Your Email" id="contact-email" required>
+							<label for="contact-email" class="main-contact-form__form__label">Your Email</label>
+						</div>
+
+						<div class="main-contact-form__form__group--2">
+							<input type="text" class="main-contact-form__form__input" name="subject" placeholder="Your Subject" id="contact-subject" required>
+							<label for="contact-subject" class="main-contact-form__form__label">Subject</label>
+						</div>
+
+						<div class="main-contact-form__form__group--2">
+
+							<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message"required></textarea>
+							<label for="contact-message" class="main-contact-form__form__label">Your Message</label>
+						</div>
+						<button class="btn btn--second btn--full-width">Send Message</button>
+					</form>
+				</div>
+			</div>
+				</div>
+			</div>
+
+			<div class="contact-page__find-me-online">
+				<div class="contact-page__find-me-online__container">
+					<h2 class="contact-page__heading white">Find me online.</h2>
+					<p class="contact-page__text white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe optio odio iusto incidunt, vero ducimus cumque veritatis blanditiis rerum beatae. Nulla obcaecati, quidem quos laboriosam amet nobis culpa rem architecto.</p>
+					<div class="contact-page__find-me-online__icons">
+						<div class="contact-page__find-me-online__icons__icon icon icon--facebook-logo"></div>
+						<div class="contact-page__find-me-online__icons__icon icon icon--instagram-logo"></div>
+						<div class="contact-page__find-me-online__icons__icon icon icon--linkedin-logo"></div>
+						<div class="contact-page__find-me-online__icons__icon icon icon--envelope"></div>
+						<div class="contact-page__find-me-online__icons__icon icon icon--skype-logo"></div>
+						<div class="contact-page__find-me-online__icons__icon icon icon--github-logo"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="contact-page__view-portfolio">
+				<div class="contact-page__view-portfolio__container">
+					<h2 class="contact-page__heading">View Portfolio.</h2>
+					<p class="contact-page__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe optio odio iusto incidunt, vero ducimus cumque veritatis blanditiis rerum beatae. Nulla obcaecati, quidem quos laboriosam amet nobis culpa rem architecto.</p>
+				</div>
+				<a href="#" class="btn btn--second contact-page__view-portfolio__btn">Write to me</a>
+			</div>
+			<!-- <div class="contact-page__contact-form">
+				<div class="contact-page__contact-form__container">
+
+					<h2 class="headline-4 u-center-horizontaly u-margin-bottom-medium headline--stylish-1">Send me a message.</h2>
+
+					<form action="/contact" method="POST" class="main-contact-form__form">
+						<div class="main-contact-form__form__group">
+							<input type="text" class="main-contact-form__form__input" name="firstName" placeholder="Your Name" id="contact-name" required>
+							<label for="contact-name" class="main-contact-form__form__label">Your First Name</label>
+						</div>
+
+						<div class="main-contact-form__form__group">
+							<input type="text" class="main-contact-form__form__input" name="lastName" placeholder="Your Last Name" id="contact-last-name" required>
+							<label for="contact-last-name" class="main-contact-form__form__label">Your Last Name</label>
+						</div>
+
+						<div class="main-contact-form__form__group--2">
+							<input type="email" class="main-contact-form__form__input" name="email" placeholder="Your Email" id="contact-email" required>
+							<label for="contact-email" class="main-contact-form__form__label">Your Email</label>
+						</div>
+
+						<div class="main-contact-form__form__group--2">
+							<input type="text" class="main-contact-form__form__input" name="subject" placeholder="Your Subject" id="contact-subject" required>
+							<label for="contact-subject" class="main-contact-form__form__label">Subject</label>
+						</div>
+
+						<div class="main-contact-form__form__group--2">
+
+							<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message"required></textarea>
+							<label for="contact-message" class="main-contact-form__form__label">Your Message</label>
+						</div>
+						<button class="btn btn--main btn--full-width">Send Message</button>
+					</form>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+<% include ../partials/footer %>

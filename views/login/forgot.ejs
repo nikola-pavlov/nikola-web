@@ -1,0 +1,27 @@
+ <% var pageTitle = "Reset your password | Nikola Pavlov" %> 
+ <% var pageDescription = "Reset the password for your account. Enter your email and you will recieve instructions to reset your password."%>
+ <% var pageKeywords = "Username, Profile, Profile page, Account, Password, Reset password, Update password, Email" %> 
+
+<% include ../partials/header %>
+
+ <section class="section section--forgot">
+ 	<div class="wrapper">
+ 		<div class="reset__forgot">
+ 			
+ 			<div class="reset__forgot__image"></div>
+
+ 			<h2 class="reset__forgot__title">Reset your password?</h2>
+
+ 			<form class="reset__forgot__form" action="/forgot" method="POST">
+ 				<div class="reset__forgot__input__container">
+ 					<input class="reset__forgot__input main-contact-form__form__input" type="email" name="email" placeholder="Your Email" autofocus>
+ 					<label class="main-contact-form__form__label">Your Email</label>
+ 				</div>
+ 				<button class="btn btn--main reset__forgot__btn">Email Me</button>
+ 			</form>
+ 			<p class="reset__forgot__text">Enter your email and you will recieve instructions to reset your password.</p>
+ 		</div>
+ 	</div>
+ </section>
+
+ <% include ../partials/footer %>

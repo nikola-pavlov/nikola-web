@@ -1,0 +1,94 @@
+.infobox {
+	color: var(--color-two);
+	font-weight: 600;
+	cursor: pointer; 
+	position: relative;
+
+	&:after {
+		position: relative;
+		display: inline-block;
+		width: .6rem;
+		height: 1rem;
+		top: -1rem;
+		right: 0;
+		font-size: 1.4rem;
+		content: "?";
+	}
+
+	&__text {
+		display: none;
+	}
+
+	&:hover > &__text,
+	&:active > &__text {
+		display: block !important;
+		position: absolute;
+		top: -100%;
+		left: 125%;
+		color: var(--color-whitish);
+		background: linear-gradient(var(--color-one),var(--color-two));
+		padding: 1.5rem 2.5rem;
+		border-radius: .5rem;
+		box-shadow: 0rem 0rem .75rem .5rem rgba(0,0,0,.15);
+		font-size: 1.4rem;
+		font-weight: 100;
+		z-index: 2;
+		min-width: 30rem;
+		max-width: 50rem;
+		transform-origin: 50% 0;
+		cursor: auto;
+		visibility: visible;
+		opacity: 1;
+
+		@include respond(1000) {
+			position: fixed;
+			top: 25%;
+			left:50%;
+			transform: translateX(-50%);
+			max-width: 70vw;
+			min-width: 70vw;
+		}
+	}
+
+	&:hover > &__text:after,
+	&:active > &__text:after {
+		content: "?";
+		text-align: center;
+		font-size: 3rem;
+		font-weight: 900;
+		position: absolute;
+		top: -3rem;
+		right: -3rem;
+		background: var(--color-whitish);
+		color: var(--color-one);
+		border: 5px solid var(--color-one);
+		width: 6rem;
+		height: 6rem;
+		border-radius: 50%;
+		z-index: 3;
+
+		@include respond(1000) {
+			width: 8rem;
+			height: 8rem;
+			font-size: 4rem;
+		}
+	}
+
+	&:hover > &__text:before,
+	&:active > &__text:before {
+		content: "";
+		position: absolute;
+		top: 2rem;
+		left: -2.5rem;
+		background: var(--color-one);
+		width: 2.5rem;
+		height: 2.5rem;
+		z-index: 4;
+		clip-path: polygon(100% 0, 35% 50%, 100% 100%);
+		
+		@include respond(1000) {
+			display: none;
+		}
+	}
+}
+

@@ -1,0 +1,122 @@
+ <% var pageTitle = user.username + " profile page" %> 
+ <% var pageDescription = "Profile page for " + user.username + ". Here you can view all the profile information for this user and update it if you are the owner of this profile."%>
+ <% var pageKeywords = "Username, Profile, Profile page, Account, ID, Profile information, User, First name, Last name" %> 
+
+ <% include ../partials/header %>
+
+
+ <section id="profile" class="section section--profile">
+ 	<div class="wrapper">
+
+ 		<div class="profile">
+ 			<div class="profile__right">
+ 				<div class="profile__info">
+ 					<div class="profile__info__field">
+ 						<h2 class="profile__username"><%= user.username %> Profile Page</h2>
+ 						<ul>
+ 							
+ 							<% if(user.isAdmin) { %>
+ 							<li class="profile__isadmin">Admin</li>
+ 							<% } %>
+
+ 							<li class="profile__online">
+ 								Status
+ 									<% if(user.isOnline) {%>
+ 									<span class="profile__indicator online"></span><span class="profile__status">online</span>
+ 									<% } %>
+ 									<% if(!user.isOnline) {%>
+ 									<span class="profile__indicator offline"></span><span class="profile__status">offline</span>
+ 									<% } %>
+ 								
+ 				
+ 							</li>
+ 							
+ 							<% if(user.isPublic || currentUser && currentUser.isAdmin || currentUser && currentUser._id.equals(user._id)) { %>
+ 							<li class="profile__firstname">First Name: <span><%= user.firstName %></span></li>
+
+ 							<li>Last Name: <span><%= user.lastName %></span></li>
+ 							<li>Email: <span><%= user.email %></span></li>
+ 							<li>Profile Created: <span><%= user.createdAt.getDate() + "." + user.createdAt.getMonth() + "." + user.createdAt.getFullYear()  %></span></li>
+ 							<li>Profile ID: <span><%= user._id %></span></li>
+ 							<li class="profile__visibility">Profile Visibility: <span>
+ 								<% if (user.isPublic) { %>
+ 								Public
+ 								<% } %>
+ 								<% if (!user.isPublic) { %>
+ 								Private
+ 								<% } %>
+ 							</span></li>
+ 						</ul>
+ 					</div>
+ 					
+ 					
+ 					<div class="profile__image">
+ 						<img src="<%= user.image %>" alt="Profile Image">
+ 						<% if(currentUser && currentUser.isAdmin || currentUser && currentUser._id.equals(user._id)) { %>
+ 						<form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+ 							<label class="profile__image__label" for="image">
+ 								
+ 							</label>
+ 							<div class="profile__image__label__img"></div>
+ 							<input onchange="form.submit()" class="profile__image__input" type="file" id="image" name="image" accept="image/*">
+ 						</form>
+ 						<% } %>
+ 					</div>
+ 					
+ 				</div>
+ 				<% if(currentUser && currentUser.isAdmin || currentUser && currentUser._id.equals(user._id)) { %>
+ 				<% if (user.isPublic) { %>
+ 				<p class="profile__info-msg">If you wish to make your profile private you can do it via the “edit profile” page.</p>
+ 				<% } %>
+ 				<% if (!user.isPublic) { %>
+ 				<p class="profile__info-msg">If you wish to make your profile public you can do it via the “edit profile” page.</p>
+ 				<% } %>
+ 				<% } %>
+
+ 				<% if(currentUser && currentUser.isAdmin || currentUser && currentUser._id.equals(user._id)) { %>
+ 				<div class="profile__password">
+ 					<div class="profile__password__text">Looking to change your password?</div>
+ 					<a href="/reset" class="profile__password__button btn btn--main btn--small">Request a new password</a>
+ 					<div class="profile__password__info">Instructions will be sent to your email address for you to change your password. </div>
+ 				</div>
+ 				<% } %>
+ 				<div class="profile__bio">
+ 					<div class="profile__bio__text">More Information</div>
+ 					<div class="profile__bio__info"><%= user.info %></div>
+ 				</div>
+ 				<% if(currentUser && currentUser.isAdmin || currentUser && currentUser._id.equals(user._id)) { %>
+ 				<div class="profile__buttons">
+ 					<a href="/users/<%= user._id %>/edit" class="profile__password__button btn btn--orange btn--small">Edit Profile</a>
+ 					<input class="btn btn--small btn--danger profile__delete__button" type="submit" value="Delete Profile">
+ 				</div>
+ 				<% } %>
+ 				<% } else { %>
+ 				<h2 class="profile__private">Profile is private.</h2>
+ 				<% } %>
+ 			</div>
+ 		</div>
+ 	</div>
+ </section>
+
+ <div class="warning">
+ 	<div class="warning__container">
+ 		<div class="warning__icon">
+ 			<div class="warning__icon__image">
+ 				
+ 			</div>
+ 		</div>
+ 		<div class="warning__info">
+ 			<div class="warning__title">Are you sure?</div>
+ 			<div class="warning__text">You will not be able to recover your account.</div>
+ 			<div class="warning__button">
+ 				<input class="btn btn--small warning__button--cancel" type="submit" value="Cancel">
+ 				<form class="profile__delete" action="/users/<%= user._id %>?_method=DELETE" method="POST">
+ 					<input class="btn btn--danger warning__button--submit" type="submit" value="Delete">
+ 				</form>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+
+
+ <% include ../partials/footer %>

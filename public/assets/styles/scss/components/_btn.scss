@@ -1,0 +1,28 @@
+.btn:link,
+.btn:visited,
+button {
+	background-color: var(--color-one);
+	color: var(--color-whitish);
+	text-decoration: none;
+	padding: 1.4rem 1.8rem;
+	font-size: 1.8rem;
+	border-radius: 0.5rem;
+	transition: transform box-shadow .3s ease-out;
+	outline: none;
+	border: none;
+
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+	}
+
+	&:active {
+		transform: translateY(-1px);
+		box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.3);
+	}
+
+	@include respond(600) {
+		width: 100%;
+		text-align: center;
+	}
+}

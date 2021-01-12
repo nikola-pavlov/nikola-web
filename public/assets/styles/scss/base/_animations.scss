@@ -1,0 +1,290 @@
+// LOGO DESIGN
+
+@keyframes logoScaleUp {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes logoScaleUpAndMoveDown {
+	0% {
+		opacity: 0;
+		transform: scale(1.5) translateY(-83.5%);
+		background-color: #FFF200;
+	}
+
+	20% {
+		opacity: 1;
+		transform: scale(1.5);
+		background-color: #FFF200;
+	}
+
+	50% {
+		transform: scale(1);
+		background-color: #FFF200;
+	}
+
+	75% {
+		transform: scale(1);
+		background-color: #FFF200;
+	}
+
+	100% {
+		opacity: 1;
+		background-color: #00A651;
+	}
+}
+
+@keyframes logoMoveInFromLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-50rem);
+	}
+
+	20% {
+		opacity: 1;
+		transform: translateX(-50rem);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoMoveInFromTop {
+	0% {
+		opacity: 0;
+		transform: translateY(50rem);
+	}
+
+	20% {
+		opacity: 1;
+		transform: translateY(50rem);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoMoveInFromBottom {
+	0% {
+		opacity: 0;
+		transform: translateY(-50rem);
+	}
+
+	20% {
+		opacity: 1;
+		transform: translateY(-50rem);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoFadeIn {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	100% {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+@keyframes colorChangeShow {
+	0% {
+	}
+
+	100% {
+		background: var(--color-grey);
+	}
+}
+
+@keyframes colorChangeHide {
+	0% {
+	}
+
+	100% {
+		background-color: var(--color-whitish);
+	}
+}
+
+@keyframes hideFirst {
+	0% {
+		opacity: 0;
+	}
+
+	80% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes logoMoveInFromRight {
+	0% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+
+	20% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes logoMoveInFromLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+
+	20% {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes loopInfinite {
+	0% {
+		transform: rotate(0);
+		opacity: 1;
+	}
+
+	100% {
+		transform: rotate(1turn);
+		opacity: 1;
+	}
+}
+
+// Content branding [Panorama animation]
+
+@keyframes productBrandingPanorama {
+	from {
+		background-position: bottom left;
+	}
+
+	to {
+		background-position: bottom right;
+	}
+}
+
+// Loading Logo Animations
+
+@keyframes loadingLogoFront {
+	0% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	50% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-360deg);
+	}
+}
+
+@keyframes loadingLogoBack {
+	0% {
+		transform: rotateX(0deg) rotateY(180deg);
+	}
+
+	50% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+}
+
+// Message button animations
+
+@keyframes messageButtonFront {
+	0% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+}
+
+@keyframes messageButtonBack {
+	0% {
+		transform: rotateX(0deg) rotateY(180deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+}
+
+@keyframes messageButtonFrontReturn {
+	0% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-360deg);
+	}
+}
+
+@keyframes messageButtonBackReturn {
+	0% {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: rotateX(0deg) rotateY(-180deg);
+	}
+}
+
+// Popup message animation
+
+@keyframes popupMessage {
+	0% {
+		bottom: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	10% {
+		opacity: 1;
+		visibility: visible;
+		bottom: 10vh;
+	}
+
+	90% {
+		opacity: 1;
+		visibility: visible;
+		bottom: 10vh;
+	}
+
+	100% {
+		opacity: 0;
+		visibility: hidden;
+		bottom: 0;
+	}
+}

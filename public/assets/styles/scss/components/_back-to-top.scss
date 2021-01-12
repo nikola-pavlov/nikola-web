@@ -1,0 +1,63 @@
+.back-to-top {
+
+	&__container {
+		background: white;
+		height: 7rem;
+		width: 7rem;
+		position: fixed;
+		bottom: 2.5rem;
+		right: 2.5rem;
+		border-radius: 50%;
+		z-index: 100;
+		box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
+		display: none;
+		padding: 1.2rem;
+
+		@include respond(700) {
+			width: 6rem;
+			height: 6rem;
+			right: 2rem;
+			bottom: 2rem;
+		}
+
+		@include respond(500) {
+			width: 5rem;
+			height: 5rem;
+			padding: .8rem;
+		}
+
+		&--visible {
+			display: block;
+		}
+	}
+
+	position: relative;
+	background-color: var(--color-one);
+	height: 5rem;
+    width: 5rem;
+    -webkit-mask-size: 32.2rem;
+	border-radius: 50%;
+	z-index: 102;
+	cursor: pointer;
+	backface-visibility: hidden;
+	overflow: hidden;
+
+	@include respond(700) {
+		-webkit-mask-size: 25rem;
+		height: 4rem;
+		width: 4rem;
+	}
+
+	@include respond(500) {
+		-webkit-mask-size: 24rem;
+		height: 3.4rem;
+		width: 3.4rem;
+	}
+	
+
+	&__link {
+		display: block;
+		height: 7rem;
+		width: 7rem;
+	}
+}

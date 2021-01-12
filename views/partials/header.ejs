@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8"/>
+	<% if(pageTitle) { %>
+	<title><%= pageTitle %></title>
+	<% } else { %>
+	<title>Nikola Pavlov Portfolio</title>
+	<% } %>
+	<% if(pageDescription) {%>
+	<meta name="description" content="<%= pageDescription %>">
+	<% } else { %>
+	<meta name="description" content="Portfolio website for Nikola Pavlov">
+	<%} %>
+	<% if(pageKeywords) {%>
+	<meta name="keywords" content="<%= pageKeywords %>">
+	<% } else { %>
+	<meta name="keywords" content="CV, Portfolio, Designer, Web Design, Graphic Design, Logo, Nikola Pavlov, Design, Developer, Project">
+	<%} %>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/styles/css/style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" /> 
+</head>
+
+<body>	
+
+
+	<header class="header-main">
+		<nav class="nav-top">
+			<div class="row wrapper">
+				<ul>
+					<!-- <li class="nav-top__item__language">
+						<span class="nav-top__item__language__icon"></span> Language
+						<div class="nav-sub">
+							<div class="nav-sub__item">
+								<div class="nav-sub__item__container">
+									<div class="nav-sub__item__icon nav-sub__item__icon--eng"></div>
+									<div class="nav-sub__item__lang">English</div> 
+								</div>
+							</div>
+							<div class="nav-sub__item">
+								<div class="nav-sub__item__container">
+									<div class="nav-sub__item__icon nav-sub__item__icon--mkd"></div>
+									<div class="nav-sub__item__lang">Macedonian</div> 
+								</div>
+							</div>
+							<div class="nav-sub__item">
+								<div class="nav-sub__item__container">
+									<div class="nav-sub__item__icon nav-sub__item__icon--alb"></div>
+									<div class="nav-sub__item__lang">Serbian</div> 
+								</div>
+							</div>
+						</div>
+					</li> -->
+
+
+					<!-- <li>Dark Mode</li> -->
+					
+					<% if(!currentUser) { %>
+					<li><a class="text--white" href="/login">Login</a></li>
+					<li><a class="text--white" href="/register">Sign Up</a></li>
+					<% } else { %>
+					<li><a class="text--white" href="/users/<%= currentUser._id %>">Hello <%= currentUser.username %></a>
+						<%if(currentUser && currentUser.isAdmin) { %>
+						<span><strong> (Admin)</strong></span>
+						<% } %>
+					</li>
+					<li><a class="text--white" href="/logout">Logout</a></li>
+					<% } %>
+
+
+
+				</ul>
+			</div>
+		</nav>
+		<div class="wrapper">
+			<a href="/">
+				<div class="header-main__logo">
+					<figure> 
+						<div class="header-main__logo__img logo icon icon--logo"></div> 
+						<figcaption class="header-main__logo-caption">Nikola Pavlov</figcaption> 
+					</figure>
+				</div>
+			</a>
+			<div class="header-main__menu-icon">
+				<div class="header-main__menu-icon__middle"></div>
+			</div>
+		</div>
+		<div class="header-main__menu-content">
+			<div class="wrapper">
+				<nav class="nav-primary">
+					<ul>
+						<li><a href="/#hi-there" id="hi-there-link">Hi There</a></li>
+						<li><a href="/#digital-services" id="digital-services-link">Digital Services</a></li>
+						<li><a href="/#about-me" id="about-me-link">About Me</a></li>
+						<li><a href="/#logo-design" id="logo-design-link">Logo Design</a></li>
+						<li><a href="/#mobile-ready" id="mobile-ready-link">Mobile Ready</a></li>
+						<li><a href="/contact" class="btn btn--small btn--main header-main__btn">Contact me</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		
+	</header> 
+
+	<% if(flash_error && flash_error.length > 0){ %>
+	<div class="flash-message-error">
+		<div class="wrapper">
+			<div class="flash-message-error__error">
+				<div class="flash-message-error__error__icon">
+					<div class="flash-message-error__error__icon__img icon icon--close"></div>
+				</div>
+				<div class="flash-message-error__error__text"><%= flash_error %></div>
+				<div class="flash-message-error__error__close">Close</div>
+			</div>
+		</div>
+	</div>
+	<% } %> 
+
+	<% if(flash_success && flash_success.length > 0){ %>
+	<div class="flash-message-success">
+		<div class="wrapper">
+			<div class="flash-message-success__success">
+				<div class="flash-message-success__success__icon">
+					<div class="flash-message-success__success__icon__img icon icon--check-mark"></div>
+				</div>
+				<div class="flash-message-success__success__text"><%= flash_success %></div>
+				<div class="flash-message-success__success__close">Close</div>
+			</div>
+		</div>
+	</div>
+	<% } %> 
+
+	<!-- <% if(flash_success && flash_success.length > 0){ %>
+	<div class="flash-message">
+		<div class="flash-message__success"><%= flash_success %></div>
+	</div>
+	<% } %> -->
+
+
+
+	<div id="top-page" class="top-page-class" data-matching-link="#top-page-link"></div>
+
+
+
+
+
+	<div class="contact">
+		<input id="contact-toggle" type="checkbox" class="contact__checkbox">
+		<div class="back-to-top__container">
+			<div class="back-to-top icon icon--arrow-top">
+				<a href="#top-page" class="back-to-top__link" id="top-page-link"></a>
+			</div>
+		</div>
+		<label for="contact-toggle" class="contact__button contact__button--front">
+			<div class="contact__button--front__icon icon icon--envelope"></div>
+		</label>
+		<label for="contact-toggle" class="contact__button contact__button--back">
+			<div class="contact__button--back__icon icon icon--close"></div>
+		</label>
+		<div class="contact__background">test</div>
+		<div class="contact__content">
+			<div class="contact__content__container">
+				<div class="main-contact-form">
+					<div class="main-contact-form__container text-generic">
+						<h2 class="headline-4 u-center-horizontaly u-margin-bottom-small headline--stylish-1">Contact me</h2>
+
+						<p class="main-contact-form__desc u-margin-bottom-xsmall">Please feel free to drop me a line.</p>
+
+
+						<form action="/contact" method="POST" class="main-contact-form__form">
+							<div class="main-contact-form__form__group">
+								<input type="text" class="main-contact-form__form__input" name="firstName" placeholder="Your First Name" id="contact-name" required>
+								<label for="contact-name" class="main-contact-form__form__label">Your First Name</label>
+							</div>
+
+							<div class="main-contact-form__form__group">
+								<input type="text" class="main-contact-form__form__input" name="lastName" placeholder="Your Last Name" id="contact-last-name" required>
+								<label for="contact-last-name" class="main-contact-form__form__label">Your Last Name</label>
+							</div>
+
+							<div class="main-contact-form__form__group--2">
+								<input type="email" class="main-contact-form__form__input" name="email" placeholder="Your Email" id="contact-email" required>
+								<label for="contact-email" class="main-contact-form__form__label">Your Email</label>
+							</div>
+
+							<div class="main-contact-form__form__group--2">
+								<input type="text" class="main-contact-form__form__input" name="subject" placeholder="Your Subject" id="contact-subject" required>
+								<label for="contact-subject" class="main-contact-form__form__label">Your Subject</label>
+							</div>
+
+							<div class="main-contact-form__form__group--2">
+								<textarea rows="4" class="main-contact-form__form__textarea" name="message" placeholder="Your Message" id="contact-message" required></textarea>
+								<label for="contact-message" class="main-contact-form__form__label">Your Message</label>
+							</div>
+
+							<button class="btn btn--main btn--full-width">Send Message</button>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+
+	<div class="trigger"></div>
+

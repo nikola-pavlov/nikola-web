@@ -1,0 +1,407 @@
+ <% var pageTitle = "Portfolio | Nikola Pavlov Projects" %> 
+ <% var pageDescription = "Test" %>
+ <% var pageKeywords = "CV, Portfolio, Designer, Web Design, Graphic Design, Logo, Nikola Pavlov, Design, Developer, Project" %> 
+
+ <% include ../partials/header %>
+
+ <section class="section section--portfolio">
+
+ 	<div class="portfolio">
+ 		<div class="portfolio__container">
+ 			<header class="portfolio__header">
+ 				<div class="portfolio__header__search text">
+ 					<form action="/portfolio" method="GET" class="portfolio__header__search__form">
+ 						<%if(search) {%> 
+ 						<input type="text" name="search" class="portfolio__header__search__input" placeholder="Search Projects" value="<%= search %>">
+ 						<% } else { %>
+ 						<input type="text" name="search" class="portfolio__header__search__input" placeholder="Search Projects">
+ 						<% } %>
+ 						<button class="portfolio__header__search__btn">
+ 							<span class="portfolio__header__search__icon icon icon--search"></span>
+ 						</button>
+ 					</form>
+ 				</div>
+ 				<div class="portfolio__header__filters text text--xsmall">
+ 					<%if(search) {%> 
+ 					<div class="portfolio__header__filter-btn">
+ 						Search: <%= search %>
+ 						<a href="/portfolio?search=<%if(type){%>&type=<%=type%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>">
+ 						<div class="portfolio__header__filter-btn__cancel">
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
+ 						</div></a>
+ 					</div>
+ 					<% } %>
+
+ 					<%if(category) {%> 
+ 					<div class="portfolio__header__filter-btn text text--xsmall">
+ 						Category: <%= category %>
+ 						<a href="/portfolio?category=<%if(type){%>&type=<%=type%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(search){%>&search=<%=search%><%}%>">
+ 						<div class="portfolio__header__filter-btn__cancel">
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
+ 						</div></a>
+ 					</div>
+ 					<% } %>
+
+ 					<%if(year) {%> 
+ 					<div class="portfolio__header__filter-btn text text--xsmall">
+ 						year: <%= year %>
+ 						<a href="/portfolio?year=<%if(type){%>&type=<%=type%><%}%><%if(search){%>&search=<%=search%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>">
+ 						<div class="portfolio__header__filter-btn__cancel">
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
+ 						</div></a>
+ 					</div>
+ 					<% } %>
+
+ 					<%if(color) {%> 
+ 					<div class="portfolio__header__filter-btn text text--xsmall">
+ 						Color: <%= color %>
+ 						<a href="/portfolio?color=<%if(type){%>&type=<%=type%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%>">
+ 						<div class="portfolio__header__filter-btn__cancel">
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
+ 						</div></a>
+ 					</div>
+ 					<% } %>
+
+ 					<%if(type) {%> 
+ 					<div class="portfolio__header__filter-btn text text--xsmall">
+ 						Type: <%= type %>
+ 						<a href="/portfolio?type=<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>">
+ 						<div class="portfolio__header__filter-btn__cancel">
+ 							<div class="portfolio__header__filter-btn__cancel__icon icon icon--close"></div>
+ 						</div></a>
+ 					</div>
+ 					<% } %>
+
+ 					<%if(views=="") {%> 
+ 					<div class="portfolio__header__filter-btn sort">
+ 						Sort by: Date
+ 					</div>
+ 					<% } %>
+ 					<%if(views=="popular") {%> 
+ 					<div class="portfolio__header__filter-btn sort">
+ 						Sort by: Views
+ 					</div>
+ 					<% } %>
+
+ 					<%if(search || category || year || color || type) {%> 
+ 					<div class="portfolio__header__filter-btn clear-all">
+ 						<a href="/portfolio">
+ 							<div class="portfolio__header__filter-btn clear-all__icon icon icon--close"></div>
+ 						</a>
+ 					</div>
+ 					<% } %>
+
+ 					<div class="portfolio__header__counter text">
+ 						<p>Results: <%= count %> out of <%= totalCount %></p>
+ 					</div>
+
+ 					<div class="portfolio__header__features">
+ 						<div class="portfolio__header__grid portfolio__header__grid--is-active">
+ 							<div class="portfolio__header__grid__img icon icon--grid"></div>
+ 						</div>
+ 						<div class="portfolio__header__list">
+ 							<div class="portfolio__header__list__img icon icon--list"></div>
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</header>
+ 			<div class="portfolio__content">
+ 				<nav class="portfolio__nav">
+ 					<% if(currentUser && currentUser.isAdmin)  { %> 
+ 					<a href="/portfolio/new">New Project</a>
+ 					<% } %>
+
+ 					<div class="portfolio__nav__filter">
+ 						<div class="portfolio__nav__filter__heading heading__subtitle">Filters</div>
+ 						<div class="portfolio__nav__filter__header">
+ 							<div class="portfolio__nav__filter__title text">Type</div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
+ 						</div>
+ 						<div class="portfolio__nav__group text text--xsmall">
+ 							<ul>
+ 								<li><a href="/portfolio?type=design<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>"><div class="<%if(type == "design"){%>active<%}%>">Design</div></a></li>
+ 								<li><a href="/portfolio?type=dev<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>"><div class="<%if(type == "dev"){%>active<%}%>">Dev</div></a></li>
+ 								<li><a href="/portfolio?type=<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(category){%>&category=<%=category%><%}%>"><div class="<%if(type == ""){%>active<%}%>">All</div></a></li>
+ 							</ul>
+ 						</div>
+ 					</div>
+
+ 					<div class="portfolio__nav__filter">
+ 						<div class="portfolio__nav__filter__header">
+ 							<div class="portfolio__nav__filter__title text">Category</div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
+ 						</div>
+ 						<div class="portfolio__nav__group text--xsmall">
+ 							<ul>
+ 								<li><a href="/portfolio?category=test<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(category == "test"){%>active<%}%>">Test</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?category=branding<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(category == "branding"){%>active<%}%>">branding</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?category=design<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(category == "design"){%>active<%}%>">Design</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?category=book<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(category == "book"){%>active<%}%>">Book</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?category=<%if(search){%>&search=<%=search%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(category == ""){%>active<%}%>">Any</div></a>
+ 								</li>
+ 							</ul>
+ 						</div>
+ 					</div>
+
+ 					<div class="portfolio__nav__filter">
+ 						<div class="portfolio__nav__filter__header">
+ 							<div class="portfolio__nav__filter__title text">Year</div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
+ 						</div>
+ 						<div class="portfolio__nav__group text--xsmall">
+ 							<ul>
+ 								<li><a href="/portfolio?year=2019<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == "2019"){%>active<%}%>">2019</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?year=2018<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == "2018"){%>active<%}%>">2018</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?year=2017<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == "2017"){%>active<%}%>">2017</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?year=2016<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == "2016"){%>active<%}%>">2016</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?year=2015<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == "2015"){%>active<%}%>">2015</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?year=2014<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == "2014"){%>active<%}%>">2014</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?year=2013<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == "2013"){%>active<%}%>">2013</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?year=<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(year == ""){%>active<%}%>">Any</div></a>
+ 								</li>
+ 							</ul>
+ 						</div>
+ 					</div>
+
+ 					<div class="portfolio__nav__filter">
+ 						<div class="portfolio__nav__filter__header">
+ 							<div class="portfolio__nav__filter__title text">Sort by</div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
+ 						</div>
+ 						<div class="portfolio__nav__group text--xsmall">
+ 							<ul>
+ 								<li><a href="/portfolio?views=popular<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<%if(views == "popular"){%>active<%}%>">Views</div></a>
+ 								</li>
+ 								<li><a href="/portfolio?views=<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><div class="<% if(views == ""){%>active<%}%>">Date</div></a>
+ 								</li>
+ 							</ul>
+ 						</div>
+ 					</div>
+
+ 					<div class="portfolio__nav__filter">
+ 						<div class="portfolio__nav__filter__header">
+ 							<div class="portfolio__nav__filter__title text">Color</div>
+ 							<div class="portfolio__nav__filter__icon icon icon--close"></div>
+ 						</div>
+ 						<div class="portfolio__nav__group">
+ 							<div class="color-picker">
+ 								<div class="color-picker__group text--xsmall">
+ 									
+ 									<a href="/portfolio?color=<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item all<%if(color == ""){%>active<%}%>">
+ 										<div class="color-picker__item__color all icon icon--close"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=grey<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item grey <% if(color == "grey"){%>active<% } %>">
+ 										<div class="color-picker__item__color grey"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=red<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item red <% if(color == "red"){%>active<% } %>">
+ 										<div class="color-picker__item__color red"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=maroon<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item maroon <% if(color == "maroon"){%>active<% } %>"><div class="color-picker__item__color maroon"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=pink<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item pink <% if(color == "pink"){%>active<% } %>">
+ 										<div class="color-picker__item__color pink"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=brown<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item brown <% if(color == "brown"){%>active<% } %>">
+ 										<div class="color-picker__item__color brown"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=orange<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item orange <% if(color == "orange"){%>active<% } %>">
+ 										<div class="color-picker__item__color orange "></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=apricot<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item apricot <% if(color == "apricot"){%>active<% } %>">
+ 										<div class="color-picker__item__color apricot"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=olive<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item olive <% if(color == "olive"){%>active<%}%>">
+ 										<div class="color-picker__item__color olive"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=yellow<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item yellow <% if(color == "yellow"){%>active<% } %>">
+ 										<div class="color-picker__item__color yellow"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=beige<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item beige <% if(color == "beige"){%>active<% } %>">
+ 										<div class="color-picker__item__color beige"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=lime<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item lime <% if(color == "lime"){%>active<% } %>">
+ 										<div class="color-picker__item__color lime"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=green<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item green <% if(color == "green"){%>active<% } %>">
+ 										<div class="color-picker__item__color green"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=mint<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item mint <% if(color == "mint"){%>active<% } %>">
+ 										<div class="color-picker__item__color mint"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=teal<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item teal <% if(color == "teal"){%>active<%}%>">
+ 										<div class="color-picker__item__color teal"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=cyan<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item cyan <% if(color == "cyan"){%>active<% } %>">
+ 										<div class="color-picker__item__color cyan"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=navy<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item naby <% if(color == "navy"){%>active<% } %>">
+ 										<div class="color-picker__item__color navy"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=blue<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item blue <% if(color == "blue"){%>active<% } %>">
+ 										<div class="color-picker__item__color blue"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=purple<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item purple <% if(color == "purple"){%>active<% } %>">
+ 										<div class="color-picker__item__color purple"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=lavender<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item lavender <% if(color == "lavender"){%>active<% } %>">
+ 										<div class="color-picker__item__color lavender"></div>
+ 									</a>
+
+ 									<a href="/portfolio?color=magenta<%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(type){%>&type=<%=type%><%}%>" class="color-picker__item magenta <% if(color == "magenta"){%>active<% } %>">
+ 										<div class="color-picker__item__color magenta"></div>
+ 									</a>
+
+ 								</div>
+ 							</div>
+ 						</div>
+ 					</div>
+ 				</nav>
+ 				<div class="portfolio__main">
+ 					<% if(count == 0) { %>
+ 					<div class="portfolio__main__empty">
+ 						<div class="portfolio__main__empty__title heading__subtitle">No projects found.</div>
+ 						<div class="portfolio__main__empty__desc text">Please search for some other project or change your filter settings.</div>
+ 					</div>
+ 					<%  } else { %>
+
+ 					<ul class="portfolio__main__group">
+ 						<% projects.forEach(function(project){ %>
+ 						<% var i = 0; %>
+ 						<%project.comments.forEach(function(comment){  %>
+ 						<% i++ %>
+ 						<% }); %>
+ 						<li class="portfolio__item">
+ 							<div class="portfolio__item__category text text--tiny"><%= project.category %></div>
+ 							<a href="/portfolio/<%= project._id %>">
+ 								<div class="portfolio__item__image">
+ 									<div class="portfolio__item__date text text--tiny"><%= project.date.getDate() + "/" + (project.date.getMonth() + 1) + "/" + (project.date.getYear() + 1900) %></div>
+ 									<% if(project.image == "") { %>
+ 									<img src="https://dummyimage.com/640x360/fff/aaa
+									 " alt="placeholder image">
+ 									<% } else { %>
+ 									<img src="<%= project.image %>" alt="project image">
+ 									<% } %>
+ 								</div> 
+ 							</a>
+ 							<% if(currentUser && currentUser.isAdmin)  { %> 
+ 							<a class="portfolio__item__delete" href="/portfolio/<%= project._id %>/edit">
+ 								<div class="portfolio__item__delete__icon"></div>
+ 							</a>
+ 							<form class="portfolio__item__edit" action="/portfolio/<%= project._id %>?_method=DELETE" method="POST">
+ 								<button class="portfolio__item__edit__icon"></button>
+ 							</form>
+ 							<% } %>
+
+ 							<div class="portfolio__item__info">
+ 								<div class="portfolio__item__title heading__subtitle"><%= project.name %> </div>
+ 								<div class="portfolio__item__description text text--small"><%= project.description %> </div>
+ 							</div>
+ 							<div class="portfolio__item__footer text text--tiny">
+ 								<div class="portfolio__item__likes">Likes: <%= project.likes.length %></div>
+ 								<div class="portfolio__item__views">Views: <%= project.views %></div>
+ 								<div class="portfolio__item__comments">Comments: <%= i %></div>
+ 								<% if(currentUser && project.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin)  { %> 
+
+ 								<% } %>
+ 							</div>
+ 						</li>
+ 						<%  }); %>
+ 						<li class="portfolio__item"></li>
+ 						<li class="portfolio__item"></li>
+ 					</ul>
+
+ 					<% } %>
+
+ 					<!-- Pagination start -->
+
+ 					<div class="pagination text text--small">
+ 						<% if (pages && pages > 0) { %>
+ 						<ul class="pagination__group text-center">
+ 							<% if (current == 1) { %>
+ 							<li class="disabled pagination__item"><a>First</a></li>
+ 							<% } else { %>
+ 							<li class="pagination__item"><a href="/portfolio<%if(search){%>?search=<%=search%><%}%><%if(category){%>?category=<%=category%><%}%><%if(year){%>?year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>">First</a>
+ 							</li>
+ 							<% } %>
+
+ 							<% if (current == 1) { %>
+ 							<li class="disabled pagination__item"><a>«</a></li>
+ 							<% } else { %>
+ 							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>">«</a>
+ 							</li>
+ 							<% } %>
+
+ 							<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+ 							<% if (i !== 1) { %>
+ 							<li class="pagination__item disabled"><a>...</a></li>
+ 							<% } %>
+ 							<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+ 							<% if (i == current) { %>
+ 							<li class="pagination__item active"><a><%= i %></a></li>
+ 							<% } else { %>
+ 							<li class="pagination__item">
+ 								<a href="/portfolio?page=<%=i%><%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>"><%= i %>
+ 								</a>
+ 							</li> <% } %>
+ 							<% if (i == Number(current) + 4 && i < pages) { %>
+ 							<li class="pagination__item disabled"><a>...</a></li>
+ 							<% } %>
+ 							<% } %>
+
+ 							<% if (current == pages) { %>
+ 							<li class="pagination__item disabled"><a>»</a></li>
+ 							<% } else { %>
+ 							<li class="pagination__item"><a href="/portfolio?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>">»</a>
+ 							</li>
+ 							<% } %>
+
+ 							<% if (current == pages) { %>
+ 							<li class="pagination__item disabled"><a>Last</a></li>
+ 							<% } else { %>
+ 							<li class="pagination__item"><a href="/portfolio?page=<%=pages%><%if(search){%>&search=<%=search%><%}%><%if(category){%>&category=<%=category%><%}%><%if(year){%>&year=<%=year%><%}%><%if(views){%>&views=<%=views%><%}%><%if(color){%>&color=<%=color%><%}%><%if(type){%>&type=<%=type%><%}%>">Last</a>
+ 							</li>
+ 							<% } %>
+ 						</ul>
+ 						<% } %>
+ 					</div>
+
+ 					<!-- Pagination end -->
+
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </section>
+
+
+ <% include ../partials/footer %>

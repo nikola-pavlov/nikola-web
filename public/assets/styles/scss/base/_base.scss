@@ -1,0 +1,57 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	// This defines how much is 1 rem
+	font-size: 62.5%; // 1 rem = 10px, 10/16 = 62.5%
+
+	
+	@include respond(1000) {
+		font-size: 60%; // 1 rem = 9px , 8/16 = 56.25%
+	}
+
+	@include respond(800) {
+		font-size: 56.25%; // 1 rem = 9px , 8/16 = 56.25%
+	}
+
+	@include respond(500) { // 1 rem = 8px , 8/16 = 50%
+		font-size: 52%;
+	}
+
+	// @include respond(500) { // 1 rem = 7px , 7/16 = 43.75%
+	// 	font-size: 43.75%;
+	// }
+
+	@include respond(Huge) {
+		font-size: 75%; // 1rem = 12px , 12/16 = 75%
+	}
+}
+
+body {
+	box-sizing: border-box;
+	background: var(--color-whitish);
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	color: var(--color-one);
+	font-weight: 560;
+	transition: color .2s ease-out;
+}
+
+a:link.text--white, a:visited.text--white {
+	color: white;
+}
+
+a:hover, a:active {
+		color: var(--color-three);
+}
+
+a:hover.text--white, a:active.text--white {
+	color: var(--color-three);
+}

@@ -1,0 +1,37 @@
+ <% var pageTitle = " Add new reply for " + project.name + " | Nikola Pavlov Portfolio" %> 
+ <% var pageDescription = "Reply form for leaving your feedback and suggestions. Here you can add a reply for " + project.name %>
+ <% var pageKeywords = "Comment, Form, Suggestion, Feedback, Reply, Ideas, Post comment, Project, Comment form" %> 
+
+ <% include ../partials/header %>
+
+ <section class="section section--newcomment">
+ 	<div class="wrapper">
+ 		<div class="reset__reset">
+ 			<div class="reset__reset__image newcomment"></div>
+ 			<h2 class="reset__reset__title">Post your reply for project "<strong><%= project.name %></strong>"</h2>
+ 			<div class="reset__reset__info">
+ 				Your are posting as <a href="/users/<%= comment.author.id %>"><strong><%= currentUser.username %></strong>.</a>
+ 				<a href="/logout">
+ 					Log Out?
+ 				</a>
+ 			</div>
+ 			<div class="reset__reset__info">
+ 				<p>You are replying to the following comment from <a href="/users/<%= comment.author.id %>"><%= comment.author.username %></a>:</p>
+ 				<p><em>"<%= comment.text %>"</em></p>
+ 			</div>
+
+ 				<form action="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies" method="POST">
+ 					<div class="reset__reset__container">
+ 						<div class="main-contact-form__form__group">
+ 							<textarea rows="4" class="main-contact-form__form__textarea" name="reply[text]" placeholder="Your Reply" required></textarea>
+ 							<label class="main-contact-form__form__label">Your Reply</label>
+ 						</div>
+ 						<button class="btn btn--main reset__forgot__btn">Post Reply</button>
+ 					</div>
+ 				</form>
+ 				<p class="reset__reset__text">The reply your post will be visible <strong>publicly</strong>.</p>
+ 			</div>
+ 		</div>
+ 	</section>
+
+ 	<% include ../partials/footer %>

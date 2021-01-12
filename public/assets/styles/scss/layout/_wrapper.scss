@@ -1,0 +1,11 @@
+.wrapper {
+	max-width: var(--grid-width);
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+
+	@include respond(1200) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}

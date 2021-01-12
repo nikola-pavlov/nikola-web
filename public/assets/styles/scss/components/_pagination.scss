@@ -1,0 +1,52 @@
+.pagination {
+
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+
+	&__group {
+		list-style: none;
+		border: 1px solid #eee;
+
+		display: flex;
+		flex-wrap: wrap;
+
+	}
+
+	&__item {
+		// height: 5rem;
+		// width: 5rem;
+		flex: 1;
+		transition: all .3s ease-out;
+
+		&:hover {
+			background: var(--color-three);
+		}
+
+		&:not(:last-child) {
+			border-right: 1px solid #eee;
+		}
+	}
+
+	&__item a {
+		display: block;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		line-height: 3;
+
+		&:hover {
+			color: inherit;
+		}
+	}
+
+	&__item.active {
+		background-color: var(--color-one);
+		color: var(--color-whitish);
+		transition: all .3s ease-out;
+	}
+
+	&__item.disabled {
+		background-color: var(--color-grey-light);
+	}
+}

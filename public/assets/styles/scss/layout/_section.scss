@@ -1,0 +1,188 @@
+.section {
+	padding: 12rem 0;
+
+	@include respond(XLarge) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&--logo-designer {
+		// height: 50rem;
+
+		@include respond(Small) {
+			// height: 85rem;
+		}
+	}
+
+	&--mobile-ready {
+
+	}
+
+	&-test {
+		padding: 5rem 0;
+	}
+
+	&--content-branding {
+		background-color: var(--color-grey-light);
+	}
+
+	&--footer {
+		padding: 6rem 0 2rem 0;
+	}
+
+	&--skills {
+		// padding-top: 0;
+	}
+
+	&--latest-work {
+		// height: 80rem;
+		padding-bottom: 2px;
+		background-color: var(--color-whitish);
+	}
+
+	&--business-card {
+		background: #edf2f4;
+		background-image: radial-gradient(var(--color-whitish), var(--color-grey-light));
+	}
+
+	&--inbox {
+		height: 200rem;
+	}
+
+	&--contact-page {
+		position: relative;
+		background: var(--color-light-grey);
+		background-size: cover;
+		padding-top: 15rem;
+		@include respond(600) {
+			background: var(--color-whitish);
+			padding-top: 4rem;
+		}
+		z-index: 1;
+
+		&::after {
+			content: "";
+			position: absolute;
+			background: rgba(255,255,255,.5);
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+	}
+
+	&--login-page {
+		position: relative;
+		padding-top: 21rem;
+		background: url("../../images/login.jpg");
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+
+		@include respond(800) {
+			padding-bottom: 10rem;
+		}
+	}
+
+	&--register-page {
+		position: relative;
+		padding-top: 21rem;
+		background: url("../../images/register.jpg");
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+	}
+
+	&--testimonials {
+		padding-top: 10rem;
+		background: var(--color-light-grey);
+	}
+
+	&--digital-services {
+		background-color: var(--color-two);
+	}
+
+	&--about-me {
+		background-color: #eaedf2;
+	}
+
+	&--counting {
+		// background-image: linear-gradient(to right bottom, var(--color-one), var(--color-two));
+		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, .9)), url(../../images/projectCount.jpg);
+		background-attachment: fixed;
+	}
+
+	&--pro-skills {
+		background-image: linear-gradient(to right bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url(../../images/1980x1080.png);
+		background-size: cover;
+		// height: 70rem;
+		background-position: top;
+		background-attachment: fixed;
+	}
+
+	&--info {
+		padding: 0;
+	}
+
+	&--blogs {
+		
+	}
+
+	&--aboutme {
+		// background-color: yellow;
+		min-height: 100vh;
+		padding-top: 20rem;
+	}
+
+	&--profile {
+		
+	}
+
+	&--cv {
+		min-height: 100vh;
+		padding-top: 20rem;
+		background-color: var(--color-light-grey);
+
+		@include respond(1200) {
+			min-height: auto;
+			padding: 15rem 0 0 0;
+		}
+	}
+
+	&--portfolio {
+		min-height: 100vh;
+		padding-top: 22rem;
+		background: var(--color-light-grey);
+	}
+
+	&--project {
+		padding-top: 15rem;
+		min-height: 100vh;
+		background: var(--color-light-grey);
+	}
+
+	&--profile {
+		padding-top: 15rem;
+		min-height: 100vh;
+		background: var(--color-two);
+	}
+
+	&--forgot {
+		padding-top: 15rem;
+		min-height: 100vh;
+		background: var(--color-three);
+	}
+
+	&--reset {
+		padding-top: 15rem;
+		min-height: 100vh;
+		background: var(--color-three);
+	}
+
+	&--newcomment {
+		padding-top: 20rem;
+		min-height: 100vh;
+		background: var(--color-whitish);
+	}
+}

@@ -1,0 +1,16 @@
+/* Do not edit modules/_sprite directly because it is generated automaticaly by Gulp within templates/sprite.css file */
+
+{{#shapes}}
+
+{{#first}}
+.icon {
+	-webkit-mask-image: url("/assets/images/sprites/{{{sprite}}}");
+	-webkit-mask-repeat: no-repeat;
+}
+{{/first}}
+
+.icon--{{base}} {
+	-webkit-mask-position: {{position.relative.xy}};
+}
+
+{{/shapes}}

@@ -1,0 +1,36 @@
+<% var pageTitle = "Sign into your account | Nikola Pavlov" %> 
+<% var pageDescription = "This is the login page for Nikola Pavlov webpage. Here you can sign into your account." %> 
+<% var pageKeywords = "Nikola Pavlov, Login, Account, Register, Sign up, Design, Portfolio, Sign in" %> 
+
+ <% include ../partials/header %>
+
+ <section class="section section--login-page">
+ 	<div class="wrapper">
+ 		<div class="login text">
+ 			<div class="login__login-side">
+ 				<div class="login__login-side__container">
+ 					<h1 class="heading">Sign In.</h1>
+ 					<p class="login__login-side__desc u-margin-bottom-xsmall">Sign in for more personalised experience on this page</p>
+
+ 					<form action="/login" method="POST">
+ 						<div class="main-contact-form__form__group--2">
+ 							<input class="main-contact-form__form__input" type="text" name="username" placeholder="Username" required>
+ 							<label for="contact-name" class="main-contact-form__form__label">Your Username</label>
+ 						</div>
+
+ 						<div class="main-contact-form__form__group--2">
+ 							<input class="main-contact-form__form__input" type="password" name="password" placeholder="Password" required>
+ 							<label for="contact-name" class="main-contact-form__form__label">Your Password</label>
+ 						</div>
+ 						<button class="btn btn--main about-me__btn">Sign In</button>
+ 					</form>
+ 					<p class="login__login-side__sign-up u-margin-top-xsmall">Dont have an account? 
+ 						<span class="strong--color-one"><a href="/register">Sign Up Now</a></span>
+ 					</p>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </section>
+
+ <% include ../partials/footer %>

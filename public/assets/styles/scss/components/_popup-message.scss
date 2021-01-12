@@ -1,0 +1,24 @@
+.popup-message {
+	background: var(--color-four);
+	border-radius: .5rem;
+	padding: 1rem 2rem;
+	position: fixed;
+	bottom: 0rem;
+	@include center-horizontaly;
+	z-index: 10;
+	opacity: 0;
+	visibility: hidden;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&--is-visible {
+		animation: popupMessage 2s ease-out 1 both;
+	}
+
+	&__text {
+		font-size: 1.6rem;
+		color: var(--color-whitish);
+	}
+}

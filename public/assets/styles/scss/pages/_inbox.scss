@@ -1,0 +1,162 @@
+.inbox {
+	width: 100%;
+	position: relative;
+	height: 120rem;
+	// background: red;
+	font-size: 1.4rem;
+	color: var(--color-grey-main);
+
+	&__container {
+		@include clearfix;
+	}
+
+	&__control-panel {
+		// background: yellow;
+		float: left;
+		width: 25%;
+		height: 120rem;
+	}
+
+	&__message-panel {
+		// background: green;
+		width: 75%;
+		float: left;
+		height: 120rem;
+	}
+
+	&__message {
+		background-color: var(--color-whitish);
+		border-bottom: 1px solid #eee;
+		position: relative;
+		@include clearfix;
+		height: 8rem;
+
+		&__icon {
+			position: relative;
+			background: #ccc;
+			background: url(../../images/envelope.svg);
+			background-size: 2.5rem;
+			background-repeat: no-repeat;
+			background-position: left;
+			position: relative;
+			width: 10%;
+			height: 3rem;
+			float: left;
+			@include center-verticaly;
+		}
+
+		&__name {
+			position: relative;
+			width: 20%;
+			float: left;
+			@include center-verticaly;
+
+			&:before {
+				content: "";
+				position: absolute;
+				@include center-verticaly;
+				left: -3rem;
+				background: url(../../images/man-user--color-one.svg);
+				background-size: cover;
+				width: 1.5rem;
+				height: 1.5rem;
+				float: left;
+				margin: 0 1rem;
+			}
+		}
+
+		&__email {
+			position: relative;
+			width: 25%;
+			float: left;
+			@include center-verticaly;
+
+			&:before {
+				content: "";
+				position: absolute;
+				@include center-verticaly;
+				left: -3rem;
+				background: url(../../images/envelope--color-one.svg);
+				background-size: cover;
+				width: 1.5rem;
+				height: 1.5rem;
+				float: left;
+				margin: 0 1rem;
+			}
+		}
+
+		&__recieve-date {
+			position: relative;
+			width: 15%;
+			float: left;
+			@include center-verticaly;
+
+			&:before {
+				content: "";
+				position: absolute;
+				@include center-verticaly;
+				left: -3rem;
+				background: url(../../images/calendar--color-one.svg);
+				background-size: cover;
+				width: 1.5rem;
+				height: 1.5rem;
+				float: left;
+				margin: 0 1rem;
+			}
+		}
+
+		&__message-preview {
+			position: relative;
+			width: 20%;
+			float: left;
+			@include center-verticaly;
+
+			&:before {
+				content: "";
+				position: absolute;
+				@include center-verticaly;
+				left: -3rem;
+				background: url(../../images/eye--color-one.svg);
+				background-size: cover;
+				width: 1.5rem;
+				height: 1.5rem;
+				float: left;
+				margin: 0 1rem;
+			}
+		}
+
+		&__view-more {
+			position: relative;
+			width: 5%;
+			float: right;
+			@include center-verticaly;
+			cursor: pointer;
+		}
+	}
+
+	&__open-message {
+		background: var(--color-grey-light);
+		max-height: 0;
+		transition: max-height .3s ease-out;
+		visibility: hidden;
+		opacity: 0;
+
+		&--is-visible {
+			max-height: 50rem;
+			visibility: visible;
+			opacity: 1;
+		}
+
+		&--is-read {
+			background: red;
+		}
+
+		&__container {
+			padding: 2rem 4rem;
+		}
+
+		&__message {
+
+		}
+	}
+}

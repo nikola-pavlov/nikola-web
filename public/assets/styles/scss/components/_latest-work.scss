@@ -1,0 +1,253 @@
+.latest-work {
+
+	font-size: 1.6rem;
+	color: var(--color-text);
+	
+	&__showcase {
+		list-style: none;
+		width: 100%;
+		@include clearfix;
+
+		& li {
+			position: relative;
+			display: block;
+			float: left;
+			width: 25%;
+			padding: 2px 0 2px 2px;
+			perspective: 70rem;
+			// border: 5px solid var(--color-whitish);
+
+			@include respond(1200) {
+				width: 50%;
+			}
+
+			@include respond(700) {
+				width: 100%;
+			}
+
+			&:not(:last-child) {
+				padding: 2px;
+			}
+
+			&:first-child {
+				padding: 2px 2px 2px 4px;
+			}
+
+			&:last-child {
+				padding: 2px 4px 2px 2px;
+			}
+		}
+	}
+
+	&__switch-btn {
+		position: absolute;
+		z-index: 15;
+		height: 3.5rem;
+		width: 3.5rem;
+		top: 2rem;
+		right: 2rem;
+		background-color: var(--color-whitish);
+		transition: all .3s ease-out;
+		border-radius: 50%;
+		
+		&__icon {
+			-webkit-mask-size: 21rem;
+			height: 3.5rem !important;
+			width: 3.5rem !important;
+			background-color: var(--color-two);
+		}
+
+		&__icon2 {
+			height: 3.5rem !important;
+			width: 3.5rem !important;
+			background-color: var(--color-two);
+			-webkit-mask-size: 21rem;
+		}
+	}
+
+	&__switch-btn2 {
+		position: absolute;
+		z-index: 15;
+		height: 3.5rem;
+		width: 3.5rem;
+		top: 2rem;
+		right: 2rem;
+		border: 1px solid #ccc;
+		background-color: var(--color-whitish);
+		transition: all .3s ease-out;
+		border-radius: 50%;
+	}
+
+	&__figure {
+		overflow: hidden;
+		position: relative;
+		// border: .5rem solid white;
+		transition: all 1s ease-out;
+		backface-visibility: hidden;
+		transform: rotateY(0);
+		cursor: pointer;
+
+		&--is-visible {
+			transform: rotateY(-180deg);
+		}
+
+		&:after {
+			content:"";
+			position: absolute;
+			// background-color: var(--color-black);
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			opacity: .3;
+			transition: all .3s ease-out;
+		}
+
+		&:hover:after {
+			opacity: 0;
+		}
+
+		&:hover img {
+			transform: scale(1.2);
+		}
+
+		& img {
+			width: 100%;
+			transition: all .7s ease-out;
+			height: 32rem;
+			object-fit: cover;
+		}
+
+		& img:hover {
+			transform: scale(1.1);
+		}
+
+		&__caption {
+			// background: var(--color-whitish);
+			width: 100%;
+			height: 100%;
+			bottom: -2rem;
+			left: 0;
+			bottom: 0;
+			transform: scale(.5);
+			opacity: 0;
+			position: absolute;
+			z-index: 10;
+			transition: all .3s ease-out;
+		}
+
+		&:hover &__caption {
+			background-image: linear-gradient(to bottom, rgba(48, 71, 94, .8), rgba(34, 40, 49, .2));
+			// height: 100%;
+			transform: scale(1);
+			opacity: 1;
+		}
+
+		&__container {
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			height: 8rem;
+			z-index: 15;
+			color: var(--color-whitish);
+			// padding: 1rem 2rem;
+		}
+
+		&__title {
+			display: inline-block;
+			position: relative;
+			top: 50%;
+			left: 2.5rem;
+			width: 30rem;
+			transform: translateY(-50%) scale(0);
+			transition: all .4s ease-out;
+			opacity: 0;
+			font-size: 1.8rem;
+			text-transform: uppercase;
+			transform-origin: 20% 40%;
+		}
+
+		&__comments {
+			display: inline-block;
+			position: relative;
+			top: 50%;
+			// width: 20%;
+			left: calc(100% - 36rem);
+			transform: translateY(-50%) scale(0);
+			transition: all .4s ease-out;
+			opacity: 0;
+			width: 5rem;
+			transform-origin: 20% 40%;
+		}
+
+		&:hover &__title {
+			transform: translateY(-50%) scale(1);
+			opacity: 1;
+		}
+
+		&:hover &__comments {
+			transform: translateY(-50%) scale(1);
+			opacity: 1;
+		}
+	}
+
+	&__back-side {
+		position: absolute;
+		background-color: var(--color-light-grey);
+		top: 2px;
+		// border: 1px solid #ccc;
+		// left: 2px;
+		width: calc(100% - 4px);
+		height: calc(100% - 4px);
+		// width: 100%;
+		// height: 100%;
+		transition: all .8s ease-out;
+		transform: rotateY(180deg);
+		backface-visibility: hidden;
+		cursor: pointer;
+		// margin-left: 4px;
+
+		
+		&--is-visible {
+			transform: rotateY(0);
+		}
+
+		&__container {
+			padding: 4rem;
+		}
+
+		&__title {
+			font-size: 2rem;
+			text-align: center;
+			padding-bottom: 2rem;
+		}
+
+		&__description {
+			padding-bottom: 1rem;
+		}
+
+		&__technologies {
+			padding-bottom: 1rem;
+		}
+
+		&__date-created {
+			position: absolute;
+			bottom: 2rem;
+			left: 2rem;
+		}
+
+		&__btn {
+			position: absolute;
+			bottom: 2rem;
+			right: 2rem;
+		}
+
+		&--first {
+			width: calc(100% - 6px);
+		}
+
+		&--last {
+			width: calc(100% - 6px);
+		}
+	}
+}

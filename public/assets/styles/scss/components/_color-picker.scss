@@ -1,0 +1,64 @@
+.color-picker {
+
+	&__group {
+		display: flex;
+		padding: 1rem;
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		flex: 0 0 3.1rem;
+		height: 3.1rem;
+		border-radius: 5px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&.active {
+			background: var(--color-three);
+			border: 1px solid var(--color-grey-main) !important;
+		}
+
+		&:hover {
+			background: var(--color-three);
+			// border: 1px solid var(--color-grey-light);
+		}
+
+		&__color {
+			flex: 0 0 2.5rem;
+			height: 2.5rem;
+			border-radius: 5px;
+			background: white;
+
+			&.all {
+				background: var(--color-grey);
+				height: 3.1rem !important;
+				width: 3.1rem !important;
+				-webkit-mask-size: 15rem;
+			};
+
+
+			&.grey {background-color: grey};
+			&.red {background-color: red};
+			&.maroon {background-color: maroon};
+			&.pink {background-color: pink};
+			&.brown {background-color: brown};
+			&.orange {background-color: orange};
+			&.apricot {background-color: #ffd8b1};
+			&.olive {background-color: olive};
+			&.yellow {background-color: yellow};
+			&.beige {background-color: beige};
+			&.lime {background-color: lime};
+			&.green {background-color: green};
+			&.mint {background-color: #aaffc3};
+			&.teal {background-color: teal};
+			&.cyan {background-color: cyan};
+			&.navy {background-color: navy};
+			&.blue {background-color: blue};
+			&.purple {background-color: purple};
+			&.lavender {background-color: #e6beff};
+			&.magenta {background-color: magenta};
+		}
+	}
+}

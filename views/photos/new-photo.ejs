@@ -1,0 +1,19 @@
+<% var pageTitle = "New photo for gallery | Nikola Pavlov" %> 
+<% var pageDescription = "This page is for adding a new photo to the gallery" %> 
+<% var pageKeywords = "Portfolio, Nikola Pavlov, Pavlov, Projects, Gallery, Photos, Work, Designer, Developer" %> 
+
+<% include ../partials/header %>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+<h1>Create new photo</h1>
+
+<form action="/portfolio/<%= project._id %>/photos/" method="POST">
+	<input type="text" name="photo[photo]" placeholder="text">
+	<input type="text" name="photo[order]" placeholder="order">
+	<button>Submit</button>
+</form>
+
+<a href="/portfolio">View Portfolio</a>
+
+<% include ../partials/footer %>

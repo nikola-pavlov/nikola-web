@@ -1,0 +1,48 @@
+.nav-top {
+	background: var(--color-one);
+	// padding: .5rem 0;
+	font-size: 1.6rem;
+	z-index: 10;
+	transition: all .3s ease-out;
+	height: 4rem;
+	color: var(--color-whitish);
+
+	display: flex;
+	align-items: center;
+
+	ul {
+		float: right;
+		position: relative;
+	}
+
+	& ul li {
+		display: inline-block;
+
+		&:not(:last-child) {
+			padding-right: 3rem;
+		}
+	}
+
+	&__item__language {
+		cursor: pointer;
+		height: 2rem;
+
+		&__icon {
+			display: inline-block;
+			position: relative;
+			background: url(../../images/united-kingdom.svg);
+			height: 2.5rem;
+			width: 2.5rem;
+			top: 0.7rem;
+		}
+	}
+
+	&--invisible {
+		height: 0;
+		opacity: 0;
+	}
+
+	&-ul--invisible {
+		display: none;
+	}
+}

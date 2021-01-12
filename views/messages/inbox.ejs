@@ -1,0 +1,56 @@
+<% var pageTitle = "Inbox | Nikola Pavlov" %> 
+<% var pageDescription = "This is the inbox page for recieving messages." %> 
+<% var pageKeywords = "Nikola Pavlov, Inbox, Message, Contact, Text, Contact me, Portfolio, Sign in" %> 
+
+ <% include ../partials/header %>
+
+
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+ <p>test</p>
+
+
+ <section class="section section--inbox">
+ 	<div class="wrapper">
+ 		<div class="inbox">
+ 			<div class="inbox__container">
+ 				<div class="inbox__control-panel">Control Panel</div>
+ 				<div class="inbox__message-panel">
+ 					Message Panel
+ 					<% messages.forEach(function(message){ %>
+ 					<div class="inbox__message">
+ 						<div class="inbox__message__icon"> </div>
+ 						<div class="inbox__message__name">
+ 							<p class=""><%= message.firstName %>  <%= message.lastName %></p>
+ 						</div>
+ 						<div class="inbox__message__email"><p class=""> <a href="mailto:<%= message.email %>"> <%= message.email %> </a> </p></div>
+ 						<div class="inbox__message__recieve-date"><p class=""><%= message.sendAt.getDate() + "." +  message.sendAt.getMonth() + "." +message.sendAt.getFullYear() %></p></div>
+ 						<div class="inbox__message__message-preview"><p class=""><%= message.message.substring(0, 30)+"..." %></p></div>
+ 						<div class="inbox__message__view-more">View</div>
+ 					</div>
+ 					<div class="inbox__open-message">
+ 						<div class="inbox__open-message__container">
+ 							<div class="inbox__open-message__message">
+ 								<%= message.message %>
+ 							</div>	
+ 							<div class="inbox__open-message__message">
+ 								<%= message.preview %>
+ 							</div>	
+ 						</div>
+ 					</div>
+ 					<% }); %>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </section>
+
+
+ <% include ../partials/footer %>

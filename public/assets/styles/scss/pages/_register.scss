@@ -1,0 +1,129 @@
+.register {
+	&__heading {
+		text-align: center;
+		width: 100%;
+	}
+
+	&__form {
+		background-color: white;
+		padding: 3rem;
+		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+		display: flex;
+	}
+
+	&__main {
+		flex: 0 0 70%;
+
+		&__fields {
+			padding: 5rem;
+			border: 5px solid var(--color-three);
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		&__upload {
+			padding-left: 5rem;
+
+			&__group {
+				position: relative;
+			}
+
+			&__image {
+				width: 100%;
+				padding-top: 100%;
+				// background-image: url("http://oakclifffilmfestival.com/assets/placeholder-user.png");
+				// background-size: cover;
+				background-color: var(--color-light-grey);
+
+				&--edit {
+					width: 100%;
+					padding-top: 100%;
+					background: var(--color-light-grey);
+					background-size: cover;
+					position: relative;
+
+					& img {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+					}
+				}
+
+				&__input {
+					font-family: inherit;
+					background-color: var(--color-two);
+					color: var(--color-whitish);
+					height: 4rem;
+					padding: 9px 12px;
+					width: 100%;
+				}
+
+				&__label {
+					position: relative;
+					font-family: inherit;
+					cursor: pointer;
+					transition: all 0.3s ease-out;
+					padding: 1rem;
+					background: var(--color-one);
+					color: var(--color-whitish);
+					position: absolute;
+					width: 8.7rem;
+					height: 4rem;
+					top: 0;
+					left: 0;
+					padding: 9px 0;
+					text-align: center;
+				}
+
+				&__label:hover {
+				}
+			}
+
+			&__text:first-of-type {
+				margin-top: 5rem;
+			}
+			&__text {
+				margin-top: 1rem;
+				color: var(--color-grey-main);
+			}
+
+			&__footer {
+				flex: 0 0 100%;
+			}
+
+			&__btn {
+				width: 100%;
+			}
+
+			&__signup {
+				text-align: center;
+				flex: 0 0 100%;
+			}
+		}
+
+		&__info {
+			text-align: center;
+			margin-bottom: 5rem;
+		}
+	}
+
+	&__radio {
+		&__group {
+
+			margin: 0 auto;
+
+			& label {
+				margin-right: 2rem;
+			}
+		}
+	}
+}
+
+.register__radio__visibility {
+	margin-left: 0 !important;
+	text-align: center;
+	flex: 0 0 100%;
+	margin-bottom: 3rem;
+}

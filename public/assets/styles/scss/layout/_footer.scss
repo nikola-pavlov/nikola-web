@@ -1,0 +1,148 @@
+.site-footer {
+	color: var(--color-text);
+
+	&__item-content {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 2rem;
+
+		@include respond(800) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__item {
+
+		@include respond(800) {
+			flex: 0 0 50%;
+			text-align: center;
+		}
+
+		@include respond(500) {
+			flex: 0 0 100%;
+		}
+
+		&:nth-child(1),
+		&:nth-child(2) {
+
+			@include respond(800) {
+				margin-bottom: 5rem;
+			}
+		}
+
+		@include respond(500) {
+			margin-bottom: 5rem;
+		}
+
+		&__title {
+			height: 5rem;
+		}
+
+		&__list {
+			ul {
+				list-style: none;
+			}
+
+			ul li:not(:last-child) {
+				padding-bottom: 1rem;
+			}
+		}
+	}
+
+	&__bottom {
+		border-top: 1px solid #eee;
+		padding-top: 2rem;
+
+		&__content {
+			display: flex;
+			align-items: center;
+
+			@include respond(800) {
+				flex-direction: column;
+			}
+
+			&--left {
+				display: flex;
+				align-items: center;
+				@include respond(800) {
+					flex-direction: column;
+				}
+			}
+
+			&--right {
+				display: flex;
+				align-items: center;
+				margin-left: auto;
+				@include respond(800) {
+					flex-direction: column;
+					margin-left: 0;
+				}
+			}
+		}
+
+		&__logo {
+			width: 4rem;
+			height: 4rem;
+			// background: yellow;
+			margin-right: 2.5rem;
+			position: relative;
+
+			&__img {
+				width: 5rem !important;
+				height: 5rem !important;
+				-webkit-mask-size: 38rem;
+				background: var(--color-one);
+			}
+		}
+
+		&__items {
+			& ul {
+				display: flex;
+				list-style: none;
+			}
+
+			& ul li {
+				margin: 0 1rem;
+			}
+
+			@include respond(800) {
+				margin-bottom: 2rem;
+			}
+		}
+
+		&__copyright {
+			@include respond(800) {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+
+	&__social-media {
+		display: flex;
+		align-items: center;
+		margin-left: 3rem;
+
+		&__item {
+			padding-left: 2rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			&__icon {
+				width: 3rem;
+				height: 3rem;
+				background-color: var(--color-one);
+				-webkit-mask-size: 21rem;
+
+				&--instagram {
+				}
+
+				&--linkedin {
+				}
+			}
+
+			&__text {
+			}
+		}
+	}
+}

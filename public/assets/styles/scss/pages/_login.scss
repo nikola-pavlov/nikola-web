@@ -1,0 +1,33 @@
+.login {
+	box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+	border-radius: 2rem;
+	overflow: hidden;
+	display: flex;
+	text-align: center;
+	max-width: 60rem;
+	margin: 0 auto;
+
+
+	&__login-side {
+		background: var(--color-whitish);
+		border-radius: 2rem 0 0 2rem;
+		flex: 0 0 100%;
+
+
+		&__container {
+			padding: 7rem;
+			@include respond(1000) {
+				padding: 5rem;
+			}
+		}
+
+		&__desc {
+			text-align: center;
+			color: var(--color-grey);
+		}
+
+		&__sign-up {
+			text-align: center;
+		}
+	}
+}

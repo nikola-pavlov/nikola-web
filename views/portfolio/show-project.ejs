@@ -1,0 +1,336 @@
+ <% var pageTitle = project.name + " Project | Nikola Pavlov Portfolio" %> 
+ <% var pageDescription = project.description %>
+ <% var pageKeywords = "CV, Portfolio, Designer, Web Design, Graphic Design, Logo, Nikola Pavlov, Design, Developer, Project" %> 
+
+ <% include ../partials/header %>
+
+ <section class="section section--project">
+ 	<div class="project">
+ 		<div class="project__container">
+ 			<div class="project__main">
+ 				<div class="gallery">
+ 					<div class="gallery__main">
+ 						
+
+ 						
+ 						<% 	var sortedPhotos = project.photos.sort((a,b)=> a.order - b.order || b.order - a.order ) %>
+
+
+
+ 						<div class="owl-carousel gallery__carousel">
+ 							<% if(project.photos.length > 0) {%>
+ 							<% sortedPhotos.forEach(function(photo){ %>
+ 							<% var photoLink = photo.photo; %>
+ 							<% photoNoExtension = photoLink.substring(0, photoLink.length - 4); %>
+ 							<div class="item">
+ 								<picture>
+ 									<source srcset="<%= photoNoExtension + "-small.jpg"%>" media="(max-width: 500px)">
+ 										<source srcset="<%= photoNoExtension + ".jpg"%>" media="(max-width: 800px)">
+ 											<img src="<%= photoNoExtension + ".jpg"%>" alt="Project image <%= project.photos.length %>">
+ 										</picture>
+ 										<% if(currentUser && currentUser.isAdmin) { %>
+ 										<div class="gallery__main__btn new">
+ 											<div class="gallery__main__btn__img icon icon--plus"></div>
+ 											<a href="/portfolio/<%= project._id %>/photos/new"></a>
+ 										</div>
+ 										<div class="gallery__main__btn edit">
+ 											<div class="gallery__main__btn__img icon icon--pencil">
+ 												<a href="/portfolio/<%= project._id %>/photos/<%= photo._id %>/edit"></a>
+ 											</div>
+ 										</div>
+ 										<form class="gallery__main__btn delete" action="/portfolio/<%= project._id %>/photos/<%= photo._id %>?_method=DELETE" method="POST">
+ 											<div class="gallery__main__btn__img icon icon--bin">
+ 												<input type="submit" value="">
+ 											</div>
+ 										</form>
+ 										<% } %>
+ 									</div>
+ 									<% }); %>	
+
+ 									<% } else { %>
+
+ 									<div class="item">
+ 										<img src="/assets/images/placeholder-image.png" alt="Project image">
+ 										<% if(currentUser && currentUser.isAdmin) { %>
+ 										<p class="gallery__main__btn new"><a  href="/portfolio/<%= project._id %>/photos/new"></a></p>
+ 										<% } %>
+ 									</div>
+
+ 									<% } %>
+ 								</div>
+
+ 								<div class="gallery__bookmarks">
+ 									<ul class="gallery__bookmarks__group">
+ 										<% project.photos.forEach(function(photo){ %>
+ 										<li class="active" data="0">
+ 											<img src="<%= photo.photo %>" alt="Project photo thumbnail">
+ 										</li>
+ 										<% }); %>
+ 									</ul>
+ 								</div>
+ 							</div>
+ 						</div>
+
+ 						<div class="project__main__counter">
+ 							<div class="project__main__counter__likes">
+ 								<form action="/portfolio/<%= project._id %>/like" method="POST">
+ 									<div class="btn-group">
+ 										<% if (currentUser && project.likes.some(function (like) {
+ 											return like.equals(currentUser._id)
+ 										})) { %>
+ 										<button class="likes__btn likes__btn--liked icon icon--heart-fill"></button>
+ 										<% } else { %>
+ 										<button class="likes__btn likes__btn--unliked icon icon--heart-outline"></button>
+ 										<% } %>
+ 									</div>
+ 								</form>
+ 								<div class="likes__count"><%= project.likes.length %> likes </div>
+ 							</div>
+
+ 							<div class="project__main__counter__views">
+ 								<div class="project__main__counter__views__icon icon icon--eye"></div>
+ 								<div class="project__main__counter__views__number"><%= project.views %> views</div>
+ 							</div>
+ 							<div class="project__main__counter__comments">
+ 								<div class="project__main__counter__comments__icon icon icon--comment"></div>
+ 								<div class="project__main__counter__comments__number">
+ 									<% var commentCount = 0; %>
+ 									<% var totalCount = 0;%>
+ 									<% project.comments.forEach(function(comment){ %>
+ 									<% commentCount++ %>
+ 									<% var replyCount = 0; %>
+ 									<% reply.forEach(function(reply){ %>
+ 									<% replyCount++ %>
+ 									<% totalCount = commentCount + replyCount %>
+ 									<% }); %>
+ 									<% }); %>
+ 									<%= totalCount %>
+ 								</div>
+ 							</div>
+ 							<div class="project__main__counter__details">See who liked this project.</div>
+
+ 							<div class="likes__popup">
+ 								<div class="likes__popup__container">
+ 									<div class="likes__popup__header">
+ 										<div class="likes__popup__header__text"><%= project.name + " " %>Likes</div>
+ 										<div class="likes__popup__header__close icon icon--close"></div>
+ 									</div>
+ 									<div class="likes__popup__body">
+ 										<ul>
+ 											<% project.likes.forEach(function(like) { %>
+ 											<li class="likes__popup__body__item">
+ 												<div class="likes__popup__body__item__image">
+ 													<img src="<%= like.avatar %>" alt="user image">
+ 												</div>
+ 												<div class="likes__popup__body__item__info">
+ 													<div class="likes__popup__body__item__info__username"><%= like.username %></div>
+ 													<div class="likes__popup__body__item__info__name"><%= like.firstName +  " " + like.lastName %></div>
+ 												</div>
+ 												<div class="likes__popup__body__item__button"><a href="/users/<%= like._id %>">View Profile</a></div>
+ 											</li>
+ 											<% }); %>
+ 											<% if (project.likes.length === 0) { %>
+ 											<li class="likes__popup__body__nolikes">No likes yet.</li>
+ 											<% } %>
+ 										</ul>
+ 									</div>
+ 								</div>
+ 							</div>
+
+ 						</div>
+
+
+ 						<div class="project__main__info">
+ 							<h2 class="project__main__info__title"><%= project.name %></h2>
+ 							<p class="project__main__info__description"><%= project.description %></p>
+ 						</div>
+
+ 						<div class="project__main__comments">
+ 							<div class="comment">
+ 								<div class="comment__container">
+
+ 									<a href="/portfolio/<%= project._id %>/comments/new" class="comment__btn--new btn btn--main btn--small">Add a new comment</a>
+ 									<p class="comment__feedback">Please fell free to write a comment regarding <%= project.name %> project. Your feedback and suggestions are highly appreciated.<p>	
+
+ 										<ul class="comment__group">
+ 											<% project.comments.forEach(function(comment){ %>
+
+
+
+ 											<% var replyCount = 0; %>
+ 											<li class="comment__item">
+ 												<% user.forEach(function(user){ %>
+ 												<% if(user._id.equals(comment.author.id)){ %>
+ 												<div class="comment__image">
+ 													<img src="<%= user.image %>" alt="user image">
+ 												</div>
+
+ 												<div class="comment__info">
+ 													<!-- <%= comment._id %> -->
+ 													<div class="comment__info__user"><a href="/users/<%= user._id %>"><%= comment.author.username %></a></div>
+ 													<p class="comment__info__text"><%= comment.text %></p>
+ 													<div class="comment__info__date"><%= moment(comment.createdAt).fromNow() %></div>
+ 													<% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+
+
+ 													<% } %>
+ 												</div>
+ 												<% } %>
+ 												<% }); %>
+ 												<div class="reply">
+ 													<ul class="reply__group">
+ 														<% reply.forEach(function(reply){ %>
+ 														<% if(reply.commentID == comment._id) {%>
+ 														<% replyCount++ %>
+
+ 														<li class="reply__item">
+ 															<% user.forEach(function(user){ %>
+ 															<% if(user._id.equals(reply.author.id)){ %>
+ 															<div class="reply__image">
+ 																<img src="<%= user.image %>" alt="user image">
+ 															</div>
+
+ 															<div class="reply__info">
+ 																<div class="reply__info__user"><a href="/users/<%= user._id %>"><%= reply.author.username %></a></div>
+ 																<p class="reply__info__text"><%= reply.text %></p>
+ 																<div class="reply__info__date"><%= moment(reply.createdAt).fromNow() %></div>
+ 															</div>
+ 															<% } %>
+ 															<% }); %>
+ 															<div class="reply__footer">
+ 																<a class="comment__reply-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/new">REPLY</a>
+ 																<% if(currentUser && reply.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+ 																<a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>/edit">Edit</a>
+ 																<form class="comment__delete-btn" action="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST">
+ 																	<input type="submit" value="Delete">
+ 																</form>
+ 																<% } %>
+ 															</div>
+ 														</li>
+ 														<% } %>
+ 														<% }); %>
+ 													</ul>
+ 												</div>
+ 												<div class="reply__show__container">
+ 													<a class="comment__reply-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/new">REPLY</a>
+ 													<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+ 													<a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/edit">Edit</a>
+ 													<form class="comment__delete-btn" action="/portfolio/<%= project._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+ 														<input type="submit" value="Delete">
+ 													</form>
+ 													<% } %>
+ 													<% if (replyCount > 0) { %>
+ 													<div class="reply__show">Show Replies</div>
+ 													<div class="reply__show__count"> <%=" (" + replyCount + ")"%></div>
+ 													<% } %>
+ 												</div>
+
+ 											</li> 
+ 											<% }); %>
+ 										</ul>
+ 									</div>
+ 								</div>
+ 							</div>
+ 						</div>
+
+
+ 						<!-- MAIN SIDE -->
+
+ 						<div class="project__side main">
+ 							<div class="project__side__info">
+ 								<h1 class="project__side__info__title"><%= project.name %></h1>
+ 								<div class="project__side__info__group">
+ 									<div class="project__side__info__group__title">More Information</div>
+ 									<div class="project__side__info__group__container">
+ 										<ul class="project__side__info__more">
+ 											<li><span class="icon1"></span>CBS International</li>
+ 											<li><span class="icon2"></span><%= project.category %></li>
+ 											<li><span class="icon2"></span><%= moment(project.createdAt).fromNow() %></li>
+ 											<li><span class="icon2"></span><a href="/users/<%= project.author.id %>"><%= project.author.username %></a></li>
+ 										</ul>
+ 									</div>
+ 								</div>
+
+ 								<div class="project__side__info__group">
+ 									<div class="project__side__info__group__title">Technology</div>
+ 									<div class="project__side__info__group__container">
+ 										<ul class="project__side__info__technology">
+ 											<% project.tech.forEach(function(project){ %>
+ 											<li> <%= project %> </li>
+ 											<% }); %>
+ 										</ul>
+ 									</div>
+ 								</div>
+
+ 								<div class="project__side__info__group">
+ 									<div class="project__side__info__group__title">Share</div>
+ 									<div class="project__side__info__group__container">
+ 										<div class="share-link">
+ 											<input class="share-link__input" type="text" id="copyClipInput" value="<%= currentURL %>"> 
+ 											<button id="copyButton" class="share-link__btn btn btn-small">Copy Link<span class="share-link__icon icon icon--clipboard"></span></button>
+ 										</div>
+ 										<div class="project__side__info__share">
+ 											<a href="https://www.facebook.com/sharer/sharer.php?u=<%= currentURL %>"><span class="fb"></span></a>
+ 											<a href="mailto:?&subject=<%= project.name %>Project&body=Visit<%= currentURL %>formoreinformationabout<%= project.name %>"><span class="mail"></span></a>
+ 											<a href="https://www.linkedin.com/shareArticle?mini=true&url=<%= currentURL %>&title=<%= project.name %>&summary=Visit<%= currentURL %>formoreinformationabout<%= project.name %>&source="><span class="linkedin"></span></a>
+ 										</div>
+ 									</div>
+ 								</div>
+
+ 								<div class="project__side__info__group">
+ 									<div class="project__side__info__group__title">Similar Projects</div>
+ 									<div class="project__side__info__group__container">
+ 										<div class="project__side__info__similar">
+ 											<% var projectCount = 0; %>
+ 											<% simPro.forEach(function(similar){ %>
+ 											<% if(!project._id.equals(similar._id)) { %>
+
+ 											<% if(projectCount < 4) { %>
+ 											<% projectCount++; %>
+ 											<a href="/portfolio/<%= similar._id %>">
+ 												<div class="project__similar">
+
+ 													<div class="project__similar__image">
+ 														<% if(similar.image) { %>
+ 														<img src="<%= similar.image %>" alt="Similar project">
+ 														<% } else { %>
+ 														<img src="/assets/images/placeholder-image.png" alt="Similar project">
+ 														<% } %>
+ 													</div>
+
+ 													<div class="project__similar__info">
+ 														<h3 class="project__similar__info__title"><%= similar.name %></h3>
+ 														<div class="project__similar__info__category"><%= similar.category %></div>
+ 													</div>
+ 												</div>
+ 											</a>
+ 											<% } %>
+
+ 											<% } %>
+ 											<% }); %>
+
+
+ 										</div>
+ 									</div>
+ 								</div>
+
+ 								<% if(currentUser && project.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+ 								<a href="/portfolio/<%= project._id %>/edit">Edit</a>
+ 								<form action="/portfolio/<%= project._id %>?_method=DELETE" method="POST">
+ 									<button>Delete</button>
+ 								</form>
+ 								<% } %>
+ 							</div>
+ 						</div>
+ 					</div>
+ 				</div>
+ 				<div class="popup-message">
+ 					<div class="popup-message__text">Copied to clipboard</div>
+ 				</div>
+
+
+
+ 			</section>
+
+
+ 			<% include ../partials/footer %>
