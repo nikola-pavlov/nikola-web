@@ -1,56 +1,128 @@
-<% var pageTitle = "Inbox | Nikola Pavlov" %> 
-<% var pageDescription = "This is the inbox page for recieving messages." %> 
-<% var pageKeywords = "Nikola Pavlov, Inbox, Message, Contact, Text, Contact me, Portfolio, Sign in" %> 
+<% var pageTitle="Inbox | Nikola Pavlov" %>
+	<% var pageDescription="This is the inbox page for recieving messages." %>
+		<% var pageKeywords="Nikola Pavlov, Inbox, Message, Contact, Text, Contact me, Portfolio, Sign in" %>
 
- <% include ../partials/header %>
+			<% include ../partials/header %>
+
+				<section class="section section--inbox">
+					<div class="inbox">
+						<div class="wrapper">
+							<div class="inbox__content">
+								<div class="inbox__messages">
+									<ul class="inbox__messages__items text text--xsmall">
+										<% messages.forEach(function(message){ %>
+											<li class="inbox__messages__item">
+												<div class="inbox__messages__item__elements">
+													<div class="inbox__messages__item__elements__icons">
+														<div class="inbox__messages__item__elements__reply">Reply</div>
+														<div class="inbox__messages__item__elements__delete">Delete</div>
+													</div>
+												</div>
+												<div class="inbox__messages__item__header">
+													<div class="inbox__messages__image" style="background-color: <%= message.color %>">
+														<div class="inbox__messages__image__letter">
+															<%= message.firstName.charAt(0).toUpperCase(); %><%= message.lastName.charAt(0).toUpperCase(); %>
+														</div>
+
+													</div>
+													<div class="inbox__messages__name"><strong>
+															<%= message.firstName %>
+																<%= message.lastName %>
+														</strong></div>
+													<div class="inbox__messages__subject">Test Message</div>
+													<div class="inbox__messages__message">
+														<%= message.message.substring(0, 30)+"..." %>
+													</div>
+													<div class="inbox__messages__date">
+														<%= message.sendAt.getDate() + "." + message.sendAt.getMonth()
+															+ "." +message.sendAt.getFullYear() %>
+													</div>
+													<!-- <div class="inbox__messages__time">11:29 PM</div> -->
+												</div>
+												<div class="inbox__messages__item__main">
+													<div class="inbox__messages__item__main__head">
+														<div class="inbox__messages__item__main__head__email">
+															&lt;<a href="mailto:<%= message.email %>">
+																<%= message.email %>
+															</a>&gt;</div>
+														<div class="inbox__messages__item__main__head__timestamp">
+															 <%= message.sendAt %> - <%=
+																	moment(message.sendAt).fromNow() %>
+														</div>
+													</div>
+													<div class="inbox__messages__item__main__content">
+														<div class="inbox__messages__item__main__content__message">
+															<%= message.message %>
+														</div>
+													</div>
+											</li>
+											<% }); %>
 
 
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
- <p>test</p>
+											<!-- Pagination start -->
+
+<div class="pagination text text--small">
+	<% if (pages && pages > 0) { %>
+	<ul class="pagination__group text-center">
+		<% if (current == 1) { %>
+		<li class="disabled pagination__item"><a>First</a></li>
+		<% } else { %>
+		<li class="pagination__item"><a href="/inbox?page=<%= Number(current) - 1 %>">First</a>
+		</li>
+		<% } %>
+
+		<% if (current == 1) { %>
+		<li class="disabled pagination__item"><a>«</a></li>
+		<% } else { %>
+		<li class="pagination__item"><a href="/inbox?page=<%= Number(current) - 1 %>">«</a>
+		</li>
+		<% } %>
+
+		<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+		<% if (i !== 1) { %>
+		<li class="pagination__item disabled"><a>...</a></li>
+		<% } %>
+		<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+		<% if (i == current) { %>
+		<li class="pagination__item active"><a><%= i %></a></li>
+		<% } else { %>
+		<li class="pagination__item">
+			<a href="/inbox?page=<%= i %>"><%= i %></a>
+		</li> <% } %>
+		<% if (i == Number(current) + 4 && i < pages) { %>
+		<li class="pagination__item disabled"><a>...</a></li>
+		<% } %>
+		<% } %>
+
+		<% if (current == pages) { %>
+		<li class="pagination__item disabled"><a>»</a></li>
+		<% } else { %>
+		<li class="pagination__item"><a href="/inbox?page=<%= Number(current) + 1 %>">»</a>
+		</li>
+		<% } %>
+
+		<% if (current == pages) { %>
+		<li class="pagination__item disabled"><a>Last</a></li>
+		<% } else { %>
+		<li class="pagination__item"><a href="/inbox?page=<%= pages %>">Last</a>
+		</li>
+		<% } %>
+	</ul>
+	<% } %>
+</div>
+
+<!-- Pagination end -->
+											
+									</ul>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 
 
- <section class="section section--inbox">
- 	<div class="wrapper">
- 		<div class="inbox">
- 			<div class="inbox__container">
- 				<div class="inbox__control-panel">Control Panel</div>
- 				<div class="inbox__message-panel">
- 					Message Panel
- 					<% messages.forEach(function(message){ %>
- 					<div class="inbox__message">
- 						<div class="inbox__message__icon"> </div>
- 						<div class="inbox__message__name">
- 							<p class=""><%= message.firstName %>  <%= message.lastName %></p>
- 						</div>
- 						<div class="inbox__message__email"><p class=""> <a href="mailto:<%= message.email %>"> <%= message.email %> </a> </p></div>
- 						<div class="inbox__message__recieve-date"><p class=""><%= message.sendAt.getDate() + "." +  message.sendAt.getMonth() + "." +message.sendAt.getFullYear() %></p></div>
- 						<div class="inbox__message__message-preview"><p class=""><%= message.message.substring(0, 30)+"..." %></p></div>
- 						<div class="inbox__message__view-more">View</div>
- 					</div>
- 					<div class="inbox__open-message">
- 						<div class="inbox__open-message__container">
- 							<div class="inbox__open-message__message">
- 								<%= message.message %>
- 							</div>	
- 							<div class="inbox__open-message__message">
- 								<%= message.preview %>
- 							</div>	
- 						</div>
- 					</div>
- 					<% }); %>
- 				</div>
- 			</div>
- 		</div>
- 	</div>
- </section>
 
 
- <% include ../partials/footer %>
+
+				<% include ../partials/footer %>

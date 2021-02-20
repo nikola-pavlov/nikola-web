@@ -1,11 +1,8 @@
 .profile {
 
-	display: flex;
+	// display: flex;
 	font-size: 1.6rem;
-	font-weight: 100;
-	line-height: 1.6;
-	background: var(--color-whitish);
-	border-radius: 1rem;
+	background-color: white;
 
 	&__image {
 		height: 26rem;
@@ -40,9 +37,12 @@
 			bottom: -1rem;
 			left: 3rem;
 			background-color: var(--color-whitish);
-			border: .5rem solid var(--color-one);
+			border: 0.5rem solid var(--color-one);
 			transition: .3s ease-out;
 			cursor: pointer;
+			left: 50%;
+			transform: translateX(-50%);
+			top: 23rem;
 
 			@include respond(800) {
 				left: 50%;
@@ -50,10 +50,6 @@
 				transform: translateX(-50%);
 			}
 
-			&:hover {
-				transform: scale(1.15);
-			}
-			
 
 			&__img {
 				position: relative;
@@ -68,81 +64,6 @@
 				-webkit-mask-position: center;
 				-webkit-mask-image: url("../../images/plus.svg");
 			}
-		}
-	}
-
-
-
-
-
-	&__right {
-		flex: 1;
-		padding: 7rem;
-		@include respond(800) {
-			padding: 5rem;
-		}
-
-		@include respond(500) {
-			padding: 2rem;
-		}
-	}
-
-	&__info {
-
-		display: flex;
-		position: relative;
-
-		@include respond(800) {
-			flex-wrap: wrap;
-		}
-
-		&__field {
-
-			flex: 1;
-
-			@include respond(800) {
-				flex: 1 0 100%;
-				order: 2;
-			}
-
-			ul {
-				list-style: none;
-			}
-
-			ul li {
-				height: 3.25rem;
-				font-weight: bold;
-			}
-
-			ul li span {
-				position: absolute;
-				left: 17rem;
-				font-weight: 100;
-
-				@include respond(800) {
-					left: 15rem;
-				}
-
-				@include respond(500) {
-					left: 12.5rem;
-				}
-			}
-
-		}
-	}
-
-	&__firstname {
-		margin-top: 3rem;
-	}
-
-	&__username {
-		font-size: 3rem;
-		font-weight: bold;
-		display: flex;
-		align-items: center;
-
-		& span {
-			font-size: 1.6rem;
 		}
 	}
 
@@ -169,43 +90,13 @@
 	}
 
 	&__visibility {
-		margin: 3.75rem 0 0 0;
+		// margin: 3.75rem 0 0 0;
 	}
 
 	&__password {
 		margin: 3.75rem 0 0 0;
-		&__text {
-			font-weight: bold;
-		}
-
-		&__button {
-			margin: 1rem .5rem .4rem 0;
-		}
-
-		&__info {
-			font-size: 1.4rem;
-		}
 	}
 
-	&__bio {
-		margin-top: 3rem;
-		&__text {
-			font-weight: bold;
-		}
-
-		&__info {
-			margin-top: .5rem;
-		}
-	}
-
-	&__online {
-		margin-top: 2rem;
-		position: relative;
-	}
-
-	&__status {
-		margin-left: 1.5rem
-	}
 
 	&__indicator {
 		position: absolute !important;
@@ -213,7 +104,8 @@
 		width: 1rem;
 		border-radius: 50%;
 		display: block;
-		top: 1rem;
+		top: 2.4rem;
+		margin-left: -1.4rem;
 
 		&.online {
 			background: green;
@@ -229,17 +121,144 @@
 		margin-left: 2rem;
 	}
 
-	&__buttons {
-		position: relative;
-		right: 0;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		margin-top: 5rem;
 
-	}
 
 	&__private {
 		margin-top: 3rem;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	&__header {
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid var(--color-grey);
+	}
+
+	&__content {
+		display: flex;
+	}
+
+	&__title {
+		margin-right: auto;
+	}
+
+	&__role {
+		margin-right: 3rem;
+
+		& span {
+			background-color: var(--color-three);
+			padding: .5rem 1rem;
+		}
+	}
+
+	&__visibility {
+		margin-left: 3rem;
+	}
+
+	&__info {
+		padding: 2rem 0;
+
+		&__items {
+			margin-bottom: 3rem;
+		}
+
+		&__item {
+			display: flex;
+			margin-bottom: 1rem;
+
+			&__title {
+				font-weight: bold;
+				min-width: 20rem;
+			}
+
+			&__placeholder-text {
+				color: var(--color-grey);
+			}
+		}
+	}
+
+	&__image {
+		margin-left: auto;
+		margin-top: 2rem;
+	}
+
+	&__footer {
+		border-top: 1px solid var(--color-grey);
+		padding: 3rem 0;
+	}
+
+}
+
+.btn.btn--small.btn--danger.profile__delete__button {
+	background-color: var(--color-three);
+	color: var(--color-whitish);
+	text-decoration: none;
+	padding: 1.4rem 1.8rem;
+	font-size: 1.8rem;
+	border-radius: 0.5rem;
+	transition: transform box-shadow .3s ease-out;
+	outline: none;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+	}
+
+	&:active {
+		transform: translateY(-1px);
+		box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.3);
 	}
 }

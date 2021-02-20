@@ -1,20 +1,14 @@
 import $ from "jquery";
+var messageItem = $(".inbox__messages__item");
 
-var messageViewMoreButton = $(".inbox__message__view-more");
-var messageOpenMessage = $(".inbox__open-message");
-var messageOpenMessageIsVisible = $(".inbox__open-message--is-visible");
+messageItem.on( "click", function( event ) {
 
-messageViewMoreButton.on( "click", function( event ) {
-	if (event.target !== this)
-		return;
+		$(messageItem).children(".inbox__messages__item__main").removeClass("inbox__messages__item__main--is-visible");
+		$(this).children(".inbox__messages__item__main").toggleClass("inbox__messages__item__main--is-visible");
 
-	// messageOpenMessage.toggleClass("inbox--is-visible");
-	// alert("test");
-	// $( event.target ).parent().toggleClass( "latest-work__figure--is-visible" );
-	$( event.target ).parent().siblings(".inbox__open-message").removeClass( "inbox__open-message--is-visible" );
-	$( event.target ).parent().next(".inbox__open-message").addClass( "inbox__open-message--is-visible" );
-	// $( event.target ).parent().addClass( "inbox__open-message--is-read" );
+	
 });
 
-// alert("test");
+
+
 

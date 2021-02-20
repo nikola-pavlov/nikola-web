@@ -9,14 +9,12 @@
 		}
 	}
 
-	&__group {
-
-	}
+	&__group {}
 
 	&__feedback {
 		padding: 1rem 0;
-		margin-bottom: 2rem;
-		
+		margin-top: 2rem;
+
 		@include respond(800) {
 			text-align: center;
 		}
@@ -27,7 +25,7 @@
 		margin-bottom: 1.25rem;
 		border: 1px solid var(--color-grey-light);
 		border-radius: 5px;
-		box-shadow: 0 0 1rem rgba(0,0,0,.15);
+		box-shadow: 0 0 1rem rgba(0, 0, 0, .15);
 		min-height: 9rem;
 
 		display: flex;
@@ -63,9 +61,7 @@
 			font-weight: bold;
 		}
 
-		&__text {
-
-		}
+		&__text {}
 
 		&__date {
 			position: absolute;
@@ -96,6 +92,21 @@
 
 	&__delete-btn {
 		margin-left: 2rem;
+
+		& input {
+			background: white;
+			border: none;
+			color: var(--color-one);
+			font-weight: 558;
+			font-family: inherit;
+			font-size: inherit;
+			cursor: pointer;
+			transition: color .2s ease-out;
+
+			&:hover {
+				color: var(--color-three);
+			}
+		}
 	}
 }
 

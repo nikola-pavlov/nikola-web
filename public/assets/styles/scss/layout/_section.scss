@@ -46,7 +46,7 @@
 	}
 
 	&--inbox {
-		height: 200rem;
+		padding-top: 20rem;
 	}
 
 	&--contact-page {
@@ -135,10 +135,6 @@
 		padding-top: 20rem;
 	}
 
-	&--profile {
-		
-	}
-
 	&--cv {
 		min-height: 100vh;
 		padding-top: 20rem;
@@ -163,9 +159,7 @@
 	}
 
 	&--profile {
-		padding-top: 15rem;
-		min-height: 100vh;
-		background: var(--color-two);
+		padding-top: 21rem;
 	}
 
 	&--forgot {

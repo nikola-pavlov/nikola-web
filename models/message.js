@@ -4,6 +4,7 @@
  	firstName: String,
  	lastName: String,
  	email: String,
+	color: String,
  	subject: String,
  	message: String,
  	sendAt: {type: Date, default: Date.now}

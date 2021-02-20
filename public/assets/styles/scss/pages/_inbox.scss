@@ -1,162 +1,151 @@
 .inbox {
-	width: 100%;
-	position: relative;
-	height: 120rem;
-	// background: red;
-	font-size: 1.4rem;
-	color: var(--color-grey-main);
-
-	&__container {
-		@include clearfix;
+	&__content {
+		
 	}
 
-	&__control-panel {
-		// background: yellow;
-		float: left;
-		width: 25%;
-		height: 120rem;
-	}
+	&__messages {
+		&__items {
+			list-style: none;
+			border: 1px solid #ccc;
+		}
 
-	&__message-panel {
-		// background: green;
-		width: 75%;
-		float: left;
-		height: 120rem;
-	}
+		&__item {
 
-	&__message {
-		background-color: var(--color-whitish);
-		border-bottom: 1px solid #eee;
-		position: relative;
-		@include clearfix;
-		height: 8rem;
-
-		&__icon {
+			cursor: pointer;
 			position: relative;
-			background: #ccc;
-			background: url(../../images/envelope.svg);
-			background-size: 2.5rem;
-			background-repeat: no-repeat;
-			background-position: left;
-			position: relative;
-			width: 10%;
-			height: 3rem;
-			float: left;
-			@include center-verticaly;
+
+			border-bottom: 1px solid #ccc;
+
+			&__header {
+				display: flex;
+				padding: 0.5rem;
+				align-items: center;
+				// justify-content: space-between;
+			}
+
+			&__main {
+
+				// display: none;
+				visibility: hidden;
+				opacity: 0;
+				max-height: 0;
+				transition: max-height .3s ease-out;
+				
+
+				&__head {
+					// background-color: var(--color-light-grey);
+					padding: 0.5rem 2rem;
+					display: flex;
+
+					&__name {
+					}
+
+					&__email {
+						margin-right: 1rem;
+					}
+
+					&__subject {
+					}
+
+					&__timestamp {
+						color: var(--color-grey);
+					}
+
+				}
+
+				
+
+				
+
+				&__content {
+					padding: 2rem;
+
+					&__message {
+					}
+				}
+			}
+
+			&:hover {
+				box-shadow: 0 0 1rem 0 rgba(0,0,0,.25);
+			}
+
+			&:hover &__elements {
+				display: flex;
+			}
+
+			&__elements {
+				position: absolute;
+				background: white;
+				height: 100%;
+				right: 0;
+				padding: 0 2rem;
+				display: none;
+				align-items: center;
+
+				&__icons {
+					display: flex;
+				}
+
+				&__reply {
+
+				}
+
+				&__delete {
+					margin-left: 2rem;
+				}
+			}
+		}
+
+		&__image {
+			background-color: grey;
+			width: 3.5rem;
+			height: 3.5rem;
+			flex: 0 0 3.5rem;
+			margin-right: 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&__letter {
+				font-size: 2rem;
+				font-weight: bold;
+				color: white;
+			}
 		}
 
 		&__name {
-			position: relative;
-			width: 20%;
-			float: left;
-			@include center-verticaly;
-
-			&:before {
-				content: "";
-				position: absolute;
-				@include center-verticaly;
-				left: -3rem;
-				background: url(../../images/man-user--color-one.svg);
-				background-size: cover;
-				width: 1.5rem;
-				height: 1.5rem;
-				float: left;
-				margin: 0 1rem;
-			}
+			flex: 0 0 20rem;
 		}
 
-		&__email {
-			position: relative;
-			width: 25%;
-			float: left;
-			@include center-verticaly;
-
-			&:before {
-				content: "";
-				position: absolute;
-				@include center-verticaly;
-				left: -3rem;
-				background: url(../../images/envelope--color-one.svg);
-				background-size: cover;
-				width: 1.5rem;
-				height: 1.5rem;
-				float: left;
-				margin: 0 1rem;
-			}
-		}
-
-		&__recieve-date {
-			position: relative;
-			width: 15%;
-			float: left;
-			@include center-verticaly;
-
-			&:before {
-				content: "";
-				position: absolute;
-				@include center-verticaly;
-				left: -3rem;
-				background: url(../../images/calendar--color-one.svg);
-				background-size: cover;
-				width: 1.5rem;
-				height: 1.5rem;
-				float: left;
-				margin: 0 1rem;
-			}
-		}
-
-		&__message-preview {
-			position: relative;
-			width: 20%;
-			float: left;
-			@include center-verticaly;
-
-			&:before {
-				content: "";
-				position: absolute;
-				@include center-verticaly;
-				left: -3rem;
-				background: url(../../images/eye--color-one.svg);
-				background-size: cover;
-				width: 1.5rem;
-				height: 1.5rem;
-				float: left;
-				margin: 0 1rem;
-			}
-		}
-
-		&__view-more {
-			position: relative;
-			width: 5%;
-			float: right;
-			@include center-verticaly;
-			cursor: pointer;
-		}
-	}
-
-	&__open-message {
-		background: var(--color-grey-light);
-		max-height: 0;
-		transition: max-height .3s ease-out;
-		visibility: hidden;
-		opacity: 0;
-
-		&--is-visible {
-			max-height: 50rem;
-			visibility: visible;
-			opacity: 1;
-		}
-
-		&--is-read {
-			background: red;
-		}
-
-		&__container {
-			padding: 2rem 4rem;
+		&__subject {
+			flex: 0 0 20rem;
 		}
 
 		&__message {
+			flex: 0 0 60rem;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+		}
 
+		&__date {
+			// margin-right: .5rem;
+			margin-left: auto;
+			color: var(--color-grey);
+		}
+
+		&__time {
+			color: var(--color-grey);
 		}
 	}
+}
+
+
+.inbox__messages__item__main.inbox__messages__item__main--is-visible {
+	// display: block;
+	max-height: 20rem;
+	
+	opacity: 1;
+	visibility: visible;
 }

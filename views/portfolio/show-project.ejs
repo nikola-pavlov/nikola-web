@@ -9,6 +9,8 @@
  		<div class="project__container">
  			<div class="project__main">
  				<div class="gallery">
+					 
+
  					<div class="gallery__main">
  						
 
@@ -107,7 +109,7 @@
  									<%= totalCount %>
  								</div>
  							</div>
- 							<div class="project__main__counter__details">See who liked this project.</div>
+ 							<div class="project__main__counter__details"><a>See who liked this project.</a></div>
 
  							<div class="likes__popup">
  								<div class="likes__popup__container">
@@ -200,7 +202,8 @@
  															<div class="reply__footer">
  																<a class="comment__reply-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/new">REPLY</a>
  																<% if(currentUser && reply.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
- 																<a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>/edit">Edit</a>
+																 <a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>/edit">Edit</a>
+
  																<form class="comment__delete-btn" action="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST">
  																	<input type="submit" value="Delete">
  																</form>
@@ -214,8 +217,9 @@
  												<div class="reply__show__container">
  													<a class="comment__reply-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/replies/new">REPLY</a>
  													<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
- 													<a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/edit">Edit</a>
- 													<form class="comment__delete-btn" action="/portfolio/<%= project._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+ 													<a class="comment__edit-btn" href="/portfolio/<%= project._id %>/comments/<%= comment._id %>/edit">Edit</a>													 
+													
+													 <form class="comment__delete-btn" action="/portfolio/<%= project._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
  														<input type="submit" value="Delete">
  													</form>
  													<% } %>
@@ -243,10 +247,10 @@
  									<div class="project__side__info__group__title">More Information</div>
  									<div class="project__side__info__group__container">
  										<ul class="project__side__info__more">
- 											<li><span class="icon1"></span>CBS International</li>
- 											<li><span class="icon2"></span><%= project.category %></li>
- 											<li><span class="icon2"></span><%= moment(project.createdAt).fromNow() %></li>
- 											<li><span class="icon2"></span><a href="/users/<%= project.author.id %>"><%= project.author.username %></a></li>
+ 											<li><span class="icon icon--star"></span>CBS International</li>
+ 											<li><span class="icon icon--type"></span><%= project.category %></li>
+ 											<li><span class="icon icon--date"></span><%= moment(project.createdAt).fromNow() %></li>
+ 											<li><span class="icon icon--user"></span><a href="/users/<%= project.author.id %>"><%= project.author.username %></a></li>
  										</ul>
  									</div>
  								</div>
