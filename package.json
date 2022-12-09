@@ -10,7 +10,7 @@
     "connect-flash": "^0.1.1",
     "dotenv": "^8.1.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-session": "^1.16.2",
     "jquery": "^3.4.1",
     "jquery-smooth-scroll": "^2.2.0",
